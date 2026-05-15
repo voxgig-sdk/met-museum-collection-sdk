@@ -1,0 +1,397 @@
+# Entity: object
+
+main: kit: entity: object: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "accession_number"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "accession_year"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "additional_image"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "artist_alpha_sort"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_begin_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_display_bio"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_display_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_end_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_gender"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_nationality"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_prefix"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_role"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_suffix"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_ulan_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "artist_wikidata_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "city"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "classification"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "constituent"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "country"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "county"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "credit_line"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "culture"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "department"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "dimension"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "dimensions_parsed"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "dynasty"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "excavation"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gallery_number"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "geography_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "is_highlight"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "is_public_domain"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "is_timeline_work"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "link_resource"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "locale"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "locus"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "measurement"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "medium"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "metadata_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "object_begin_date"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "object_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "object_end_date"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "object_i_d"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "object_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "object_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "object_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "object_wikidata_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "period"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "portfolio"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "primary_image"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "primary_image_small"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "region"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "reign"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "repository"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rights_and_reproduction"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "river"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "state"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "subregion"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "tag"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "total"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "object"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "1"
+                kind: "query"
+                name: "department_id"
+                orig: "department_id"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2018-10-22"
+                kind: "query"
+                name: "metadata_date"
+                orig: "metadata_date"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/objects"
+          parts: [
+            "objects"
+          ]
+          select: {
+            exist: [
+              "department_id"
+              "metadata_date"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: 45734
+                kind: "param"
+                name: "id"
+                orig: "object_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/objects/{objectID}"
+          parts: [
+            "objects"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              objectID: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

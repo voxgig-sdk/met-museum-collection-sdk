@@ -1,0 +1,158 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "object_i_d"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "total"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "search"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: true
+                kind: "query"
+                name: "artist_or_culture"
+                orig: "artist_or_culture"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: 1800
+                kind: "query"
+                name: "date_begin"
+                orig: "date_begin"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 1900
+                kind: "query"
+                name: "date_end"
+                orig: "date_end"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 11
+                kind: "query"
+                name: "department_id"
+                orig: "department_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "Europe"
+                kind: "query"
+                name: "geo_location"
+                orig: "geo_location"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: true
+                kind: "query"
+                name: "has_image"
+                orig: "has_image"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: true
+                kind: "query"
+                name: "is_highlight"
+                orig: "is_highlight"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: true
+                kind: "query"
+                name: "is_on_view"
+                orig: "is_on_view"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: "Paintings"
+                kind: "query"
+                name: "medium"
+                orig: "medium"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "sunflowers"
+                kind: "query"
+                name: "q"
+                orig: "q"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: true
+                kind: "query"
+                name: "tag"
+                orig: "tag"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: true
+                kind: "query"
+                name: "title"
+                orig: "title"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/search"
+          parts: [
+            "search"
+          ]
+          select: {
+            exist: [
+              "artist_or_culture"
+              "date_begin"
+              "date_end"
+              "department_id"
+              "geo_location"
+              "has_image"
+              "is_highlight"
+              "is_on_view"
+              "medium"
+              "q"
+              "tag"
+              "title"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

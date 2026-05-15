@@ -1,0 +1,30 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: department: {
+    path: "/departments": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: object: {
+    path: "/objects": {
+      op: list: method: *GET
+    }
+    path: "/objects/{objectID}": {
+      rename: param: "objectID": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: search: {
+    path: "/search": {
+      op: list: method: *GET
+    }
+  }
+
+}

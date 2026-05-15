@@ -1,0 +1,42 @@
+# Entity: department
+
+main: kit: entity: department: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "department_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "display_name"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "department"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/departments"
+          parts: [
+            "departments"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

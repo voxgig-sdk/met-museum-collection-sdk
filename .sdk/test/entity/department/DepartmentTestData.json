@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "department": {
+      "DEPARTMENT00": {
+        "department_id": "DEPARTMENT01",
+        "display_name": "s15"
+      },
+      "DEPARTMENT01": {
+        "department_id": "DEPARTMENT01",
+        "display_name": "s29"
+      },
+      "DEPARTMENT02": {
+        "department_id": "DEPARTMENT01",
+        "display_name": "s3d"
+      }
+    }
+  },
+  "new": {
+    "department": {
+      "department_ref01": {
+        "department_id": "DEPARTMENT01",
+        "display_name": "s51"
+      }
+    }
+  }
+}

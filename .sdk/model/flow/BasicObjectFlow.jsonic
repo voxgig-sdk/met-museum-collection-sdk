@@ -1,0 +1,44 @@
+# BasicObjectFlow
+
+main: kit: flow: BasicObjectFlow:
+{
+  entity: "object",
+  kind: "basic",
+  name: "BasicObjectFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "object_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "object_ref01",
+        srcdatavar: "object_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "object01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-object_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicObjectFlow"
+}

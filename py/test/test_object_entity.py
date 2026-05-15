@@ -1,0 +1,128 @@
+# Object entity test
+
+import json
+import os
+import time
+
+import pytest
+
+from utility.voxgig_struct import voxgig_struct as vs
+from metmuseumcollection_sdk import MetMuseumCollectionSDK
+from core import helpers
+
+_TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+from test import runner
+
+
+class TestObjectEntity:
+
+    def test_should_create_instance(self):
+        testsdk = MetMuseumCollectionSDK.test(None, None)
+        ent = testsdk.Object(None)
+        assert ent is not None
+
+    def test_should_run_basic_flow(self):
+        setup = _object_basic_setup(None)
+        # Per-op sdk-test-control.json skip — basic test exercises a flow with
+        # multiple ops; skipping any one skips the whole flow (steps depend
+        # on each other).
+        _live = setup.get("live", False)
+        for _op in ["list", "load"]:
+            _skip, _reason = runner.is_control_skipped("entityOp", "object." + _op, "live" if _live else "unit")
+            if _skip:
+                pytest.skip(_reason or "skipped via sdk-test-control.json")
+                return
+        # The basic flow consumes synthetic IDs from the fixture. In live mode
+        # without an *_ENTID env override, those IDs hit the live API and 4xx.
+        if setup.get("synthetic_only"):
+            pytest.skip("live entity test uses synthetic IDs from fixture — "
+                        "set METMUSEUMCOLLECTION_TEST_OBJECT_ENTID JSON to run live")
+        client = setup["client"]
+
+        # Bootstrap entity data from existing test data.
+        object_ref01_data_raw = vs.items(helpers.to_map(
+            vs.getpath(setup["data"], "existing.object")))
+        object_ref01_data = None
+        if len(object_ref01_data_raw) > 0:
+            object_ref01_data = helpers.to_map(object_ref01_data_raw[0][1])
+
+        # LIST
+        object_ref01_ent = client.Object(None)
+        object_ref01_match = {}
+
+        object_ref01_list_result, err = object_ref01_ent.list(object_ref01_match, None)
+        assert err is None
+        assert isinstance(object_ref01_list_result, list)
+
+        # LOAD
+        object_ref01_match_dt0 = {}
+        object_ref01_data_dt0_loaded, err = object_ref01_ent.load(object_ref01_match_dt0, None)
+        assert err is None
+        assert object_ref01_data_dt0_loaded is not None
+
+
+
+def _object_basic_setup(extra):
+    runner.load_env_local()
+
+    entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/object/ObjectTestData.json")
+    with open(entity_data_file, "r") as f:
+        entity_data_source = f.read()
+
+    entity_data = json.loads(entity_data_source)
+
+    options = {}
+    options["entity"] = entity_data.get("existing")
+
+    client = MetMuseumCollectionSDK.test(options, extra)
+
+    # Generate idmap via transform.
+    idmap = vs.transform(
+        ["object01", "object02", "object03"],
+        {
+            "`$PACK`": ["", {
+                "`$KEY`": "`$COPY`",
+                "`$VAL`": ["`$FORMAT`", "upper", "`$COPY`"],
+            }],
+        }
+    )
+
+    # Detect ENTID env override before envOverride consumes it. When live
+    # mode is on without a real override, the basic test runs against synthetic
+    # IDs from the fixture and 4xx's. We surface this so the test can skip.
+    _entid_env_raw = os.environ.get(
+        "METMUSEUMCOLLECTION_TEST_OBJECT_ENTID")
+    _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
+
+    env = runner.env_override({
+        "METMUSEUMCOLLECTION_TEST_OBJECT_ENTID": idmap,
+        "METMUSEUMCOLLECTION_TEST_LIVE": "FALSE",
+        "METMUSEUMCOLLECTION_TEST_EXPLAIN": "FALSE",
+        "METMUSEUMCOLLECTION_APIKEY": "NONE",
+    })
+
+    idmap_resolved = helpers.to_map(
+        env.get("METMUSEUMCOLLECTION_TEST_OBJECT_ENTID"))
+    if idmap_resolved is None:
+        idmap_resolved = helpers.to_map(idmap)
+
+    if env.get("METMUSEUMCOLLECTION_TEST_LIVE") == "TRUE":
+        merged_opts = vs.merge([
+            {
+                "apikey": env.get("METMUSEUMCOLLECTION_APIKEY"),
+            },
+            extra or {},
+        ])
+        client = MetMuseumCollectionSDK(helpers.to_map(merged_opts))
+
+    _live = env.get("METMUSEUMCOLLECTION_TEST_LIVE") == "TRUE"
+    return {
+        "client": client,
+        "data": entity_data,
+        "idmap": idmap_resolved,
+        "env": env,
+        "explain": env.get("METMUSEUMCOLLECTION_TEST_EXPLAIN") == "TRUE",
+        "live": _live,
+        "synthetic_only": _live and not _idmap_overridden,
+        "now": int(time.time() * 1000),
+    }

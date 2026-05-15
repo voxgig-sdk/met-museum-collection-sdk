@@ -1,0 +1,28 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "openaccess@metmuseum.org"
+      }
+      description: "Access over 470,000 artworks with metadata and high-resolution images from The Metropolitan Museum of Art Collection. Search by title, tags, department, and more. No API key required."
+      license: {
+        name: "CC0 1.0 Universal"
+        url: "https://creativecommons.org/publicdomain/zero/1.0/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://collectionapi.metmuseum.org/public/collection/v1"
+        }
+      ]
+      termsOfService: "https://metmuseum.github.io/"
+      title: "Met Museum Collection"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
