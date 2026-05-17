@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/met-museum-collection-sdk/core"
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
 )
 
 type BaseFeature struct {

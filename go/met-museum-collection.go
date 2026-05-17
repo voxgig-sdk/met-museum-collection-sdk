@@ -1,10 +1,10 @@
 package voxgigmetmuseumcollectionsdk
 
 import (
-	"github.com/voxgig-sdk/met-museum-collection-sdk/core"
-	"github.com/voxgig-sdk/met-museum-collection-sdk/entity"
-	"github.com/voxgig-sdk/met-museum-collection-sdk/feature"
-	_ "github.com/voxgig-sdk/met-museum-collection-sdk/utility"
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/entity"
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/feature"
+	_ "github.com/voxgig-sdk/met-museum-collection-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

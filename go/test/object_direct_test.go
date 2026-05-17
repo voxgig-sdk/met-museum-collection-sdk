@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/met-museum-collection-sdk"
-	"github.com/voxgig-sdk/met-museum-collection-sdk/core"
+	sdk "github.com/voxgig-sdk/met-museum-collection-sdk/go"
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
 )
 
 func TestObjectDirect(t *testing.T) {

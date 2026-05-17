@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/met-museum-collection-sdk/core"
+import "github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
 
 func prepareBodyUtil(ctx *core.Context) any {
 	op := ctx.Op

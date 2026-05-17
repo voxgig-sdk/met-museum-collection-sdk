@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/met-museum-collection-sdk"
-	"github.com/voxgig-sdk/met-museum-collection-sdk/core"
+	sdk "github.com/voxgig-sdk/met-museum-collection-sdk/go"
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/met-museum-collection-sdk/go/utility/struct"
 )
 
 func TestObjectEntity(t *testing.T) {

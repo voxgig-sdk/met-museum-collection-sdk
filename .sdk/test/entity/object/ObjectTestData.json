@@ -61,7 +61,8 @@
         "subregion": "s290",
         "tag": [],
         "title": "s292",
-        "total": "s293"
+        "total": "s293",
+        "id": "OBJECT00"
       },
       "OBJECT01": {
         "accession_number": "s4b0",
@@ -123,7 +124,8 @@
         "subregion": "s4e8",
         "tag": [],
         "title": "s4ea",
-        "total": "s4eb"
+        "total": "s4eb",
+        "id": "OBJECT01"
       },
       "OBJECT02": {
         "accession_number": "s708",
@@ -185,7 +187,8 @@
         "subregion": "s740",
         "tag": [],
         "title": "s742",
-        "total": "s743"
+        "total": "s743",
+        "id": "OBJECT02"
       }
     }
   },

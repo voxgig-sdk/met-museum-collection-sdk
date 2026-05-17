@@ -3,7 +3,7 @@ package utility
 import (
 	"reflect"
 
-	"github.com/voxgig-sdk/met-museum-collection-sdk/core"
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
 )
 
 func featureHookUtil(ctx *core.Context, name string) {

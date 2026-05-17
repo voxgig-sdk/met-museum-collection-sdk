@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/met-museum-collection-sdk/core"
+import "github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

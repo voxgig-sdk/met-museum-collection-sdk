@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/met-museum-collection-sdk"
+	sdk "github.com/voxgig-sdk/met-museum-collection-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

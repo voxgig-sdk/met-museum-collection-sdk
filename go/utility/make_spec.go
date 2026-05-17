@@ -3,9 +3,9 @@ package utility
 import (
 	"strings"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/met-museum-collection-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/met-museum-collection-sdk/core"
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
 )
 
 func makeSpecUtil(ctx *core.Context) (*core.Spec, error) {
