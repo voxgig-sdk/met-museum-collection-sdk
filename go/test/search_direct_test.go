@@ -93,14 +93,12 @@ func searchDirectSetup(mockres any) *searchDirectSetupResult {
 	env := envOverride(map[string]any{
 		"METMUSEUMCOLLECTION_TEST_SEARCH_ENTID": map[string]any{},
 		"METMUSEUMCOLLECTION_TEST_LIVE":    "FALSE",
-		"METMUSEUMCOLLECTION_APIKEY":       "NONE",
 	})
 
 	live := env["METMUSEUMCOLLECTION_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["METMUSEUMCOLLECTION_APIKEY"],
 		}
 		client := sdk.NewMetMuseumCollectionSDK(mergedOpts)
 

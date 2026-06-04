@@ -61,14 +61,12 @@ def _department_direct_setup(mockres):
     env = runner.env_override({
         "METMUSEUMCOLLECTION_TEST_DEPARTMENT_ENTID": {},
         "METMUSEUMCOLLECTION_TEST_LIVE": "FALSE",
-        "METMUSEUMCOLLECTION_APIKEY": "NONE",
     })
 
     live = env.get("METMUSEUMCOLLECTION_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("METMUSEUMCOLLECTION_APIKEY"),
         }
         client = MetMuseumCollectionSDK(merged_opts)
         return {

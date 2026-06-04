@@ -92,7 +92,6 @@ def _search_basic_setup(extra):
         "METMUSEUMCOLLECTION_TEST_SEARCH_ENTID": idmap,
         "METMUSEUMCOLLECTION_TEST_LIVE": "FALSE",
         "METMUSEUMCOLLECTION_TEST_EXPLAIN": "FALSE",
-        "METMUSEUMCOLLECTION_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _search_basic_setup(extra):
     if env.get("METMUSEUMCOLLECTION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("METMUSEUMCOLLECTION_APIKEY"),
             },
             extra or {},
         ])

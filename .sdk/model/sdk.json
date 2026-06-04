@@ -21,7 +21,19 @@
         ],
         "termsOfService": "https://metmuseum.github.io/",
         "title": "Met Museum Collection",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Browse 470k+ artworks from The Metropolitan Museum of Art with public-domain metadata and hi-res images, no key required",
+        "homepage": "https://metmuseum.github.io/",
+        "docs_url": "https://metmuseum.github.io/",
+        "license_short": "CC0 1.0 Universal — open access dataset; check each object's rightsAndReproduction field for any in-copyright works",
+        "license_md": "- Dataset released under **Creative Commons Zero (CC0 1.0)** — The Met has waived all copyright and related rights to the open-access data.\n- Public-domain artworks include high-resolution JPEGs free to use without attribution.\n- Some works remain under copyright; check the `rightsAndReproduction` field on each object record before reuse.\n- Source data, terms, and contact: https://github.com/metmuseum/openaccess",
+        "about_md": "The [Metropolitan Museum of Art Collection API](https://metmuseum.github.io/) is a RESTful JSON service published by [The Met](https://www.metmuseum.org/) that opens up its collection records — over 470,000 artworks spanning the museum's curatorial departments. It is the same dataset behind the Met's [Open Access](https://github.com/metmuseum/openaccess) initiative.\n\nWhat you get from the API:\n\n- List every valid object ID, optionally filtered by `departmentIds` or `metadataDate`.\n- Fetch full metadata for any object (title, artist, culture, period, medium, dimensions, classification, accession info, etc.) plus `primaryImage` / `additionalImages` URLs for public-domain works.\n- Enumerate the museum's departments with their IDs and display names.\n- Search across the collection by free-text query plus filters such as `hasImages`, `medium`, `geoLocation`, `dateBegin`/`dateEnd`, and `isHighlight`.\n\nNo API key or registration is required. The Met asks clients to keep request rates at or below **80 requests per second**. CORS is not enabled, so browser clients must proxy requests through a server.",
+        "entity_desc": {
+          "department": "The Met's curatorial departments (e.g. Egyptian Art, American Decorative Arts); `GET /departments` returns each department's `departmentId` and `displayName`, which can be passed as `departmentIds` to filter object listings.",
+          "object": "An individual artwork record with full metadata and image URLs; list all valid IDs via `GET /objects` and fetch a specific record via `GET /objects/{objectID}`.",
+          "search": "Returns matching object IDs for a query via `GET /search?q={term}`, with optional filters such as `hasImages`, `medium`, `geoLocation`, `dateBegin`, `dateEnd`, `departmentId`, and `isHighlight`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -29,7 +41,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "department": {
