@@ -10,7 +10,7 @@ The TypeScript SDK for the MetMuseumCollection API — a type-safe, entity-orien
 
 ## Install
 ```bash
-npm install met-museum-collection
+npm install @voxgig-sdk/met-museum-collection
 ```
 ## Tutorial: your first API call
 

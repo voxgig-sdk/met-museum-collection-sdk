@@ -10,7 +10,7 @@ The Lua SDK for the MetMuseumCollection API — an entity-oriented client using 
 
 ## Install
 ```bash
-luarocks install met-museum-collection-sdk
+luarocks install voxgig-sdk-met-museum-collection
 ```
 
 If the module is not yet published, add the source directory to

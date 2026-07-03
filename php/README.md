@@ -10,7 +10,7 @@ The PHP SDK for the MetMuseumCollection API — an entity-oriented client using 
 
 ## Install
 ```bash
-composer require voxgig/met-museum-collection-sdk
+composer require voxgig-sdk/met-museum-collection
 ```
 
 

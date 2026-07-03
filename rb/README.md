@@ -10,13 +10,13 @@ The Ruby SDK for the MetMuseumCollection API — an entity-oriented client using
 
 ## Install
 ```bash
-gem install met-museum-collection-sdk
+gem install voxgig-sdk-met-museum-collection
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "met-museum-collection-sdk"
+gem "voxgig-sdk-met-museum-collection"
 ```
 
 Then run:

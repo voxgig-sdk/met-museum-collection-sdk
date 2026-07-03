@@ -8,12 +8,14 @@ source = {
   dir = "met-museum-collection-sdk/lua"
 }
 description = {
-  summary = "MetMuseumCollection SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Met Museum Collection public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/met-museum-collection-sdk",
+  issues_url = "https://github.com/voxgig-sdk/met-museum-collection-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "met-museum-collection" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

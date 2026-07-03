@@ -10,7 +10,7 @@ The Python SDK for the MetMuseumCollection API — an entity-oriented client fol
 
 ## Install
 ```bash
-pip install met-museum-collection-sdk
+pip install voxgig-sdk-met-museum-collection
 ```
 
 Or install from source:
