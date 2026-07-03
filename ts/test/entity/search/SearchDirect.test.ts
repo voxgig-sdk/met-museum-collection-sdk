@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'METMUSEUMCOLLECTION_TEST_SEARCH_ENTID': {},
     'METMUSEUMCOLLECTION_TEST_LIVE': 'FALSE',
+    'METMUSEUMCOLLECTION_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.METMUSEUMCOLLECTION_TEST_LIVE
 
   if (live) {
     const client = new MetMuseumCollectionSDK({
+      apikey: env.METMUSEUMCOLLECTION_APIKEY,
     })
 
     let idmap: any = env['METMUSEUMCOLLECTION_TEST_SEARCH_ENTID']

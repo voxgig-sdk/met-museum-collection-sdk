@@ -114,6 +114,7 @@ function basicSetup(extra?: any) {
     'MET_MUSEUM_COLLECTION_TEST_OBJECT_ENTID': idmap,
     'MET_MUSEUM_COLLECTION_TEST_LIVE': 'FALSE',
     'MET_MUSEUM_COLLECTION_TEST_EXPLAIN': 'FALSE',
+    'MET_MUSEUM_COLLECTION_APIKEY': 'NONE',
   })
 
   idmap = env['MET_MUSEUM_COLLECTION_TEST_OBJECT_ENTID']
@@ -123,6 +124,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new MetMuseumCollectionSDK(merge([
       {
+        apikey: env.MET_MUSEUM_COLLECTION_APIKEY,
       },
       extra
     ]))

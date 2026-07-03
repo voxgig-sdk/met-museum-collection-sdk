@@ -1,21 +1,8 @@
 # MetMuseumCollection SDK
 
-Browse 470k+ artworks from The Metropolitan Museum of Art with public-domain metadata and hi-res images, no key required
+Met Museum Collection client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Met Museum Collection
-
-The [Metropolitan Museum of Art Collection API](https://metmuseum.github.io/) is a RESTful JSON service published by [The Met](https://www.metmuseum.org/) that opens up its collection records — over 470,000 artworks spanning the museum's curatorial departments. It is the same dataset behind the Met's [Open Access](https://github.com/metmuseum/openaccess) initiative.
-
-What you get from the API:
-
-- List every valid object ID, optionally filtered by `departmentIds` or `metadataDate`.
-- Fetch full metadata for any object (title, artist, culture, period, medium, dimensions, classification, accession info, etc.) plus `primaryImage` / `additionalImages` URLs for public-domain works.
-- Enumerate the museum's departments with their IDs and display names.
-- Search across the collection by free-text query plus filters such as `hasImages`, `medium`, `geoLocation`, `dateBegin`/`dateEnd`, and `isHighlight`.
-
-No API key or registration is required. The Met asks clients to keep request rates at or below **80 requests per second**. CORS is not enabled, so browser clients must proxy requests through a server.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install met-museum-collection-sdk
 luarocks install met-museum-collection-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { MetMuseumCollectionSDK } from 'met-museum-collection'
 
-const client = new MetMuseumCollectionSDK({})
+const client = new MetMuseumCollectionSDK({
+  apikey: process.env.MET-MUSEUM-COLLECTION_APIKEY,
+})
 
 // List all departments
 const departments = await client.Department().list()
+console.log(departments.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Department** | The Met's curatorial departments (e.g. Egyptian Art, American Decorative Arts); `GET /departments` returns each department's `departmentId` and `displayName`, which can be passed as `departmentIds` to filter object listings. | `/departments` |
-| **Object** | An individual artwork record with full metadata and image URLs; list all valid IDs via `GET /objects` and fetch a specific record via `GET /objects/{objectID}`. | `/objects` |
-| **Search** | Returns matching object IDs for a query via `GET /search?q={term}`, with optional filters such as `hasImages`, `medium`, `geoLocation`, `dateBegin`, `dateEnd`, `departmentId`, and `isHighlight`. | `/search` |
+| **Department** |  | `/departments` |
+| **Object** |  | `/objects` |
+| **Search** |  | `/search` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -113,12 +102,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from metmuseumcollection_sdk import MetMuseumCollectionSDK
 
-client = MetMuseumCollectionSDK({})
+client = MetMuseumCollectionSDK({
+    "apikey": os.environ.get("MET-MUSEUM-COLLECTION_APIKEY"),
+})
 
 # List all departments
-departments, err = client.Department(None).list(None, None)
+departments, err = client.Department().list()
+print(departments)
 ```
 
 ### PHP
@@ -127,10 +120,13 @@ departments, err = client.Department(None).list(None, None)
 <?php
 require_once 'metmuseumcollection_sdk.php';
 
-$client = new MetMuseumCollectionSDK([]);
+$client = new MetMuseumCollectionSDK([
+    "apikey" => getenv("MET-MUSEUM-COLLECTION_APIKEY"),
+]);
 
 // List all departments
-[$departments, $err] = $client->Department(null)->list(null, null);
+[$departments, $err] = $client->Department()->list();
+print_r($departments);
 ```
 
 ### Golang
@@ -138,10 +134,13 @@ $client = new MetMuseumCollectionSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/met-museum-collection-sdk/go"
 
-client := sdk.NewMetMuseumCollectionSDK(map[string]any{})
+client := sdk.NewMetMuseumCollectionSDK(map[string]any{
+    "apikey": os.Getenv("MET-MUSEUM-COLLECTION_APIKEY"),
+})
 
 // List all departments
 departments, err := client.Department(nil).List(nil, nil)
+fmt.Println(departments)
 ```
 
 ### Ruby
@@ -149,10 +148,13 @@ departments, err := client.Department(nil).List(nil, nil)
 ```ruby
 require_relative "MetMuseumCollection_sdk"
 
-client = MetMuseumCollectionSDK.new({})
+client = MetMuseumCollectionSDK.new({
+  "apikey" => ENV["MET-MUSEUM-COLLECTION_APIKEY"],
+})
 
 # List all departments
-departments, err = client.Department(nil).list(nil, nil)
+departments, err = client.Department().list
+puts departments
 ```
 
 ### Lua
@@ -160,10 +162,13 @@ departments, err = client.Department(nil).list(nil, nil)
 ```lua
 local sdk = require("met-museum-collection_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("MET-MUSEUM-COLLECTION_APIKEY"),
+})
 
 -- List all departments
-local departments, err = client:Department(nil):list(nil, nil)
+local departments, err = client:Department():list()
+print(departments)
 ```
 
 ## Unit testing in offline mode
@@ -182,25 +187,21 @@ const result = await client.Department().load({ id: 'test01' })
 ### Python
 
 ```python
-client = MetMuseumCollectionSDK.test(None, None)
-result, err = client.Department(None).load(
-    {"id": "test01"}, None
-)
+client = MetMuseumCollectionSDK.test()
+result, err = client.Department().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = MetMuseumCollectionSDK::test(null, null);
-[$result, $err] = $client->Department(null)->load(
-    ["id" => "test01"], null
-);
+$client = MetMuseumCollectionSDK::test();
+[$result, $err] = $client->Department()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Department(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -209,19 +210,15 @@ result, err := client.Department(nil).Load(
 ### Ruby
 
 ```ruby
-client = MetMuseumCollectionSDK.test(nil, nil)
-result, err = client.Department(nil).load(
-  { "id" => "test01" }, nil
-)
+client = MetMuseumCollectionSDK.test
+result, err = client.Department().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Department(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Department():load({ id = "test01" })
 ```
 
 ## How it works
@@ -325,15 +322,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Met Museum Collection
-
-- Upstream: [https://metmuseum.github.io/](https://metmuseum.github.io/)
-
-- Dataset released under **Creative Commons Zero (CC0 1.0)** — The Met has waived all copyright and related rights to the open-access data.
-- Public-domain artworks include high-resolution JPEGs free to use without attribution.
-- Some works remain under copyright; check the `rightsAndReproduction` field on each object record before reuse.
-- Source data, terms, and contact: https://github.com/metmuseum/openaccess
 
 ---
 
