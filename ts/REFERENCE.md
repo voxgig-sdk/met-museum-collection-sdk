@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -134,7 +133,7 @@ Alias for `MetMuseumCollectionSDK.test()`.
 ## DepartmentEntity
 
 ```ts
-const department = client.Department()
+const department = client.department
 ```
 
 ### Fields
@@ -151,7 +150,7 @@ const department = client.Department()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Department().list()
+const results = await client.department.list()
 ```
 
 ### Common Methods
@@ -185,7 +184,7 @@ Return a copy of the entity options.
 ## ObjectEntity
 
 ```ts
-const object = client.Object()
+const object = client.object
 ```
 
 ### Fields
@@ -260,7 +259,7 @@ const object = client.Object()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Object().list()
+const results = await client.object.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -268,7 +267,7 @@ const results = await client.Object().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Object().load({ id: 'object_id' })
+const result = await client.object.load({ id: 'object_id' })
 ```
 
 ### Common Methods
@@ -302,7 +301,7 @@ Return a copy of the entity options.
 ## SearchEntity
 
 ```ts
-const search = client.Search()
+const search = client.search
 ```
 
 ### Fields
@@ -319,7 +318,7 @@ const search = client.Search()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Search().list()
+const results = await client.search.list()
 ```
 
 ### Common Methods

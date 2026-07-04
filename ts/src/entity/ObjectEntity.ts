@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Object,
+  ObjectLoadMatch,
+  ObjectListMatch,
+} from '../MetMuseumCollectionTypes'
 
 // TODO: needs Entity superclass
-class ObjectEntity extends MetMuseumCollectionEntityBase {
+class ObjectEntity extends MetMuseumCollectionEntityBase<Object> {
 
   constructor(client: MetMuseumCollectionSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class ObjectEntity extends MetMuseumCollectionEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ObjectLoadMatch, ctrl?: Control): Promise<Object> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class ObjectEntity extends MetMuseumCollectionEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Object> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ObjectListMatch, ctrl?: Control): Promise<Object[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class ObjectEntity extends MetMuseumCollectionEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Object[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ObjectLoadMatch
+---@param ctrl? table
+---@return Object
+---@return string? err
 function ObjectEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ObjectListMatch
+---@param ctrl? table
+---@return Object[]
+---@return string? err
 function ObjectEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

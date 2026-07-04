@@ -43,14 +43,12 @@ class ObjectEntityTest < Minitest::Test
     object_ref01_ent = client.Object(nil)
     object_ref01_match = {}
 
-    object_ref01_list_result, err = object_ref01_ent.list(object_ref01_match, nil)
-    assert_nil err
+    object_ref01_list_result = object_ref01_ent.list(object_ref01_match, nil)
     assert object_ref01_list_result.is_a?(Array)
 
     # LOAD
     object_ref01_match_dt0 = {}
-    object_ref01_data_dt0_loaded, err = object_ref01_ent.load(object_ref01_match_dt0, nil)
-    assert_nil err
+    object_ref01_data_dt0_loaded = object_ref01_ent.load(object_ref01_match_dt0, nil)
     assert !object_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def object_basic_setup(extra)
     "METMUSEUMCOLLECTION_TEST_OBJECT_ENTID" => idmap,
     "METMUSEUMCOLLECTION_TEST_LIVE" => "FALSE",
     "METMUSEUMCOLLECTION_TEST_EXPLAIN" => "FALSE",
-    "METMUSEUMCOLLECTION_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def object_basic_setup(extra)
   if env["METMUSEUMCOLLECTION_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["METMUSEUMCOLLECTION_APIKEY"],
       },
       extra || {},
     ])

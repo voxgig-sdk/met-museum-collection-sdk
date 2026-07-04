@@ -119,7 +119,6 @@ func searchBasicSetup(extra map[string]any) *entityTestSetup {
 		"METMUSEUMCOLLECTION_TEST_SEARCH_ENTID": idmap,
 		"METMUSEUMCOLLECTION_TEST_LIVE":      "FALSE",
 		"METMUSEUMCOLLECTION_TEST_EXPLAIN":   "FALSE",
-		"METMUSEUMCOLLECTION_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["METMUSEUMCOLLECTION_TEST_SEARCH_ENTID"])
@@ -130,7 +129,6 @@ func searchBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["METMUSEUMCOLLECTION_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["METMUSEUMCOLLECTION_APIKEY"],
 			},
 			extra,
 		})

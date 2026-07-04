@@ -43,8 +43,7 @@ class DepartmentEntityTest < Minitest::Test
     department_ref01_ent = client.Department(nil)
     department_ref01_match = {}
 
-    department_ref01_list_result, err = department_ref01_ent.list(department_ref01_match, nil)
-    assert_nil err
+    department_ref01_list_result = department_ref01_ent.list(department_ref01_match, nil)
     assert department_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def department_basic_setup(extra)
     "METMUSEUMCOLLECTION_TEST_DEPARTMENT_ENTID" => idmap,
     "METMUSEUMCOLLECTION_TEST_LIVE" => "FALSE",
     "METMUSEUMCOLLECTION_TEST_EXPLAIN" => "FALSE",
-    "METMUSEUMCOLLECTION_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def department_basic_setup(extra)
   if env["METMUSEUMCOLLECTION_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["METMUSEUMCOLLECTION_APIKEY"],
       },
       extra || {},
     ])

@@ -15,9 +15,6 @@ module MetMuseumCollectionConfig
       },
       "options" => {
         "base" => "https://collectionapi.metmuseum.org/public/collection/v1",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -563,6 +560,7 @@ module MetMuseumCollectionConfig
                         "orig" => "object_id",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },

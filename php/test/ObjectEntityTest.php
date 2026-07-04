@@ -50,14 +50,12 @@ class ObjectEntityTest extends TestCase
         $object_ref01_ent = $client->Object(null);
         $object_ref01_match = [];
 
-        [$object_ref01_list_result, $err] = $object_ref01_ent->list($object_ref01_match, null);
-        $this->assertNull($err);
+        $object_ref01_list_result = $object_ref01_ent->list($object_ref01_match, null);
         $this->assertIsArray($object_ref01_list_result);
 
         // LOAD
         $object_ref01_match_dt0 = [];
-        [$object_ref01_data_dt0_loaded, $err] = $object_ref01_ent->load($object_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $object_ref01_data_dt0_loaded = $object_ref01_ent->load($object_ref01_match_dt0, null);
         $this->assertNotNull($object_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function object_basic_setup($extra)
         "METMUSEUMCOLLECTION_TEST_OBJECT_ENTID" => $idmap,
         "METMUSEUMCOLLECTION_TEST_LIVE" => "FALSE",
         "METMUSEUMCOLLECTION_TEST_EXPLAIN" => "FALSE",
-        "METMUSEUMCOLLECTION_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function object_basic_setup($extra)
     if ($env["METMUSEUMCOLLECTION_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["METMUSEUMCOLLECTION_APIKEY"],
             ],
             $extra ?? [],
         ]);

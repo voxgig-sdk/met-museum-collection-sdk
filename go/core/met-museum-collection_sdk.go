@@ -245,16 +245,25 @@ func (sdk *MetMuseumCollectionSDK) Direct(fetchargs map[string]any) (map[string]
 }
 
 
+// Department returns a Department entity bound to this client.
+// Idiomatic usage: client.Department(nil).List(nil, nil) or
+// client.Department(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MetMuseumCollectionSDK) Department(data map[string]any) MetMuseumCollectionEntity {
 	return NewDepartmentEntityFunc(sdk, data)
 }
 
 
+// Object returns a Object entity bound to this client.
+// Idiomatic usage: client.Object(nil).List(nil, nil) or
+// client.Object(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MetMuseumCollectionSDK) Object(data map[string]any) MetMuseumCollectionEntity {
 	return NewObjectEntityFunc(sdk, data)
 }
 
 
+// Search returns a Search entity bound to this client.
+// Idiomatic usage: client.Search(nil).List(nil, nil) or
+// client.Search(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MetMuseumCollectionSDK) Search(data map[string]any) MetMuseumCollectionEntity {
 	return NewSearchEntityFunc(sdk, data)
 }

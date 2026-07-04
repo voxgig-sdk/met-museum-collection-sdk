@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:department():list() / client:department():load({ id = ... })
+function MetMuseumCollectionSDK:department(data)
+  local EntityMod = require("entity.department_entity")
+  if data == nil then
+    if self._department == nil then
+      self._department = EntityMod.new(self, nil)
+    end
+    return self._department
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:department() instead.
 function MetMuseumCollectionSDK:Department(data)
   local EntityMod = require("entity.department_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:object():list() / client:object():load({ id = ... })
+function MetMuseumCollectionSDK:object(data)
+  local EntityMod = require("entity.object_entity")
+  if data == nil then
+    if self._object == nil then
+      self._object = EntityMod.new(self, nil)
+    end
+    return self._object
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:object() instead.
 function MetMuseumCollectionSDK:Object(data)
   local EntityMod = require("entity.object_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
+function MetMuseumCollectionSDK:search(data)
+  local EntityMod = require("entity.search_entity")
+  if data == nil then
+    if self._search == nil then
+      self._search = EntityMod.new(self, nil)
+    end
+    return self._search
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:search() instead.
 function MetMuseumCollectionSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)

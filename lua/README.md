@@ -9,12 +9,9 @@ The Lua SDK for the MetMuseumCollection API — an entity-oriented client using 
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-met-museum-collection
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("met-museum-collection_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("MET-MUSEUM-COLLECTION_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List departments
 
 ```lua
-local result, err = client:Department():list()
+local result, err = client:department():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +88,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:MetMuseumCollection():load({ id = "test01" })
+local result, err = client:department():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -126,8 +121,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-MET-MUSEUM-COLLECTION_TEST_LIVE=TRUE
-MET-MUSEUM-COLLECTION_APIKEY=<your-key>
+MET_MUSEUM_COLLECTION_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -150,7 +144,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -310,7 +303,7 @@ API path: `/search`
 
 ### Department
 
-Create an instance: `const department = client.Department()`
+Create an instance: `const department = client.department`
 
 #### Operations
 
@@ -328,13 +321,13 @@ Create an instance: `const department = client.Department()`
 #### Example: List
 
 ```ts
-const departments = await client.Department().list()
+const departments = await client.department.list()
 ```
 
 
 ### Object
 
-Create an instance: `const object = client.Object()`
+Create an instance: `const object = client.object`
 
 #### Operations
 
@@ -411,19 +404,19 @@ Create an instance: `const object = client.Object()`
 #### Example: Load
 
 ```ts
-const object = await client.Object().load({ id: 'object_id' })
+const object = await client.object.load({ id: 'object_id' })
 ```
 
 #### Example: List
 
 ```ts
-const objects = await client.Object().list()
+const objects = await client.object.list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -441,7 +434,7 @@ Create an instance: `const search = client.Search()`
 #### Example: List
 
 ```ts
-const searchs = await client.Search().list()
+const searchs = await client.search.list()
 ```
 
 
@@ -516,11 +509,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local department = client:department()
+department:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- department:data_get() now returns the loaded department data
+-- department:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

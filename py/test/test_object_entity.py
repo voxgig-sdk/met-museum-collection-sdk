@@ -50,14 +50,12 @@ class TestObjectEntity:
         object_ref01_ent = client.Object(None)
         object_ref01_match = {}
 
-        object_ref01_list_result, err = object_ref01_ent.list(object_ref01_match, None)
-        assert err is None
+        object_ref01_list_result = object_ref01_ent.list(object_ref01_match, None)
         assert isinstance(object_ref01_list_result, list)
 
         # LOAD
         object_ref01_match_dt0 = {}
-        object_ref01_data_dt0_loaded, err = object_ref01_ent.load(object_ref01_match_dt0, None)
-        assert err is None
+        object_ref01_data_dt0_loaded = object_ref01_ent.load(object_ref01_match_dt0, None)
         assert object_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _object_basic_setup(extra):
         "METMUSEUMCOLLECTION_TEST_OBJECT_ENTID": idmap,
         "METMUSEUMCOLLECTION_TEST_LIVE": "FALSE",
         "METMUSEUMCOLLECTION_TEST_EXPLAIN": "FALSE",
-        "METMUSEUMCOLLECTION_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _object_basic_setup(extra):
     if env.get("METMUSEUMCOLLECTION_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("METMUSEUMCOLLECTION_APIKEY"),
             },
             extra or {},
         ])

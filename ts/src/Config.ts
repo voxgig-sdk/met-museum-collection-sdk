@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://collectionapi.metmuseum.org/public/collection/v1',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -596,7 +592,8 @@ class Config {
                     "name": "id",
                     "orig": "object_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
