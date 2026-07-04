@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:department():list() / client:department():load({ id = ... })
-function MetMuseumCollectionSDK:department(data)
+-- Idiomatic facade: client:Department():list() / client:Department():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MetMuseumCollectionSDK:Department(data)
   local EntityMod = require("entity.department_entity")
   if data == nil then
     if self._department == nil then
@@ -256,15 +257,10 @@ function MetMuseumCollectionSDK:department(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:department() instead.
-function MetMuseumCollectionSDK:Department(data)
-  local EntityMod = require("entity.department_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:object():list() / client:object():load({ id = ... })
-function MetMuseumCollectionSDK:object(data)
+-- Idiomatic facade: client:Object():list() / client:Object():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MetMuseumCollectionSDK:Object(data)
   local EntityMod = require("entity.object_entity")
   if data == nil then
     if self._object == nil then
@@ -275,15 +271,10 @@ function MetMuseumCollectionSDK:object(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:object() instead.
-function MetMuseumCollectionSDK:Object(data)
-  local EntityMod = require("entity.object_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
-function MetMuseumCollectionSDK:search(data)
+-- Idiomatic facade: client:Search():list() / client:Search():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MetMuseumCollectionSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   if data == nil then
     if self._search == nil then
@@ -291,12 +282,6 @@ function MetMuseumCollectionSDK:search(data)
     end
     return self._search
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:search() instead.
-function MetMuseumCollectionSDK:Search(data)
-  local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)
 end
 

@@ -31,14 +31,16 @@ from metmuseumcollection_sdk import MetMuseumCollectionSDK
 client = MetMuseumCollectionSDK()
 ```
 
-### 2. List departments
+### 2. List department records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.department.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    departments = client.Department().list({})
+    for department in departments:
+        print(department)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MetMuseumCollectionSDK.test()
 
-result = client.department.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+department = client.Department().load({"id": "test01"})
+# department contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -164,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Department` | `(data) -> DepartmentEntity` | Create a Department entity instance. |
-| `Object` | `(data) -> ObjectEntity` | Create a Object entity instance. |
+| `Object` | `(data) -> ObjectEntity` | Create an Object entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
 
 ### Entity interface
@@ -303,7 +306,7 @@ API path: `/search`
 
 ### Department
 
-Create an instance: `const department = client.department`
+Create an instance: `department = client.Department()`
 
 #### Operations
 
@@ -320,14 +323,14 @@ Create an instance: `const department = client.department`
 
 #### Example: List
 
-```ts
-const departments = await client.department.list()
+```python
+departments = client.Department().list({})
 ```
 
 
 ### Object
 
-Create an instance: `const object = client.object`
+Create an instance: `object = client.Object()`
 
 #### Operations
 
@@ -403,20 +406,20 @@ Create an instance: `const object = client.object`
 
 #### Example: Load
 
-```ts
-const object = await client.object.load({ id: 'object_id' })
+```python
+object = client.Object().load({"id": "object_id"})
 ```
 
 #### Example: List
 
-```ts
-const objects = await client.object.list()
+```python
+objects = client.Object().list({})
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `search = client.Search()`
 
 #### Operations
 
@@ -433,8 +436,8 @@ Create an instance: `const search = client.search`
 
 #### Example: List
 
-```ts
-const searchs = await client.search.list()
+```python
+searchs = client.Search().list({})
 ```
 
 
@@ -508,7 +511,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-department = client.department
+department = client.Department()
 department.load({"id": "example_id"})
 
 # department.data_get() now returns the loaded department data

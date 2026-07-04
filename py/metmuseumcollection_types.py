@@ -4,166 +4,163 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Department:
-    department_id: Optional[int] = None
-    display_name: Optional[str] = None
+class Department(TypedDict, total=False):
+    department_id: int
+    display_name: str
 
 
-@dataclass
-class DepartmentListMatch:
-    department_id: Optional[int] = None
-    display_name: Optional[str] = None
+class DepartmentListMatch(TypedDict, total=False):
+    department_id: int
+    display_name: str
 
 
-@dataclass
-class Object:
-    accession_number: Optional[str] = None
-    accession_year: Optional[str] = None
-    additional_image: Optional[list] = None
-    artist_alpha_sort: Optional[str] = None
-    artist_begin_date: Optional[str] = None
-    artist_display_bio: Optional[str] = None
-    artist_display_name: Optional[str] = None
-    artist_end_date: Optional[str] = None
-    artist_gender: Optional[str] = None
-    artist_nationality: Optional[str] = None
-    artist_prefix: Optional[str] = None
-    artist_role: Optional[str] = None
-    artist_suffix: Optional[str] = None
-    artist_ulan_url: Optional[str] = None
-    artist_wikidata_url: Optional[str] = None
-    city: Optional[str] = None
-    classification: Optional[str] = None
-    constituent: Optional[list] = None
-    country: Optional[str] = None
-    county: Optional[str] = None
-    credit_line: Optional[str] = None
-    culture: Optional[str] = None
-    department: Optional[str] = None
-    dimension: Optional[str] = None
-    dimensions_parsed: Optional[list] = None
-    dynasty: Optional[str] = None
-    excavation: Optional[str] = None
-    gallery_number: Optional[str] = None
-    geography_type: Optional[str] = None
-    is_highlight: Optional[bool] = None
-    is_public_domain: Optional[bool] = None
-    is_timeline_work: Optional[bool] = None
-    link_resource: Optional[str] = None
-    locale: Optional[str] = None
-    locus: Optional[str] = None
-    measurement: Optional[list] = None
-    medium: Optional[str] = None
-    metadata_date: Optional[str] = None
-    object_begin_date: Optional[int] = None
-    object_date: Optional[str] = None
-    object_end_date: Optional[int] = None
-    object_i_d: Optional[list] = None
-    object_id: Optional[int] = None
-    object_name: Optional[str] = None
-    object_url: Optional[str] = None
-    object_wikidata_url: Optional[str] = None
-    period: Optional[str] = None
-    portfolio: Optional[str] = None
-    primary_image: Optional[str] = None
-    primary_image_small: Optional[str] = None
-    region: Optional[str] = None
-    reign: Optional[str] = None
-    repository: Optional[str] = None
-    rights_and_reproduction: Optional[str] = None
-    river: Optional[str] = None
-    state: Optional[str] = None
-    subregion: Optional[str] = None
-    tag: Optional[list] = None
-    title: Optional[str] = None
-    total: Optional[int] = None
+class Object(TypedDict, total=False):
+    accession_number: str
+    accession_year: str
+    additional_image: list
+    artist_alpha_sort: str
+    artist_begin_date: str
+    artist_display_bio: str
+    artist_display_name: str
+    artist_end_date: str
+    artist_gender: str
+    artist_nationality: str
+    artist_prefix: str
+    artist_role: str
+    artist_suffix: str
+    artist_ulan_url: str
+    artist_wikidata_url: str
+    city: str
+    classification: str
+    constituent: list
+    country: str
+    county: str
+    credit_line: str
+    culture: str
+    department: str
+    dimension: str
+    dimensions_parsed: list
+    dynasty: str
+    excavation: str
+    gallery_number: str
+    geography_type: str
+    is_highlight: bool
+    is_public_domain: bool
+    is_timeline_work: bool
+    link_resource: str
+    locale: str
+    locus: str
+    measurement: list
+    medium: str
+    metadata_date: str
+    object_begin_date: int
+    object_date: str
+    object_end_date: int
+    object_i_d: list
+    object_id: int
+    object_name: str
+    object_url: str
+    object_wikidata_url: str
+    period: str
+    portfolio: str
+    primary_image: str
+    primary_image_small: str
+    region: str
+    reign: str
+    repository: str
+    rights_and_reproduction: str
+    river: str
+    state: str
+    subregion: str
+    tag: list
+    title: str
+    total: int
 
 
-@dataclass
-class ObjectLoadMatch:
+class ObjectLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ObjectListMatch:
-    accession_number: Optional[str] = None
-    accession_year: Optional[str] = None
-    additional_image: Optional[list] = None
-    artist_alpha_sort: Optional[str] = None
-    artist_begin_date: Optional[str] = None
-    artist_display_bio: Optional[str] = None
-    artist_display_name: Optional[str] = None
-    artist_end_date: Optional[str] = None
-    artist_gender: Optional[str] = None
-    artist_nationality: Optional[str] = None
-    artist_prefix: Optional[str] = None
-    artist_role: Optional[str] = None
-    artist_suffix: Optional[str] = None
-    artist_ulan_url: Optional[str] = None
-    artist_wikidata_url: Optional[str] = None
-    city: Optional[str] = None
-    classification: Optional[str] = None
-    constituent: Optional[list] = None
-    country: Optional[str] = None
-    county: Optional[str] = None
-    credit_line: Optional[str] = None
-    culture: Optional[str] = None
-    department: Optional[str] = None
-    dimension: Optional[str] = None
-    dimensions_parsed: Optional[list] = None
-    dynasty: Optional[str] = None
-    excavation: Optional[str] = None
-    gallery_number: Optional[str] = None
-    geography_type: Optional[str] = None
-    is_highlight: Optional[bool] = None
-    is_public_domain: Optional[bool] = None
-    is_timeline_work: Optional[bool] = None
-    link_resource: Optional[str] = None
-    locale: Optional[str] = None
-    locus: Optional[str] = None
-    measurement: Optional[list] = None
-    medium: Optional[str] = None
-    metadata_date: Optional[str] = None
-    object_begin_date: Optional[int] = None
-    object_date: Optional[str] = None
-    object_end_date: Optional[int] = None
-    object_i_d: Optional[list] = None
-    object_id: Optional[int] = None
-    object_name: Optional[str] = None
-    object_url: Optional[str] = None
-    object_wikidata_url: Optional[str] = None
-    period: Optional[str] = None
-    portfolio: Optional[str] = None
-    primary_image: Optional[str] = None
-    primary_image_small: Optional[str] = None
-    region: Optional[str] = None
-    reign: Optional[str] = None
-    repository: Optional[str] = None
-    rights_and_reproduction: Optional[str] = None
-    river: Optional[str] = None
-    state: Optional[str] = None
-    subregion: Optional[str] = None
-    tag: Optional[list] = None
-    title: Optional[str] = None
-    total: Optional[int] = None
+class ObjectListMatch(TypedDict, total=False):
+    accession_number: str
+    accession_year: str
+    additional_image: list
+    artist_alpha_sort: str
+    artist_begin_date: str
+    artist_display_bio: str
+    artist_display_name: str
+    artist_end_date: str
+    artist_gender: str
+    artist_nationality: str
+    artist_prefix: str
+    artist_role: str
+    artist_suffix: str
+    artist_ulan_url: str
+    artist_wikidata_url: str
+    city: str
+    classification: str
+    constituent: list
+    country: str
+    county: str
+    credit_line: str
+    culture: str
+    department: str
+    dimension: str
+    dimensions_parsed: list
+    dynasty: str
+    excavation: str
+    gallery_number: str
+    geography_type: str
+    is_highlight: bool
+    is_public_domain: bool
+    is_timeline_work: bool
+    link_resource: str
+    locale: str
+    locus: str
+    measurement: list
+    medium: str
+    metadata_date: str
+    object_begin_date: int
+    object_date: str
+    object_end_date: int
+    object_i_d: list
+    object_id: int
+    object_name: str
+    object_url: str
+    object_wikidata_url: str
+    period: str
+    portfolio: str
+    primary_image: str
+    primary_image_small: str
+    region: str
+    reign: str
+    repository: str
+    rights_and_reproduction: str
+    river: str
+    state: str
+    subregion: str
+    tag: list
+    title: str
+    total: int
 
 
-@dataclass
-class Search:
-    object_i_d: Optional[list] = None
-    total: Optional[int] = None
+class Search(TypedDict, total=False):
+    object_i_d: list
+    total: int
 
 
-@dataclass
-class SearchListMatch:
-    object_i_d: Optional[list] = None
-    total: Optional[int] = None
-
+class SearchListMatch(TypedDict, total=False):
+    object_i_d: list
+    total: int

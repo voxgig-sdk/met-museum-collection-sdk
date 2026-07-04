@@ -233,10 +233,10 @@ class MetMuseumCollectionSDK
 
     private $_department = null;
 
-    // Idiomatic facade: $client->department()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Department() (PHP method
-    // names are case-insensitive).
-    public function department($data = null)
+    // Canonical facade: $client->Department()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->department()
+    // resolves here too.
+    public function Department($data = null)
     {
         require_once __DIR__ . '/entity/department_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class MetMuseumCollectionSDK
 
     private $_object = null;
 
-    // Idiomatic facade: $client->object()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Object() (PHP method
-    // names are case-insensitive).
-    public function object($data = null)
+    // Canonical facade: $client->Object()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->object()
+    // resolves here too.
+    public function Object($data = null)
     {
         require_once __DIR__ . '/entity/object_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class MetMuseumCollectionSDK
 
     private $_search = null;
 
-    // Idiomatic facade: $client->search()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Search() (PHP method
-    // names are case-insensitive).
-    public function search($data = null)
+    // Canonical facade: $client->Search()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->search()
+    // resolves here too.
+    public function Search($data = null)
     {
         require_once __DIR__ . '/entity/search_entity.php';
         if ($data === null) {

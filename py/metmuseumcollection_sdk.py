@@ -220,57 +220,27 @@ class MetMuseumCollectionSDK:
         }
 
 
-    @property
-    def department(self):
-        """Idiomatic facade: client.department.list() / client.department.load({"id": ...})."""
-        from entity.department_entity import DepartmentEntity
-        cached = getattr(self, "_department", None)
-        if cached is None:
-            cached = DepartmentEntity(self, None)
-            self._department = cached
-        return cached
-
-    def Department(self, data=None):
-        # Deprecated: use client.department instead.
+    def Department(self, data=None) -> "DepartmentEntity":
+        """Entity factory: client.Department().list({}) / client.Department().load({"id": ...})."""
         from entity.department_entity import DepartmentEntity
         return DepartmentEntity(self, data)
 
 
-    @property
-    def object(self):
-        """Idiomatic facade: client.object.list() / client.object.load({"id": ...})."""
-        from entity.object_entity import ObjectEntity
-        cached = getattr(self, "_object", None)
-        if cached is None:
-            cached = ObjectEntity(self, None)
-            self._object = cached
-        return cached
-
-    def Object(self, data=None):
-        # Deprecated: use client.object instead.
+    def Object(self, data=None) -> "ObjectEntity":
+        """Entity factory: client.Object().list({}) / client.Object().load({"id": ...})."""
         from entity.object_entity import ObjectEntity
         return ObjectEntity(self, data)
 
 
-    @property
-    def search(self):
-        """Idiomatic facade: client.search.list() / client.search.load({"id": ...})."""
-        from entity.search_entity import SearchEntity
-        cached = getattr(self, "_search", None)
-        if cached is None:
-            cached = SearchEntity(self, None)
-            self._search = cached
-        return cached
-
-    def Search(self, data=None):
-        # Deprecated: use client.search instead.
+    def Search(self, data=None) -> "SearchEntity":
+        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "MetMuseumCollectionSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class MetMuseumCollectionSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.department_entity import DepartmentEntity
+    from entity.object_entity import ObjectEntity
+    from entity.search_entity import SearchEntity

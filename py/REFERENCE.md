@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## DepartmentEntity
 
 ```python
-department = client.department
+department = client.Department()
 ```
 
 ### Fields
@@ -105,7 +105,9 @@ department = client.department
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.department.list({})
+results = client.Department().list({})
+for department in results:
+    print(department)
 ```
 
 ### Common Methods
@@ -140,7 +142,7 @@ Return the entity name.
 ## ObjectEntity
 
 ```python
-object = client.object
+object = client.Object()
 ```
 
 ### Fields
@@ -215,7 +217,9 @@ object = client.object
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.object.list({})
+results = client.Object().list({})
+for object in results:
+    print(object)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -223,7 +227,7 @@ results = client.object.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.object.load({"id": "object_id"})
+result = client.Object().load({"id": "object_id"})
 ```
 
 ### Common Methods
@@ -258,7 +262,7 @@ Return the entity name.
 ## SearchEntity
 
 ```python
-search = client.search
+search = client.Search()
 ```
 
 ### Fields
@@ -275,7 +279,9 @@ search = client.search
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.search.list({})
+results = client.Search().list({})
+for search in results:
+    print(search)
 ```
 
 ### Common Methods

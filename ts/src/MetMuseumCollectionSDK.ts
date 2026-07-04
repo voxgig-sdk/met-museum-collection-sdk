@@ -206,42 +206,21 @@ class MetMuseumCollectionSDK {
 
 
 
-  _department?: DepartmentEntity
-
-  // Idiomatic facade: `client.department.list()` / `client.department.load({ id })`.
-  get department(): DepartmentEntity {
-    return (this._department ??= new DepartmentEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.department` instead. */
+  // Entity access: `client.Department().list()` / `client.Department().load({ id })`.
   Department(data?: any) {
     const self = this
     return new DepartmentEntity(self,data)
   }
 
 
-  _object?: ObjectEntity
-
-  // Idiomatic facade: `client.object.list()` / `client.object.load({ id })`.
-  get object(): ObjectEntity {
-    return (this._object ??= new ObjectEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.object` instead. */
+  // Entity access: `client.Object().list()` / `client.Object().load({ id })`.
   Object(data?: any) {
     const self = this
     return new ObjectEntity(self,data)
   }
 
 
-  _search?: SearchEntity
-
-  // Idiomatic facade: `client.search.list()` / `client.search.load({ id })`.
-  get search(): SearchEntity {
-    return (this._search ??= new SearchEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.search` instead. */
+  // Entity access: `client.Search().list()` / `client.Search().load({ id })`.
   Search(data?: any) {
     const self = this
     return new SearchEntity(self,data)

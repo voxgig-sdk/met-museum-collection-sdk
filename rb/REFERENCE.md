@@ -94,7 +94,7 @@ same parameters as `direct()`. Raises on error.
 ## DepartmentEntity
 
 ```ruby
-department = client.department
+department = client.Department
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ department = client.department
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.department.list(nil)
+results = client.Department.list(nil)
 ```
 
 ### Common Methods
@@ -147,7 +147,7 @@ Return the entity name.
 ## ObjectEntity
 
 ```ruby
-object = client.object
+object = client.Object
 ```
 
 ### Fields
@@ -222,7 +222,7 @@ object = client.object
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.object.list(nil)
+results = client.Object.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -230,7 +230,7 @@ results = client.object.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.object.load({ "id" => "object_id" })
+result = client.Object.load({ "id" => "object_id" })
 ```
 
 ### Common Methods
@@ -266,7 +266,7 @@ Return the entity name.
 ## SearchEntity
 
 ```ruby
-search = client.search
+search = client.Search
 ```
 
 ### Fields
@@ -283,7 +283,7 @@ search = client.search
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.search.list(nil)
+results = client.Search.list(nil)
 ```
 
 ### Common Methods

@@ -208,39 +208,21 @@ class MetMuseumCollectionSDK
   end
 
 
-  # Idiomatic facade: client.department.list / client.department.load({ "id" => ... })
-  def department
-    require_relative 'entity/department_entity'
-    @department ||= DepartmentEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.department instead.
+  # Canonical facade: client.Department.list / client.Department.load({ "id" => ... })
   def Department(data = nil)
     require_relative 'entity/department_entity'
     DepartmentEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.object.list / client.object.load({ "id" => ... })
-  def object
-    require_relative 'entity/object_entity'
-    @object ||= ObjectEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.object instead.
+  # Canonical facade: client.Object.list / client.Object.load({ "id" => ... })
   def Object(data = nil)
     require_relative 'entity/object_entity'
     ObjectEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.search.list / client.search.load({ "id" => ... })
-  def search
-    require_relative 'entity/search_entity'
-    @search ||= SearchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.search instead.
+  # Canonical facade: client.Search.list / client.Search.load({ "id" => ... })
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)

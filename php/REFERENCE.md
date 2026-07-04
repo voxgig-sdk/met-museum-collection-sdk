@@ -93,7 +93,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## DepartmentEntity
 
 ```php
-$department = $client->department();
+$department = $client->Department();
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ $department = $client->department();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->department()->list([]);
+$results = $client->Department()->list([]);
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## ObjectEntity
 
 ```php
-$object = $client->object();
+$object = $client->Object();
 ```
 
 ### Fields
@@ -221,7 +221,7 @@ $object = $client->object();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->object()->list([]);
+$results = $client->Object()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -229,7 +229,7 @@ $results = $client->object()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->object()->load(["id" => "object_id"]);
+$result = $client->Object()->load(["id" => "object_id"]);
 ```
 
 ### Common Methods
@@ -265,7 +265,7 @@ Return the entity name.
 ## SearchEntity
 
 ```php
-$search = $client->search();
+$search = $client->Search();
 ```
 
 ### Fields
@@ -282,7 +282,7 @@ $search = $client->search();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->search()->list([]);
+$results = $client->Search()->list([]);
 ```
 
 ### Common Methods

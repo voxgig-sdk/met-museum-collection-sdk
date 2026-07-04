@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## DepartmentEntity
 
 ```lua
-local department = client:department(nil)
+local department = client:Department(nil)
 ```
 
 ### Fields
@@ -108,7 +108,7 @@ local department = client:department(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:department():list()
+local results, err = client:Department():list()
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Return the entity name.
 ## ObjectEntity
 
 ```lua
-local object = client:object(nil)
+local object = client:Object(nil)
 ```
 
 ### Fields
@@ -219,7 +219,7 @@ local object = client:object(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:object():list()
+local results, err = client:Object():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -227,7 +227,7 @@ local results, err = client:object():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:object():load({ id = "object_id" })
+local result, err = client:Object():load({ id = "object_id" })
 ```
 
 ### Common Methods
@@ -263,7 +263,7 @@ Return the entity name.
 ## SearchEntity
 
 ```lua
-local search = client:search(nil)
+local search = client:Search(nil)
 ```
 
 ### Fields
@@ -280,7 +280,7 @@ local search = client:search(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:search():list()
+local results, err = client:Search():list()
 ```
 
 ### Common Methods

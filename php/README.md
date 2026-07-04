@@ -29,18 +29,16 @@ require_once 'metmuseumcollection_sdk.php';
 $client = new MetMuseumCollectionSDK();
 ```
 
-### 2. List departments
+### 2. List department records
 
 ```php
 try {
-    $result = $client->department()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Department records — iterate directly.
+    $departments = $client->Department()->list();
+    foreach ($departments as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = MetMuseumCollectionSDK::test();
+$client = MetMuseumCollectionSDK::test([
+    "entity" => ["department" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->department()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$department = $client->Department()->load(["id" => "test01"]);
+print_r($department);
 ```
 
 ### Use a custom fetch function
@@ -172,7 +174,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `Department` | `($data): DepartmentEntity` | Create a Department entity instance. |
-| `Object` | `($data): ObjectEntity` | Create a Object entity instance. |
+| `Object` | `($data): ObjectEntity` | Create an Object entity instance. |
 | `Search` | `($data): SearchEntity` | Create a Search entity instance. |
 
 ### Entity interface
@@ -311,7 +313,7 @@ API path: `/search`
 
 ### Department
 
-Create an instance: `const department = client.department`
+Create an instance: `$department = $client->Department();`
 
 #### Operations
 
@@ -328,14 +330,15 @@ Create an instance: `const department = client.department`
 
 #### Example: List
 
-```ts
-const departments = await client.department.list()
+```php
+// list() returns an array of Department records (throws on error).
+$departments = $client->Department()->list();
 ```
 
 
 ### Object
 
-Create an instance: `const object = client.object`
+Create an instance: `$object = $client->Object();`
 
 #### Operations
 
@@ -411,20 +414,22 @@ Create an instance: `const object = client.object`
 
 #### Example: Load
 
-```ts
-const object = await client.object.load({ id: 'object_id' })
+```php
+// load() returns the bare Object record (throws on error).
+$object = $client->Object()->load(["id" => "object_id"]);
 ```
 
 #### Example: List
 
-```ts
-const objects = await client.object.list()
+```php
+// list() returns an array of Object records (throws on error).
+$objects = $client->Object()->list();
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `$search = $client->Search();`
 
 #### Operations
 
@@ -441,8 +446,9 @@ Create an instance: `const search = client.search`
 
 #### Example: List
 
-```ts
-const searchs = await client.search.list()
+```php
+// list() returns an array of Search records (throws on error).
+$searchs = $client->Search()->list();
 ```
 
 
@@ -517,7 +523,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$department = $client->department();
+$department = $client->Department();
 $department->load(["id" => "example_id"]);
 
 // $department->dataGet() now returns the loaded department data

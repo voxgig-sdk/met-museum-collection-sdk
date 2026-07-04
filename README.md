@@ -26,9 +26,11 @@ import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection'
 
 const client = new MetMuseumCollectionSDK()
 
-// List all departments
-const departments = await client.department.list()
-console.log(departments.data)
+// List all departments (returns Department[])
+const departments = await client.Department().list()
+for (const department of departments) {
+  console.log(department)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,9 +87,10 @@ from metmuseumcollection_sdk import MetMuseumCollectionSDK
 
 client = MetMuseumCollectionSDK()
 
-# List all departments
-departments = client.department.list()
-print(departments)
+# List all departments (returns a list, raises on error)
+departments = client.Department().list({})
+for department in departments:
+    print(department)
 ```
 
 ### PHP
@@ -98,8 +101,8 @@ require_once 'metmuseumcollection_sdk.php';
 
 $client = new MetMuseumCollectionSDK();
 
-// List all departments (throws on error)
-$departments = $client->department()->list();
+// List all departments (returns an array; throws on error)
+$departments = $client->Department()->list();
 print_r($departments);
 ```
 
@@ -122,8 +125,8 @@ require_relative "MetMuseumCollection_sdk"
 
 client = MetMuseumCollectionSDK.new
 
-# List all departments
-departments = client.department.list
+# List all departments (returns an Array; raises on error)
+departments = client.Department.list
 puts departments
 ```
 
@@ -135,7 +138,7 @@ local sdk = require("met-museum-collection_sdk")
 local client = sdk.new()
 
 -- List all departments
-local departments, err = client:department():list()
+local departments, err = client:Department():list()
 print(departments)
 ```
 
@@ -148,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = MetMuseumCollectionSDK.test()
-const result = await client.department.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const department = await client.Department().load({ id: 'test01' })
+// department is a bare Department populated with mock data
+console.log(department)
 ```
 
 ### Python
 
 ```python
 client = MetMuseumCollectionSDK.test()
-result = client.department.load({"id": "test01"})
+department = client.Department().load({"id": "test01"})
+print(department)
 ```
 
 ### PHP
 
 ```php
-$client = MetMuseumCollectionSDK::test();
-$result = $client->department()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = MetMuseumCollectionSDK::test([
+    "entity" => ["department" => ["test01" => ["id" => "test01"]]],
+]);
+$department = $client->Department()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -178,15 +186,18 @@ result, err := client.Department(nil).Load(
 ### Ruby
 
 ```ruby
-client = MetMuseumCollectionSDK.test
-result = client.department.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = MetMuseumCollectionSDK.test({
+  "entity" => { "department" => { "test01" => { "id" => "test01" } } },
+})
+department = client.Department.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:department():load({ id = "test01" })
+local result, err = client:Department():load({ id = "test01" })
 ```
 
 ## How it works
@@ -234,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

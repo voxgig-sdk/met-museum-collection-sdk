@@ -133,7 +133,7 @@ Alias for `MetMuseumCollectionSDK.test()`.
 ## DepartmentEntity
 
 ```ts
-const department = client.department
+const department = client.Department()
 ```
 
 ### Fields
@@ -150,7 +150,7 @@ const department = client.department
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.department.list()
+const results = await client.Department().list()
 ```
 
 ### Common Methods
@@ -184,7 +184,7 @@ Return a copy of the entity options.
 ## ObjectEntity
 
 ```ts
-const object = client.object
+const object = client.Object()
 ```
 
 ### Fields
@@ -259,7 +259,7 @@ const object = client.object
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.object.list()
+const results = await client.Object().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -267,7 +267,7 @@ const results = await client.object.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.object.load({ id: 'object_id' })
+const result = await client.Object().load({ id: 'object_id' })
 ```
 
 ### Common Methods
@@ -301,7 +301,7 @@ Return a copy of the entity options.
 ## SearchEntity
 
 ```ts
-const search = client.search
+const search = client.Search()
 ```
 
 ### Fields
@@ -318,7 +318,7 @@ const search = client.search
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.search.list()
+const results = await client.Search().list()
 ```
 
 ### Common Methods
