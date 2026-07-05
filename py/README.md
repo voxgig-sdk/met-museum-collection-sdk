@@ -4,6 +4,11 @@
 
 The Python SDK for the MetMuseumCollection API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Department()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,11 +43,39 @@ error — iterate it directly.
 
 ```python
 try:
-    departments = client.Department().list({})
+    departments = client.Department().list()
     for department in departments:
         print(department)
 except Exception as err:
     print(f"list failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    departments = client.Department().list()
+    print(departments)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -63,7 +96,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -89,7 +125,7 @@ Create a mock client for unit testing — no server required:
 client = MetMuseumCollectionSDK.test()
 
 # Entity ops return the bare record and raise on error.
-department = client.Department().load({"id": "test01"})
+department = client.Department().list()
 # department contains the mock response record
 ```
 
@@ -178,9 +214,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -312,19 +345,19 @@ Create an instance: `department = client.Department()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `display_name` | ``$STRING`` |  |
+| `department_id` | `int` |  |
+| `display_name` | `str` |  |
 
 #### Example: List
 
 ```python
-departments = client.Department().list({})
+departments = client.Department().list()
 ```
 
 
@@ -336,73 +369,73 @@ Create an instance: `object = client.Object()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | ``$STRING`` |  |
-| `accession_year` | ``$STRING`` |  |
-| `additional_image` | ``$ARRAY`` |  |
-| `artist_alpha_sort` | ``$STRING`` |  |
-| `artist_begin_date` | ``$STRING`` |  |
-| `artist_display_bio` | ``$STRING`` |  |
-| `artist_display_name` | ``$STRING`` |  |
-| `artist_end_date` | ``$STRING`` |  |
-| `artist_gender` | ``$STRING`` |  |
-| `artist_nationality` | ``$STRING`` |  |
-| `artist_prefix` | ``$STRING`` |  |
-| `artist_role` | ``$STRING`` |  |
-| `artist_suffix` | ``$STRING`` |  |
-| `artist_ulan_url` | ``$STRING`` |  |
-| `artist_wikidata_url` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `constituent` | ``$ARRAY`` |  |
-| `country` | ``$STRING`` |  |
-| `county` | ``$STRING`` |  |
-| `credit_line` | ``$STRING`` |  |
-| `culture` | ``$STRING`` |  |
-| `department` | ``$STRING`` |  |
-| `dimension` | ``$STRING`` |  |
-| `dimensions_parsed` | ``$ARRAY`` |  |
-| `dynasty` | ``$STRING`` |  |
-| `excavation` | ``$STRING`` |  |
-| `gallery_number` | ``$STRING`` |  |
-| `geography_type` | ``$STRING`` |  |
-| `is_highlight` | ``$BOOLEAN`` |  |
-| `is_public_domain` | ``$BOOLEAN`` |  |
-| `is_timeline_work` | ``$BOOLEAN`` |  |
-| `link_resource` | ``$STRING`` |  |
-| `locale` | ``$STRING`` |  |
-| `locus` | ``$STRING`` |  |
-| `measurement` | ``$ARRAY`` |  |
-| `medium` | ``$STRING`` |  |
-| `metadata_date` | ``$STRING`` |  |
-| `object_begin_date` | ``$INTEGER`` |  |
-| `object_date` | ``$STRING`` |  |
-| `object_end_date` | ``$INTEGER`` |  |
-| `object_i_d` | ``$ARRAY`` |  |
-| `object_id` | ``$INTEGER`` |  |
-| `object_name` | ``$STRING`` |  |
-| `object_url` | ``$STRING`` |  |
-| `object_wikidata_url` | ``$STRING`` |  |
-| `period` | ``$STRING`` |  |
-| `portfolio` | ``$STRING`` |  |
-| `primary_image` | ``$STRING`` |  |
-| `primary_image_small` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
-| `reign` | ``$STRING`` |  |
-| `repository` | ``$STRING`` |  |
-| `rights_and_reproduction` | ``$STRING`` |  |
-| `river` | ``$STRING`` |  |
-| `state` | ``$STRING`` |  |
-| `subregion` | ``$STRING`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
+| `accession_number` | `str` |  |
+| `accession_year` | `str` |  |
+| `additional_image` | `list` |  |
+| `artist_alpha_sort` | `str` |  |
+| `artist_begin_date` | `str` |  |
+| `artist_display_bio` | `str` |  |
+| `artist_display_name` | `str` |  |
+| `artist_end_date` | `str` |  |
+| `artist_gender` | `str` |  |
+| `artist_nationality` | `str` |  |
+| `artist_prefix` | `str` |  |
+| `artist_role` | `str` |  |
+| `artist_suffix` | `str` |  |
+| `artist_ulan_url` | `str` |  |
+| `artist_wikidata_url` | `str` |  |
+| `city` | `str` |  |
+| `classification` | `str` |  |
+| `constituent` | `list` |  |
+| `country` | `str` |  |
+| `county` | `str` |  |
+| `credit_line` | `str` |  |
+| `culture` | `str` |  |
+| `department` | `str` |  |
+| `dimension` | `str` |  |
+| `dimensions_parsed` | `list` |  |
+| `dynasty` | `str` |  |
+| `excavation` | `str` |  |
+| `gallery_number` | `str` |  |
+| `geography_type` | `str` |  |
+| `is_highlight` | `bool` |  |
+| `is_public_domain` | `bool` |  |
+| `is_timeline_work` | `bool` |  |
+| `link_resource` | `str` |  |
+| `locale` | `str` |  |
+| `locus` | `str` |  |
+| `measurement` | `list` |  |
+| `medium` | `str` |  |
+| `metadata_date` | `str` |  |
+| `object_begin_date` | `int` |  |
+| `object_date` | `str` |  |
+| `object_end_date` | `int` |  |
+| `object_i_d` | `list` |  |
+| `object_id` | `int` |  |
+| `object_name` | `str` |  |
+| `object_url` | `str` |  |
+| `object_wikidata_url` | `str` |  |
+| `period` | `str` |  |
+| `portfolio` | `str` |  |
+| `primary_image` | `str` |  |
+| `primary_image_small` | `str` |  |
+| `region` | `str` |  |
+| `reign` | `str` |  |
+| `repository` | `str` |  |
+| `rights_and_reproduction` | `str` |  |
+| `river` | `str` |  |
+| `state` | `str` |  |
+| `subregion` | `str` |  |
+| `tag` | `list` |  |
+| `title` | `str` |  |
+| `total` | `int` |  |
 
 #### Example: Load
 
@@ -413,7 +446,7 @@ object = client.Object().load({"id": "object_id"})
 #### Example: List
 
 ```python
-objects = client.Object().list({})
+objects = client.Object().list()
 ```
 
 
@@ -425,28 +458,32 @@ Create an instance: `search = client.Search()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | ``$ARRAY`` |  |
-| `total` | ``$INTEGER`` |  |
+| `object_i_d` | `list` |  |
+| `total` | `int` |  |
 
 #### Example: List
 
 ```python
-searchs = client.Search().list({})
+searchs = client.Search().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -463,8 +500,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -507,14 +545,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 department = client.Department()
-department.load({"id": "example_id"})
+department.list()
 
-# department.data_get() now returns the loaded department data
+# department.data_get() now returns the department data from the last list
 # department.match_get() returns the last match criteria
 ```
 

@@ -4,6 +4,8 @@
 
 The Golang SDK for the MetMuseumCollection API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Department(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -60,6 +62,35 @@ func main() {
 ```
 
 
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+departments, err := client.Department(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = departments
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
+```
+
+
 ## How-to guides
 
 ### Make a direct HTTP request
@@ -106,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-department, err := client.Department(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+department, err := client.Department(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(department) // the loaded mock data
+fmt.Println(department) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -201,9 +232,6 @@ All entities implement the `MetMuseumCollectionEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -216,16 +244,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    department, err := client.Department(nil).Load(map[string]any{"id": "example_id"}, nil)
+    department, err := client.Department(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // department is the loaded record
+    // department is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -342,8 +370,8 @@ Create an instance: `department := client.Department(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `display_name` | ``$STRING`` |  |
+| `department_id` | `int` |  |
+| `display_name` | `string` |  |
 
 #### Example: List
 
@@ -371,66 +399,66 @@ Create an instance: `object := client.Object(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | ``$STRING`` |  |
-| `accession_year` | ``$STRING`` |  |
-| `additional_image` | ``$ARRAY`` |  |
-| `artist_alpha_sort` | ``$STRING`` |  |
-| `artist_begin_date` | ``$STRING`` |  |
-| `artist_display_bio` | ``$STRING`` |  |
-| `artist_display_name` | ``$STRING`` |  |
-| `artist_end_date` | ``$STRING`` |  |
-| `artist_gender` | ``$STRING`` |  |
-| `artist_nationality` | ``$STRING`` |  |
-| `artist_prefix` | ``$STRING`` |  |
-| `artist_role` | ``$STRING`` |  |
-| `artist_suffix` | ``$STRING`` |  |
-| `artist_ulan_url` | ``$STRING`` |  |
-| `artist_wikidata_url` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `constituent` | ``$ARRAY`` |  |
-| `country` | ``$STRING`` |  |
-| `county` | ``$STRING`` |  |
-| `credit_line` | ``$STRING`` |  |
-| `culture` | ``$STRING`` |  |
-| `department` | ``$STRING`` |  |
-| `dimension` | ``$STRING`` |  |
-| `dimensions_parsed` | ``$ARRAY`` |  |
-| `dynasty` | ``$STRING`` |  |
-| `excavation` | ``$STRING`` |  |
-| `gallery_number` | ``$STRING`` |  |
-| `geography_type` | ``$STRING`` |  |
-| `is_highlight` | ``$BOOLEAN`` |  |
-| `is_public_domain` | ``$BOOLEAN`` |  |
-| `is_timeline_work` | ``$BOOLEAN`` |  |
-| `link_resource` | ``$STRING`` |  |
-| `locale` | ``$STRING`` |  |
-| `locus` | ``$STRING`` |  |
-| `measurement` | ``$ARRAY`` |  |
-| `medium` | ``$STRING`` |  |
-| `metadata_date` | ``$STRING`` |  |
-| `object_begin_date` | ``$INTEGER`` |  |
-| `object_date` | ``$STRING`` |  |
-| `object_end_date` | ``$INTEGER`` |  |
-| `object_i_d` | ``$ARRAY`` |  |
-| `object_id` | ``$INTEGER`` |  |
-| `object_name` | ``$STRING`` |  |
-| `object_url` | ``$STRING`` |  |
-| `object_wikidata_url` | ``$STRING`` |  |
-| `period` | ``$STRING`` |  |
-| `portfolio` | ``$STRING`` |  |
-| `primary_image` | ``$STRING`` |  |
-| `primary_image_small` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
-| `reign` | ``$STRING`` |  |
-| `repository` | ``$STRING`` |  |
-| `rights_and_reproduction` | ``$STRING`` |  |
-| `river` | ``$STRING`` |  |
-| `state` | ``$STRING`` |  |
-| `subregion` | ``$STRING`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
+| `accession_number` | `string` |  |
+| `accession_year` | `string` |  |
+| `additional_image` | `[]any` |  |
+| `artist_alpha_sort` | `string` |  |
+| `artist_begin_date` | `string` |  |
+| `artist_display_bio` | `string` |  |
+| `artist_display_name` | `string` |  |
+| `artist_end_date` | `string` |  |
+| `artist_gender` | `string` |  |
+| `artist_nationality` | `string` |  |
+| `artist_prefix` | `string` |  |
+| `artist_role` | `string` |  |
+| `artist_suffix` | `string` |  |
+| `artist_ulan_url` | `string` |  |
+| `artist_wikidata_url` | `string` |  |
+| `city` | `string` |  |
+| `classification` | `string` |  |
+| `constituent` | `[]any` |  |
+| `country` | `string` |  |
+| `county` | `string` |  |
+| `credit_line` | `string` |  |
+| `culture` | `string` |  |
+| `department` | `string` |  |
+| `dimension` | `string` |  |
+| `dimensions_parsed` | `[]any` |  |
+| `dynasty` | `string` |  |
+| `excavation` | `string` |  |
+| `gallery_number` | `string` |  |
+| `geography_type` | `string` |  |
+| `is_highlight` | `bool` |  |
+| `is_public_domain` | `bool` |  |
+| `is_timeline_work` | `bool` |  |
+| `link_resource` | `string` |  |
+| `locale` | `string` |  |
+| `locus` | `string` |  |
+| `measurement` | `[]any` |  |
+| `medium` | `string` |  |
+| `metadata_date` | `string` |  |
+| `object_begin_date` | `int` |  |
+| `object_date` | `string` |  |
+| `object_end_date` | `int` |  |
+| `object_i_d` | `[]any` |  |
+| `object_id` | `int` |  |
+| `object_name` | `string` |  |
+| `object_url` | `string` |  |
+| `object_wikidata_url` | `string` |  |
+| `period` | `string` |  |
+| `portfolio` | `string` |  |
+| `primary_image` | `string` |  |
+| `primary_image_small` | `string` |  |
+| `region` | `string` |  |
+| `reign` | `string` |  |
+| `repository` | `string` |  |
+| `rights_and_reproduction` | `string` |  |
+| `river` | `string` |  |
+| `state` | `string` |  |
+| `subregion` | `string` |  |
+| `tag` | `[]any` |  |
+| `title` | `string` |  |
+| `total` | `int` |  |
 
 #### Example: Load
 
@@ -467,8 +495,8 @@ Create an instance: `search := client.Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | ``$ARRAY`` |  |
-| `total` | ``$INTEGER`` |  |
+| `object_i_d` | `[]any` |  |
+| `total` | `int` |  |
 
 #### Example: List
 
@@ -481,12 +509,16 @@ fmt.Println(searchs) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -503,9 +535,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -546,14 +578,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 department := client.Department(nil)
-department.Load(map[string]any{"id": "example_id"}, nil)
+department.List(nil, nil)
 
-// department.Data() now returns the loaded department data
+// department.Data() now returns the department data from the last list
 // department.Match() returns the last match criteria
 ```
 

@@ -14,8 +14,7 @@ type Department struct {
 	DisplayName *string `json:"display_name,omitempty"`
 }
 
-// DepartmentListMatch mirrors the department fields as an all-optional match
-// filter (Go analog of Partial<Department>).
+// DepartmentListMatch is the typed request payload for Department.ListTyped.
 type DepartmentListMatch struct {
 	DepartmentId *int `json:"department_id,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
@@ -90,8 +89,7 @@ type ObjectLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ObjectListMatch mirrors the object fields as an all-optional match
-// filter (Go analog of Partial<Object>).
+// ObjectListMatch is the typed request payload for Object.ListTyped.
 type ObjectListMatch struct {
 	AccessionNumber *string `json:"accession_number,omitempty"`
 	AccessionYear *string `json:"accession_year,omitempty"`
@@ -161,8 +159,7 @@ type Search struct {
 	Total *int `json:"total,omitempty"`
 }
 
-// SearchListMatch mirrors the search fields as an all-optional match
-// filter (Go analog of Partial<Search>).
+// SearchListMatch is the typed request payload for Search.ListTyped.
 type SearchListMatch struct {
 	ObjectID *[]any `json:"object_i_d,omitempty"`
 	Total *int `json:"total,omitempty"`

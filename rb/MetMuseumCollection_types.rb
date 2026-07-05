@@ -21,7 +21,7 @@ Department = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Department#list (any subset of Department fields).
+# Request payload for Department#list.
 #
 # @!attribute [rw] department_id
 #   @return [Integer, nil]
@@ -288,7 +288,7 @@ ObjectLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Object#list (any subset of Object fields).
+# Request payload for Object#list.
 #
 # @!attribute [rw] accession_number
 #   @return [String, nil]
@@ -546,7 +546,7 @@ Search = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Search#list (any subset of Search fields).
+# Request payload for Search#list.
 #
 # @!attribute [rw] object_i_d
 #   @return [Array, nil]

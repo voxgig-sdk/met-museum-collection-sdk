@@ -8,7 +8,7 @@ Complete API reference for the MetMuseumCollection Python SDK.
 ### Constructor
 
 ```python
-from met-museum-collection_sdk import MetMuseumCollectionSDK
+from metmuseumcollection_sdk import MetMuseumCollectionSDK
 
 client = MetMuseumCollectionSDK(options)
 ```
@@ -95,17 +95,17 @@ department = client.Department()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
+| `department_id` | `int` | No |  |
+| `display_name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Department().list({})
+results = client.Department().list()
 for department in results:
     print(department)
 ```
@@ -149,75 +149,75 @@ object = client.Object()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession_number` | ``$STRING`` | No |  |
-| `accession_year` | ``$STRING`` | No |  |
-| `additional_image` | ``$ARRAY`` | No |  |
-| `artist_alpha_sort` | ``$STRING`` | No |  |
-| `artist_begin_date` | ``$STRING`` | No |  |
-| `artist_display_bio` | ``$STRING`` | No |  |
-| `artist_display_name` | ``$STRING`` | No |  |
-| `artist_end_date` | ``$STRING`` | No |  |
-| `artist_gender` | ``$STRING`` | No |  |
-| `artist_nationality` | ``$STRING`` | No |  |
-| `artist_prefix` | ``$STRING`` | No |  |
-| `artist_role` | ``$STRING`` | No |  |
-| `artist_suffix` | ``$STRING`` | No |  |
-| `artist_ulan_url` | ``$STRING`` | No |  |
-| `artist_wikidata_url` | ``$STRING`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `classification` | ``$STRING`` | No |  |
-| `constituent` | ``$ARRAY`` | No |  |
-| `country` | ``$STRING`` | No |  |
-| `county` | ``$STRING`` | No |  |
-| `credit_line` | ``$STRING`` | No |  |
-| `culture` | ``$STRING`` | No |  |
-| `department` | ``$STRING`` | No |  |
-| `dimension` | ``$STRING`` | No |  |
-| `dimensions_parsed` | ``$ARRAY`` | No |  |
-| `dynasty` | ``$STRING`` | No |  |
-| `excavation` | ``$STRING`` | No |  |
-| `gallery_number` | ``$STRING`` | No |  |
-| `geography_type` | ``$STRING`` | No |  |
-| `is_highlight` | ``$BOOLEAN`` | No |  |
-| `is_public_domain` | ``$BOOLEAN`` | No |  |
-| `is_timeline_work` | ``$BOOLEAN`` | No |  |
-| `link_resource` | ``$STRING`` | No |  |
-| `locale` | ``$STRING`` | No |  |
-| `locus` | ``$STRING`` | No |  |
-| `measurement` | ``$ARRAY`` | No |  |
-| `medium` | ``$STRING`` | No |  |
-| `metadata_date` | ``$STRING`` | No |  |
-| `object_begin_date` | ``$INTEGER`` | No |  |
-| `object_date` | ``$STRING`` | No |  |
-| `object_end_date` | ``$INTEGER`` | No |  |
-| `object_i_d` | ``$ARRAY`` | No |  |
-| `object_id` | ``$INTEGER`` | No |  |
-| `object_name` | ``$STRING`` | No |  |
-| `object_url` | ``$STRING`` | No |  |
-| `object_wikidata_url` | ``$STRING`` | No |  |
-| `period` | ``$STRING`` | No |  |
-| `portfolio` | ``$STRING`` | No |  |
-| `primary_image` | ``$STRING`` | No |  |
-| `primary_image_small` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
-| `reign` | ``$STRING`` | No |  |
-| `repository` | ``$STRING`` | No |  |
-| `rights_and_reproduction` | ``$STRING`` | No |  |
-| `river` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `subregion` | ``$STRING`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `accession_number` | `str` | No |  |
+| `accession_year` | `str` | No |  |
+| `additional_image` | `list` | No |  |
+| `artist_alpha_sort` | `str` | No |  |
+| `artist_begin_date` | `str` | No |  |
+| `artist_display_bio` | `str` | No |  |
+| `artist_display_name` | `str` | No |  |
+| `artist_end_date` | `str` | No |  |
+| `artist_gender` | `str` | No |  |
+| `artist_nationality` | `str` | No |  |
+| `artist_prefix` | `str` | No |  |
+| `artist_role` | `str` | No |  |
+| `artist_suffix` | `str` | No |  |
+| `artist_ulan_url` | `str` | No |  |
+| `artist_wikidata_url` | `str` | No |  |
+| `city` | `str` | No |  |
+| `classification` | `str` | No |  |
+| `constituent` | `list` | No |  |
+| `country` | `str` | No |  |
+| `county` | `str` | No |  |
+| `credit_line` | `str` | No |  |
+| `culture` | `str` | No |  |
+| `department` | `str` | No |  |
+| `dimension` | `str` | No |  |
+| `dimensions_parsed` | `list` | No |  |
+| `dynasty` | `str` | No |  |
+| `excavation` | `str` | No |  |
+| `gallery_number` | `str` | No |  |
+| `geography_type` | `str` | No |  |
+| `is_highlight` | `bool` | No |  |
+| `is_public_domain` | `bool` | No |  |
+| `is_timeline_work` | `bool` | No |  |
+| `link_resource` | `str` | No |  |
+| `locale` | `str` | No |  |
+| `locus` | `str` | No |  |
+| `measurement` | `list` | No |  |
+| `medium` | `str` | No |  |
+| `metadata_date` | `str` | No |  |
+| `object_begin_date` | `int` | No |  |
+| `object_date` | `str` | No |  |
+| `object_end_date` | `int` | No |  |
+| `object_i_d` | `list` | No |  |
+| `object_id` | `int` | No |  |
+| `object_name` | `str` | No |  |
+| `object_url` | `str` | No |  |
+| `object_wikidata_url` | `str` | No |  |
+| `period` | `str` | No |  |
+| `portfolio` | `str` | No |  |
+| `primary_image` | `str` | No |  |
+| `primary_image_small` | `str` | No |  |
+| `region` | `str` | No |  |
+| `reign` | `str` | No |  |
+| `repository` | `str` | No |  |
+| `rights_and_reproduction` | `str` | No |  |
+| `river` | `str` | No |  |
+| `state` | `str` | No |  |
+| `subregion` | `str` | No |  |
+| `tag` | `list` | No |  |
+| `title` | `str` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Object().list({})
+results = client.Object().list()
 for object in results:
     print(object)
 ```
@@ -269,17 +269,17 @@ search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `object_i_d` | ``$ARRAY`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `object_i_d` | `list` | No |  |
+| `total` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Search().list({})
+results = client.Search().list()
 for search in results:
     print(search)
 ```

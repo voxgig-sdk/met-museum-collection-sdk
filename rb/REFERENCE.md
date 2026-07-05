@@ -8,7 +8,7 @@ Complete API reference for the MetMuseumCollection Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'met-museum-collection_sdk'
+require_relative 'MetMuseumCollection_sdk'
 
 client = MetMuseumCollectionSDK.new(options)
 ```
@@ -101,17 +101,17 @@ department = client.Department
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
+| `department_id` | `Integer` | No |  |
+| `display_name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Department.list(nil)
+results = client.Department.list
 ```
 
 ### Common Methods
@@ -154,75 +154,75 @@ object = client.Object
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession_number` | ``$STRING`` | No |  |
-| `accession_year` | ``$STRING`` | No |  |
-| `additional_image` | ``$ARRAY`` | No |  |
-| `artist_alpha_sort` | ``$STRING`` | No |  |
-| `artist_begin_date` | ``$STRING`` | No |  |
-| `artist_display_bio` | ``$STRING`` | No |  |
-| `artist_display_name` | ``$STRING`` | No |  |
-| `artist_end_date` | ``$STRING`` | No |  |
-| `artist_gender` | ``$STRING`` | No |  |
-| `artist_nationality` | ``$STRING`` | No |  |
-| `artist_prefix` | ``$STRING`` | No |  |
-| `artist_role` | ``$STRING`` | No |  |
-| `artist_suffix` | ``$STRING`` | No |  |
-| `artist_ulan_url` | ``$STRING`` | No |  |
-| `artist_wikidata_url` | ``$STRING`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `classification` | ``$STRING`` | No |  |
-| `constituent` | ``$ARRAY`` | No |  |
-| `country` | ``$STRING`` | No |  |
-| `county` | ``$STRING`` | No |  |
-| `credit_line` | ``$STRING`` | No |  |
-| `culture` | ``$STRING`` | No |  |
-| `department` | ``$STRING`` | No |  |
-| `dimension` | ``$STRING`` | No |  |
-| `dimensions_parsed` | ``$ARRAY`` | No |  |
-| `dynasty` | ``$STRING`` | No |  |
-| `excavation` | ``$STRING`` | No |  |
-| `gallery_number` | ``$STRING`` | No |  |
-| `geography_type` | ``$STRING`` | No |  |
-| `is_highlight` | ``$BOOLEAN`` | No |  |
-| `is_public_domain` | ``$BOOLEAN`` | No |  |
-| `is_timeline_work` | ``$BOOLEAN`` | No |  |
-| `link_resource` | ``$STRING`` | No |  |
-| `locale` | ``$STRING`` | No |  |
-| `locus` | ``$STRING`` | No |  |
-| `measurement` | ``$ARRAY`` | No |  |
-| `medium` | ``$STRING`` | No |  |
-| `metadata_date` | ``$STRING`` | No |  |
-| `object_begin_date` | ``$INTEGER`` | No |  |
-| `object_date` | ``$STRING`` | No |  |
-| `object_end_date` | ``$INTEGER`` | No |  |
-| `object_i_d` | ``$ARRAY`` | No |  |
-| `object_id` | ``$INTEGER`` | No |  |
-| `object_name` | ``$STRING`` | No |  |
-| `object_url` | ``$STRING`` | No |  |
-| `object_wikidata_url` | ``$STRING`` | No |  |
-| `period` | ``$STRING`` | No |  |
-| `portfolio` | ``$STRING`` | No |  |
-| `primary_image` | ``$STRING`` | No |  |
-| `primary_image_small` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
-| `reign` | ``$STRING`` | No |  |
-| `repository` | ``$STRING`` | No |  |
-| `rights_and_reproduction` | ``$STRING`` | No |  |
-| `river` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `subregion` | ``$STRING`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `accession_number` | `String` | No |  |
+| `accession_year` | `String` | No |  |
+| `additional_image` | `Array` | No |  |
+| `artist_alpha_sort` | `String` | No |  |
+| `artist_begin_date` | `String` | No |  |
+| `artist_display_bio` | `String` | No |  |
+| `artist_display_name` | `String` | No |  |
+| `artist_end_date` | `String` | No |  |
+| `artist_gender` | `String` | No |  |
+| `artist_nationality` | `String` | No |  |
+| `artist_prefix` | `String` | No |  |
+| `artist_role` | `String` | No |  |
+| `artist_suffix` | `String` | No |  |
+| `artist_ulan_url` | `String` | No |  |
+| `artist_wikidata_url` | `String` | No |  |
+| `city` | `String` | No |  |
+| `classification` | `String` | No |  |
+| `constituent` | `Array` | No |  |
+| `country` | `String` | No |  |
+| `county` | `String` | No |  |
+| `credit_line` | `String` | No |  |
+| `culture` | `String` | No |  |
+| `department` | `String` | No |  |
+| `dimension` | `String` | No |  |
+| `dimensions_parsed` | `Array` | No |  |
+| `dynasty` | `String` | No |  |
+| `excavation` | `String` | No |  |
+| `gallery_number` | `String` | No |  |
+| `geography_type` | `String` | No |  |
+| `is_highlight` | `Boolean` | No |  |
+| `is_public_domain` | `Boolean` | No |  |
+| `is_timeline_work` | `Boolean` | No |  |
+| `link_resource` | `String` | No |  |
+| `locale` | `String` | No |  |
+| `locus` | `String` | No |  |
+| `measurement` | `Array` | No |  |
+| `medium` | `String` | No |  |
+| `metadata_date` | `String` | No |  |
+| `object_begin_date` | `Integer` | No |  |
+| `object_date` | `String` | No |  |
+| `object_end_date` | `Integer` | No |  |
+| `object_i_d` | `Array` | No |  |
+| `object_id` | `Integer` | No |  |
+| `object_name` | `String` | No |  |
+| `object_url` | `String` | No |  |
+| `object_wikidata_url` | `String` | No |  |
+| `period` | `String` | No |  |
+| `portfolio` | `String` | No |  |
+| `primary_image` | `String` | No |  |
+| `primary_image_small` | `String` | No |  |
+| `region` | `String` | No |  |
+| `reign` | `String` | No |  |
+| `repository` | `String` | No |  |
+| `rights_and_reproduction` | `String` | No |  |
+| `river` | `String` | No |  |
+| `state` | `String` | No |  |
+| `subregion` | `String` | No |  |
+| `tag` | `Array` | No |  |
+| `title` | `String` | No |  |
+| `total` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Object.list(nil)
+results = client.Object.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -273,17 +273,17 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `object_i_d` | ``$ARRAY`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `object_i_d` | `Array` | No |  |
+| `total` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Search.list(nil)
+results = client.Search.list
 ```
 
 ### Common Methods

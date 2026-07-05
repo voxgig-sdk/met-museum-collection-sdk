@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the MetMuseumCollection API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Department()` — each with a small set of operations (`list`, `load`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -37,6 +42,35 @@ const departments = await client.Department().list()
 
 for (const department of departments) {
   console.log(department)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const departments = await client.Department().list()
+  console.log(departments)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -85,7 +119,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MetMuseumCollectionSDK.test()
 
-const department = await client.Department().load({ id: 'test01' })
+const department = await client.Department().list()
 // department is a bare entity populated with mock response data
 console.log(department)
 ```
@@ -104,12 +138,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Department()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -201,11 +235,8 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
 | `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): MetMuseumCollectionSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -215,10 +246,9 @@ All entities share the same interface.
 Entity operations resolve to the entity data directly — there is no
 result envelope:
 
-- `load`, `create` and `update` resolve to a single entity object.
+- `load` resolves to a single entity object.
 - `list` resolves to an **array** of entity objects (iterate it directly;
   there is no `.data` and no `.ok`).
-- `remove` resolves to `void`.
 
 On a failed request these methods **throw**, so wrap calls in
 `try`/`catch` to handle errors. Only `direct()` returns the result
@@ -364,8 +394,8 @@ Create an instance: `const department = client.Department()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `display_name` | ``$STRING`` |  |
+| `department_id` | `number` |  |
+| `display_name` | `string` |  |
 
 #### Example: List
 
@@ -389,71 +419,71 @@ Create an instance: `const object = client.Object()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | ``$STRING`` |  |
-| `accession_year` | ``$STRING`` |  |
-| `additional_image` | ``$ARRAY`` |  |
-| `artist_alpha_sort` | ``$STRING`` |  |
-| `artist_begin_date` | ``$STRING`` |  |
-| `artist_display_bio` | ``$STRING`` |  |
-| `artist_display_name` | ``$STRING`` |  |
-| `artist_end_date` | ``$STRING`` |  |
-| `artist_gender` | ``$STRING`` |  |
-| `artist_nationality` | ``$STRING`` |  |
-| `artist_prefix` | ``$STRING`` |  |
-| `artist_role` | ``$STRING`` |  |
-| `artist_suffix` | ``$STRING`` |  |
-| `artist_ulan_url` | ``$STRING`` |  |
-| `artist_wikidata_url` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `constituent` | ``$ARRAY`` |  |
-| `country` | ``$STRING`` |  |
-| `county` | ``$STRING`` |  |
-| `credit_line` | ``$STRING`` |  |
-| `culture` | ``$STRING`` |  |
-| `department` | ``$STRING`` |  |
-| `dimension` | ``$STRING`` |  |
-| `dimensions_parsed` | ``$ARRAY`` |  |
-| `dynasty` | ``$STRING`` |  |
-| `excavation` | ``$STRING`` |  |
-| `gallery_number` | ``$STRING`` |  |
-| `geography_type` | ``$STRING`` |  |
-| `is_highlight` | ``$BOOLEAN`` |  |
-| `is_public_domain` | ``$BOOLEAN`` |  |
-| `is_timeline_work` | ``$BOOLEAN`` |  |
-| `link_resource` | ``$STRING`` |  |
-| `locale` | ``$STRING`` |  |
-| `locus` | ``$STRING`` |  |
-| `measurement` | ``$ARRAY`` |  |
-| `medium` | ``$STRING`` |  |
-| `metadata_date` | ``$STRING`` |  |
-| `object_begin_date` | ``$INTEGER`` |  |
-| `object_date` | ``$STRING`` |  |
-| `object_end_date` | ``$INTEGER`` |  |
-| `object_i_d` | ``$ARRAY`` |  |
-| `object_id` | ``$INTEGER`` |  |
-| `object_name` | ``$STRING`` |  |
-| `object_url` | ``$STRING`` |  |
-| `object_wikidata_url` | ``$STRING`` |  |
-| `period` | ``$STRING`` |  |
-| `portfolio` | ``$STRING`` |  |
-| `primary_image` | ``$STRING`` |  |
-| `primary_image_small` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
-| `reign` | ``$STRING`` |  |
-| `repository` | ``$STRING`` |  |
-| `rights_and_reproduction` | ``$STRING`` |  |
-| `river` | ``$STRING`` |  |
-| `state` | ``$STRING`` |  |
-| `subregion` | ``$STRING`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
+| `accession_number` | `string` |  |
+| `accession_year` | `string` |  |
+| `additional_image` | `any[]` |  |
+| `artist_alpha_sort` | `string` |  |
+| `artist_begin_date` | `string` |  |
+| `artist_display_bio` | `string` |  |
+| `artist_display_name` | `string` |  |
+| `artist_end_date` | `string` |  |
+| `artist_gender` | `string` |  |
+| `artist_nationality` | `string` |  |
+| `artist_prefix` | `string` |  |
+| `artist_role` | `string` |  |
+| `artist_suffix` | `string` |  |
+| `artist_ulan_url` | `string` |  |
+| `artist_wikidata_url` | `string` |  |
+| `city` | `string` |  |
+| `classification` | `string` |  |
+| `constituent` | `any[]` |  |
+| `country` | `string` |  |
+| `county` | `string` |  |
+| `credit_line` | `string` |  |
+| `culture` | `string` |  |
+| `department` | `string` |  |
+| `dimension` | `string` |  |
+| `dimensions_parsed` | `any[]` |  |
+| `dynasty` | `string` |  |
+| `excavation` | `string` |  |
+| `gallery_number` | `string` |  |
+| `geography_type` | `string` |  |
+| `is_highlight` | `boolean` |  |
+| `is_public_domain` | `boolean` |  |
+| `is_timeline_work` | `boolean` |  |
+| `link_resource` | `string` |  |
+| `locale` | `string` |  |
+| `locus` | `string` |  |
+| `measurement` | `any[]` |  |
+| `medium` | `string` |  |
+| `metadata_date` | `string` |  |
+| `object_begin_date` | `number` |  |
+| `object_date` | `string` |  |
+| `object_end_date` | `number` |  |
+| `object_i_d` | `any[]` |  |
+| `object_id` | `number` |  |
+| `object_name` | `string` |  |
+| `object_url` | `string` |  |
+| `object_wikidata_url` | `string` |  |
+| `period` | `string` |  |
+| `portfolio` | `string` |  |
+| `primary_image` | `string` |  |
+| `primary_image_small` | `string` |  |
+| `region` | `string` |  |
+| `reign` | `string` |  |
+| `repository` | `string` |  |
+| `rights_and_reproduction` | `string` |  |
+| `river` | `string` |  |
+| `state` | `string` |  |
+| `subregion` | `string` |  |
+| `tag` | `any[]` |  |
+| `title` | `string` |  |
+| `total` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const object = await client.Object().load({ id: 'object_id' })
+const object = await client.Object().load({ id: 1 })
 ```
 
 #### Example: List
@@ -477,8 +507,8 @@ Create an instance: `const search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | ``$ARRAY`` |  |
-| `total` | ``$INTEGER`` |  |
+| `object_i_d` | `any[]` |  |
+| `total` | `number` |  |
 
 #### Example: List
 
@@ -487,12 +517,16 @@ const searchs = await client.Search().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -509,11 +543,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -549,16 +581,16 @@ import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const department = client.Department()
-await department.load({ id: "example_id" })
+await department.list()
 
-// department.data() now returns the loaded department data
-// department.match() returns { id: "example_id" }
+// department.data() now returns the department data from the last `list`
+// department.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

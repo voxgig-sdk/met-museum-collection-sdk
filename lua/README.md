@@ -4,6 +4,8 @@
 
 The Lua SDK for the MetMuseumCollection API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Department()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,8 +43,30 @@ local departments, err = client:Department():list()
 if err then error(err) end
 
 for _, item in ipairs(departments) do
-  print(item["id"], item["name"])
+  print(item["display_name"])
 end
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local departments, err = client:Department():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -88,8 +112,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Department():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Department():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -179,9 +203,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -196,12 +217,12 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local department, err = client:Department():load({ id = "example_id" })
+    local department, err = client:Department():load()
     if err then error(err) end
     -- department is the loaded record
 
@@ -320,8 +341,8 @@ Create an instance: `local department = client:Department(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `display_name` | ``$STRING`` |  |
+| `department_id` | `number` |  |
+| `display_name` | `string` |  |
 
 #### Example: List
 
@@ -345,66 +366,66 @@ Create an instance: `local object = client:Object(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | ``$STRING`` |  |
-| `accession_year` | ``$STRING`` |  |
-| `additional_image` | ``$ARRAY`` |  |
-| `artist_alpha_sort` | ``$STRING`` |  |
-| `artist_begin_date` | ``$STRING`` |  |
-| `artist_display_bio` | ``$STRING`` |  |
-| `artist_display_name` | ``$STRING`` |  |
-| `artist_end_date` | ``$STRING`` |  |
-| `artist_gender` | ``$STRING`` |  |
-| `artist_nationality` | ``$STRING`` |  |
-| `artist_prefix` | ``$STRING`` |  |
-| `artist_role` | ``$STRING`` |  |
-| `artist_suffix` | ``$STRING`` |  |
-| `artist_ulan_url` | ``$STRING`` |  |
-| `artist_wikidata_url` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `constituent` | ``$ARRAY`` |  |
-| `country` | ``$STRING`` |  |
-| `county` | ``$STRING`` |  |
-| `credit_line` | ``$STRING`` |  |
-| `culture` | ``$STRING`` |  |
-| `department` | ``$STRING`` |  |
-| `dimension` | ``$STRING`` |  |
-| `dimensions_parsed` | ``$ARRAY`` |  |
-| `dynasty` | ``$STRING`` |  |
-| `excavation` | ``$STRING`` |  |
-| `gallery_number` | ``$STRING`` |  |
-| `geography_type` | ``$STRING`` |  |
-| `is_highlight` | ``$BOOLEAN`` |  |
-| `is_public_domain` | ``$BOOLEAN`` |  |
-| `is_timeline_work` | ``$BOOLEAN`` |  |
-| `link_resource` | ``$STRING`` |  |
-| `locale` | ``$STRING`` |  |
-| `locus` | ``$STRING`` |  |
-| `measurement` | ``$ARRAY`` |  |
-| `medium` | ``$STRING`` |  |
-| `metadata_date` | ``$STRING`` |  |
-| `object_begin_date` | ``$INTEGER`` |  |
-| `object_date` | ``$STRING`` |  |
-| `object_end_date` | ``$INTEGER`` |  |
-| `object_i_d` | ``$ARRAY`` |  |
-| `object_id` | ``$INTEGER`` |  |
-| `object_name` | ``$STRING`` |  |
-| `object_url` | ``$STRING`` |  |
-| `object_wikidata_url` | ``$STRING`` |  |
-| `period` | ``$STRING`` |  |
-| `portfolio` | ``$STRING`` |  |
-| `primary_image` | ``$STRING`` |  |
-| `primary_image_small` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
-| `reign` | ``$STRING`` |  |
-| `repository` | ``$STRING`` |  |
-| `rights_and_reproduction` | ``$STRING`` |  |
-| `river` | ``$STRING`` |  |
-| `state` | ``$STRING`` |  |
-| `subregion` | ``$STRING`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
+| `accession_number` | `string` |  |
+| `accession_year` | `string` |  |
+| `additional_image` | `table` |  |
+| `artist_alpha_sort` | `string` |  |
+| `artist_begin_date` | `string` |  |
+| `artist_display_bio` | `string` |  |
+| `artist_display_name` | `string` |  |
+| `artist_end_date` | `string` |  |
+| `artist_gender` | `string` |  |
+| `artist_nationality` | `string` |  |
+| `artist_prefix` | `string` |  |
+| `artist_role` | `string` |  |
+| `artist_suffix` | `string` |  |
+| `artist_ulan_url` | `string` |  |
+| `artist_wikidata_url` | `string` |  |
+| `city` | `string` |  |
+| `classification` | `string` |  |
+| `constituent` | `table` |  |
+| `country` | `string` |  |
+| `county` | `string` |  |
+| `credit_line` | `string` |  |
+| `culture` | `string` |  |
+| `department` | `string` |  |
+| `dimension` | `string` |  |
+| `dimensions_parsed` | `table` |  |
+| `dynasty` | `string` |  |
+| `excavation` | `string` |  |
+| `gallery_number` | `string` |  |
+| `geography_type` | `string` |  |
+| `is_highlight` | `boolean` |  |
+| `is_public_domain` | `boolean` |  |
+| `is_timeline_work` | `boolean` |  |
+| `link_resource` | `string` |  |
+| `locale` | `string` |  |
+| `locus` | `string` |  |
+| `measurement` | `table` |  |
+| `medium` | `string` |  |
+| `metadata_date` | `string` |  |
+| `object_begin_date` | `number` |  |
+| `object_date` | `string` |  |
+| `object_end_date` | `number` |  |
+| `object_i_d` | `table` |  |
+| `object_id` | `number` |  |
+| `object_name` | `string` |  |
+| `object_url` | `string` |  |
+| `object_wikidata_url` | `string` |  |
+| `period` | `string` |  |
+| `portfolio` | `string` |  |
+| `primary_image` | `string` |  |
+| `primary_image_small` | `string` |  |
+| `region` | `string` |  |
+| `reign` | `string` |  |
+| `repository` | `string` |  |
+| `rights_and_reproduction` | `string` |  |
+| `river` | `string` |  |
+| `state` | `string` |  |
+| `subregion` | `string` |  |
+| `tag` | `table` |  |
+| `title` | `string` |  |
+| `total` | `number` |  |
 
 #### Example: Load
 
@@ -433,8 +454,8 @@ Create an instance: `local search = client:Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | ``$ARRAY`` |  |
-| `total` | ``$INTEGER`` |  |
+| `object_i_d` | `table` |  |
+| `total` | `number` |  |
 
 #### Example: List
 
@@ -443,12 +464,16 @@ local searchs, err = client:Search():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -465,8 +490,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -510,14 +536,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local department = client:Department()
-department:load({ id = "example_id" })
+department:list()
 
--- department:data_get() now returns the loaded department data
+-- department:data_get() now returns the department data from the last list
 -- department:match_get() returns the last match criteria
 ```
 

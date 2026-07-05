@@ -19,7 +19,7 @@ class Department
     public ?string $display_name = null;
 }
 
-/** Match filter for Department#list (any subset of Department fields). */
+/** Request payload for Department#list. */
 class DepartmentListMatch
 {
     public ?int $department_id = null;
@@ -97,7 +97,7 @@ class ObjectLoadMatch
     public int $id;
 }
 
-/** Match filter for Object#list (any subset of Object fields). */
+/** Request payload for Object#list. */
 class ObjectListMatch
 {
     public ?string $accession_number = null;
@@ -169,7 +169,7 @@ class Search
     public ?int $total = null;
 }
 
-/** Match filter for Search#list (any subset of Search fields). */
+/** Request payload for Search#list. */
 class SearchListMatch
 {
     public ?array $object_i_d = null;

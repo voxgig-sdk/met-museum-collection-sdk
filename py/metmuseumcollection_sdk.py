@@ -221,19 +221,19 @@ class MetMuseumCollectionSDK:
 
 
     def Department(self, data=None) -> "DepartmentEntity":
-        """Entity factory: client.Department().list({}) / client.Department().load({"id": ...})."""
+        """Entity factory: client.Department().list() / client.Department().load({"id": ...})."""
         from entity.department_entity import DepartmentEntity
         return DepartmentEntity(self, data)
 
 
     def Object(self, data=None) -> "ObjectEntity":
-        """Entity factory: client.Object().list({}) / client.Object().load({"id": ...})."""
+        """Entity factory: client.Object().list() / client.Object().load({"id": ...})."""
         from entity.object_entity import ObjectEntity
         return ObjectEntity(self, data)
 
 
     def Search(self, data=None) -> "SearchEntity":
-        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
+        """Entity factory: client.Search().list() / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 

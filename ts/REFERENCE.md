@@ -140,8 +140,8 @@ const department = client.Department()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | ``$INTEGER`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
+| `department_id` | `number` | No |  |
+| `display_name` | `string` | No |  |
 
 ### Operations
 
@@ -191,66 +191,66 @@ const object = client.Object()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession_number` | ``$STRING`` | No |  |
-| `accession_year` | ``$STRING`` | No |  |
-| `additional_image` | ``$ARRAY`` | No |  |
-| `artist_alpha_sort` | ``$STRING`` | No |  |
-| `artist_begin_date` | ``$STRING`` | No |  |
-| `artist_display_bio` | ``$STRING`` | No |  |
-| `artist_display_name` | ``$STRING`` | No |  |
-| `artist_end_date` | ``$STRING`` | No |  |
-| `artist_gender` | ``$STRING`` | No |  |
-| `artist_nationality` | ``$STRING`` | No |  |
-| `artist_prefix` | ``$STRING`` | No |  |
-| `artist_role` | ``$STRING`` | No |  |
-| `artist_suffix` | ``$STRING`` | No |  |
-| `artist_ulan_url` | ``$STRING`` | No |  |
-| `artist_wikidata_url` | ``$STRING`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `classification` | ``$STRING`` | No |  |
-| `constituent` | ``$ARRAY`` | No |  |
-| `country` | ``$STRING`` | No |  |
-| `county` | ``$STRING`` | No |  |
-| `credit_line` | ``$STRING`` | No |  |
-| `culture` | ``$STRING`` | No |  |
-| `department` | ``$STRING`` | No |  |
-| `dimension` | ``$STRING`` | No |  |
-| `dimensions_parsed` | ``$ARRAY`` | No |  |
-| `dynasty` | ``$STRING`` | No |  |
-| `excavation` | ``$STRING`` | No |  |
-| `gallery_number` | ``$STRING`` | No |  |
-| `geography_type` | ``$STRING`` | No |  |
-| `is_highlight` | ``$BOOLEAN`` | No |  |
-| `is_public_domain` | ``$BOOLEAN`` | No |  |
-| `is_timeline_work` | ``$BOOLEAN`` | No |  |
-| `link_resource` | ``$STRING`` | No |  |
-| `locale` | ``$STRING`` | No |  |
-| `locus` | ``$STRING`` | No |  |
-| `measurement` | ``$ARRAY`` | No |  |
-| `medium` | ``$STRING`` | No |  |
-| `metadata_date` | ``$STRING`` | No |  |
-| `object_begin_date` | ``$INTEGER`` | No |  |
-| `object_date` | ``$STRING`` | No |  |
-| `object_end_date` | ``$INTEGER`` | No |  |
-| `object_i_d` | ``$ARRAY`` | No |  |
-| `object_id` | ``$INTEGER`` | No |  |
-| `object_name` | ``$STRING`` | No |  |
-| `object_url` | ``$STRING`` | No |  |
-| `object_wikidata_url` | ``$STRING`` | No |  |
-| `period` | ``$STRING`` | No |  |
-| `portfolio` | ``$STRING`` | No |  |
-| `primary_image` | ``$STRING`` | No |  |
-| `primary_image_small` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
-| `reign` | ``$STRING`` | No |  |
-| `repository` | ``$STRING`` | No |  |
-| `rights_and_reproduction` | ``$STRING`` | No |  |
-| `river` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `subregion` | ``$STRING`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `accession_number` | `string` | No |  |
+| `accession_year` | `string` | No |  |
+| `additional_image` | `any[]` | No |  |
+| `artist_alpha_sort` | `string` | No |  |
+| `artist_begin_date` | `string` | No |  |
+| `artist_display_bio` | `string` | No |  |
+| `artist_display_name` | `string` | No |  |
+| `artist_end_date` | `string` | No |  |
+| `artist_gender` | `string` | No |  |
+| `artist_nationality` | `string` | No |  |
+| `artist_prefix` | `string` | No |  |
+| `artist_role` | `string` | No |  |
+| `artist_suffix` | `string` | No |  |
+| `artist_ulan_url` | `string` | No |  |
+| `artist_wikidata_url` | `string` | No |  |
+| `city` | `string` | No |  |
+| `classification` | `string` | No |  |
+| `constituent` | `any[]` | No |  |
+| `country` | `string` | No |  |
+| `county` | `string` | No |  |
+| `credit_line` | `string` | No |  |
+| `culture` | `string` | No |  |
+| `department` | `string` | No |  |
+| `dimension` | `string` | No |  |
+| `dimensions_parsed` | `any[]` | No |  |
+| `dynasty` | `string` | No |  |
+| `excavation` | `string` | No |  |
+| `gallery_number` | `string` | No |  |
+| `geography_type` | `string` | No |  |
+| `is_highlight` | `boolean` | No |  |
+| `is_public_domain` | `boolean` | No |  |
+| `is_timeline_work` | `boolean` | No |  |
+| `link_resource` | `string` | No |  |
+| `locale` | `string` | No |  |
+| `locus` | `string` | No |  |
+| `measurement` | `any[]` | No |  |
+| `medium` | `string` | No |  |
+| `metadata_date` | `string` | No |  |
+| `object_begin_date` | `number` | No |  |
+| `object_date` | `string` | No |  |
+| `object_end_date` | `number` | No |  |
+| `object_i_d` | `any[]` | No |  |
+| `object_id` | `number` | No |  |
+| `object_name` | `string` | No |  |
+| `object_url` | `string` | No |  |
+| `object_wikidata_url` | `string` | No |  |
+| `period` | `string` | No |  |
+| `portfolio` | `string` | No |  |
+| `primary_image` | `string` | No |  |
+| `primary_image_small` | `string` | No |  |
+| `region` | `string` | No |  |
+| `reign` | `string` | No |  |
+| `repository` | `string` | No |  |
+| `rights_and_reproduction` | `string` | No |  |
+| `river` | `string` | No |  |
+| `state` | `string` | No |  |
+| `subregion` | `string` | No |  |
+| `tag` | `any[]` | No |  |
+| `title` | `string` | No |  |
+| `total` | `number` | No |  |
 
 ### Operations
 
@@ -267,7 +267,7 @@ const results = await client.Object().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Object().load({ id: 'object_id' })
+const result = await client.Object().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -308,8 +308,8 @@ const search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `object_i_d` | ``$ARRAY`` | No |  |
-| `total` | ``$INTEGER`` | No |  |
+| `object_i_d` | `any[]` | No |  |
+| `total` | `number` | No |  |
 
 ### Operations
 

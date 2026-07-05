@@ -4,6 +4,8 @@
 
 The Ruby SDK for the MetMuseumCollection API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Department` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -35,11 +37,38 @@ begin
   # list returns an Array of Department records — iterate directly.
   departments = client.Department.list
   departments.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["department_id"]}"
   end
 rescue => err
   warn "list failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  departments = client.Department.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -60,7 +89,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -83,16 +114,13 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = MetMuseumCollectionSDK.test({
-  "entity" => { "department" => { "test01" => { "id" => "test01" } } },
-})
+client = MetMuseumCollectionSDK.test
 
-# load returns the bare mock record (raises on error).
-department = client.Department.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+department = client.Department.list()
 puts department
 ```
 
@@ -180,10 +208,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -320,8 +345,8 @@ Create an instance: `department = client.Department`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | ``$INTEGER`` |  |
-| `display_name` | ``$STRING`` |  |
+| `department_id` | `Integer` |  |
+| `display_name` | `String` |  |
 
 #### Example: List
 
@@ -346,66 +371,66 @@ Create an instance: `object = client.Object`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | ``$STRING`` |  |
-| `accession_year` | ``$STRING`` |  |
-| `additional_image` | ``$ARRAY`` |  |
-| `artist_alpha_sort` | ``$STRING`` |  |
-| `artist_begin_date` | ``$STRING`` |  |
-| `artist_display_bio` | ``$STRING`` |  |
-| `artist_display_name` | ``$STRING`` |  |
-| `artist_end_date` | ``$STRING`` |  |
-| `artist_gender` | ``$STRING`` |  |
-| `artist_nationality` | ``$STRING`` |  |
-| `artist_prefix` | ``$STRING`` |  |
-| `artist_role` | ``$STRING`` |  |
-| `artist_suffix` | ``$STRING`` |  |
-| `artist_ulan_url` | ``$STRING`` |  |
-| `artist_wikidata_url` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `classification` | ``$STRING`` |  |
-| `constituent` | ``$ARRAY`` |  |
-| `country` | ``$STRING`` |  |
-| `county` | ``$STRING`` |  |
-| `credit_line` | ``$STRING`` |  |
-| `culture` | ``$STRING`` |  |
-| `department` | ``$STRING`` |  |
-| `dimension` | ``$STRING`` |  |
-| `dimensions_parsed` | ``$ARRAY`` |  |
-| `dynasty` | ``$STRING`` |  |
-| `excavation` | ``$STRING`` |  |
-| `gallery_number` | ``$STRING`` |  |
-| `geography_type` | ``$STRING`` |  |
-| `is_highlight` | ``$BOOLEAN`` |  |
-| `is_public_domain` | ``$BOOLEAN`` |  |
-| `is_timeline_work` | ``$BOOLEAN`` |  |
-| `link_resource` | ``$STRING`` |  |
-| `locale` | ``$STRING`` |  |
-| `locus` | ``$STRING`` |  |
-| `measurement` | ``$ARRAY`` |  |
-| `medium` | ``$STRING`` |  |
-| `metadata_date` | ``$STRING`` |  |
-| `object_begin_date` | ``$INTEGER`` |  |
-| `object_date` | ``$STRING`` |  |
-| `object_end_date` | ``$INTEGER`` |  |
-| `object_i_d` | ``$ARRAY`` |  |
-| `object_id` | ``$INTEGER`` |  |
-| `object_name` | ``$STRING`` |  |
-| `object_url` | ``$STRING`` |  |
-| `object_wikidata_url` | ``$STRING`` |  |
-| `period` | ``$STRING`` |  |
-| `portfolio` | ``$STRING`` |  |
-| `primary_image` | ``$STRING`` |  |
-| `primary_image_small` | ``$STRING`` |  |
-| `region` | ``$STRING`` |  |
-| `reign` | ``$STRING`` |  |
-| `repository` | ``$STRING`` |  |
-| `rights_and_reproduction` | ``$STRING`` |  |
-| `river` | ``$STRING`` |  |
-| `state` | ``$STRING`` |  |
-| `subregion` | ``$STRING`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `total` | ``$INTEGER`` |  |
+| `accession_number` | `String` |  |
+| `accession_year` | `String` |  |
+| `additional_image` | `Array` |  |
+| `artist_alpha_sort` | `String` |  |
+| `artist_begin_date` | `String` |  |
+| `artist_display_bio` | `String` |  |
+| `artist_display_name` | `String` |  |
+| `artist_end_date` | `String` |  |
+| `artist_gender` | `String` |  |
+| `artist_nationality` | `String` |  |
+| `artist_prefix` | `String` |  |
+| `artist_role` | `String` |  |
+| `artist_suffix` | `String` |  |
+| `artist_ulan_url` | `String` |  |
+| `artist_wikidata_url` | `String` |  |
+| `city` | `String` |  |
+| `classification` | `String` |  |
+| `constituent` | `Array` |  |
+| `country` | `String` |  |
+| `county` | `String` |  |
+| `credit_line` | `String` |  |
+| `culture` | `String` |  |
+| `department` | `String` |  |
+| `dimension` | `String` |  |
+| `dimensions_parsed` | `Array` |  |
+| `dynasty` | `String` |  |
+| `excavation` | `String` |  |
+| `gallery_number` | `String` |  |
+| `geography_type` | `String` |  |
+| `is_highlight` | `Boolean` |  |
+| `is_public_domain` | `Boolean` |  |
+| `is_timeline_work` | `Boolean` |  |
+| `link_resource` | `String` |  |
+| `locale` | `String` |  |
+| `locus` | `String` |  |
+| `measurement` | `Array` |  |
+| `medium` | `String` |  |
+| `metadata_date` | `String` |  |
+| `object_begin_date` | `Integer` |  |
+| `object_date` | `String` |  |
+| `object_end_date` | `Integer` |  |
+| `object_i_d` | `Array` |  |
+| `object_id` | `Integer` |  |
+| `object_name` | `String` |  |
+| `object_url` | `String` |  |
+| `object_wikidata_url` | `String` |  |
+| `period` | `String` |  |
+| `portfolio` | `String` |  |
+| `primary_image` | `String` |  |
+| `primary_image_small` | `String` |  |
+| `region` | `String` |  |
+| `reign` | `String` |  |
+| `repository` | `String` |  |
+| `rights_and_reproduction` | `String` |  |
+| `river` | `String` |  |
+| `state` | `String` |  |
+| `subregion` | `String` |  |
+| `tag` | `Array` |  |
+| `title` | `String` |  |
+| `total` | `Integer` |  |
 
 #### Example: Load
 
@@ -436,8 +461,8 @@ Create an instance: `search = client.Search`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | ``$ARRAY`` |  |
-| `total` | ``$INTEGER`` |  |
+| `object_i_d` | `Array` |  |
+| `total` | `Integer` |  |
 
 #### Example: List
 
@@ -447,12 +472,16 @@ searchs = client.Search.list
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -469,8 +498,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -514,14 +544,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 department = client.Department
-department.load({ "id" => "example_id" })
+department.list()
 
-# department.data_get now returns the loaded department data
+# department.data_get now returns the department data from the last list
 # department.match_get returns the last match criteria
 ```
 
