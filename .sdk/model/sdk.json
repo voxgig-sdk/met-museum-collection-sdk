@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -908,15 +905,18 @@
           "name": "CC0 1.0 Universal",
           "url": "https://creativecommons.org/publicdomain/zero/1.0/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://collectionapi.metmuseum.org/public/collection/v1"
           }
         ],
+        "summary": "Access over 470,000 artworks with metadata and high-resolution images from The Metropolitan Museum of Art Collection.",
         "termsOfService": "https://metmuseum.github.io/",
         "title": "Met Museum Collection",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://metmuseum.github.io/"
       },
       "option": {},
       "target": {
@@ -969,6 +969,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1019,6 +1022,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

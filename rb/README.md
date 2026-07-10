@@ -436,7 +436,7 @@ Create an instance: `object = client.Object`
 
 ```ruby
 # load returns the bare Object record (raises on error).
-object = client.Object.load({ "id" => "object_id" })
+object = client.Object.load({ "id" => 1 })
 ```
 
 #### Example: List

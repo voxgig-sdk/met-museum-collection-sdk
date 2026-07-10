@@ -430,7 +430,7 @@ Create an instance: `local object = client:Object(nil)`
 #### Example: Load
 
 ```lua
-local object, err = client:Object():load({ id = "object_id" })
+local object, err = client:Object():load({ id = 1 })
 ```
 
 #### Example: List

@@ -440,7 +440,7 @@ Create an instance: `object = client.Object()`
 #### Example: Load
 
 ```python
-object = client.Object().load({"id": "object_id"})
+object = client.Object().load({"id": 1})
 ```
 
 #### Example: List

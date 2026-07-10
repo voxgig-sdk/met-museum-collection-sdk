@@ -227,7 +227,7 @@ local results, err = client:Object():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Object():load({ id = "object_id" })
+local result, err = client:Object():load({ id = 1 })
 ```
 
 ### Common Methods

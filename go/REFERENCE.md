@@ -99,6 +99,7 @@ same parameters as `Direct()`.
 
 ```go
 department := client.Department(nil)
+fmt.Println(department.GetName()) // "department"
 ```
 
 ### Fields
@@ -116,6 +117,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Department(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -146,6 +151,7 @@ Return the entity name.
 
 ```go
 object := client.Object(nil)
+fmt.Println(object.GetName()) // "object"
 ```
 
 ### Fields
@@ -221,6 +227,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Object(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -228,7 +238,11 @@ results, err := client.Object(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Object(nil).Load(map[string]any{"id": "object_id"}, nil)
+result, err := client.Object(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -259,6 +273,7 @@ Return the entity name.
 
 ```go
 search := client.Search(nil)
+fmt.Println(search.GetName()) // "search"
 ```
 
 ### Fields
@@ -276,6 +291,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Search(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

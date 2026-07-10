@@ -463,7 +463,7 @@ Create an instance: `object := client.Object(nil)`
 #### Example: Load
 
 ```go
-object, err := client.Object(nil).Load(map[string]any{"id": "object_id"}, nil)
+object, err := client.Object(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

@@ -446,7 +446,7 @@ Create an instance: `$object = $client->Object();`
 
 ```php
 // load() returns the bare Object record (throws on error).
-$object = $client->Object()->load(["id" => "object_id"]);
+$object = $client->Object()->load(["id" => 1]);
 ```
 
 #### Example: List

@@ -19,10 +19,10 @@ main: {
           url: "https://collectionapi.metmuseum.org/public/collection/v1"
         }
       ]
+      summary: "Access over 470,000 artworks with metadata and high-resolution images from The Metropolitan Museum of Art Collection."
       termsOfService: "https://metmuseum.github.io/"
       title: "Met Museum Collection"
       version: "1.0.0"
+      website: "https://metmuseum.github.io/"
     }
   }
-}
-
