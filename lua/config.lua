@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- MetMuseumCollection SDK configuration
 
 local function make_config()
   return {

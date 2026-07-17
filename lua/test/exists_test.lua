@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- MetMuseumCollection SDK exists test
 
 local sdk = require("met-museum-collection_sdk")
 
