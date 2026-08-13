@@ -26,8 +26,8 @@ import {
 describe('ObjectEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when METMUSEUMCOLLECTION_TEST_LIVE=TRUE.
-  afterEach(liveDelay('METMUSEUMCOLLECTION_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when MET_MUSEUM_COLLECTION_TEST_LIVE=TRUE.
+  afterEach(liveDelay('MET_MUSEUM_COLLECTION_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = MetMuseumCollectionSDK.test()
@@ -63,7 +63,7 @@ describe('ObjectEntity', async () => {
     const object_ref01_ent = client.Object()
     const object_ref01_match: any = {}
 
-    const object_ref01_list = await object_ref01_ent.list(object_ref01_match)
+    const object_ref01_list = (await object_ref01_ent.list(object_ref01_match)).map((e: any) => e.data())
 
 
 

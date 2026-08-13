@@ -2,24 +2,24 @@
   "existing": {
     "department": {
       "DEPARTMENT00": {
-        "department_id": "DEPARTMENT01",
-        "display_name": "s15"
+        "departmentId": "s14",
+        "displayName": "s15"
       },
       "DEPARTMENT01": {
-        "department_id": "DEPARTMENT01",
-        "display_name": "s29"
+        "departmentId": "s28",
+        "displayName": "s29"
       },
       "DEPARTMENT02": {
-        "department_id": "DEPARTMENT01",
-        "display_name": "s3d"
+        "departmentId": "s3c",
+        "displayName": "s3d"
       }
     }
   },
   "new": {
     "department": {
       "department_ref01": {
-        "department_id": "DEPARTMENT01",
-        "display_name": "s51"
+        "departmentId": "s50",
+        "displayName": "s51"
       }
     }
   }

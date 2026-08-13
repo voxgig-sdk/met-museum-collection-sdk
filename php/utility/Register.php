@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ MetMuseumCollectionUtility::setRegistrar(function (MetMuseumCollectionUtility $u
     $u->prepare_params = [MetMuseumCollectionPrepareParams::class, 'call'];
     $u->prepare_path = [MetMuseumCollectionPreparePath::class, 'call'];
     $u->prepare_query = [MetMuseumCollectionPrepareQuery::class, 'call'];
+    $u->graphql_body = [MetMuseumCollectionGraphql::class, 'body'];
+    $u->graphql_errors = [MetMuseumCollectionGraphql::class, 'errors'];
     $u->result_basic = [MetMuseumCollectionResultBasic::class, 'call'];
     $u->result_body = [MetMuseumCollectionResultBody::class, 'call'];
     $u->result_headers = [MetMuseumCollectionResultHeaders::class, 'call'];

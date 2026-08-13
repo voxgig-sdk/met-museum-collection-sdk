@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import MetMuseumCollectionSDK
-from core.error import MetMuseumCollectionError
-from core.result import MetMuseumCollectionResult
-from core.response import MetMuseumCollectionResponse
-from core.spec import MetMuseumCollectionSpec
-from feature.base_feature import MetMuseumCollectionBaseFeature
+from projectname_sdk.core.error import MetMuseumCollectionError
+from projectname_sdk.core.result import MetMuseumCollectionResult
+from projectname_sdk.core.response import MetMuseumCollectionResponse
+from projectname_sdk.core.spec import MetMuseumCollectionSpec
+from projectname_sdk.feature.base_feature import MetMuseumCollectionBaseFeature
 
 
 def _client():

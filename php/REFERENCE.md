@@ -100,8 +100,8 @@ $department = $client->Department();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
-| `display_name` | `string` | No |  |
+| `departmentId` | `int` | No |  |
+| `displayName` | `string` | No |  |
 
 ### Operations
 
@@ -153,64 +153,64 @@ $object = $client->Object();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession_number` | `string` | No |  |
-| `accession_year` | `string` | No |  |
-| `additional_image` | `array` | No |  |
-| `artist_alpha_sort` | `string` | No |  |
-| `artist_begin_date` | `string` | No |  |
-| `artist_display_bio` | `string` | No |  |
-| `artist_display_name` | `string` | No |  |
-| `artist_end_date` | `string` | No |  |
-| `artist_gender` | `string` | No |  |
-| `artist_nationality` | `string` | No |  |
-| `artist_prefix` | `string` | No |  |
-| `artist_role` | `string` | No |  |
-| `artist_suffix` | `string` | No |  |
-| `artist_ulan_url` | `string` | No |  |
-| `artist_wikidata_url` | `string` | No |  |
+| `GalleryNumber` | `string` | No |  |
+| `accessionNumber` | `string` | No |  |
+| `accessionYear` | `string` | No |  |
+| `additionalImages` | `array` | No |  |
+| `artistAlphaSort` | `string` | No |  |
+| `artistBeginDate` | `string` | No |  |
+| `artistDisplayBio` | `string` | No |  |
+| `artistDisplayName` | `string` | No |  |
+| `artistEndDate` | `string` | No |  |
+| `artistGender` | `string` | No |  |
+| `artistNationality` | `string` | No |  |
+| `artistPrefix` | `string` | No |  |
+| `artistRole` | `string` | No |  |
+| `artistSuffix` | `string` | No |  |
+| `artistULAN_URL` | `string` | No |  |
+| `artistWikidata_URL` | `string` | No |  |
 | `city` | `string` | No |  |
 | `classification` | `string` | No |  |
-| `constituent` | `array` | No |  |
+| `constituents` | `array` | No |  |
 | `country` | `string` | No |  |
 | `county` | `string` | No |  |
-| `credit_line` | `string` | No |  |
+| `creditLine` | `string` | No |  |
 | `culture` | `string` | No |  |
 | `department` | `string` | No |  |
-| `dimension` | `string` | No |  |
-| `dimensions_parsed` | `array` | No |  |
+| `dimensions` | `string` | No |  |
+| `dimensionsParsed` | `array` | No |  |
 | `dynasty` | `string` | No |  |
 | `excavation` | `string` | No |  |
-| `gallery_number` | `string` | No |  |
-| `geography_type` | `string` | No |  |
-| `is_highlight` | `bool` | No |  |
-| `is_public_domain` | `bool` | No |  |
-| `is_timeline_work` | `bool` | No |  |
-| `link_resource` | `string` | No |  |
+| `geographyType` | `string` | No |  |
+| `isHighlight` | `bool` | No |  |
+| `isPublicDomain` | `bool` | No |  |
+| `isTimelineWork` | `bool` | No |  |
+| `linkResource` | `string` | No |  |
 | `locale` | `string` | No |  |
 | `locus` | `string` | No |  |
-| `measurement` | `array` | No |  |
+| `measurements` | `array` | No |  |
 | `medium` | `string` | No |  |
-| `metadata_date` | `string` | No |  |
-| `object_begin_date` | `int` | No |  |
-| `object_date` | `string` | No |  |
-| `object_end_date` | `int` | No |  |
-| `object_i_d` | `array` | No |  |
-| `object_id` | `int` | No |  |
-| `object_name` | `string` | No |  |
-| `object_url` | `string` | No |  |
-| `object_wikidata_url` | `string` | No |  |
+| `metadataDate` | `string` | No |  |
+| `objectBeginDate` | `int` | No |  |
+| `objectDate` | `string` | No |  |
+| `objectEndDate` | `int` | No |  |
+| `objectID` | `int` | No |  |
+| `objectIDs` | `array` | No |  |
+| `objectName` | `string` | No |  |
+| `objectURL` | `string` | No |  |
+| `objectWikidata_URL` | `string` | No |  |
 | `period` | `string` | No |  |
 | `portfolio` | `string` | No |  |
-| `primary_image` | `string` | No |  |
-| `primary_image_small` | `string` | No |  |
+| `primaryImage` | `string` | No |  |
+| `primaryImageSmall` | `string` | No |  |
 | `region` | `string` | No |  |
 | `reign` | `string` | No |  |
 | `repository` | `string` | No |  |
-| `rights_and_reproduction` | `string` | No |  |
+| `rightsAndReproduction` | `string` | No |  |
 | `river` | `string` | No |  |
 | `state` | `string` | No |  |
 | `subregion` | `string` | No |  |
-| `tag` | `array` | No |  |
+| `tags` | `array` | No |  |
 | `title` | `string` | No |  |
 | `total` | `int` | No |  |
 
@@ -272,7 +272,7 @@ $search = $client->Search();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `object_i_d` | `array` | No |  |
+| `objectIDs` | `array` | No |  |
 | `total` | `int` | No |  |
 
 ### Operations

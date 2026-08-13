@@ -8,12 +8,14 @@ guide: {
   entity: department: {
     path: "/departments": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.departments`")|top
     }
   }
 
   entity: object: {
     path: "/objects": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.objectIDs`")|top
     }
     path: "/objects/{objectID}": {
       rename: param: "objectID": *"id"
@@ -24,6 +26,7 @@ guide: {
   entity: search: {
     path: "/search": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.objectIDs`")|top
     }
   }
 

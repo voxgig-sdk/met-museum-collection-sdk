@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'MetMuseumCollection',
   }
 
 
@@ -62,14 +62,14 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "department_id",
+          "name": "departmentId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "display_name",
+          "name": "displayName",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
@@ -84,6 +84,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/departments",
               "parts": [
@@ -92,7 +93,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.departments`"
               },
               "index$": 0
             }
@@ -108,231 +109,231 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "accession_number",
+          "name": "GalleryNumber",
           "req": false,
           "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "accession_year",
+          "name": "accessionNumber",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "additional_image",
+          "name": "accessionYear",
           "req": false,
-          "type": "`$ARRAY`",
+          "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "artist_alpha_sort",
+          "name": "additionalImages",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$ARRAY`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "artist_begin_date",
+          "name": "artistAlphaSort",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "artist_display_bio",
+          "name": "artistBeginDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "artist_display_name",
+          "name": "artistDisplayBio",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "artist_end_date",
+          "name": "artistDisplayName",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "artist_gender",
+          "name": "artistEndDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "artist_nationality",
+          "name": "artistGender",
           "req": false,
           "type": "`$STRING`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "artist_prefix",
+          "name": "artistNationality",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "artist_role",
+          "name": "artistPrefix",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "artist_suffix",
+          "name": "artistRole",
           "req": false,
           "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "artist_ulan_url",
+          "name": "artistSuffix",
           "req": false,
           "type": "`$STRING`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "artist_wikidata_url",
+          "name": "artistULAN_URL",
           "req": false,
           "type": "`$STRING`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "city",
+          "name": "artistWikidata_URL",
           "req": false,
           "type": "`$STRING`",
           "index$": 15
         },
         {
           "active": true,
-          "name": "classification",
+          "name": "city",
           "req": false,
           "type": "`$STRING`",
           "index$": 16
         },
         {
           "active": true,
-          "name": "constituent",
+          "name": "classification",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 17
+        },
+        {
+          "active": true,
+          "name": "constituents",
           "req": false,
           "type": "`$ARRAY`",
-          "index$": 17
+          "index$": 18
         },
         {
           "active": true,
           "name": "country",
           "req": false,
           "type": "`$STRING`",
-          "index$": 18
+          "index$": 19
         },
         {
           "active": true,
           "name": "county",
           "req": false,
           "type": "`$STRING`",
-          "index$": 19
-        },
-        {
-          "active": true,
-          "name": "credit_line",
-          "req": false,
-          "type": "`$STRING`",
           "index$": 20
         },
         {
           "active": true,
-          "name": "culture",
+          "name": "creditLine",
           "req": false,
           "type": "`$STRING`",
           "index$": 21
         },
         {
           "active": true,
-          "name": "department",
+          "name": "culture",
           "req": false,
           "type": "`$STRING`",
           "index$": 22
         },
         {
           "active": true,
-          "name": "dimension",
+          "name": "department",
           "req": false,
           "type": "`$STRING`",
           "index$": 23
         },
         {
           "active": true,
-          "name": "dimensions_parsed",
+          "name": "dimensions",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 24
+        },
+        {
+          "active": true,
+          "name": "dimensionsParsed",
           "req": false,
           "type": "`$ARRAY`",
-          "index$": 24
+          "index$": 25
         },
         {
           "active": true,
           "name": "dynasty",
           "req": false,
           "type": "`$STRING`",
-          "index$": 25
+          "index$": 26
         },
         {
           "active": true,
           "name": "excavation",
           "req": false,
           "type": "`$STRING`",
-          "index$": 26
-        },
-        {
-          "active": true,
-          "name": "gallery_number",
-          "req": false,
-          "type": "`$STRING`",
           "index$": 27
         },
         {
           "active": true,
-          "name": "geography_type",
+          "name": "geographyType",
           "req": false,
           "type": "`$STRING`",
           "index$": 28
         },
         {
           "active": true,
-          "name": "is_highlight",
+          "name": "isHighlight",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 29
         },
         {
           "active": true,
-          "name": "is_public_domain",
+          "name": "isPublicDomain",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 30
         },
         {
           "active": true,
-          "name": "is_timeline_work",
+          "name": "isTimelineWork",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 31
         },
         {
           "active": true,
-          "name": "link_resource",
+          "name": "linkResource",
           "req": false,
           "type": "`$STRING`",
           "index$": 32
@@ -353,7 +354,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "measurement",
+          "name": "measurements",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 35
@@ -367,63 +368,63 @@ class Config {
         },
         {
           "active": true,
-          "name": "metadata_date",
+          "name": "metadataDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 37
         },
         {
           "active": true,
-          "name": "object_begin_date",
+          "name": "objectBeginDate",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 38
         },
         {
           "active": true,
-          "name": "object_date",
+          "name": "objectDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 39
         },
         {
           "active": true,
-          "name": "object_end_date",
+          "name": "objectEndDate",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 40
         },
         {
           "active": true,
-          "name": "object_i_d",
+          "name": "objectID",
           "req": false,
-          "type": "`$ARRAY`",
+          "type": "`$INTEGER`",
           "index$": 41
         },
         {
           "active": true,
-          "name": "object_id",
+          "name": "objectIDs",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$ARRAY`",
           "index$": 42
         },
         {
           "active": true,
-          "name": "object_name",
+          "name": "objectName",
           "req": false,
           "type": "`$STRING`",
           "index$": 43
         },
         {
           "active": true,
-          "name": "object_url",
+          "name": "objectURL",
           "req": false,
           "type": "`$STRING`",
           "index$": 44
         },
         {
           "active": true,
-          "name": "object_wikidata_url",
+          "name": "objectWikidata_URL",
           "req": false,
           "type": "`$STRING`",
           "index$": 45
@@ -444,14 +445,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "primary_image",
+          "name": "primaryImage",
           "req": false,
           "type": "`$STRING`",
           "index$": 48
         },
         {
           "active": true,
-          "name": "primary_image_small",
+          "name": "primaryImageSmall",
           "req": false,
           "type": "`$STRING`",
           "index$": 49
@@ -479,7 +480,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "rights_and_reproduction",
+          "name": "rightsAndReproduction",
           "req": false,
           "type": "`$STRING`",
           "index$": 53
@@ -507,7 +508,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "tag",
+          "name": "tags",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 57
@@ -557,6 +558,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/objects",
               "parts": [
@@ -570,7 +572,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.objectIDs`"
               },
               "index$": 0
             }
@@ -597,6 +599,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/objects/{objectID}",
               "parts": [
@@ -631,7 +634,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "object_i_d",
+          "name": "objectIDs",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -764,6 +767,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/search",
               "parts": [
@@ -787,7 +791,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.objectIDs`"
               },
               "index$": 0
             }

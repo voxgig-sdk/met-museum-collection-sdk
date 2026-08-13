@@ -140,8 +140,8 @@ const department = client.Department()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `number` | No |  |
-| `display_name` | `string` | No |  |
+| `departmentId` | `number` | No |  |
+| `displayName` | `string` | No |  |
 
 ### Operations
 
@@ -191,64 +191,64 @@ const object = client.Object()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession_number` | `string` | No |  |
-| `accession_year` | `string` | No |  |
-| `additional_image` | `any[]` | No |  |
-| `artist_alpha_sort` | `string` | No |  |
-| `artist_begin_date` | `string` | No |  |
-| `artist_display_bio` | `string` | No |  |
-| `artist_display_name` | `string` | No |  |
-| `artist_end_date` | `string` | No |  |
-| `artist_gender` | `string` | No |  |
-| `artist_nationality` | `string` | No |  |
-| `artist_prefix` | `string` | No |  |
-| `artist_role` | `string` | No |  |
-| `artist_suffix` | `string` | No |  |
-| `artist_ulan_url` | `string` | No |  |
-| `artist_wikidata_url` | `string` | No |  |
+| `GalleryNumber` | `string` | No |  |
+| `accessionNumber` | `string` | No |  |
+| `accessionYear` | `string` | No |  |
+| `additionalImages` | `any[]` | No |  |
+| `artistAlphaSort` | `string` | No |  |
+| `artistBeginDate` | `string` | No |  |
+| `artistDisplayBio` | `string` | No |  |
+| `artistDisplayName` | `string` | No |  |
+| `artistEndDate` | `string` | No |  |
+| `artistGender` | `string` | No |  |
+| `artistNationality` | `string` | No |  |
+| `artistPrefix` | `string` | No |  |
+| `artistRole` | `string` | No |  |
+| `artistSuffix` | `string` | No |  |
+| `artistULAN_URL` | `string` | No |  |
+| `artistWikidata_URL` | `string` | No |  |
 | `city` | `string` | No |  |
 | `classification` | `string` | No |  |
-| `constituent` | `any[]` | No |  |
+| `constituents` | `any[]` | No |  |
 | `country` | `string` | No |  |
 | `county` | `string` | No |  |
-| `credit_line` | `string` | No |  |
+| `creditLine` | `string` | No |  |
 | `culture` | `string` | No |  |
 | `department` | `string` | No |  |
-| `dimension` | `string` | No |  |
-| `dimensions_parsed` | `any[]` | No |  |
+| `dimensions` | `string` | No |  |
+| `dimensionsParsed` | `any[]` | No |  |
 | `dynasty` | `string` | No |  |
 | `excavation` | `string` | No |  |
-| `gallery_number` | `string` | No |  |
-| `geography_type` | `string` | No |  |
-| `is_highlight` | `boolean` | No |  |
-| `is_public_domain` | `boolean` | No |  |
-| `is_timeline_work` | `boolean` | No |  |
-| `link_resource` | `string` | No |  |
+| `geographyType` | `string` | No |  |
+| `isHighlight` | `boolean` | No |  |
+| `isPublicDomain` | `boolean` | No |  |
+| `isTimelineWork` | `boolean` | No |  |
+| `linkResource` | `string` | No |  |
 | `locale` | `string` | No |  |
 | `locus` | `string` | No |  |
-| `measurement` | `any[]` | No |  |
+| `measurements` | `any[]` | No |  |
 | `medium` | `string` | No |  |
-| `metadata_date` | `string` | No |  |
-| `object_begin_date` | `number` | No |  |
-| `object_date` | `string` | No |  |
-| `object_end_date` | `number` | No |  |
-| `object_i_d` | `any[]` | No |  |
-| `object_id` | `number` | No |  |
-| `object_name` | `string` | No |  |
-| `object_url` | `string` | No |  |
-| `object_wikidata_url` | `string` | No |  |
+| `metadataDate` | `string` | No |  |
+| `objectBeginDate` | `number` | No |  |
+| `objectDate` | `string` | No |  |
+| `objectEndDate` | `number` | No |  |
+| `objectID` | `number` | No |  |
+| `objectIDs` | `any[]` | No |  |
+| `objectName` | `string` | No |  |
+| `objectURL` | `string` | No |  |
+| `objectWikidata_URL` | `string` | No |  |
 | `period` | `string` | No |  |
 | `portfolio` | `string` | No |  |
-| `primary_image` | `string` | No |  |
-| `primary_image_small` | `string` | No |  |
+| `primaryImage` | `string` | No |  |
+| `primaryImageSmall` | `string` | No |  |
 | `region` | `string` | No |  |
 | `reign` | `string` | No |  |
 | `repository` | `string` | No |  |
-| `rights_and_reproduction` | `string` | No |  |
+| `rightsAndReproduction` | `string` | No |  |
 | `river` | `string` | No |  |
 | `state` | `string` | No |  |
 | `subregion` | `string` | No |  |
-| `tag` | `any[]` | No |  |
+| `tags` | `any[]` | No |  |
 | `title` | `string` | No |  |
 | `total` | `number` | No |  |
 
@@ -308,7 +308,7 @@ const search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `object_i_d` | `any[]` | No |  |
+| `objectIDs` | `any[]` | No |  |
 | `total` | `number` | No |  |
 
 ### Operations

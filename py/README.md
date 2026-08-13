@@ -57,8 +57,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    departments = client.Department().list()
-    print(departments)
+    searchs = client.Search().list()
+    print(searchs)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -124,9 +124,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MetMuseumCollectionSDK.test()
 
-# Entity ops return the bare record and raise on error.
-department = client.Department().list()
-# department contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+search = client.Search().list()
+# search contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -223,7 +224,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -245,8 +246,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
-| `display_name` |  |
+| `departmentId` |  |
+| `displayName` |  |
 
 Operations: List.
 
@@ -256,64 +257,64 @@ API path: `/departments`
 
 | Field | Description |
 | --- | --- |
-| `accession_number` |  |
-| `accession_year` |  |
-| `additional_image` |  |
-| `artist_alpha_sort` |  |
-| `artist_begin_date` |  |
-| `artist_display_bio` |  |
-| `artist_display_name` |  |
-| `artist_end_date` |  |
-| `artist_gender` |  |
-| `artist_nationality` |  |
-| `artist_prefix` |  |
-| `artist_role` |  |
-| `artist_suffix` |  |
-| `artist_ulan_url` |  |
-| `artist_wikidata_url` |  |
+| `GalleryNumber` |  |
+| `accessionNumber` |  |
+| `accessionYear` |  |
+| `additionalImages` |  |
+| `artistAlphaSort` |  |
+| `artistBeginDate` |  |
+| `artistDisplayBio` |  |
+| `artistDisplayName` |  |
+| `artistEndDate` |  |
+| `artistGender` |  |
+| `artistNationality` |  |
+| `artistPrefix` |  |
+| `artistRole` |  |
+| `artistSuffix` |  |
+| `artistULAN_URL` |  |
+| `artistWikidata_URL` |  |
 | `city` |  |
 | `classification` |  |
-| `constituent` |  |
+| `constituents` |  |
 | `country` |  |
 | `county` |  |
-| `credit_line` |  |
+| `creditLine` |  |
 | `culture` |  |
 | `department` |  |
-| `dimension` |  |
-| `dimensions_parsed` |  |
+| `dimensions` |  |
+| `dimensionsParsed` |  |
 | `dynasty` |  |
 | `excavation` |  |
-| `gallery_number` |  |
-| `geography_type` |  |
-| `is_highlight` |  |
-| `is_public_domain` |  |
-| `is_timeline_work` |  |
-| `link_resource` |  |
+| `geographyType` |  |
+| `isHighlight` |  |
+| `isPublicDomain` |  |
+| `isTimelineWork` |  |
+| `linkResource` |  |
 | `locale` |  |
 | `locus` |  |
-| `measurement` |  |
+| `measurements` |  |
 | `medium` |  |
-| `metadata_date` |  |
-| `object_begin_date` |  |
-| `object_date` |  |
-| `object_end_date` |  |
-| `object_i_d` |  |
-| `object_id` |  |
-| `object_name` |  |
-| `object_url` |  |
-| `object_wikidata_url` |  |
+| `metadataDate` |  |
+| `objectBeginDate` |  |
+| `objectDate` |  |
+| `objectEndDate` |  |
+| `objectID` |  |
+| `objectIDs` |  |
+| `objectName` |  |
+| `objectURL` |  |
+| `objectWikidata_URL` |  |
 | `period` |  |
 | `portfolio` |  |
-| `primary_image` |  |
-| `primary_image_small` |  |
+| `primaryImage` |  |
+| `primaryImageSmall` |  |
 | `region` |  |
 | `reign` |  |
 | `repository` |  |
-| `rights_and_reproduction` |  |
+| `rightsAndReproduction` |  |
 | `river` |  |
 | `state` |  |
 | `subregion` |  |
-| `tag` |  |
+| `tags` |  |
 | `title` |  |
 | `total` |  |
 
@@ -325,7 +326,7 @@ API path: `/objects`
 
 | Field | Description |
 | --- | --- |
-| `object_i_d` |  |
+| `objectIDs` |  |
 | `total` |  |
 
 Operations: List.
@@ -351,8 +352,8 @@ Create an instance: `department = client.Department()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
-| `display_name` | `str` |  |
+| `departmentId` | `int` |  |
+| `displayName` | `str` |  |
 
 #### Example: List
 
@@ -376,64 +377,64 @@ Create an instance: `object = client.Object()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | `str` |  |
-| `accession_year` | `str` |  |
-| `additional_image` | `list` |  |
-| `artist_alpha_sort` | `str` |  |
-| `artist_begin_date` | `str` |  |
-| `artist_display_bio` | `str` |  |
-| `artist_display_name` | `str` |  |
-| `artist_end_date` | `str` |  |
-| `artist_gender` | `str` |  |
-| `artist_nationality` | `str` |  |
-| `artist_prefix` | `str` |  |
-| `artist_role` | `str` |  |
-| `artist_suffix` | `str` |  |
-| `artist_ulan_url` | `str` |  |
-| `artist_wikidata_url` | `str` |  |
+| `GalleryNumber` | `str` |  |
+| `accessionNumber` | `str` |  |
+| `accessionYear` | `str` |  |
+| `additionalImages` | `list` |  |
+| `artistAlphaSort` | `str` |  |
+| `artistBeginDate` | `str` |  |
+| `artistDisplayBio` | `str` |  |
+| `artistDisplayName` | `str` |  |
+| `artistEndDate` | `str` |  |
+| `artistGender` | `str` |  |
+| `artistNationality` | `str` |  |
+| `artistPrefix` | `str` |  |
+| `artistRole` | `str` |  |
+| `artistSuffix` | `str` |  |
+| `artistULAN_URL` | `str` |  |
+| `artistWikidata_URL` | `str` |  |
 | `city` | `str` |  |
 | `classification` | `str` |  |
-| `constituent` | `list` |  |
+| `constituents` | `list` |  |
 | `country` | `str` |  |
 | `county` | `str` |  |
-| `credit_line` | `str` |  |
+| `creditLine` | `str` |  |
 | `culture` | `str` |  |
 | `department` | `str` |  |
-| `dimension` | `str` |  |
-| `dimensions_parsed` | `list` |  |
+| `dimensions` | `str` |  |
+| `dimensionsParsed` | `list` |  |
 | `dynasty` | `str` |  |
 | `excavation` | `str` |  |
-| `gallery_number` | `str` |  |
-| `geography_type` | `str` |  |
-| `is_highlight` | `bool` |  |
-| `is_public_domain` | `bool` |  |
-| `is_timeline_work` | `bool` |  |
-| `link_resource` | `str` |  |
+| `geographyType` | `str` |  |
+| `isHighlight` | `bool` |  |
+| `isPublicDomain` | `bool` |  |
+| `isTimelineWork` | `bool` |  |
+| `linkResource` | `str` |  |
 | `locale` | `str` |  |
 | `locus` | `str` |  |
-| `measurement` | `list` |  |
+| `measurements` | `list` |  |
 | `medium` | `str` |  |
-| `metadata_date` | `str` |  |
-| `object_begin_date` | `int` |  |
-| `object_date` | `str` |  |
-| `object_end_date` | `int` |  |
-| `object_i_d` | `list` |  |
-| `object_id` | `int` |  |
-| `object_name` | `str` |  |
-| `object_url` | `str` |  |
-| `object_wikidata_url` | `str` |  |
+| `metadataDate` | `str` |  |
+| `objectBeginDate` | `int` |  |
+| `objectDate` | `str` |  |
+| `objectEndDate` | `int` |  |
+| `objectID` | `int` |  |
+| `objectIDs` | `list` |  |
+| `objectName` | `str` |  |
+| `objectURL` | `str` |  |
+| `objectWikidata_URL` | `str` |  |
 | `period` | `str` |  |
 | `portfolio` | `str` |  |
-| `primary_image` | `str` |  |
-| `primary_image_small` | `str` |  |
+| `primaryImage` | `str` |  |
+| `primaryImageSmall` | `str` |  |
 | `region` | `str` |  |
 | `reign` | `str` |  |
 | `repository` | `str` |  |
-| `rights_and_reproduction` | `str` |  |
+| `rightsAndReproduction` | `str` |  |
 | `river` | `str` |  |
 | `state` | `str` |  |
 | `subregion` | `str` |  |
-| `tag` | `list` |  |
+| `tags` | `list` |  |
 | `title` | `str` |  |
 | `total` | `int` |  |
 
@@ -464,7 +465,7 @@ Create an instance: `search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | `list` |  |
+| `objectIDs` | `list` |  |
 | `total` | `int` |  |
 
 #### Example: List
@@ -549,11 +550,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-department = client.Department()
-department.list()
+search = client.Search()
+search.list()
 
-# department.data_get() now returns the department data from the last list
-# department.match_get() returns the last match criteria
+# search.data_get() now returns the search data from the last list
+# search.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

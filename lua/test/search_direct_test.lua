@@ -61,11 +61,11 @@ function search_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["METMUSEUMCOLLECTION_TEST_SEARCH_ENTID"] = {},
-    ["METMUSEUMCOLLECTION_TEST_LIVE"] = "FALSE",
+    ["MET_MUSEUM_COLLECTION_TEST_SEARCH_ENTID"] = {},
+    ["MET_MUSEUM_COLLECTION_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["METMUSEUMCOLLECTION_TEST_LIVE"] == "TRUE"
+  local live = env["MET_MUSEUM_COLLECTION_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

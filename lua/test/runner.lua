@@ -35,8 +35,8 @@ end
 
 
 function runner.env_override(m)
-  local live = runner.getenv("METMUSEUMCOLLECTION_TEST_LIVE")
-  local override = runner.getenv("METMUSEUMCOLLECTION_TEST_OVERRIDE")
+  local live = runner.getenv("MET_MUSEUM_COLLECTION_TEST_LIVE")
+  local override = runner.getenv("MET_MUSEUM_COLLECTION_TEST_OVERRIDE")
 
   if live == "TRUE" or override == "TRUE" then
     for key, _ in pairs(m) do
@@ -56,9 +56,9 @@ function runner.env_override(m)
     end
   end
 
-  local explain = runner.getenv("METMUSEUMCOLLECTION_TEST_EXPLAIN")
+  local explain = runner.getenv("MET_MUSEUM_COLLECTION_TEST_EXPLAIN")
   if explain ~= nil and explain ~= "" then
-    m["METMUSEUMCOLLECTION_TEST_EXPLAIN"] = explain
+    m["MET_MUSEUM_COLLECTION_TEST_EXPLAIN"] = explain
   end
 
   return m

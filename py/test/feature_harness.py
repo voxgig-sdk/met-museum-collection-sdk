@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import MetMuseumCollectionControl
-from core.error import MetMuseumCollectionError
-from core.result import MetMuseumCollectionResult
-from core.spec import MetMuseumCollectionSpec
+from metmuseumcollection_sdk.config import make_config
+from metmuseumcollection_sdk.features import _make_feature
+from metmuseumcollection_sdk.core.control import MetMuseumCollectionControl
+from metmuseumcollection_sdk.core.error import MetMuseumCollectionError
+from metmuseumcollection_sdk.core.result import MetMuseumCollectionResult
+from metmuseumcollection_sdk.core.spec import MetMuseumCollectionSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -23,8 +23,8 @@ module MetMuseumCollectionTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("METMUSEUMCOLLECTION_TEST_LIVE")
-    override = getenv("METMUSEUMCOLLECTION_TEST_OVERRIDE")
+    live = getenv("MET_MUSEUM_COLLECTION_TEST_LIVE")
+    override = getenv("MET_MUSEUM_COLLECTION_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module MetMuseumCollectionTestRunner
       end
     end
 
-    explain = getenv("METMUSEUMCOLLECTION_TEST_EXPLAIN")
-    m["METMUSEUMCOLLECTION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("MET_MUSEUM_COLLECTION_TEST_EXPLAIN")
+    m["MET_MUSEUM_COLLECTION_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

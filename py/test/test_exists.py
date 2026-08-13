@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# MetMuseumCollection SDK exists test
 
 import pytest
 from metmuseumcollection_sdk import MetMuseumCollectionSDK

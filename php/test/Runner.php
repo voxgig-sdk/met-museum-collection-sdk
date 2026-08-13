@@ -43,8 +43,8 @@ class MetMuseumCollectionTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('METMUSEUMCOLLECTION_TEST_LIVE');
-        $override = self::getenv('METMUSEUMCOLLECTION_TEST_OVERRIDE');
+        $live = self::getenv('MET_MUSEUM_COLLECTION_TEST_LIVE');
+        $override = self::getenv('MET_MUSEUM_COLLECTION_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class MetMuseumCollectionTestRunner
             }
         }
 
-        $explain = self::getenv('METMUSEUMCOLLECTION_TEST_EXPLAIN');
+        $explain = self::getenv('MET_MUSEUM_COLLECTION_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['METMUSEUMCOLLECTION_TEST_EXPLAIN'] = $explain;
+            $m['MET_MUSEUM_COLLECTION_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

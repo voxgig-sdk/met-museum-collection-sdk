@@ -38,7 +38,7 @@ try {
     // list() returns an array of Department records — iterate directly.
     $departments = $client->Department()->list();
     foreach ($departments as $item) {
-        echo $item["department_id"] . "\n";
+        echo $item["departmentId"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $departments = $client->Department()->list();
+    $searchs = $client->Search()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = MetMuseumCollectionSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$department = $client->Department()->list();
-print_r($department);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$search = $client->Search()->list();
+print_r($search);
 ```
 
 ### Use a custom fetch function
@@ -227,7 +228,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -249,8 +250,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
-| `display_name` |  |
+| `departmentId` |  |
+| `displayName` |  |
 
 Operations: List.
 
@@ -260,64 +261,64 @@ API path: `/departments`
 
 | Field | Description |
 | --- | --- |
-| `accession_number` |  |
-| `accession_year` |  |
-| `additional_image` |  |
-| `artist_alpha_sort` |  |
-| `artist_begin_date` |  |
-| `artist_display_bio` |  |
-| `artist_display_name` |  |
-| `artist_end_date` |  |
-| `artist_gender` |  |
-| `artist_nationality` |  |
-| `artist_prefix` |  |
-| `artist_role` |  |
-| `artist_suffix` |  |
-| `artist_ulan_url` |  |
-| `artist_wikidata_url` |  |
+| `GalleryNumber` |  |
+| `accessionNumber` |  |
+| `accessionYear` |  |
+| `additionalImages` |  |
+| `artistAlphaSort` |  |
+| `artistBeginDate` |  |
+| `artistDisplayBio` |  |
+| `artistDisplayName` |  |
+| `artistEndDate` |  |
+| `artistGender` |  |
+| `artistNationality` |  |
+| `artistPrefix` |  |
+| `artistRole` |  |
+| `artistSuffix` |  |
+| `artistULAN_URL` |  |
+| `artistWikidata_URL` |  |
 | `city` |  |
 | `classification` |  |
-| `constituent` |  |
+| `constituents` |  |
 | `country` |  |
 | `county` |  |
-| `credit_line` |  |
+| `creditLine` |  |
 | `culture` |  |
 | `department` |  |
-| `dimension` |  |
-| `dimensions_parsed` |  |
+| `dimensions` |  |
+| `dimensionsParsed` |  |
 | `dynasty` |  |
 | `excavation` |  |
-| `gallery_number` |  |
-| `geography_type` |  |
-| `is_highlight` |  |
-| `is_public_domain` |  |
-| `is_timeline_work` |  |
-| `link_resource` |  |
+| `geographyType` |  |
+| `isHighlight` |  |
+| `isPublicDomain` |  |
+| `isTimelineWork` |  |
+| `linkResource` |  |
 | `locale` |  |
 | `locus` |  |
-| `measurement` |  |
+| `measurements` |  |
 | `medium` |  |
-| `metadata_date` |  |
-| `object_begin_date` |  |
-| `object_date` |  |
-| `object_end_date` |  |
-| `object_i_d` |  |
-| `object_id` |  |
-| `object_name` |  |
-| `object_url` |  |
-| `object_wikidata_url` |  |
+| `metadataDate` |  |
+| `objectBeginDate` |  |
+| `objectDate` |  |
+| `objectEndDate` |  |
+| `objectID` |  |
+| `objectIDs` |  |
+| `objectName` |  |
+| `objectURL` |  |
+| `objectWikidata_URL` |  |
 | `period` |  |
 | `portfolio` |  |
-| `primary_image` |  |
-| `primary_image_small` |  |
+| `primaryImage` |  |
+| `primaryImageSmall` |  |
 | `region` |  |
 | `reign` |  |
 | `repository` |  |
-| `rights_and_reproduction` |  |
+| `rightsAndReproduction` |  |
 | `river` |  |
 | `state` |  |
 | `subregion` |  |
-| `tag` |  |
+| `tags` |  |
 | `title` |  |
 | `total` |  |
 
@@ -329,7 +330,7 @@ API path: `/objects`
 
 | Field | Description |
 | --- | --- |
-| `object_i_d` |  |
+| `objectIDs` |  |
 | `total` |  |
 
 Operations: List.
@@ -355,8 +356,8 @@ Create an instance: `$department = $client->Department();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `int` |  |
-| `display_name` | `string` |  |
+| `departmentId` | `int` |  |
+| `displayName` | `string` |  |
 
 #### Example: List
 
@@ -381,71 +382,71 @@ Create an instance: `$object = $client->Object();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | `string` |  |
-| `accession_year` | `string` |  |
-| `additional_image` | `array` |  |
-| `artist_alpha_sort` | `string` |  |
-| `artist_begin_date` | `string` |  |
-| `artist_display_bio` | `string` |  |
-| `artist_display_name` | `string` |  |
-| `artist_end_date` | `string` |  |
-| `artist_gender` | `string` |  |
-| `artist_nationality` | `string` |  |
-| `artist_prefix` | `string` |  |
-| `artist_role` | `string` |  |
-| `artist_suffix` | `string` |  |
-| `artist_ulan_url` | `string` |  |
-| `artist_wikidata_url` | `string` |  |
+| `GalleryNumber` | `string` |  |
+| `accessionNumber` | `string` |  |
+| `accessionYear` | `string` |  |
+| `additionalImages` | `array` |  |
+| `artistAlphaSort` | `string` |  |
+| `artistBeginDate` | `string` |  |
+| `artistDisplayBio` | `string` |  |
+| `artistDisplayName` | `string` |  |
+| `artistEndDate` | `string` |  |
+| `artistGender` | `string` |  |
+| `artistNationality` | `string` |  |
+| `artistPrefix` | `string` |  |
+| `artistRole` | `string` |  |
+| `artistSuffix` | `string` |  |
+| `artistULAN_URL` | `string` |  |
+| `artistWikidata_URL` | `string` |  |
 | `city` | `string` |  |
 | `classification` | `string` |  |
-| `constituent` | `array` |  |
+| `constituents` | `array` |  |
 | `country` | `string` |  |
 | `county` | `string` |  |
-| `credit_line` | `string` |  |
+| `creditLine` | `string` |  |
 | `culture` | `string` |  |
 | `department` | `string` |  |
-| `dimension` | `string` |  |
-| `dimensions_parsed` | `array` |  |
+| `dimensions` | `string` |  |
+| `dimensionsParsed` | `array` |  |
 | `dynasty` | `string` |  |
 | `excavation` | `string` |  |
-| `gallery_number` | `string` |  |
-| `geography_type` | `string` |  |
-| `is_highlight` | `bool` |  |
-| `is_public_domain` | `bool` |  |
-| `is_timeline_work` | `bool` |  |
-| `link_resource` | `string` |  |
+| `geographyType` | `string` |  |
+| `isHighlight` | `bool` |  |
+| `isPublicDomain` | `bool` |  |
+| `isTimelineWork` | `bool` |  |
+| `linkResource` | `string` |  |
 | `locale` | `string` |  |
 | `locus` | `string` |  |
-| `measurement` | `array` |  |
+| `measurements` | `array` |  |
 | `medium` | `string` |  |
-| `metadata_date` | `string` |  |
-| `object_begin_date` | `int` |  |
-| `object_date` | `string` |  |
-| `object_end_date` | `int` |  |
-| `object_i_d` | `array` |  |
-| `object_id` | `int` |  |
-| `object_name` | `string` |  |
-| `object_url` | `string` |  |
-| `object_wikidata_url` | `string` |  |
+| `metadataDate` | `string` |  |
+| `objectBeginDate` | `int` |  |
+| `objectDate` | `string` |  |
+| `objectEndDate` | `int` |  |
+| `objectID` | `int` |  |
+| `objectIDs` | `array` |  |
+| `objectName` | `string` |  |
+| `objectURL` | `string` |  |
+| `objectWikidata_URL` | `string` |  |
 | `period` | `string` |  |
 | `portfolio` | `string` |  |
-| `primary_image` | `string` |  |
-| `primary_image_small` | `string` |  |
+| `primaryImage` | `string` |  |
+| `primaryImageSmall` | `string` |  |
 | `region` | `string` |  |
 | `reign` | `string` |  |
 | `repository` | `string` |  |
-| `rights_and_reproduction` | `string` |  |
+| `rightsAndReproduction` | `string` |  |
 | `river` | `string` |  |
 | `state` | `string` |  |
 | `subregion` | `string` |  |
-| `tag` | `array` |  |
+| `tags` | `array` |  |
 | `title` | `string` |  |
 | `total` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Object record (throws on error).
+// load() returns the ENTITY — call data_get() for the Object record (throws on error).
 $object = $client->Object()->load(["id" => 1]);
 ```
 
@@ -471,7 +472,7 @@ Create an instance: `$search = $client->Search();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | `array` |  |
+| `objectIDs` | `array` |  |
 | `total` | `int` |  |
 
 #### Example: List
@@ -558,11 +559,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$department = $client->Department();
-$department->list();
+$search = $client->Search();
+$search->list();
 
-// $department->data_get() now returns the department data from the last list
-// $department->match_get() returns the last match criteria
+// $search->data_get() now returns the search data from the last list
+// $search->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from metmuseumcollection_sdk.utility.voxgig_struct import voxgig_struct as vs
 from metmuseumcollection_sdk import MetMuseumCollectionSDK
-from core import helpers
+from metmuseumcollection_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _department_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "METMUSEUMCOLLECTION_TEST_DEPARTMENT_ENTID": {},
-        "METMUSEUMCOLLECTION_TEST_LIVE": "FALSE",
+        "MET_MUSEUM_COLLECTION_TEST_DEPARTMENT_ENTID": {},
+        "MET_MUSEUM_COLLECTION_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("METMUSEUMCOLLECTION_TEST_LIVE") == "TRUE"
+    live = env.get("MET_MUSEUM_COLLECTION_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

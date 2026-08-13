@@ -95,8 +95,8 @@ department = client.Department()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `int` | No |  |
-| `display_name` | `str` | No |  |
+| `departmentId` | `int` | No |  |
+| `displayName` | `str` | No |  |
 
 ### Operations
 
@@ -149,64 +149,64 @@ object = client.Object()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession_number` | `str` | No |  |
-| `accession_year` | `str` | No |  |
-| `additional_image` | `list` | No |  |
-| `artist_alpha_sort` | `str` | No |  |
-| `artist_begin_date` | `str` | No |  |
-| `artist_display_bio` | `str` | No |  |
-| `artist_display_name` | `str` | No |  |
-| `artist_end_date` | `str` | No |  |
-| `artist_gender` | `str` | No |  |
-| `artist_nationality` | `str` | No |  |
-| `artist_prefix` | `str` | No |  |
-| `artist_role` | `str` | No |  |
-| `artist_suffix` | `str` | No |  |
-| `artist_ulan_url` | `str` | No |  |
-| `artist_wikidata_url` | `str` | No |  |
+| `GalleryNumber` | `str` | No |  |
+| `accessionNumber` | `str` | No |  |
+| `accessionYear` | `str` | No |  |
+| `additionalImages` | `list` | No |  |
+| `artistAlphaSort` | `str` | No |  |
+| `artistBeginDate` | `str` | No |  |
+| `artistDisplayBio` | `str` | No |  |
+| `artistDisplayName` | `str` | No |  |
+| `artistEndDate` | `str` | No |  |
+| `artistGender` | `str` | No |  |
+| `artistNationality` | `str` | No |  |
+| `artistPrefix` | `str` | No |  |
+| `artistRole` | `str` | No |  |
+| `artistSuffix` | `str` | No |  |
+| `artistULAN_URL` | `str` | No |  |
+| `artistWikidata_URL` | `str` | No |  |
 | `city` | `str` | No |  |
 | `classification` | `str` | No |  |
-| `constituent` | `list` | No |  |
+| `constituents` | `list` | No |  |
 | `country` | `str` | No |  |
 | `county` | `str` | No |  |
-| `credit_line` | `str` | No |  |
+| `creditLine` | `str` | No |  |
 | `culture` | `str` | No |  |
 | `department` | `str` | No |  |
-| `dimension` | `str` | No |  |
-| `dimensions_parsed` | `list` | No |  |
+| `dimensions` | `str` | No |  |
+| `dimensionsParsed` | `list` | No |  |
 | `dynasty` | `str` | No |  |
 | `excavation` | `str` | No |  |
-| `gallery_number` | `str` | No |  |
-| `geography_type` | `str` | No |  |
-| `is_highlight` | `bool` | No |  |
-| `is_public_domain` | `bool` | No |  |
-| `is_timeline_work` | `bool` | No |  |
-| `link_resource` | `str` | No |  |
+| `geographyType` | `str` | No |  |
+| `isHighlight` | `bool` | No |  |
+| `isPublicDomain` | `bool` | No |  |
+| `isTimelineWork` | `bool` | No |  |
+| `linkResource` | `str` | No |  |
 | `locale` | `str` | No |  |
 | `locus` | `str` | No |  |
-| `measurement` | `list` | No |  |
+| `measurements` | `list` | No |  |
 | `medium` | `str` | No |  |
-| `metadata_date` | `str` | No |  |
-| `object_begin_date` | `int` | No |  |
-| `object_date` | `str` | No |  |
-| `object_end_date` | `int` | No |  |
-| `object_i_d` | `list` | No |  |
-| `object_id` | `int` | No |  |
-| `object_name` | `str` | No |  |
-| `object_url` | `str` | No |  |
-| `object_wikidata_url` | `str` | No |  |
+| `metadataDate` | `str` | No |  |
+| `objectBeginDate` | `int` | No |  |
+| `objectDate` | `str` | No |  |
+| `objectEndDate` | `int` | No |  |
+| `objectID` | `int` | No |  |
+| `objectIDs` | `list` | No |  |
+| `objectName` | `str` | No |  |
+| `objectURL` | `str` | No |  |
+| `objectWikidata_URL` | `str` | No |  |
 | `period` | `str` | No |  |
 | `portfolio` | `str` | No |  |
-| `primary_image` | `str` | No |  |
-| `primary_image_small` | `str` | No |  |
+| `primaryImage` | `str` | No |  |
+| `primaryImageSmall` | `str` | No |  |
 | `region` | `str` | No |  |
 | `reign` | `str` | No |  |
 | `repository` | `str` | No |  |
-| `rights_and_reproduction` | `str` | No |  |
+| `rightsAndReproduction` | `str` | No |  |
 | `river` | `str` | No |  |
 | `state` | `str` | No |  |
 | `subregion` | `str` | No |  |
-| `tag` | `list` | No |  |
+| `tags` | `list` | No |  |
 | `title` | `str` | No |  |
 | `total` | `int` | No |  |
 
@@ -269,7 +269,7 @@ search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `object_i_d` | `list` | No |  |
+| `objectIDs` | `list` | No |  |
 | `total` | `int` | No |  |
 
 ### Operations

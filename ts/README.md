@@ -35,7 +35,9 @@ const client = new MetMuseumCollectionSDK()
 
 ### 2. List department records
 
-`list()` resolves to an array of Department objects — iterate it directly:
+`list()` resolves to an array of Department ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const departments = await client.Department().list()
@@ -52,8 +54,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const departments = await client.Department().list()
-  console.log(departments)
+  const searchs = await client.Search().list()
+  console.log(searchs)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -119,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MetMuseumCollectionSDK.test()
 
-const department = await client.Department().list()
-// department is a bare entity populated with mock response data
-console.log(department)
+const search = await client.Search().list()
+// search is the entity, populated with mock response data
+// — call search.data() for the record itself
+console.log(search)
 ```
 
 You can also use the instance method:
@@ -136,7 +139,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Department()
+const entity = client.Search()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -288,8 +291,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
-| `display_name` |  |
+| `departmentId` |  |
+| `displayName` |  |
 
 Operations: list.
 
@@ -299,64 +302,64 @@ API path: `/departments`
 
 | Field | Description |
 | --- | --- |
-| `accession_number` |  |
-| `accession_year` |  |
-| `additional_image` |  |
-| `artist_alpha_sort` |  |
-| `artist_begin_date` |  |
-| `artist_display_bio` |  |
-| `artist_display_name` |  |
-| `artist_end_date` |  |
-| `artist_gender` |  |
-| `artist_nationality` |  |
-| `artist_prefix` |  |
-| `artist_role` |  |
-| `artist_suffix` |  |
-| `artist_ulan_url` |  |
-| `artist_wikidata_url` |  |
+| `GalleryNumber` |  |
+| `accessionNumber` |  |
+| `accessionYear` |  |
+| `additionalImages` |  |
+| `artistAlphaSort` |  |
+| `artistBeginDate` |  |
+| `artistDisplayBio` |  |
+| `artistDisplayName` |  |
+| `artistEndDate` |  |
+| `artistGender` |  |
+| `artistNationality` |  |
+| `artistPrefix` |  |
+| `artistRole` |  |
+| `artistSuffix` |  |
+| `artistULAN_URL` |  |
+| `artistWikidata_URL` |  |
 | `city` |  |
 | `classification` |  |
-| `constituent` |  |
+| `constituents` |  |
 | `country` |  |
 | `county` |  |
-| `credit_line` |  |
+| `creditLine` |  |
 | `culture` |  |
 | `department` |  |
-| `dimension` |  |
-| `dimensions_parsed` |  |
+| `dimensions` |  |
+| `dimensionsParsed` |  |
 | `dynasty` |  |
 | `excavation` |  |
-| `gallery_number` |  |
-| `geography_type` |  |
-| `is_highlight` |  |
-| `is_public_domain` |  |
-| `is_timeline_work` |  |
-| `link_resource` |  |
+| `geographyType` |  |
+| `isHighlight` |  |
+| `isPublicDomain` |  |
+| `isTimelineWork` |  |
+| `linkResource` |  |
 | `locale` |  |
 | `locus` |  |
-| `measurement` |  |
+| `measurements` |  |
 | `medium` |  |
-| `metadata_date` |  |
-| `object_begin_date` |  |
-| `object_date` |  |
-| `object_end_date` |  |
-| `object_i_d` |  |
-| `object_id` |  |
-| `object_name` |  |
-| `object_url` |  |
-| `object_wikidata_url` |  |
+| `metadataDate` |  |
+| `objectBeginDate` |  |
+| `objectDate` |  |
+| `objectEndDate` |  |
+| `objectID` |  |
+| `objectIDs` |  |
+| `objectName` |  |
+| `objectURL` |  |
+| `objectWikidata_URL` |  |
 | `period` |  |
 | `portfolio` |  |
-| `primary_image` |  |
-| `primary_image_small` |  |
+| `primaryImage` |  |
+| `primaryImageSmall` |  |
 | `region` |  |
 | `reign` |  |
 | `repository` |  |
-| `rights_and_reproduction` |  |
+| `rightsAndReproduction` |  |
 | `river` |  |
 | `state` |  |
 | `subregion` |  |
-| `tag` |  |
+| `tags` |  |
 | `title` |  |
 | `total` |  |
 
@@ -368,7 +371,7 @@ API path: `/objects`
 
 | Field | Description |
 | --- | --- |
-| `object_i_d` |  |
+| `objectIDs` |  |
 | `total` |  |
 
 Operations: list.
@@ -394,8 +397,8 @@ Create an instance: `const department = client.Department()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `number` |  |
-| `display_name` | `string` |  |
+| `departmentId` | `number` |  |
+| `displayName` | `string` |  |
 
 #### Example: List
 
@@ -419,64 +422,64 @@ Create an instance: `const object = client.Object()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | `string` |  |
-| `accession_year` | `string` |  |
-| `additional_image` | `any[]` |  |
-| `artist_alpha_sort` | `string` |  |
-| `artist_begin_date` | `string` |  |
-| `artist_display_bio` | `string` |  |
-| `artist_display_name` | `string` |  |
-| `artist_end_date` | `string` |  |
-| `artist_gender` | `string` |  |
-| `artist_nationality` | `string` |  |
-| `artist_prefix` | `string` |  |
-| `artist_role` | `string` |  |
-| `artist_suffix` | `string` |  |
-| `artist_ulan_url` | `string` |  |
-| `artist_wikidata_url` | `string` |  |
+| `GalleryNumber` | `string` |  |
+| `accessionNumber` | `string` |  |
+| `accessionYear` | `string` |  |
+| `additionalImages` | `any[]` |  |
+| `artistAlphaSort` | `string` |  |
+| `artistBeginDate` | `string` |  |
+| `artistDisplayBio` | `string` |  |
+| `artistDisplayName` | `string` |  |
+| `artistEndDate` | `string` |  |
+| `artistGender` | `string` |  |
+| `artistNationality` | `string` |  |
+| `artistPrefix` | `string` |  |
+| `artistRole` | `string` |  |
+| `artistSuffix` | `string` |  |
+| `artistULAN_URL` | `string` |  |
+| `artistWikidata_URL` | `string` |  |
 | `city` | `string` |  |
 | `classification` | `string` |  |
-| `constituent` | `any[]` |  |
+| `constituents` | `any[]` |  |
 | `country` | `string` |  |
 | `county` | `string` |  |
-| `credit_line` | `string` |  |
+| `creditLine` | `string` |  |
 | `culture` | `string` |  |
 | `department` | `string` |  |
-| `dimension` | `string` |  |
-| `dimensions_parsed` | `any[]` |  |
+| `dimensions` | `string` |  |
+| `dimensionsParsed` | `any[]` |  |
 | `dynasty` | `string` |  |
 | `excavation` | `string` |  |
-| `gallery_number` | `string` |  |
-| `geography_type` | `string` |  |
-| `is_highlight` | `boolean` |  |
-| `is_public_domain` | `boolean` |  |
-| `is_timeline_work` | `boolean` |  |
-| `link_resource` | `string` |  |
+| `geographyType` | `string` |  |
+| `isHighlight` | `boolean` |  |
+| `isPublicDomain` | `boolean` |  |
+| `isTimelineWork` | `boolean` |  |
+| `linkResource` | `string` |  |
 | `locale` | `string` |  |
 | `locus` | `string` |  |
-| `measurement` | `any[]` |  |
+| `measurements` | `any[]` |  |
 | `medium` | `string` |  |
-| `metadata_date` | `string` |  |
-| `object_begin_date` | `number` |  |
-| `object_date` | `string` |  |
-| `object_end_date` | `number` |  |
-| `object_i_d` | `any[]` |  |
-| `object_id` | `number` |  |
-| `object_name` | `string` |  |
-| `object_url` | `string` |  |
-| `object_wikidata_url` | `string` |  |
+| `metadataDate` | `string` |  |
+| `objectBeginDate` | `number` |  |
+| `objectDate` | `string` |  |
+| `objectEndDate` | `number` |  |
+| `objectID` | `number` |  |
+| `objectIDs` | `any[]` |  |
+| `objectName` | `string` |  |
+| `objectURL` | `string` |  |
+| `objectWikidata_URL` | `string` |  |
 | `period` | `string` |  |
 | `portfolio` | `string` |  |
-| `primary_image` | `string` |  |
-| `primary_image_small` | `string` |  |
+| `primaryImage` | `string` |  |
+| `primaryImageSmall` | `string` |  |
 | `region` | `string` |  |
 | `reign` | `string` |  |
 | `repository` | `string` |  |
-| `rights_and_reproduction` | `string` |  |
+| `rightsAndReproduction` | `string` |  |
 | `river` | `string` |  |
 | `state` | `string` |  |
 | `subregion` | `string` |  |
-| `tag` | `any[]` |  |
+| `tags` | `any[]` |  |
 | `title` | `string` |  |
 | `total` | `number` |  |
 
@@ -507,7 +510,7 @@ Create an instance: `const search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | `any[]` |  |
+| `objectIDs` | `any[]` |  |
 | `total` | `number` |  |
 
 #### Example: List
@@ -586,11 +589,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const department = client.Department()
-await department.list()
+const search = client.Search()
+await search.list()
 
-// department.data() now returns the department data from the last `list`
-// department.match() returns the last match criteria
+// search.data() now returns the search data from the last `list`
+// search.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -6,12 +6,12 @@ main: kit: entity: department: {
 
   fields: [
     {
-      name: "department_id"
+      name: "departmentId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "display_name"
+      name: "displayName"
       req: false
       type: "`$STRING`"
     }
@@ -30,7 +30,7 @@ main: kit: entity: department: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.departments`"
           }
         }
       ]

@@ -6,77 +6,82 @@ main: kit: entity: object: {
 
   fields: [
     {
-      name: "accession_number"
+      name: "GalleryNumber"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "accession_year"
+      name: "accessionNumber"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "additional_image"
+      name: "accessionYear"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "additionalImages"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "artist_alpha_sort"
+      name: "artistAlphaSort"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_begin_date"
+      name: "artistBeginDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_display_bio"
+      name: "artistDisplayBio"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_display_name"
+      name: "artistDisplayName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_end_date"
+      name: "artistEndDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_gender"
+      name: "artistGender"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_nationality"
+      name: "artistNationality"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_prefix"
+      name: "artistPrefix"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_role"
+      name: "artistRole"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_suffix"
+      name: "artistSuffix"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_ulan_url"
+      name: "artistULAN_URL"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "artist_wikidata_url"
+      name: "artistWikidata_URL"
       req: false
       type: "`$STRING`"
     }
@@ -91,7 +96,7 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "constituent"
+      name: "constituents"
       req: false
       type: "`$ARRAY`"
     }
@@ -106,7 +111,7 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "credit_line"
+      name: "creditLine"
       req: false
       type: "`$STRING`"
     }
@@ -121,12 +126,12 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "dimension"
+      name: "dimensions"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "dimensions_parsed"
+      name: "dimensionsParsed"
       req: false
       type: "`$ARRAY`"
     }
@@ -141,32 +146,27 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "gallery_number"
+      name: "geographyType"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "geography_type"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "is_highlight"
+      name: "isHighlight"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "is_public_domain"
+      name: "isPublicDomain"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "is_timeline_work"
+      name: "isTimelineWork"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "link_resource"
+      name: "linkResource"
       req: false
       type: "`$STRING`"
     }
@@ -181,7 +181,7 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "measurement"
+      name: "measurements"
       req: false
       type: "`$ARRAY`"
     }
@@ -191,47 +191,47 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "metadata_date"
+      name: "metadataDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "object_begin_date"
+      name: "objectBeginDate"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "object_date"
+      name: "objectDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "object_end_date"
+      name: "objectEndDate"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "object_i_d"
+      name: "objectID"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "objectIDs"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "object_id"
-      req: false
-      type: "`$INTEGER`"
-    }
-    {
-      name: "object_name"
+      name: "objectName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "object_url"
+      name: "objectURL"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "object_wikidata_url"
+      name: "objectWikidata_URL"
       req: false
       type: "`$STRING`"
     }
@@ -246,12 +246,12 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "primary_image"
+      name: "primaryImage"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "primary_image_small"
+      name: "primaryImageSmall"
       req: false
       type: "`$STRING`"
     }
@@ -271,7 +271,7 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "rights_and_reproduction"
+      name: "rightsAndReproduction"
       req: false
       type: "`$STRING`"
     }
@@ -291,7 +291,7 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
-      name: "tag"
+      name: "tags"
       req: false
       type: "`$ARRAY`"
     }
@@ -346,7 +346,7 @@ main: kit: entity: object: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.objectIDs`"
           }
         }
       ]

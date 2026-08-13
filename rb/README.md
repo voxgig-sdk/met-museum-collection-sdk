@@ -37,7 +37,7 @@ begin
   # list returns an Array of Department records — iterate directly.
   departments = client.Department.list
   departments.each do |item|
-    puts "#{item["department_id"]}"
+    puts "#{item["departmentId"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  departments = client.Department.list()
+  searchs = client.Search.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = MetMuseumCollectionSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-department = client.Department.list()
-puts department
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+search = client.Search.list()
+puts search
 ```
 
 ### Use a custom fetch function
@@ -239,8 +240,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `department_id` |  |
-| `display_name` |  |
+| `departmentId` |  |
+| `displayName` |  |
 
 Operations: List.
 
@@ -250,64 +251,64 @@ API path: `/departments`
 
 | Field | Description |
 | --- | --- |
-| `accession_number` |  |
-| `accession_year` |  |
-| `additional_image` |  |
-| `artist_alpha_sort` |  |
-| `artist_begin_date` |  |
-| `artist_display_bio` |  |
-| `artist_display_name` |  |
-| `artist_end_date` |  |
-| `artist_gender` |  |
-| `artist_nationality` |  |
-| `artist_prefix` |  |
-| `artist_role` |  |
-| `artist_suffix` |  |
-| `artist_ulan_url` |  |
-| `artist_wikidata_url` |  |
+| `GalleryNumber` |  |
+| `accessionNumber` |  |
+| `accessionYear` |  |
+| `additionalImages` |  |
+| `artistAlphaSort` |  |
+| `artistBeginDate` |  |
+| `artistDisplayBio` |  |
+| `artistDisplayName` |  |
+| `artistEndDate` |  |
+| `artistGender` |  |
+| `artistNationality` |  |
+| `artistPrefix` |  |
+| `artistRole` |  |
+| `artistSuffix` |  |
+| `artistULAN_URL` |  |
+| `artistWikidata_URL` |  |
 | `city` |  |
 | `classification` |  |
-| `constituent` |  |
+| `constituents` |  |
 | `country` |  |
 | `county` |  |
-| `credit_line` |  |
+| `creditLine` |  |
 | `culture` |  |
 | `department` |  |
-| `dimension` |  |
-| `dimensions_parsed` |  |
+| `dimensions` |  |
+| `dimensionsParsed` |  |
 | `dynasty` |  |
 | `excavation` |  |
-| `gallery_number` |  |
-| `geography_type` |  |
-| `is_highlight` |  |
-| `is_public_domain` |  |
-| `is_timeline_work` |  |
-| `link_resource` |  |
+| `geographyType` |  |
+| `isHighlight` |  |
+| `isPublicDomain` |  |
+| `isTimelineWork` |  |
+| `linkResource` |  |
 | `locale` |  |
 | `locus` |  |
-| `measurement` |  |
+| `measurements` |  |
 | `medium` |  |
-| `metadata_date` |  |
-| `object_begin_date` |  |
-| `object_date` |  |
-| `object_end_date` |  |
-| `object_i_d` |  |
-| `object_id` |  |
-| `object_name` |  |
-| `object_url` |  |
-| `object_wikidata_url` |  |
+| `metadataDate` |  |
+| `objectBeginDate` |  |
+| `objectDate` |  |
+| `objectEndDate` |  |
+| `objectID` |  |
+| `objectIDs` |  |
+| `objectName` |  |
+| `objectURL` |  |
+| `objectWikidata_URL` |  |
 | `period` |  |
 | `portfolio` |  |
-| `primary_image` |  |
-| `primary_image_small` |  |
+| `primaryImage` |  |
+| `primaryImageSmall` |  |
 | `region` |  |
 | `reign` |  |
 | `repository` |  |
-| `rights_and_reproduction` |  |
+| `rightsAndReproduction` |  |
 | `river` |  |
 | `state` |  |
 | `subregion` |  |
-| `tag` |  |
+| `tags` |  |
 | `title` |  |
 | `total` |  |
 
@@ -319,7 +320,7 @@ API path: `/objects`
 
 | Field | Description |
 | --- | --- |
-| `object_i_d` |  |
+| `objectIDs` |  |
 | `total` |  |
 
 Operations: List.
@@ -345,8 +346,8 @@ Create an instance: `department = client.Department`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `department_id` | `Integer` |  |
-| `display_name` | `String` |  |
+| `departmentId` | `Integer` |  |
+| `displayName` | `String` |  |
 
 #### Example: List
 
@@ -371,71 +372,71 @@ Create an instance: `object = client.Object`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession_number` | `String` |  |
-| `accession_year` | `String` |  |
-| `additional_image` | `Array` |  |
-| `artist_alpha_sort` | `String` |  |
-| `artist_begin_date` | `String` |  |
-| `artist_display_bio` | `String` |  |
-| `artist_display_name` | `String` |  |
-| `artist_end_date` | `String` |  |
-| `artist_gender` | `String` |  |
-| `artist_nationality` | `String` |  |
-| `artist_prefix` | `String` |  |
-| `artist_role` | `String` |  |
-| `artist_suffix` | `String` |  |
-| `artist_ulan_url` | `String` |  |
-| `artist_wikidata_url` | `String` |  |
+| `GalleryNumber` | `String` |  |
+| `accessionNumber` | `String` |  |
+| `accessionYear` | `String` |  |
+| `additionalImages` | `Array` |  |
+| `artistAlphaSort` | `String` |  |
+| `artistBeginDate` | `String` |  |
+| `artistDisplayBio` | `String` |  |
+| `artistDisplayName` | `String` |  |
+| `artistEndDate` | `String` |  |
+| `artistGender` | `String` |  |
+| `artistNationality` | `String` |  |
+| `artistPrefix` | `String` |  |
+| `artistRole` | `String` |  |
+| `artistSuffix` | `String` |  |
+| `artistULAN_URL` | `String` |  |
+| `artistWikidata_URL` | `String` |  |
 | `city` | `String` |  |
 | `classification` | `String` |  |
-| `constituent` | `Array` |  |
+| `constituents` | `Array` |  |
 | `country` | `String` |  |
 | `county` | `String` |  |
-| `credit_line` | `String` |  |
+| `creditLine` | `String` |  |
 | `culture` | `String` |  |
 | `department` | `String` |  |
-| `dimension` | `String` |  |
-| `dimensions_parsed` | `Array` |  |
+| `dimensions` | `String` |  |
+| `dimensionsParsed` | `Array` |  |
 | `dynasty` | `String` |  |
 | `excavation` | `String` |  |
-| `gallery_number` | `String` |  |
-| `geography_type` | `String` |  |
-| `is_highlight` | `Boolean` |  |
-| `is_public_domain` | `Boolean` |  |
-| `is_timeline_work` | `Boolean` |  |
-| `link_resource` | `String` |  |
+| `geographyType` | `String` |  |
+| `isHighlight` | `Boolean` |  |
+| `isPublicDomain` | `Boolean` |  |
+| `isTimelineWork` | `Boolean` |  |
+| `linkResource` | `String` |  |
 | `locale` | `String` |  |
 | `locus` | `String` |  |
-| `measurement` | `Array` |  |
+| `measurements` | `Array` |  |
 | `medium` | `String` |  |
-| `metadata_date` | `String` |  |
-| `object_begin_date` | `Integer` |  |
-| `object_date` | `String` |  |
-| `object_end_date` | `Integer` |  |
-| `object_i_d` | `Array` |  |
-| `object_id` | `Integer` |  |
-| `object_name` | `String` |  |
-| `object_url` | `String` |  |
-| `object_wikidata_url` | `String` |  |
+| `metadataDate` | `String` |  |
+| `objectBeginDate` | `Integer` |  |
+| `objectDate` | `String` |  |
+| `objectEndDate` | `Integer` |  |
+| `objectID` | `Integer` |  |
+| `objectIDs` | `Array` |  |
+| `objectName` | `String` |  |
+| `objectURL` | `String` |  |
+| `objectWikidata_URL` | `String` |  |
 | `period` | `String` |  |
 | `portfolio` | `String` |  |
-| `primary_image` | `String` |  |
-| `primary_image_small` | `String` |  |
+| `primaryImage` | `String` |  |
+| `primaryImageSmall` | `String` |  |
 | `region` | `String` |  |
 | `reign` | `String` |  |
 | `repository` | `String` |  |
-| `rights_and_reproduction` | `String` |  |
+| `rightsAndReproduction` | `String` |  |
 | `river` | `String` |  |
 | `state` | `String` |  |
 | `subregion` | `String` |  |
-| `tag` | `Array` |  |
+| `tags` | `Array` |  |
 | `title` | `String` |  |
 | `total` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Object record (raises on error).
+# load returns the ENTITY — call data_get for the Object record (raises on error).
 object = client.Object.load({ "id" => 1 })
 ```
 
@@ -461,7 +462,7 @@ Create an instance: `search = client.Search`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `object_i_d` | `Array` |  |
+| `objectIDs` | `Array` |  |
 | `total` | `Integer` |  |
 
 #### Example: List
@@ -548,11 +549,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-department = client.Department
-department.list()
+search = client.Search
+search.list()
 
-# department.data_get now returns the department data from the last list
-# department.match_get returns the last match criteria
+# search.data_get now returns the search data from the last list
+# search.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

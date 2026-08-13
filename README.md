@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = MetMuseumCollectionSDK.test()
-const departments = await client.Department().list()
-// departments is an array of bare Department records populated with mock data
-console.log(departments)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = MetMuseumCollectionSDK.test({
+  entity: {
+    search: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const searchs = await client.Search().list()
+// searchs is an array of Search entities, populated with mock data
+// — call searchs[0].data() for the record itself
+console.log(searchs)
 ```
 
 ### Python
 
 ```python
 client = MetMuseumCollectionSDK.test()
-departments = client.Department().list()
-print(departments)
+searchs = client.Search().list()
+print(searchs)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(departments)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = MetMuseumCollectionSDK::test([
-    "entity" => ["department" => ["test01" => []]],
+    "entity" => ["search" => ["test01" => []]],
 ]);
-$departments = $client->Department()->list();
+$searchs = $client->Search()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Department(nil).List(
+result, err := client.Search(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Department(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = MetMuseumCollectionSDK.test({
-  "entity" => { "department" => { "test01" => {} } },
+  "entity" => { "search" => { "test01" => {} } },
 })
-departments = client.Department.list()
+searchs = client.Search.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Department():list()
+local results, err = client:Search():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection'
 
 const client = new MetMuseumCollectionSDK()
 
-// List all departments (returns Department[])
+// List all departments (returns DepartmentEntity[] — .data() for the record)
 const departments = await client.Department().list()
 for (const department of departments) {
   console.log(department)
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://collectionapi.metmuseum.org/public/collection/v1](https://collectionapi.metmuseum.org/public/collection/v1)
 

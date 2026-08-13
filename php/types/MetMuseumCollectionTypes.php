@@ -15,78 +15,78 @@ declare(strict_types=1);
 /** Department entity data model. */
 class Department
 {
-    public ?int $department_id = null;
-    public ?string $display_name = null;
+    public ?int $departmentId = null;
+    public ?string $displayName = null;
 }
 
 /** Request payload for Department#list. */
 class DepartmentListMatch
 {
-    public ?int $department_id = null;
-    public ?string $display_name = null;
+    public ?int $departmentId = null;
+    public ?string $displayName = null;
 }
 
 /** Object entity data model. */
 class Object
 {
-    public ?string $accession_number = null;
-    public ?string $accession_year = null;
-    public ?array $additional_image = null;
-    public ?string $artist_alpha_sort = null;
-    public ?string $artist_begin_date = null;
-    public ?string $artist_display_bio = null;
-    public ?string $artist_display_name = null;
-    public ?string $artist_end_date = null;
-    public ?string $artist_gender = null;
-    public ?string $artist_nationality = null;
-    public ?string $artist_prefix = null;
-    public ?string $artist_role = null;
-    public ?string $artist_suffix = null;
-    public ?string $artist_ulan_url = null;
-    public ?string $artist_wikidata_url = null;
+    public ?string $GalleryNumber = null;
+    public ?string $accessionNumber = null;
+    public ?string $accessionYear = null;
+    public ?array $additionalImages = null;
+    public ?string $artistAlphaSort = null;
+    public ?string $artistBeginDate = null;
+    public ?string $artistDisplayBio = null;
+    public ?string $artistDisplayName = null;
+    public ?string $artistEndDate = null;
+    public ?string $artistGender = null;
+    public ?string $artistNationality = null;
+    public ?string $artistPrefix = null;
+    public ?string $artistRole = null;
+    public ?string $artistSuffix = null;
+    public ?string $artistULAN_URL = null;
+    public ?string $artistWikidata_URL = null;
     public ?string $city = null;
     public ?string $classification = null;
-    public ?array $constituent = null;
+    public ?array $constituents = null;
     public ?string $country = null;
     public ?string $county = null;
-    public ?string $credit_line = null;
+    public ?string $creditLine = null;
     public ?string $culture = null;
     public ?string $department = null;
-    public ?string $dimension = null;
-    public ?array $dimensions_parsed = null;
+    public ?string $dimensions = null;
+    public ?array $dimensionsParsed = null;
     public ?string $dynasty = null;
     public ?string $excavation = null;
-    public ?string $gallery_number = null;
-    public ?string $geography_type = null;
-    public ?bool $is_highlight = null;
-    public ?bool $is_public_domain = null;
-    public ?bool $is_timeline_work = null;
-    public ?string $link_resource = null;
+    public ?string $geographyType = null;
+    public ?bool $isHighlight = null;
+    public ?bool $isPublicDomain = null;
+    public ?bool $isTimelineWork = null;
+    public ?string $linkResource = null;
     public ?string $locale = null;
     public ?string $locus = null;
-    public ?array $measurement = null;
+    public ?array $measurements = null;
     public ?string $medium = null;
-    public ?string $metadata_date = null;
-    public ?int $object_begin_date = null;
-    public ?string $object_date = null;
-    public ?int $object_end_date = null;
-    public ?array $object_i_d = null;
-    public ?int $object_id = null;
-    public ?string $object_name = null;
-    public ?string $object_url = null;
-    public ?string $object_wikidata_url = null;
+    public ?string $metadataDate = null;
+    public ?int $objectBeginDate = null;
+    public ?string $objectDate = null;
+    public ?int $objectEndDate = null;
+    public ?int $objectID = null;
+    public ?array $objectIDs = null;
+    public ?string $objectName = null;
+    public ?string $objectURL = null;
+    public ?string $objectWikidata_URL = null;
     public ?string $period = null;
     public ?string $portfolio = null;
-    public ?string $primary_image = null;
-    public ?string $primary_image_small = null;
+    public ?string $primaryImage = null;
+    public ?string $primaryImageSmall = null;
     public ?string $region = null;
     public ?string $reign = null;
     public ?string $repository = null;
-    public ?string $rights_and_reproduction = null;
+    public ?string $rightsAndReproduction = null;
     public ?string $river = null;
     public ?string $state = null;
     public ?string $subregion = null;
-    public ?array $tag = null;
+    public ?array $tags = null;
     public ?string $title = null;
     public ?int $total = null;
 }
@@ -100,64 +100,64 @@ class ObjectLoadMatch
 /** Request payload for Object#list. */
 class ObjectListMatch
 {
-    public ?string $accession_number = null;
-    public ?string $accession_year = null;
-    public ?array $additional_image = null;
-    public ?string $artist_alpha_sort = null;
-    public ?string $artist_begin_date = null;
-    public ?string $artist_display_bio = null;
-    public ?string $artist_display_name = null;
-    public ?string $artist_end_date = null;
-    public ?string $artist_gender = null;
-    public ?string $artist_nationality = null;
-    public ?string $artist_prefix = null;
-    public ?string $artist_role = null;
-    public ?string $artist_suffix = null;
-    public ?string $artist_ulan_url = null;
-    public ?string $artist_wikidata_url = null;
+    public ?string $GalleryNumber = null;
+    public ?string $accessionNumber = null;
+    public ?string $accessionYear = null;
+    public ?array $additionalImages = null;
+    public ?string $artistAlphaSort = null;
+    public ?string $artistBeginDate = null;
+    public ?string $artistDisplayBio = null;
+    public ?string $artistDisplayName = null;
+    public ?string $artistEndDate = null;
+    public ?string $artistGender = null;
+    public ?string $artistNationality = null;
+    public ?string $artistPrefix = null;
+    public ?string $artistRole = null;
+    public ?string $artistSuffix = null;
+    public ?string $artistULAN_URL = null;
+    public ?string $artistWikidata_URL = null;
     public ?string $city = null;
     public ?string $classification = null;
-    public ?array $constituent = null;
+    public ?array $constituents = null;
     public ?string $country = null;
     public ?string $county = null;
-    public ?string $credit_line = null;
+    public ?string $creditLine = null;
     public ?string $culture = null;
     public ?string $department = null;
-    public ?string $dimension = null;
-    public ?array $dimensions_parsed = null;
+    public ?string $dimensions = null;
+    public ?array $dimensionsParsed = null;
     public ?string $dynasty = null;
     public ?string $excavation = null;
-    public ?string $gallery_number = null;
-    public ?string $geography_type = null;
-    public ?bool $is_highlight = null;
-    public ?bool $is_public_domain = null;
-    public ?bool $is_timeline_work = null;
-    public ?string $link_resource = null;
+    public ?string $geographyType = null;
+    public ?bool $isHighlight = null;
+    public ?bool $isPublicDomain = null;
+    public ?bool $isTimelineWork = null;
+    public ?string $linkResource = null;
     public ?string $locale = null;
     public ?string $locus = null;
-    public ?array $measurement = null;
+    public ?array $measurements = null;
     public ?string $medium = null;
-    public ?string $metadata_date = null;
-    public ?int $object_begin_date = null;
-    public ?string $object_date = null;
-    public ?int $object_end_date = null;
-    public ?array $object_i_d = null;
-    public ?int $object_id = null;
-    public ?string $object_name = null;
-    public ?string $object_url = null;
-    public ?string $object_wikidata_url = null;
+    public ?string $metadataDate = null;
+    public ?int $objectBeginDate = null;
+    public ?string $objectDate = null;
+    public ?int $objectEndDate = null;
+    public ?int $objectID = null;
+    public ?array $objectIDs = null;
+    public ?string $objectName = null;
+    public ?string $objectURL = null;
+    public ?string $objectWikidata_URL = null;
     public ?string $period = null;
     public ?string $portfolio = null;
-    public ?string $primary_image = null;
-    public ?string $primary_image_small = null;
+    public ?string $primaryImage = null;
+    public ?string $primaryImageSmall = null;
     public ?string $region = null;
     public ?string $reign = null;
     public ?string $repository = null;
-    public ?string $rights_and_reproduction = null;
+    public ?string $rightsAndReproduction = null;
     public ?string $river = null;
     public ?string $state = null;
     public ?string $subregion = null;
-    public ?array $tag = null;
+    public ?array $tags = null;
     public ?string $title = null;
     public ?int $total = null;
 }
@@ -165,14 +165,14 @@ class ObjectListMatch
 /** Search entity data model. */
 class Search
 {
-    public ?array $object_i_d = null;
+    public ?array $objectIDs = null;
     public ?int $total = null;
 }
 
 /** Request payload for Search#list. */
 class SearchListMatch
 {
-    public ?array $object_i_d = null;
+    public ?array $objectIDs = null;
     public ?int $total = null;
 }
 

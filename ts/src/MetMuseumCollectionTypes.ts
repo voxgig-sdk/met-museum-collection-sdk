@@ -6,74 +6,74 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Department {
-  department_id?: number
-  display_name?: string
+  departmentId?: number
+  displayName?: string
 }
 
 export interface DepartmentListMatch {
-  department_id?: number
-  display_name?: string
+  departmentId?: number
+  displayName?: string
 }
 
 export interface Object {
-  accession_number?: string
-  accession_year?: string
-  additional_image?: any[]
-  artist_alpha_sort?: string
-  artist_begin_date?: string
-  artist_display_bio?: string
-  artist_display_name?: string
-  artist_end_date?: string
-  artist_gender?: string
-  artist_nationality?: string
-  artist_prefix?: string
-  artist_role?: string
-  artist_suffix?: string
-  artist_ulan_url?: string
-  artist_wikidata_url?: string
+  GalleryNumber?: string
+  accessionNumber?: string
+  accessionYear?: string
+  additionalImages?: any[]
+  artistAlphaSort?: string
+  artistBeginDate?: string
+  artistDisplayBio?: string
+  artistDisplayName?: string
+  artistEndDate?: string
+  artistGender?: string
+  artistNationality?: string
+  artistPrefix?: string
+  artistRole?: string
+  artistSuffix?: string
+  artistULAN_URL?: string
+  artistWikidata_URL?: string
   city?: string
   classification?: string
-  constituent?: any[]
+  constituents?: any[]
   country?: string
   county?: string
-  credit_line?: string
+  creditLine?: string
   culture?: string
   department?: string
-  dimension?: string
-  dimensions_parsed?: any[]
+  dimensions?: string
+  dimensionsParsed?: any[]
   dynasty?: string
   excavation?: string
-  gallery_number?: string
-  geography_type?: string
-  is_highlight?: boolean
-  is_public_domain?: boolean
-  is_timeline_work?: boolean
-  link_resource?: string
+  geographyType?: string
+  isHighlight?: boolean
+  isPublicDomain?: boolean
+  isTimelineWork?: boolean
+  linkResource?: string
   locale?: string
   locus?: string
-  measurement?: any[]
+  measurements?: any[]
   medium?: string
-  metadata_date?: string
-  object_begin_date?: number
-  object_date?: string
-  object_end_date?: number
-  object_i_d?: any[]
-  object_id?: number
-  object_name?: string
-  object_url?: string
-  object_wikidata_url?: string
+  metadataDate?: string
+  objectBeginDate?: number
+  objectDate?: string
+  objectEndDate?: number
+  objectID?: number
+  objectIDs?: any[]
+  objectName?: string
+  objectURL?: string
+  objectWikidata_URL?: string
   period?: string
   portfolio?: string
-  primary_image?: string
-  primary_image_small?: string
+  primaryImage?: string
+  primaryImageSmall?: string
   region?: string
   reign?: string
   repository?: string
-  rights_and_reproduction?: string
+  rightsAndReproduction?: string
   river?: string
   state?: string
   subregion?: string
-  tag?: any[]
+  tags?: any[]
   title?: string
   total?: number
 }
@@ -83,75 +83,75 @@ export interface ObjectLoadMatch {
 }
 
 export interface ObjectListMatch {
-  accession_number?: string
-  accession_year?: string
-  additional_image?: any[]
-  artist_alpha_sort?: string
-  artist_begin_date?: string
-  artist_display_bio?: string
-  artist_display_name?: string
-  artist_end_date?: string
-  artist_gender?: string
-  artist_nationality?: string
-  artist_prefix?: string
-  artist_role?: string
-  artist_suffix?: string
-  artist_ulan_url?: string
-  artist_wikidata_url?: string
+  GalleryNumber?: string
+  accessionNumber?: string
+  accessionYear?: string
+  additionalImages?: any[]
+  artistAlphaSort?: string
+  artistBeginDate?: string
+  artistDisplayBio?: string
+  artistDisplayName?: string
+  artistEndDate?: string
+  artistGender?: string
+  artistNationality?: string
+  artistPrefix?: string
+  artistRole?: string
+  artistSuffix?: string
+  artistULAN_URL?: string
+  artistWikidata_URL?: string
   city?: string
   classification?: string
-  constituent?: any[]
+  constituents?: any[]
   country?: string
   county?: string
-  credit_line?: string
+  creditLine?: string
   culture?: string
   department?: string
-  dimension?: string
-  dimensions_parsed?: any[]
+  dimensions?: string
+  dimensionsParsed?: any[]
   dynasty?: string
   excavation?: string
-  gallery_number?: string
-  geography_type?: string
-  is_highlight?: boolean
-  is_public_domain?: boolean
-  is_timeline_work?: boolean
-  link_resource?: string
+  geographyType?: string
+  isHighlight?: boolean
+  isPublicDomain?: boolean
+  isTimelineWork?: boolean
+  linkResource?: string
   locale?: string
   locus?: string
-  measurement?: any[]
+  measurements?: any[]
   medium?: string
-  metadata_date?: string
-  object_begin_date?: number
-  object_date?: string
-  object_end_date?: number
-  object_i_d?: any[]
-  object_id?: number
-  object_name?: string
-  object_url?: string
-  object_wikidata_url?: string
+  metadataDate?: string
+  objectBeginDate?: number
+  objectDate?: string
+  objectEndDate?: number
+  objectID?: number
+  objectIDs?: any[]
+  objectName?: string
+  objectURL?: string
+  objectWikidata_URL?: string
   period?: string
   portfolio?: string
-  primary_image?: string
-  primary_image_small?: string
+  primaryImage?: string
+  primaryImageSmall?: string
   region?: string
   reign?: string
   repository?: string
-  rights_and_reproduction?: string
+  rightsAndReproduction?: string
   river?: string
   state?: string
   subregion?: string
-  tag?: any[]
+  tags?: any[]
   title?: string
   total?: number
 }
 
 export interface Search {
-  object_i_d?: any[]
+  objectIDs?: any[]
   total?: number
 }
 
 export interface SearchListMatch {
-  object_i_d?: any[]
+  objectIDs?: any[]
   total?: number
 }
 

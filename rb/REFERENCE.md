@@ -101,8 +101,8 @@ department = client.Department
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `department_id` | `Integer` | No |  |
-| `display_name` | `String` | No |  |
+| `departmentId` | `Integer` | No |  |
+| `displayName` | `String` | No |  |
 
 ### Operations
 
@@ -154,64 +154,64 @@ object = client.Object
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession_number` | `String` | No |  |
-| `accession_year` | `String` | No |  |
-| `additional_image` | `Array` | No |  |
-| `artist_alpha_sort` | `String` | No |  |
-| `artist_begin_date` | `String` | No |  |
-| `artist_display_bio` | `String` | No |  |
-| `artist_display_name` | `String` | No |  |
-| `artist_end_date` | `String` | No |  |
-| `artist_gender` | `String` | No |  |
-| `artist_nationality` | `String` | No |  |
-| `artist_prefix` | `String` | No |  |
-| `artist_role` | `String` | No |  |
-| `artist_suffix` | `String` | No |  |
-| `artist_ulan_url` | `String` | No |  |
-| `artist_wikidata_url` | `String` | No |  |
+| `GalleryNumber` | `String` | No |  |
+| `accessionNumber` | `String` | No |  |
+| `accessionYear` | `String` | No |  |
+| `additionalImages` | `Array` | No |  |
+| `artistAlphaSort` | `String` | No |  |
+| `artistBeginDate` | `String` | No |  |
+| `artistDisplayBio` | `String` | No |  |
+| `artistDisplayName` | `String` | No |  |
+| `artistEndDate` | `String` | No |  |
+| `artistGender` | `String` | No |  |
+| `artistNationality` | `String` | No |  |
+| `artistPrefix` | `String` | No |  |
+| `artistRole` | `String` | No |  |
+| `artistSuffix` | `String` | No |  |
+| `artistULAN_URL` | `String` | No |  |
+| `artistWikidata_URL` | `String` | No |  |
 | `city` | `String` | No |  |
 | `classification` | `String` | No |  |
-| `constituent` | `Array` | No |  |
+| `constituents` | `Array` | No |  |
 | `country` | `String` | No |  |
 | `county` | `String` | No |  |
-| `credit_line` | `String` | No |  |
+| `creditLine` | `String` | No |  |
 | `culture` | `String` | No |  |
 | `department` | `String` | No |  |
-| `dimension` | `String` | No |  |
-| `dimensions_parsed` | `Array` | No |  |
+| `dimensions` | `String` | No |  |
+| `dimensionsParsed` | `Array` | No |  |
 | `dynasty` | `String` | No |  |
 | `excavation` | `String` | No |  |
-| `gallery_number` | `String` | No |  |
-| `geography_type` | `String` | No |  |
-| `is_highlight` | `Boolean` | No |  |
-| `is_public_domain` | `Boolean` | No |  |
-| `is_timeline_work` | `Boolean` | No |  |
-| `link_resource` | `String` | No |  |
+| `geographyType` | `String` | No |  |
+| `isHighlight` | `Boolean` | No |  |
+| `isPublicDomain` | `Boolean` | No |  |
+| `isTimelineWork` | `Boolean` | No |  |
+| `linkResource` | `String` | No |  |
 | `locale` | `String` | No |  |
 | `locus` | `String` | No |  |
-| `measurement` | `Array` | No |  |
+| `measurements` | `Array` | No |  |
 | `medium` | `String` | No |  |
-| `metadata_date` | `String` | No |  |
-| `object_begin_date` | `Integer` | No |  |
-| `object_date` | `String` | No |  |
-| `object_end_date` | `Integer` | No |  |
-| `object_i_d` | `Array` | No |  |
-| `object_id` | `Integer` | No |  |
-| `object_name` | `String` | No |  |
-| `object_url` | `String` | No |  |
-| `object_wikidata_url` | `String` | No |  |
+| `metadataDate` | `String` | No |  |
+| `objectBeginDate` | `Integer` | No |  |
+| `objectDate` | `String` | No |  |
+| `objectEndDate` | `Integer` | No |  |
+| `objectID` | `Integer` | No |  |
+| `objectIDs` | `Array` | No |  |
+| `objectName` | `String` | No |  |
+| `objectURL` | `String` | No |  |
+| `objectWikidata_URL` | `String` | No |  |
 | `period` | `String` | No |  |
 | `portfolio` | `String` | No |  |
-| `primary_image` | `String` | No |  |
-| `primary_image_small` | `String` | No |  |
+| `primaryImage` | `String` | No |  |
+| `primaryImageSmall` | `String` | No |  |
 | `region` | `String` | No |  |
 | `reign` | `String` | No |  |
 | `repository` | `String` | No |  |
-| `rights_and_reproduction` | `String` | No |  |
+| `rightsAndReproduction` | `String` | No |  |
 | `river` | `String` | No |  |
 | `state` | `String` | No |  |
 | `subregion` | `String` | No |  |
-| `tag` | `Array` | No |  |
+| `tags` | `Array` | No |  |
 | `title` | `String` | No |  |
 | `total` | `Integer` | No |  |
 
@@ -273,7 +273,7 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `object_i_d` | `Array` | No |  |
+| `objectIDs` | `Array` | No |  |
 | `total` | `Integer` | No |  |
 
 ### Operations

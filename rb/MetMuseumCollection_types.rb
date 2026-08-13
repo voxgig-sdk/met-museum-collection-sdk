@@ -10,75 +10,78 @@
 
 # Department entity data model.
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] display_name
+# @!attribute [rw] displayName
 #   @return [String, nil]
 Department = Struct.new(
-  :department_id,
-  :display_name,
+  :departmentId,
+  :displayName,
   keyword_init: true
 )
 
 # Request payload for Department#list.
 #
-# @!attribute [rw] department_id
+# @!attribute [rw] departmentId
 #   @return [Integer, nil]
 #
-# @!attribute [rw] display_name
+# @!attribute [rw] displayName
 #   @return [String, nil]
 DepartmentListMatch = Struct.new(
-  :department_id,
-  :display_name,
+  :departmentId,
+  :displayName,
   keyword_init: true
 )
 
 # Object entity data model.
 #
-# @!attribute [rw] accession_number
+# @!attribute [rw] GalleryNumber
 #   @return [String, nil]
 #
-# @!attribute [rw] accession_year
+# @!attribute [rw] accessionNumber
 #   @return [String, nil]
 #
-# @!attribute [rw] additional_image
+# @!attribute [rw] accessionYear
+#   @return [String, nil]
+#
+# @!attribute [rw] additionalImages
 #   @return [Array, nil]
 #
-# @!attribute [rw] artist_alpha_sort
+# @!attribute [rw] artistAlphaSort
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_begin_date
+# @!attribute [rw] artistBeginDate
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_display_bio
+# @!attribute [rw] artistDisplayBio
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_display_name
+# @!attribute [rw] artistDisplayName
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_end_date
+# @!attribute [rw] artistEndDate
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_gender
+# @!attribute [rw] artistGender
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_nationality
+# @!attribute [rw] artistNationality
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_prefix
+# @!attribute [rw] artistPrefix
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_role
+# @!attribute [rw] artistRole
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_suffix
+# @!attribute [rw] artistSuffix
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_ulan_url
+# @!attribute [rw] artistULAN_URL
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_wikidata_url
+# @!attribute [rw] artistWikidata_URL
 #   @return [String, nil]
 #
 # @!attribute [rw] city
@@ -87,7 +90,7 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] classification
 #   @return [String, nil]
 #
-# @!attribute [rw] constituent
+# @!attribute [rw] constituents
 #   @return [Array, nil]
 #
 # @!attribute [rw] country
@@ -96,7 +99,7 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] county
 #   @return [String, nil]
 #
-# @!attribute [rw] credit_line
+# @!attribute [rw] creditLine
 #   @return [String, nil]
 #
 # @!attribute [rw] culture
@@ -105,10 +108,10 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] department
 #   @return [String, nil]
 #
-# @!attribute [rw] dimension
+# @!attribute [rw] dimensions
 #   @return [String, nil]
 #
-# @!attribute [rw] dimensions_parsed
+# @!attribute [rw] dimensionsParsed
 #   @return [Array, nil]
 #
 # @!attribute [rw] dynasty
@@ -117,22 +120,19 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] excavation
 #   @return [String, nil]
 #
-# @!attribute [rw] gallery_number
+# @!attribute [rw] geographyType
 #   @return [String, nil]
 #
-# @!attribute [rw] geography_type
-#   @return [String, nil]
-#
-# @!attribute [rw] is_highlight
+# @!attribute [rw] isHighlight
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] is_public_domain
+# @!attribute [rw] isPublicDomain
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] is_timeline_work
+# @!attribute [rw] isTimelineWork
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] link_resource
+# @!attribute [rw] linkResource
 #   @return [String, nil]
 #
 # @!attribute [rw] locale
@@ -141,37 +141,37 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] locus
 #   @return [String, nil]
 #
-# @!attribute [rw] measurement
+# @!attribute [rw] measurements
 #   @return [Array, nil]
 #
 # @!attribute [rw] medium
 #   @return [String, nil]
 #
-# @!attribute [rw] metadata_date
+# @!attribute [rw] metadataDate
 #   @return [String, nil]
 #
-# @!attribute [rw] object_begin_date
+# @!attribute [rw] objectBeginDate
 #   @return [Integer, nil]
 #
-# @!attribute [rw] object_date
+# @!attribute [rw] objectDate
 #   @return [String, nil]
 #
-# @!attribute [rw] object_end_date
+# @!attribute [rw] objectEndDate
 #   @return [Integer, nil]
 #
-# @!attribute [rw] object_i_d
+# @!attribute [rw] objectID
+#   @return [Integer, nil]
+#
+# @!attribute [rw] objectIDs
 #   @return [Array, nil]
 #
-# @!attribute [rw] object_id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] object_name
+# @!attribute [rw] objectName
 #   @return [String, nil]
 #
-# @!attribute [rw] object_url
+# @!attribute [rw] objectURL
 #   @return [String, nil]
 #
-# @!attribute [rw] object_wikidata_url
+# @!attribute [rw] objectWikidata_URL
 #   @return [String, nil]
 #
 # @!attribute [rw] period
@@ -180,10 +180,10 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] portfolio
 #   @return [String, nil]
 #
-# @!attribute [rw] primary_image
+# @!attribute [rw] primaryImage
 #   @return [String, nil]
 #
-# @!attribute [rw] primary_image_small
+# @!attribute [rw] primaryImageSmall
 #   @return [String, nil]
 #
 # @!attribute [rw] region
@@ -195,7 +195,7 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] repository
 #   @return [String, nil]
 #
-# @!attribute [rw] rights_and_reproduction
+# @!attribute [rw] rightsAndReproduction
 #   @return [String, nil]
 #
 # @!attribute [rw] river
@@ -207,7 +207,7 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] subregion
 #   @return [String, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [Array, nil]
 #
 # @!attribute [rw] title
@@ -215,65 +215,65 @@ DepartmentListMatch = Struct.new(
 #
 # @!attribute [rw] total
 #   @return [Integer, nil]
-Object = Struct.new(
-  :accession_number,
-  :accession_year,
-  :additional_image,
-  :artist_alpha_sort,
-  :artist_begin_date,
-  :artist_display_bio,
-  :artist_display_name,
-  :artist_end_date,
-  :artist_gender,
-  :artist_nationality,
-  :artist_prefix,
-  :artist_role,
-  :artist_suffix,
-  :artist_ulan_url,
-  :artist_wikidata_url,
+ObjectType = Struct.new(
+  :GalleryNumber,
+  :accessionNumber,
+  :accessionYear,
+  :additionalImages,
+  :artistAlphaSort,
+  :artistBeginDate,
+  :artistDisplayBio,
+  :artistDisplayName,
+  :artistEndDate,
+  :artistGender,
+  :artistNationality,
+  :artistPrefix,
+  :artistRole,
+  :artistSuffix,
+  :artistULAN_URL,
+  :artistWikidata_URL,
   :city,
   :classification,
-  :constituent,
+  :constituents,
   :country,
   :county,
-  :credit_line,
+  :creditLine,
   :culture,
   :department,
-  :dimension,
-  :dimensions_parsed,
+  :dimensions,
+  :dimensionsParsed,
   :dynasty,
   :excavation,
-  :gallery_number,
-  :geography_type,
-  :is_highlight,
-  :is_public_domain,
-  :is_timeline_work,
-  :link_resource,
+  :geographyType,
+  :isHighlight,
+  :isPublicDomain,
+  :isTimelineWork,
+  :linkResource,
   :locale,
   :locus,
-  :measurement,
+  :measurements,
   :medium,
-  :metadata_date,
-  :object_begin_date,
-  :object_date,
-  :object_end_date,
-  :object_i_d,
-  :object_id,
-  :object_name,
-  :object_url,
-  :object_wikidata_url,
+  :metadataDate,
+  :objectBeginDate,
+  :objectDate,
+  :objectEndDate,
+  :objectID,
+  :objectIDs,
+  :objectName,
+  :objectURL,
+  :objectWikidata_URL,
   :period,
   :portfolio,
-  :primary_image,
-  :primary_image_small,
+  :primaryImage,
+  :primaryImageSmall,
   :region,
   :reign,
   :repository,
-  :rights_and_reproduction,
+  :rightsAndReproduction,
   :river,
   :state,
   :subregion,
-  :tag,
+  :tags,
   :title,
   :total,
   keyword_init: true
@@ -290,49 +290,52 @@ ObjectLoadMatch = Struct.new(
 
 # Request payload for Object#list.
 #
-# @!attribute [rw] accession_number
+# @!attribute [rw] GalleryNumber
 #   @return [String, nil]
 #
-# @!attribute [rw] accession_year
+# @!attribute [rw] accessionNumber
 #   @return [String, nil]
 #
-# @!attribute [rw] additional_image
+# @!attribute [rw] accessionYear
+#   @return [String, nil]
+#
+# @!attribute [rw] additionalImages
 #   @return [Array, nil]
 #
-# @!attribute [rw] artist_alpha_sort
+# @!attribute [rw] artistAlphaSort
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_begin_date
+# @!attribute [rw] artistBeginDate
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_display_bio
+# @!attribute [rw] artistDisplayBio
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_display_name
+# @!attribute [rw] artistDisplayName
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_end_date
+# @!attribute [rw] artistEndDate
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_gender
+# @!attribute [rw] artistGender
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_nationality
+# @!attribute [rw] artistNationality
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_prefix
+# @!attribute [rw] artistPrefix
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_role
+# @!attribute [rw] artistRole
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_suffix
+# @!attribute [rw] artistSuffix
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_ulan_url
+# @!attribute [rw] artistULAN_URL
 #   @return [String, nil]
 #
-# @!attribute [rw] artist_wikidata_url
+# @!attribute [rw] artistWikidata_URL
 #   @return [String, nil]
 #
 # @!attribute [rw] city
@@ -341,7 +344,7 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] classification
 #   @return [String, nil]
 #
-# @!attribute [rw] constituent
+# @!attribute [rw] constituents
 #   @return [Array, nil]
 #
 # @!attribute [rw] country
@@ -350,7 +353,7 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] county
 #   @return [String, nil]
 #
-# @!attribute [rw] credit_line
+# @!attribute [rw] creditLine
 #   @return [String, nil]
 #
 # @!attribute [rw] culture
@@ -359,10 +362,10 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] department
 #   @return [String, nil]
 #
-# @!attribute [rw] dimension
+# @!attribute [rw] dimensions
 #   @return [String, nil]
 #
-# @!attribute [rw] dimensions_parsed
+# @!attribute [rw] dimensionsParsed
 #   @return [Array, nil]
 #
 # @!attribute [rw] dynasty
@@ -371,22 +374,19 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] excavation
 #   @return [String, nil]
 #
-# @!attribute [rw] gallery_number
+# @!attribute [rw] geographyType
 #   @return [String, nil]
 #
-# @!attribute [rw] geography_type
-#   @return [String, nil]
-#
-# @!attribute [rw] is_highlight
+# @!attribute [rw] isHighlight
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] is_public_domain
+# @!attribute [rw] isPublicDomain
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] is_timeline_work
+# @!attribute [rw] isTimelineWork
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] link_resource
+# @!attribute [rw] linkResource
 #   @return [String, nil]
 #
 # @!attribute [rw] locale
@@ -395,37 +395,37 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] locus
 #   @return [String, nil]
 #
-# @!attribute [rw] measurement
+# @!attribute [rw] measurements
 #   @return [Array, nil]
 #
 # @!attribute [rw] medium
 #   @return [String, nil]
 #
-# @!attribute [rw] metadata_date
+# @!attribute [rw] metadataDate
 #   @return [String, nil]
 #
-# @!attribute [rw] object_begin_date
+# @!attribute [rw] objectBeginDate
 #   @return [Integer, nil]
 #
-# @!attribute [rw] object_date
+# @!attribute [rw] objectDate
 #   @return [String, nil]
 #
-# @!attribute [rw] object_end_date
+# @!attribute [rw] objectEndDate
 #   @return [Integer, nil]
 #
-# @!attribute [rw] object_i_d
+# @!attribute [rw] objectID
+#   @return [Integer, nil]
+#
+# @!attribute [rw] objectIDs
 #   @return [Array, nil]
 #
-# @!attribute [rw] object_id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] object_name
+# @!attribute [rw] objectName
 #   @return [String, nil]
 #
-# @!attribute [rw] object_url
+# @!attribute [rw] objectURL
 #   @return [String, nil]
 #
-# @!attribute [rw] object_wikidata_url
+# @!attribute [rw] objectWikidata_URL
 #   @return [String, nil]
 #
 # @!attribute [rw] period
@@ -434,10 +434,10 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] portfolio
 #   @return [String, nil]
 #
-# @!attribute [rw] primary_image
+# @!attribute [rw] primaryImage
 #   @return [String, nil]
 #
-# @!attribute [rw] primary_image_small
+# @!attribute [rw] primaryImageSmall
 #   @return [String, nil]
 #
 # @!attribute [rw] region
@@ -449,7 +449,7 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] repository
 #   @return [String, nil]
 #
-# @!attribute [rw] rights_and_reproduction
+# @!attribute [rw] rightsAndReproduction
 #   @return [String, nil]
 #
 # @!attribute [rw] river
@@ -461,7 +461,7 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] subregion
 #   @return [String, nil]
 #
-# @!attribute [rw] tag
+# @!attribute [rw] tags
 #   @return [Array, nil]
 #
 # @!attribute [rw] title
@@ -470,64 +470,64 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] total
 #   @return [Integer, nil]
 ObjectListMatch = Struct.new(
-  :accession_number,
-  :accession_year,
-  :additional_image,
-  :artist_alpha_sort,
-  :artist_begin_date,
-  :artist_display_bio,
-  :artist_display_name,
-  :artist_end_date,
-  :artist_gender,
-  :artist_nationality,
-  :artist_prefix,
-  :artist_role,
-  :artist_suffix,
-  :artist_ulan_url,
-  :artist_wikidata_url,
+  :GalleryNumber,
+  :accessionNumber,
+  :accessionYear,
+  :additionalImages,
+  :artistAlphaSort,
+  :artistBeginDate,
+  :artistDisplayBio,
+  :artistDisplayName,
+  :artistEndDate,
+  :artistGender,
+  :artistNationality,
+  :artistPrefix,
+  :artistRole,
+  :artistSuffix,
+  :artistULAN_URL,
+  :artistWikidata_URL,
   :city,
   :classification,
-  :constituent,
+  :constituents,
   :country,
   :county,
-  :credit_line,
+  :creditLine,
   :culture,
   :department,
-  :dimension,
-  :dimensions_parsed,
+  :dimensions,
+  :dimensionsParsed,
   :dynasty,
   :excavation,
-  :gallery_number,
-  :geography_type,
-  :is_highlight,
-  :is_public_domain,
-  :is_timeline_work,
-  :link_resource,
+  :geographyType,
+  :isHighlight,
+  :isPublicDomain,
+  :isTimelineWork,
+  :linkResource,
   :locale,
   :locus,
-  :measurement,
+  :measurements,
   :medium,
-  :metadata_date,
-  :object_begin_date,
-  :object_date,
-  :object_end_date,
-  :object_i_d,
-  :object_id,
-  :object_name,
-  :object_url,
-  :object_wikidata_url,
+  :metadataDate,
+  :objectBeginDate,
+  :objectDate,
+  :objectEndDate,
+  :objectID,
+  :objectIDs,
+  :objectName,
+  :objectURL,
+  :objectWikidata_URL,
   :period,
   :portfolio,
-  :primary_image,
-  :primary_image_small,
+  :primaryImage,
+  :primaryImageSmall,
   :region,
   :reign,
   :repository,
-  :rights_and_reproduction,
+  :rightsAndReproduction,
   :river,
   :state,
   :subregion,
-  :tag,
+  :tags,
   :title,
   :total,
   keyword_init: true
@@ -535,26 +535,26 @@ ObjectListMatch = Struct.new(
 
 # Search entity data model.
 #
-# @!attribute [rw] object_i_d
+# @!attribute [rw] objectIDs
 #   @return [Array, nil]
 #
 # @!attribute [rw] total
 #   @return [Integer, nil]
 Search = Struct.new(
-  :object_i_d,
+  :objectIDs,
   :total,
   keyword_init: true
 )
 
 # Request payload for Search#list.
 #
-# @!attribute [rw] object_i_d
+# @!attribute [rw] objectIDs
 #   @return [Array, nil]
 #
 # @!attribute [rw] total
 #   @return [Integer, nil]
 SearchListMatch = Struct.new(
-  :object_i_d,
+  :objectIDs,
   :total,
   keyword_init: true
 )

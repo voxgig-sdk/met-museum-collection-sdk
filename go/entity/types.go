@@ -6,80 +6,84 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/met-museum-collection-sdk/go/core"
+)
 
 // Department is the typed data model for the department entity.
 type Department struct {
-	DepartmentId *int `json:"department_id,omitempty"`
-	DisplayName *string `json:"display_name,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
+	DisplayName *string `json:"displayName,omitempty"`
 }
 
 // DepartmentListMatch is the typed request payload for Department.ListTyped.
 type DepartmentListMatch struct {
-	DepartmentId *int `json:"department_id,omitempty"`
-	DisplayName *string `json:"display_name,omitempty"`
+	DepartmentId *int `json:"departmentId,omitempty"`
+	DisplayName *string `json:"displayName,omitempty"`
 }
 
 // Object is the typed data model for the object entity.
 type Object struct {
-	AccessionNumber *string `json:"accession_number,omitempty"`
-	AccessionYear *string `json:"accession_year,omitempty"`
-	AdditionalImage *[]any `json:"additional_image,omitempty"`
-	ArtistAlphaSort *string `json:"artist_alpha_sort,omitempty"`
-	ArtistBeginDate *string `json:"artist_begin_date,omitempty"`
-	ArtistDisplayBio *string `json:"artist_display_bio,omitempty"`
-	ArtistDisplayName *string `json:"artist_display_name,omitempty"`
-	ArtistEndDate *string `json:"artist_end_date,omitempty"`
-	ArtistGender *string `json:"artist_gender,omitempty"`
-	ArtistNationality *string `json:"artist_nationality,omitempty"`
-	ArtistPrefix *string `json:"artist_prefix,omitempty"`
-	ArtistRole *string `json:"artist_role,omitempty"`
-	ArtistSuffix *string `json:"artist_suffix,omitempty"`
-	ArtistUlanUrl *string `json:"artist_ulan_url,omitempty"`
-	ArtistWikidataUrl *string `json:"artist_wikidata_url,omitempty"`
+	GalleryNumber *string `json:"GalleryNumber,omitempty"`
+	AccessionNumber *string `json:"accessionNumber,omitempty"`
+	AccessionYear *string `json:"accessionYear,omitempty"`
+	AdditionalImages *[]any `json:"additionalImages,omitempty"`
+	ArtistAlphaSort *string `json:"artistAlphaSort,omitempty"`
+	ArtistBeginDate *string `json:"artistBeginDate,omitempty"`
+	ArtistDisplayBio *string `json:"artistDisplayBio,omitempty"`
+	ArtistDisplayName *string `json:"artistDisplayName,omitempty"`
+	ArtistEndDate *string `json:"artistEndDate,omitempty"`
+	ArtistGender *string `json:"artistGender,omitempty"`
+	ArtistNationality *string `json:"artistNationality,omitempty"`
+	ArtistPrefix *string `json:"artistPrefix,omitempty"`
+	ArtistRole *string `json:"artistRole,omitempty"`
+	ArtistSuffix *string `json:"artistSuffix,omitempty"`
+	ArtistULANURL *string `json:"artistULAN_URL,omitempty"`
+	ArtistWikidataURL *string `json:"artistWikidata_URL,omitempty"`
 	City *string `json:"city,omitempty"`
 	Classification *string `json:"classification,omitempty"`
-	Constituent *[]any `json:"constituent,omitempty"`
+	Constituents *[]any `json:"constituents,omitempty"`
 	Country *string `json:"country,omitempty"`
 	County *string `json:"county,omitempty"`
-	CreditLine *string `json:"credit_line,omitempty"`
+	CreditLine *string `json:"creditLine,omitempty"`
 	Culture *string `json:"culture,omitempty"`
 	Department *string `json:"department,omitempty"`
-	Dimension *string `json:"dimension,omitempty"`
-	DimensionsParsed *[]any `json:"dimensions_parsed,omitempty"`
+	Dimensions *string `json:"dimensions,omitempty"`
+	DimensionsParsed *[]any `json:"dimensionsParsed,omitempty"`
 	Dynasty *string `json:"dynasty,omitempty"`
 	Excavation *string `json:"excavation,omitempty"`
-	GalleryNumber *string `json:"gallery_number,omitempty"`
-	GeographyType *string `json:"geography_type,omitempty"`
-	IsHighlight *bool `json:"is_highlight,omitempty"`
-	IsPublicDomain *bool `json:"is_public_domain,omitempty"`
-	IsTimelineWork *bool `json:"is_timeline_work,omitempty"`
-	LinkResource *string `json:"link_resource,omitempty"`
+	GeographyType *string `json:"geographyType,omitempty"`
+	IsHighlight *bool `json:"isHighlight,omitempty"`
+	IsPublicDomain *bool `json:"isPublicDomain,omitempty"`
+	IsTimelineWork *bool `json:"isTimelineWork,omitempty"`
+	LinkResource *string `json:"linkResource,omitempty"`
 	Locale *string `json:"locale,omitempty"`
 	Locus *string `json:"locus,omitempty"`
-	Measurement *[]any `json:"measurement,omitempty"`
+	Measurements *[]any `json:"measurements,omitempty"`
 	Medium *string `json:"medium,omitempty"`
-	MetadataDate *string `json:"metadata_date,omitempty"`
-	ObjectBeginDate *int `json:"object_begin_date,omitempty"`
-	ObjectDate *string `json:"object_date,omitempty"`
-	ObjectEndDate *int `json:"object_end_date,omitempty"`
-	ObjectID *[]any `json:"object_i_d,omitempty"`
-	ObjectId *int `json:"object_id,omitempty"`
-	ObjectName *string `json:"object_name,omitempty"`
-	ObjectUrl *string `json:"object_url,omitempty"`
-	ObjectWikidataUrl *string `json:"object_wikidata_url,omitempty"`
+	MetadataDate *string `json:"metadataDate,omitempty"`
+	ObjectBeginDate *int `json:"objectBeginDate,omitempty"`
+	ObjectDate *string `json:"objectDate,omitempty"`
+	ObjectEndDate *int `json:"objectEndDate,omitempty"`
+	ObjectID *int `json:"objectID,omitempty"`
+	ObjectIDs *[]any `json:"objectIDs,omitempty"`
+	ObjectName *string `json:"objectName,omitempty"`
+	ObjectURL *string `json:"objectURL,omitempty"`
+	ObjectWikidataURL *string `json:"objectWikidata_URL,omitempty"`
 	Period *string `json:"period,omitempty"`
 	Portfolio *string `json:"portfolio,omitempty"`
-	PrimaryImage *string `json:"primary_image,omitempty"`
-	PrimaryImageSmall *string `json:"primary_image_small,omitempty"`
+	PrimaryImage *string `json:"primaryImage,omitempty"`
+	PrimaryImageSmall *string `json:"primaryImageSmall,omitempty"`
 	Region *string `json:"region,omitempty"`
 	Reign *string `json:"reign,omitempty"`
 	Repository *string `json:"repository,omitempty"`
-	RightsAndReproduction *string `json:"rights_and_reproduction,omitempty"`
+	RightsAndReproduction *string `json:"rightsAndReproduction,omitempty"`
 	River *string `json:"river,omitempty"`
 	State *string `json:"state,omitempty"`
 	Subregion *string `json:"subregion,omitempty"`
-	Tag *[]any `json:"tag,omitempty"`
+	Tags *[]any `json:"tags,omitempty"`
 	Title *string `json:"title,omitempty"`
 	Total *int `json:"total,omitempty"`
 }
@@ -91,77 +95,77 @@ type ObjectLoadMatch struct {
 
 // ObjectListMatch is the typed request payload for Object.ListTyped.
 type ObjectListMatch struct {
-	AccessionNumber *string `json:"accession_number,omitempty"`
-	AccessionYear *string `json:"accession_year,omitempty"`
-	AdditionalImage *[]any `json:"additional_image,omitempty"`
-	ArtistAlphaSort *string `json:"artist_alpha_sort,omitempty"`
-	ArtistBeginDate *string `json:"artist_begin_date,omitempty"`
-	ArtistDisplayBio *string `json:"artist_display_bio,omitempty"`
-	ArtistDisplayName *string `json:"artist_display_name,omitempty"`
-	ArtistEndDate *string `json:"artist_end_date,omitempty"`
-	ArtistGender *string `json:"artist_gender,omitempty"`
-	ArtistNationality *string `json:"artist_nationality,omitempty"`
-	ArtistPrefix *string `json:"artist_prefix,omitempty"`
-	ArtistRole *string `json:"artist_role,omitempty"`
-	ArtistSuffix *string `json:"artist_suffix,omitempty"`
-	ArtistUlanUrl *string `json:"artist_ulan_url,omitempty"`
-	ArtistWikidataUrl *string `json:"artist_wikidata_url,omitempty"`
+	GalleryNumber *string `json:"GalleryNumber,omitempty"`
+	AccessionNumber *string `json:"accessionNumber,omitempty"`
+	AccessionYear *string `json:"accessionYear,omitempty"`
+	AdditionalImages *[]any `json:"additionalImages,omitempty"`
+	ArtistAlphaSort *string `json:"artistAlphaSort,omitempty"`
+	ArtistBeginDate *string `json:"artistBeginDate,omitempty"`
+	ArtistDisplayBio *string `json:"artistDisplayBio,omitempty"`
+	ArtistDisplayName *string `json:"artistDisplayName,omitempty"`
+	ArtistEndDate *string `json:"artistEndDate,omitempty"`
+	ArtistGender *string `json:"artistGender,omitempty"`
+	ArtistNationality *string `json:"artistNationality,omitempty"`
+	ArtistPrefix *string `json:"artistPrefix,omitempty"`
+	ArtistRole *string `json:"artistRole,omitempty"`
+	ArtistSuffix *string `json:"artistSuffix,omitempty"`
+	ArtistULANURL *string `json:"artistULAN_URL,omitempty"`
+	ArtistWikidataURL *string `json:"artistWikidata_URL,omitempty"`
 	City *string `json:"city,omitempty"`
 	Classification *string `json:"classification,omitempty"`
-	Constituent *[]any `json:"constituent,omitempty"`
+	Constituents *[]any `json:"constituents,omitempty"`
 	Country *string `json:"country,omitempty"`
 	County *string `json:"county,omitempty"`
-	CreditLine *string `json:"credit_line,omitempty"`
+	CreditLine *string `json:"creditLine,omitempty"`
 	Culture *string `json:"culture,omitempty"`
 	Department *string `json:"department,omitempty"`
-	Dimension *string `json:"dimension,omitempty"`
-	DimensionsParsed *[]any `json:"dimensions_parsed,omitempty"`
+	Dimensions *string `json:"dimensions,omitempty"`
+	DimensionsParsed *[]any `json:"dimensionsParsed,omitempty"`
 	Dynasty *string `json:"dynasty,omitempty"`
 	Excavation *string `json:"excavation,omitempty"`
-	GalleryNumber *string `json:"gallery_number,omitempty"`
-	GeographyType *string `json:"geography_type,omitempty"`
-	IsHighlight *bool `json:"is_highlight,omitempty"`
-	IsPublicDomain *bool `json:"is_public_domain,omitempty"`
-	IsTimelineWork *bool `json:"is_timeline_work,omitempty"`
-	LinkResource *string `json:"link_resource,omitempty"`
+	GeographyType *string `json:"geographyType,omitempty"`
+	IsHighlight *bool `json:"isHighlight,omitempty"`
+	IsPublicDomain *bool `json:"isPublicDomain,omitempty"`
+	IsTimelineWork *bool `json:"isTimelineWork,omitempty"`
+	LinkResource *string `json:"linkResource,omitempty"`
 	Locale *string `json:"locale,omitempty"`
 	Locus *string `json:"locus,omitempty"`
-	Measurement *[]any `json:"measurement,omitempty"`
+	Measurements *[]any `json:"measurements,omitempty"`
 	Medium *string `json:"medium,omitempty"`
-	MetadataDate *string `json:"metadata_date,omitempty"`
-	ObjectBeginDate *int `json:"object_begin_date,omitempty"`
-	ObjectDate *string `json:"object_date,omitempty"`
-	ObjectEndDate *int `json:"object_end_date,omitempty"`
-	ObjectID *[]any `json:"object_i_d,omitempty"`
-	ObjectId *int `json:"object_id,omitempty"`
-	ObjectName *string `json:"object_name,omitempty"`
-	ObjectUrl *string `json:"object_url,omitempty"`
-	ObjectWikidataUrl *string `json:"object_wikidata_url,omitempty"`
+	MetadataDate *string `json:"metadataDate,omitempty"`
+	ObjectBeginDate *int `json:"objectBeginDate,omitempty"`
+	ObjectDate *string `json:"objectDate,omitempty"`
+	ObjectEndDate *int `json:"objectEndDate,omitempty"`
+	ObjectID *int `json:"objectID,omitempty"`
+	ObjectIDs *[]any `json:"objectIDs,omitempty"`
+	ObjectName *string `json:"objectName,omitempty"`
+	ObjectURL *string `json:"objectURL,omitempty"`
+	ObjectWikidataURL *string `json:"objectWikidata_URL,omitempty"`
 	Period *string `json:"period,omitempty"`
 	Portfolio *string `json:"portfolio,omitempty"`
-	PrimaryImage *string `json:"primary_image,omitempty"`
-	PrimaryImageSmall *string `json:"primary_image_small,omitempty"`
+	PrimaryImage *string `json:"primaryImage,omitempty"`
+	PrimaryImageSmall *string `json:"primaryImageSmall,omitempty"`
 	Region *string `json:"region,omitempty"`
 	Reign *string `json:"reign,omitempty"`
 	Repository *string `json:"repository,omitempty"`
-	RightsAndReproduction *string `json:"rights_and_reproduction,omitempty"`
+	RightsAndReproduction *string `json:"rightsAndReproduction,omitempty"`
 	River *string `json:"river,omitempty"`
 	State *string `json:"state,omitempty"`
 	Subregion *string `json:"subregion,omitempty"`
-	Tag *[]any `json:"tag,omitempty"`
+	Tags *[]any `json:"tags,omitempty"`
 	Title *string `json:"title,omitempty"`
 	Total *int `json:"total,omitempty"`
 }
 
 // Search is the typed data model for the search entity.
 type Search struct {
-	ObjectID *[]any `json:"object_i_d,omitempty"`
+	ObjectIDs *[]any `json:"objectIDs,omitempty"`
 	Total *int `json:"total,omitempty"`
 }
 
 // SearchListMatch is the typed request payload for Search.ListTyped.
 type SearchListMatch struct {
-	ObjectID *[]any `json:"object_i_d,omitempty"`
+	ObjectIDs *[]any `json:"objectIDs,omitempty"`
 	Total *int `json:"total,omitempty"`
 }
 
@@ -177,12 +181,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -194,12 +212,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

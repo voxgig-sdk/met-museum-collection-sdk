@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ MetMuseumCollectionUtility.registrar = ->(u) {
   u.prepare_params = MetMuseumCollectionUtilities::PrepareParams
   u.prepare_path = MetMuseumCollectionUtilities::PreparePath
   u.prepare_query = MetMuseumCollectionUtilities::PrepareQuery
+  u.graphql_body = MetMuseumCollectionUtilities::GraphqlBody
+  u.graphql_errors = MetMuseumCollectionUtilities::GraphqlErrors
   u.result_basic = MetMuseumCollectionUtilities::ResultBasic
   u.result_body = MetMuseumCollectionUtilities::ResultBody
   u.result_headers = MetMuseumCollectionUtilities::ResultHeaders
