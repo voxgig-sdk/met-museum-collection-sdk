@@ -27,7 +27,7 @@ class DepartmentListMatch
 }
 
 /** Object entity data model. */
-class Object
+class ObjectType
 {
     public ?string $GalleryNumber = null;
     public ?string $accessionNumber = null;

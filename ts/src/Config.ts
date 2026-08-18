@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://collectionapi.metmuseum.org/public/collection/v1',
+    base: "https://collectionapi.metmuseum.org/public/collection/v1",
 
     headers: {
       "content-type": "application/json"
@@ -61,18 +61,12 @@ class Config {
     "department": {
       "fields": [
         {
-          "active": true,
           "name": "departmentId",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "displayName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         }
       ],
       "name": "department",
@@ -82,7 +76,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -94,11 +87,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.departments`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -108,424 +99,244 @@ class Config {
     "object": {
       "fields": [
         {
-          "active": true,
           "name": "GalleryNumber",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "accessionNumber",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "accessionYear",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "additionalImages",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 3
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "artistAlphaSort",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistBeginDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistDisplayBio",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistDisplayName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistEndDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistGender",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistNationality",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistPrefix",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistRole",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistSuffix",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 13
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistULAN_URL",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "artistWikidata_URL",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "city",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 16
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "classification",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "constituents",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 18
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "country",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 19
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "county",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 20
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "creditLine",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 21
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "culture",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 22
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "department",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 23
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dimensions",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 24
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dimensionsParsed",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 25
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "dynasty",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 26
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "excavation",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 27
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "geographyType",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 28
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "isHighlight",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 29
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "isPublicDomain",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 30
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "isTimelineWork",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 31
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "linkResource",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 32
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "locale",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 33
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "locus",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 34
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "measurements",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 35
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "medium",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 36
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "metadataDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 37
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "objectBeginDate",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 38
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "objectDate",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 39
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "objectEndDate",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 40
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "objectID",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 41
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "objectIDs",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 42
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "objectName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 43
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "objectURL",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 44
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "objectWikidata_URL",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 45
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "period",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 46
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "portfolio",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 47
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "primaryImage",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 48
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "primaryImageSmall",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 49
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "region",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 50
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "reign",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 51
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "repository",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 52
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "rightsAndReproduction",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 53
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "river",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 54
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "state",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 55
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "subregion",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 56
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tags",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 57
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "title",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 58
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "total",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 59
+          "type": "`$INTEGER`"
         }
       ],
       "name": "object",
@@ -535,25 +346,20 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "1",
                     "kind": "query",
                     "name": "department_id",
                     "orig": "department_id",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "2018-10-22",
                     "kind": "query",
                     "name": "metadata_date",
                     "orig": "metadata_date",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -573,29 +379,24 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.objectIDs`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": 45734,
                     "kind": "param",
                     "name": "id",
                     "orig": "object_id",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -619,11 +420,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -633,18 +432,12 @@ class Config {
     "search": {
       "fields": [
         {
-          "active": true,
           "name": "objectIDs",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "total",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         }
       ],
       "name": "search",
@@ -654,115 +447,90 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "artist_or_culture",
                     "orig": "artist_or_culture",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": 1800,
                     "kind": "query",
                     "name": "date_begin",
                     "orig": "date_begin",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 1900,
                     "kind": "query",
                     "name": "date_end",
                     "orig": "date_end",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 11,
                     "kind": "query",
                     "name": "department_id",
                     "orig": "department_id",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": "Europe",
                     "kind": "query",
                     "name": "geo_location",
                     "orig": "geo_location",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "has_image",
                     "orig": "has_image",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "is_highlight",
                     "orig": "is_highlight",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "is_on_view",
                     "orig": "is_on_view",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": "Paintings",
                     "kind": "query",
                     "name": "medium",
                     "orig": "medium",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "sunflowers",
                     "kind": "query",
                     "name": "q",
                     "orig": "q",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "tag",
                     "orig": "tag",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "title",
                     "orig": "title",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   }
                 ]
@@ -792,11 +560,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.objectIDs`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {

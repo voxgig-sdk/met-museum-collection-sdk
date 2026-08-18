@@ -40,7 +40,7 @@ class MetMuseumCollectionSDK
         $utility = new MetMuseumCollectionUtility();
         $this->_utility = $utility;
 
-        $config = MetMuseumCollectionConfig::make_config();
+        $config = MetMuseumCollectionConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

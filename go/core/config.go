@@ -1,5 +1,12 @@
 package core
 
+import (
+	"sync"
+)
+
+// MakeConfig builds a fresh, fully materialised config map. Every call
+// rebuilds the whole structure, so prefer SharedConfig unless you need a
+// private copy you intend to mutate.
 func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
@@ -27,18 +34,12 @@ func MakeConfig() map[string]any {
 			"department": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "departmentId",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "displayName",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 1,
 					},
 				},
 				"name": "department",
@@ -48,7 +49,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -61,7 +61,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.departments`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -73,424 +72,244 @@ func MakeConfig() map[string]any {
 			"object": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "GalleryNumber",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "accessionNumber",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "accessionYear",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "additionalImages",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistAlphaSort",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistBeginDate",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistDisplayBio",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistDisplayName",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistEndDate",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistGender",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistNationality",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistPrefix",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistRole",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistSuffix",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 13,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistULAN_URL",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 14,
 					},
 					map[string]any{
-						"active": true,
 						"name": "artistWikidata_URL",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 15,
 					},
 					map[string]any{
-						"active": true,
 						"name": "city",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 16,
 					},
 					map[string]any{
-						"active": true,
 						"name": "classification",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 17,
 					},
 					map[string]any{
-						"active": true,
 						"name": "constituents",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 18,
 					},
 					map[string]any{
-						"active": true,
 						"name": "country",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 19,
 					},
 					map[string]any{
-						"active": true,
 						"name": "county",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 20,
 					},
 					map[string]any{
-						"active": true,
 						"name": "creditLine",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 21,
 					},
 					map[string]any{
-						"active": true,
 						"name": "culture",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 22,
 					},
 					map[string]any{
-						"active": true,
 						"name": "department",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 23,
 					},
 					map[string]any{
-						"active": true,
 						"name": "dimensions",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 24,
 					},
 					map[string]any{
-						"active": true,
 						"name": "dimensionsParsed",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 25,
 					},
 					map[string]any{
-						"active": true,
 						"name": "dynasty",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 26,
 					},
 					map[string]any{
-						"active": true,
 						"name": "excavation",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 27,
 					},
 					map[string]any{
-						"active": true,
 						"name": "geographyType",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 28,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isHighlight",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 29,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isPublicDomain",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 30,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isTimelineWork",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 31,
 					},
 					map[string]any{
-						"active": true,
 						"name": "linkResource",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 32,
 					},
 					map[string]any{
-						"active": true,
 						"name": "locale",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 33,
 					},
 					map[string]any{
-						"active": true,
 						"name": "locus",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 34,
 					},
 					map[string]any{
-						"active": true,
 						"name": "measurements",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 35,
 					},
 					map[string]any{
-						"active": true,
 						"name": "medium",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 36,
 					},
 					map[string]any{
-						"active": true,
 						"name": "metadataDate",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 37,
 					},
 					map[string]any{
-						"active": true,
 						"name": "objectBeginDate",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 38,
 					},
 					map[string]any{
-						"active": true,
 						"name": "objectDate",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 39,
 					},
 					map[string]any{
-						"active": true,
 						"name": "objectEndDate",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 40,
 					},
 					map[string]any{
-						"active": true,
 						"name": "objectID",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 41,
 					},
 					map[string]any{
-						"active": true,
 						"name": "objectIDs",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 42,
 					},
 					map[string]any{
-						"active": true,
 						"name": "objectName",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 43,
 					},
 					map[string]any{
-						"active": true,
 						"name": "objectURL",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 44,
 					},
 					map[string]any{
-						"active": true,
 						"name": "objectWikidata_URL",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 45,
 					},
 					map[string]any{
-						"active": true,
 						"name": "period",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 46,
 					},
 					map[string]any{
-						"active": true,
 						"name": "portfolio",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 47,
 					},
 					map[string]any{
-						"active": true,
 						"name": "primaryImage",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 48,
 					},
 					map[string]any{
-						"active": true,
 						"name": "primaryImageSmall",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 49,
 					},
 					map[string]any{
-						"active": true,
 						"name": "region",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 50,
 					},
 					map[string]any{
-						"active": true,
 						"name": "reign",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 51,
 					},
 					map[string]any{
-						"active": true,
 						"name": "repository",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 52,
 					},
 					map[string]any{
-						"active": true,
 						"name": "rightsAndReproduction",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 53,
 					},
 					map[string]any{
-						"active": true,
 						"name": "river",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 54,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 55,
 					},
 					map[string]any{
-						"active": true,
 						"name": "subregion",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 56,
 					},
 					map[string]any{
-						"active": true,
 						"name": "tags",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 57,
 					},
 					map[string]any{
-						"active": true,
 						"name": "title",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 58,
 					},
 					map[string]any{
-						"active": true,
 						"name": "total",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 59,
 					},
 				},
 				"name": "object",
@@ -500,25 +319,20 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "1",
 											"kind": "query",
 											"name": "department_id",
 											"orig": "department_id",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "2018-10-22",
 											"kind": "query",
 											"name": "metadata_date",
 											"orig": "metadata_date",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 									},
@@ -539,7 +353,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.objectIDs`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -548,18 +361,15 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": 45734,
 											"kind": "param",
 											"name": "id",
 											"orig": "object_id",
 											"reqd": true,
 											"type": "`$INTEGER`",
-											"index$": 0,
 										},
 									},
 								},
@@ -584,7 +394,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -596,18 +405,12 @@ func MakeConfig() map[string]any {
 			"search": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "objectIDs",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "total",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 1,
 					},
 				},
 				"name": "search",
@@ -617,115 +420,90 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": true,
 											"kind": "query",
 											"name": "artist_or_culture",
 											"orig": "artist_or_culture",
-											"reqd": false,
 											"type": "`$BOOLEAN`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1800,
 											"kind": "query",
 											"name": "date_begin",
 											"orig": "date_begin",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 1900,
 											"kind": "query",
 											"name": "date_end",
 											"orig": "date_end",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": 11,
 											"kind": "query",
 											"name": "department_id",
 											"orig": "department_id",
-											"reqd": false,
 											"type": "`$INTEGER`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "Europe",
 											"kind": "query",
 											"name": "geo_location",
 											"orig": "geo_location",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": true,
 											"kind": "query",
 											"name": "has_image",
 											"orig": "has_image",
-											"reqd": false,
 											"type": "`$BOOLEAN`",
 										},
 										map[string]any{
-											"active": true,
 											"example": true,
 											"kind": "query",
 											"name": "is_highlight",
 											"orig": "is_highlight",
-											"reqd": false,
 											"type": "`$BOOLEAN`",
 										},
 										map[string]any{
-											"active": true,
 											"example": true,
 											"kind": "query",
 											"name": "is_on_view",
 											"orig": "is_on_view",
-											"reqd": false,
 											"type": "`$BOOLEAN`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "Paintings",
 											"kind": "query",
 											"name": "medium",
 											"orig": "medium",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "sunflowers",
 											"kind": "query",
 											"name": "q",
 											"orig": "q",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": true,
 											"kind": "query",
 											"name": "tag",
 											"orig": "tag",
-											"reqd": false,
 											"type": "`$BOOLEAN`",
 										},
 										map[string]any{
-											"active": true,
 											"example": true,
 											"kind": "query",
 											"name": "title",
 											"orig": "title",
-											"reqd": false,
 											"type": "`$BOOLEAN`",
 										},
 									},
@@ -756,7 +534,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.objectIDs`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -767,6 +544,24 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+var (
+	sharedConfigOnce sync.Once
+	sharedConfigVal  map[string]any
+)
+
+// SharedConfig returns the process-wide config, built once on first use.
+// The SDK reads the config on every request and never writes to it, so one
+// instance is shared by every client rather than rebuilt per client.
+//
+// The returned map is shared: treat it as read-only. Callers that need to
+// mutate should use MakeConfig, which always returns a fresh copy.
+func SharedConfig() map[string]any {
+	sharedConfigOnce.Do(func() {
+		sharedConfigVal = MakeConfig()
+	})
+	return sharedConfigVal
 }
 
 func makeFeature(name string) Feature {

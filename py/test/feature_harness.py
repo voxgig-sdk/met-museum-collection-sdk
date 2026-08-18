@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from metmuseumcollection_sdk.config import make_config
+from metmuseumcollection_sdk.config import shared_config
 from metmuseumcollection_sdk.features import _make_feature
 from metmuseumcollection_sdk.core.control import MetMuseumCollectionControl
 from metmuseumcollection_sdk.core.error import MetMuseumCollectionError
@@ -24,7 +24,7 @@ from metmuseumcollection_sdk.core.spec import MetMuseumCollectionSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

@@ -28,7 +28,7 @@ class MetMuseumCollectionSDK
     utility = MetMuseumCollectionUtility.new
     @_utility = utility
 
-    config = MetMuseumCollectionConfig.make_config
+    config = MetMuseumCollectionConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

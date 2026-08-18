@@ -1,7 +1,30 @@
 # MetMuseumCollection SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "MetMuseumCollection",
@@ -28,18 +51,12 @@ def make_config():
       "department": {
         "fields": [
           {
-            "active": True,
             "name": "departmentId",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "displayName",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
         ],
         "name": "department",
@@ -49,7 +66,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -62,10 +78,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.departments`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -75,424 +89,244 @@ def make_config():
       "object": {
         "fields": [
           {
-            "active": True,
             "name": "GalleryNumber",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "accessionNumber",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "accessionYear",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "additionalImages",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "artistAlphaSort",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "artistBeginDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "artistDisplayBio",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "artistDisplayName",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "artistEndDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "artistGender",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "artistNationality",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "artistPrefix",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "artistRole",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "artistSuffix",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "artistULAN_URL",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "artistWikidata_URL",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "city",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "classification",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 17,
           },
           {
-            "active": True,
             "name": "constituents",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 18,
           },
           {
-            "active": True,
             "name": "country",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 19,
           },
           {
-            "active": True,
             "name": "county",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 20,
           },
           {
-            "active": True,
             "name": "creditLine",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 21,
           },
           {
-            "active": True,
             "name": "culture",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 22,
           },
           {
-            "active": True,
             "name": "department",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 23,
           },
           {
-            "active": True,
             "name": "dimensions",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 24,
           },
           {
-            "active": True,
             "name": "dimensionsParsed",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 25,
           },
           {
-            "active": True,
             "name": "dynasty",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 26,
           },
           {
-            "active": True,
             "name": "excavation",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 27,
           },
           {
-            "active": True,
             "name": "geographyType",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 28,
           },
           {
-            "active": True,
             "name": "isHighlight",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 29,
           },
           {
-            "active": True,
             "name": "isPublicDomain",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 30,
           },
           {
-            "active": True,
             "name": "isTimelineWork",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 31,
           },
           {
-            "active": True,
             "name": "linkResource",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 32,
           },
           {
-            "active": True,
             "name": "locale",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 33,
           },
           {
-            "active": True,
             "name": "locus",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 34,
           },
           {
-            "active": True,
             "name": "measurements",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 35,
           },
           {
-            "active": True,
             "name": "medium",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 36,
           },
           {
-            "active": True,
             "name": "metadataDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 37,
           },
           {
-            "active": True,
             "name": "objectBeginDate",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 38,
           },
           {
-            "active": True,
             "name": "objectDate",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 39,
           },
           {
-            "active": True,
             "name": "objectEndDate",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 40,
           },
           {
-            "active": True,
             "name": "objectID",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 41,
           },
           {
-            "active": True,
             "name": "objectIDs",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 42,
           },
           {
-            "active": True,
             "name": "objectName",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 43,
           },
           {
-            "active": True,
             "name": "objectURL",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 44,
           },
           {
-            "active": True,
             "name": "objectWikidata_URL",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 45,
           },
           {
-            "active": True,
             "name": "period",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 46,
           },
           {
-            "active": True,
             "name": "portfolio",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 47,
           },
           {
-            "active": True,
             "name": "primaryImage",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 48,
           },
           {
-            "active": True,
             "name": "primaryImageSmall",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 49,
           },
           {
-            "active": True,
             "name": "region",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 50,
           },
           {
-            "active": True,
             "name": "reign",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 51,
           },
           {
-            "active": True,
             "name": "repository",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 52,
           },
           {
-            "active": True,
             "name": "rightsAndReproduction",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 53,
           },
           {
-            "active": True,
             "name": "river",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 54,
           },
           {
-            "active": True,
             "name": "state",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 55,
           },
           {
-            "active": True,
             "name": "subregion",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 56,
           },
           {
-            "active": True,
             "name": "tags",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 57,
           },
           {
-            "active": True,
             "name": "title",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 58,
           },
           {
-            "active": True,
             "name": "total",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 59,
           },
         ],
         "name": "object",
@@ -502,25 +336,20 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "1",
                       "kind": "query",
                       "name": "department_id",
                       "orig": "department_id",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2018-10-22",
                       "kind": "query",
                       "name": "metadata_date",
                       "orig": "metadata_date",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -541,28 +370,23 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.objectIDs`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": 45734,
                       "kind": "param",
                       "name": "id",
                       "orig": "object_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -587,10 +411,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -600,18 +422,12 @@ def make_config():
       "search": {
         "fields": [
           {
-            "active": True,
             "name": "objectIDs",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "total",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 1,
           },
         ],
         "name": "search",
@@ -621,115 +437,90 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": True,
                       "kind": "query",
                       "name": "artist_or_culture",
                       "orig": "artist_or_culture",
-                      "reqd": False,
                       "type": "`$BOOLEAN`",
                     },
                     {
-                      "active": True,
                       "example": 1800,
                       "kind": "query",
                       "name": "date_begin",
                       "orig": "date_begin",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "example": 1900,
                       "kind": "query",
                       "name": "date_end",
                       "orig": "date_end",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "example": 11,
                       "kind": "query",
                       "name": "department_id",
                       "orig": "department_id",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "example": "Europe",
                       "kind": "query",
                       "name": "geo_location",
                       "orig": "geo_location",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": True,
                       "kind": "query",
                       "name": "has_image",
                       "orig": "has_image",
-                      "reqd": False,
                       "type": "`$BOOLEAN`",
                     },
                     {
-                      "active": True,
                       "example": True,
                       "kind": "query",
                       "name": "is_highlight",
                       "orig": "is_highlight",
-                      "reqd": False,
                       "type": "`$BOOLEAN`",
                     },
                     {
-                      "active": True,
                       "example": True,
                       "kind": "query",
                       "name": "is_on_view",
                       "orig": "is_on_view",
-                      "reqd": False,
                       "type": "`$BOOLEAN`",
                     },
                     {
-                      "active": True,
                       "example": "Paintings",
                       "kind": "query",
                       "name": "medium",
                       "orig": "medium",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "sunflowers",
                       "kind": "query",
                       "name": "q",
                       "orig": "q",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": True,
                       "kind": "query",
                       "name": "tag",
                       "orig": "tag",
-                      "reqd": False,
                       "type": "`$BOOLEAN`",
                     },
                     {
-                      "active": True,
                       "example": True,
                       "kind": "query",
                       "name": "title",
                       "orig": "title",
-                      "reqd": False,
                       "type": "`$BOOLEAN`",
                     },
                   ],
@@ -760,10 +551,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.objectIDs`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
