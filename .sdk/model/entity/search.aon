@@ -8,11 +8,13 @@ main: kit: entity: search: {
     {
       name: "objectIDs"
       req: false
+      short: "An array containing the object IDs of matching objects"
       type: "`$ARRAY`"
     }
     {
       name: "total"
       req: false
+      short: "The total number of objects matching the search query"
       type: "`$INTEGER`"
     }
   ]

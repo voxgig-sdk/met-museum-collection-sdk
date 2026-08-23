@@ -250,8 +250,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `departmentId` |  |
-| `displayName` |  |
+| `departmentId` | Unique identifier for the department |
+| `displayName` | Display name of the department |
 
 Operations: List.
 
@@ -261,66 +261,66 @@ API path: `/departments`
 
 | Field | Description |
 | --- | --- |
-| `GalleryNumber` |  |
-| `accessionNumber` |  |
-| `accessionYear` |  |
-| `additionalImages` |  |
-| `artistAlphaSort` |  |
-| `artistBeginDate` |  |
-| `artistDisplayBio` |  |
-| `artistDisplayName` |  |
-| `artistEndDate` |  |
-| `artistGender` |  |
-| `artistNationality` |  |
-| `artistPrefix` |  |
-| `artistRole` |  |
-| `artistSuffix` |  |
-| `artistULAN_URL` |  |
-| `artistWikidata_URL` |  |
-| `city` |  |
-| `classification` |  |
-| `constituents` |  |
-| `country` |  |
-| `county` |  |
-| `creditLine` |  |
-| `culture` |  |
-| `department` |  |
-| `dimensions` |  |
-| `dimensionsParsed` |  |
-| `dynasty` |  |
-| `excavation` |  |
-| `geographyType` |  |
-| `isHighlight` |  |
-| `isPublicDomain` |  |
-| `isTimelineWork` |  |
-| `linkResource` |  |
-| `locale` |  |
-| `locus` |  |
-| `measurements` |  |
-| `medium` |  |
-| `metadataDate` |  |
-| `objectBeginDate` |  |
-| `objectDate` |  |
-| `objectEndDate` |  |
-| `objectID` |  |
-| `objectIDs` |  |
-| `objectName` |  |
-| `objectURL` |  |
-| `objectWikidata_URL` |  |
-| `period` |  |
-| `portfolio` |  |
-| `primaryImage` |  |
-| `primaryImageSmall` |  |
-| `region` |  |
-| `reign` |  |
-| `repository` |  |
-| `rightsAndReproduction` |  |
-| `river` |  |
-| `state` |  |
-| `subregion` |  |
-| `tags` |  |
-| `title` |  |
-| `total` |  |
+| `GalleryNumber` | Gallery number, where available |
+| `accessionNumber` | Identifying number for each artwork (not always unique) |
+| `accessionYear` | Year the artwork was acquired |
+| `additionalImages` | An array containing URLs to the additional images of an object in JPEG format |
+| `artistAlphaSort` | Used to sort artist names alphabetically |
+| `artistBeginDate` | Year the artist was born |
+| `artistDisplayBio` | Nationality and life dates of an artist |
+| `artistDisplayName` | Artist name in the correct order for display |
+| `artistEndDate` | Year the artist died |
+| `artistGender` | Gender of the artist (currently contains female designations only) |
+| `artistNationality` | National, geopolitical, cultural, or ethnic origins or affiliation of the creator |
+| `artistPrefix` | Describes the extent of creation or describes an attribution qualifier |
+| `artistRole` | Role of the artist related to the type of artwork or object that was created |
+| `artistSuffix` | Used to record complex information that qualifies the role of a constituent |
+| `artistULAN_URL` | ULAN URL for the artist |
+| `artistWikidata_URL` | Wikidata URL for the artist |
+| `city` | City where the artwork was created |
+| `classification` | General term describing the artwork type |
+| `constituents` | An array containing the constituents associated with an object |
+| `country` | Country where the artwork was created or found |
+| `county` | County where the artwork was created |
+| `creditLine` | Text acknowledging the source or origin of the artwork and the year the object was acquired |
+| `culture` | Information about the culture, or people from which an object was created |
+| `department` | Indicates The Met's curatorial department responsible for the artwork |
+| `dimensions` | Size of the artwork or object |
+| `dimensionsParsed` | Size of the artwork or object in centimeters, parsed |
+| `dynasty` | Dynasty under which an object was created |
+| `excavation` | The name of an excavation |
+| `geographyType` | Qualifying information that describes the relationship of the place catalogued to the object |
+| `isHighlight` | When true indicates a popular and important artwork in the collection |
+| `isPublicDomain` | When true indicates an artwork in the Public Domain |
+| `isTimelineWork` | Whether the object is on the Timeline of Art History website |
+| `linkResource` | URL to object's page on metmuseum.org |
+| `locale` | Geographic location more specific than subregion |
+| `locus` | Geographic location that is less specific than locale |
+| `measurements` | Array of elements with measurements. |
+| `medium` | Refers to the materials that were used to create the artwork |
+| `metadataDate` | Date metadata was last updated |
+| `objectBeginDate` | Machine readable date indicating the year the artwork was started to be created |
+| `objectDate` | Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created |
+| `objectEndDate` | Machine readable date indicating the year the artwork was completed |
+| `objectID` | Identifying number for each artwork (unique, can be used as key field) |
+| `objectIDs` | An array containing the object ID of publicly-available objects |
+| `objectName` | Describes the physical type of the object |
+| `objectURL` | URL to object's page on metmuseum.org |
+| `objectWikidata_URL` | Wikidata URL for the object |
+| `period` | Time or time period when an object was created |
+| `portfolio` | A set of works created as a group or published as a series |
+| `primaryImage` | URL to the primary image of an object in JPEG format |
+| `primaryImageSmall` | URL to the lower-res primary image of an object in JPEG format |
+| `region` | Geographic location more specific than country |
+| `reign` | Reign of a monarch or ruler under which an object was created |
+| `repository` | Repository information |
+| `rightsAndReproduction` | Credit line for artworks still under copyright |
+| `river` | River related to the origins of an artwork |
+| `state` | State or province where the artwork was created |
+| `subregion` | Geographic location more specific than Region |
+| `tags` | An array of subject keyword tags associated with the object |
+| `title` | Title, identifying phrase, or name given to a work of art |
+| `total` | The total number of publicly-available objects |
 
 Operations: List, Load.
 
@@ -330,8 +330,8 @@ API path: `/objects`
 
 | Field | Description |
 | --- | --- |
-| `objectIDs` |  |
-| `total` |  |
+| `objectIDs` | An array containing the object IDs of matching objects |
+| `total` | The total number of objects matching the search query |
 
 Operations: List.
 
@@ -356,8 +356,8 @@ Create an instance: `$department = $client->Department();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departmentId` | `int` |  |
-| `displayName` | `string` |  |
+| `departmentId` | `int` | Unique identifier for the department |
+| `displayName` | `string` | Display name of the department |
 
 #### Example: List
 
@@ -382,66 +382,66 @@ Create an instance: `$object = $client->Object();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `GalleryNumber` | `string` |  |
-| `accessionNumber` | `string` |  |
-| `accessionYear` | `string` |  |
-| `additionalImages` | `array` |  |
-| `artistAlphaSort` | `string` |  |
-| `artistBeginDate` | `string` |  |
-| `artistDisplayBio` | `string` |  |
-| `artistDisplayName` | `string` |  |
-| `artistEndDate` | `string` |  |
-| `artistGender` | `string` |  |
-| `artistNationality` | `string` |  |
-| `artistPrefix` | `string` |  |
-| `artistRole` | `string` |  |
-| `artistSuffix` | `string` |  |
-| `artistULAN_URL` | `string` |  |
-| `artistWikidata_URL` | `string` |  |
-| `city` | `string` |  |
-| `classification` | `string` |  |
-| `constituents` | `array` |  |
-| `country` | `string` |  |
-| `county` | `string` |  |
-| `creditLine` | `string` |  |
-| `culture` | `string` |  |
-| `department` | `string` |  |
-| `dimensions` | `string` |  |
-| `dimensionsParsed` | `array` |  |
-| `dynasty` | `string` |  |
-| `excavation` | `string` |  |
-| `geographyType` | `string` |  |
-| `isHighlight` | `bool` |  |
-| `isPublicDomain` | `bool` |  |
-| `isTimelineWork` | `bool` |  |
-| `linkResource` | `string` |  |
-| `locale` | `string` |  |
-| `locus` | `string` |  |
-| `measurements` | `array` |  |
-| `medium` | `string` |  |
-| `metadataDate` | `string` |  |
-| `objectBeginDate` | `int` |  |
-| `objectDate` | `string` |  |
-| `objectEndDate` | `int` |  |
-| `objectID` | `int` |  |
-| `objectIDs` | `array` |  |
-| `objectName` | `string` |  |
-| `objectURL` | `string` |  |
-| `objectWikidata_URL` | `string` |  |
-| `period` | `string` |  |
-| `portfolio` | `string` |  |
-| `primaryImage` | `string` |  |
-| `primaryImageSmall` | `string` |  |
-| `region` | `string` |  |
-| `reign` | `string` |  |
-| `repository` | `string` |  |
-| `rightsAndReproduction` | `string` |  |
-| `river` | `string` |  |
-| `state` | `string` |  |
-| `subregion` | `string` |  |
-| `tags` | `array` |  |
-| `title` | `string` |  |
-| `total` | `int` |  |
+| `GalleryNumber` | `string` | Gallery number, where available |
+| `accessionNumber` | `string` | Identifying number for each artwork (not always unique) |
+| `accessionYear` | `string` | Year the artwork was acquired |
+| `additionalImages` | `array` | An array containing URLs to the additional images of an object in JPEG format |
+| `artistAlphaSort` | `string` | Used to sort artist names alphabetically |
+| `artistBeginDate` | `string` | Year the artist was born |
+| `artistDisplayBio` | `string` | Nationality and life dates of an artist |
+| `artistDisplayName` | `string` | Artist name in the correct order for display |
+| `artistEndDate` | `string` | Year the artist died |
+| `artistGender` | `string` | Gender of the artist (currently contains female designations only) |
+| `artistNationality` | `string` | National, geopolitical, cultural, or ethnic origins or affiliation of the creator |
+| `artistPrefix` | `string` | Describes the extent of creation or describes an attribution qualifier |
+| `artistRole` | `string` | Role of the artist related to the type of artwork or object that was created |
+| `artistSuffix` | `string` | Used to record complex information that qualifies the role of a constituent |
+| `artistULAN_URL` | `string` | ULAN URL for the artist |
+| `artistWikidata_URL` | `string` | Wikidata URL for the artist |
+| `city` | `string` | City where the artwork was created |
+| `classification` | `string` | General term describing the artwork type |
+| `constituents` | `array` | An array containing the constituents associated with an object |
+| `country` | `string` | Country where the artwork was created or found |
+| `county` | `string` | County where the artwork was created |
+| `creditLine` | `string` | Text acknowledging the source or origin of the artwork and the year the object was acquired |
+| `culture` | `string` | Information about the culture, or people from which an object was created |
+| `department` | `string` | Indicates The Met's curatorial department responsible for the artwork |
+| `dimensions` | `string` | Size of the artwork or object |
+| `dimensionsParsed` | `array` | Size of the artwork or object in centimeters, parsed |
+| `dynasty` | `string` | Dynasty under which an object was created |
+| `excavation` | `string` | The name of an excavation |
+| `geographyType` | `string` | Qualifying information that describes the relationship of the place catalogued to the object |
+| `isHighlight` | `bool` | When true indicates a popular and important artwork in the collection |
+| `isPublicDomain` | `bool` | When true indicates an artwork in the Public Domain |
+| `isTimelineWork` | `bool` | Whether the object is on the Timeline of Art History website |
+| `linkResource` | `string` | URL to object's page on metmuseum.org |
+| `locale` | `string` | Geographic location more specific than subregion |
+| `locus` | `string` | Geographic location that is less specific than locale |
+| `measurements` | `array` | Array of elements with measurements. |
+| `medium` | `string` | Refers to the materials that were used to create the artwork |
+| `metadataDate` | `string` | Date metadata was last updated |
+| `objectBeginDate` | `int` | Machine readable date indicating the year the artwork was started to be created |
+| `objectDate` | `string` | Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created |
+| `objectEndDate` | `int` | Machine readable date indicating the year the artwork was completed |
+| `objectID` | `int` | Identifying number for each artwork (unique, can be used as key field) |
+| `objectIDs` | `array` | An array containing the object ID of publicly-available objects |
+| `objectName` | `string` | Describes the physical type of the object |
+| `objectURL` | `string` | URL to object's page on metmuseum.org |
+| `objectWikidata_URL` | `string` | Wikidata URL for the object |
+| `period` | `string` | Time or time period when an object was created |
+| `portfolio` | `string` | A set of works created as a group or published as a series |
+| `primaryImage` | `string` | URL to the primary image of an object in JPEG format |
+| `primaryImageSmall` | `string` | URL to the lower-res primary image of an object in JPEG format |
+| `region` | `string` | Geographic location more specific than country |
+| `reign` | `string` | Reign of a monarch or ruler under which an object was created |
+| `repository` | `string` | Repository information |
+| `rightsAndReproduction` | `string` | Credit line for artworks still under copyright |
+| `river` | `string` | River related to the origins of an artwork |
+| `state` | `string` | State or province where the artwork was created |
+| `subregion` | `string` | Geographic location more specific than Region |
+| `tags` | `array` | An array of subject keyword tags associated with the object |
+| `title` | `string` | Title, identifying phrase, or name given to a work of art |
+| `total` | `int` | The total number of publicly-available objects |
 
 #### Example: Load
 
@@ -472,8 +472,8 @@ Create an instance: `$search = $client->Search();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `objectIDs` | `array` |  |
-| `total` | `int` |  |
+| `objectIDs` | `array` | An array containing the object IDs of matching objects |
+| `total` | `int` | The total number of objects matching the search query |
 
 #### Example: List
 

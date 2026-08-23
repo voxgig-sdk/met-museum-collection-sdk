@@ -101,8 +101,8 @@ department = client.Department
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `departmentId` | `Integer` | No |  |
-| `displayName` | `String` | No |  |
+| `departmentId` | `Integer` | No | Unique identifier for the department |
+| `displayName` | `String` | No | Display name of the department |
 
 ### Operations
 
@@ -154,66 +154,66 @@ object = client.Object
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `GalleryNumber` | `String` | No |  |
-| `accessionNumber` | `String` | No |  |
-| `accessionYear` | `String` | No |  |
-| `additionalImages` | `Array` | No |  |
-| `artistAlphaSort` | `String` | No |  |
-| `artistBeginDate` | `String` | No |  |
-| `artistDisplayBio` | `String` | No |  |
-| `artistDisplayName` | `String` | No |  |
-| `artistEndDate` | `String` | No |  |
-| `artistGender` | `String` | No |  |
-| `artistNationality` | `String` | No |  |
-| `artistPrefix` | `String` | No |  |
-| `artistRole` | `String` | No |  |
-| `artistSuffix` | `String` | No |  |
-| `artistULAN_URL` | `String` | No |  |
-| `artistWikidata_URL` | `String` | No |  |
-| `city` | `String` | No |  |
-| `classification` | `String` | No |  |
-| `constituents` | `Array` | No |  |
-| `country` | `String` | No |  |
-| `county` | `String` | No |  |
-| `creditLine` | `String` | No |  |
-| `culture` | `String` | No |  |
-| `department` | `String` | No |  |
-| `dimensions` | `String` | No |  |
-| `dimensionsParsed` | `Array` | No |  |
-| `dynasty` | `String` | No |  |
-| `excavation` | `String` | No |  |
-| `geographyType` | `String` | No |  |
-| `isHighlight` | `Boolean` | No |  |
-| `isPublicDomain` | `Boolean` | No |  |
-| `isTimelineWork` | `Boolean` | No |  |
-| `linkResource` | `String` | No |  |
-| `locale` | `String` | No |  |
-| `locus` | `String` | No |  |
-| `measurements` | `Array` | No |  |
-| `medium` | `String` | No |  |
-| `metadataDate` | `String` | No |  |
-| `objectBeginDate` | `Integer` | No |  |
-| `objectDate` | `String` | No |  |
-| `objectEndDate` | `Integer` | No |  |
-| `objectID` | `Integer` | No |  |
-| `objectIDs` | `Array` | No |  |
-| `objectName` | `String` | No |  |
-| `objectURL` | `String` | No |  |
-| `objectWikidata_URL` | `String` | No |  |
-| `period` | `String` | No |  |
-| `portfolio` | `String` | No |  |
-| `primaryImage` | `String` | No |  |
-| `primaryImageSmall` | `String` | No |  |
-| `region` | `String` | No |  |
-| `reign` | `String` | No |  |
-| `repository` | `String` | No |  |
-| `rightsAndReproduction` | `String` | No |  |
-| `river` | `String` | No |  |
-| `state` | `String` | No |  |
-| `subregion` | `String` | No |  |
-| `tags` | `Array` | No |  |
-| `title` | `String` | No |  |
-| `total` | `Integer` | No |  |
+| `GalleryNumber` | `String` | No | Gallery number, where available |
+| `accessionNumber` | `String` | No | Identifying number for each artwork (not always unique) |
+| `accessionYear` | `String` | No | Year the artwork was acquired |
+| `additionalImages` | `Array` | No | An array containing URLs to the additional images of an object in JPEG format |
+| `artistAlphaSort` | `String` | No | Used to sort artist names alphabetically |
+| `artistBeginDate` | `String` | No | Year the artist was born |
+| `artistDisplayBio` | `String` | No | Nationality and life dates of an artist |
+| `artistDisplayName` | `String` | No | Artist name in the correct order for display |
+| `artistEndDate` | `String` | No | Year the artist died |
+| `artistGender` | `String` | No | Gender of the artist (currently contains female designations only) |
+| `artistNationality` | `String` | No | National, geopolitical, cultural, or ethnic origins or affiliation of the creator |
+| `artistPrefix` | `String` | No | Describes the extent of creation or describes an attribution qualifier |
+| `artistRole` | `String` | No | Role of the artist related to the type of artwork or object that was created |
+| `artistSuffix` | `String` | No | Used to record complex information that qualifies the role of a constituent |
+| `artistULAN_URL` | `String` | No | ULAN URL for the artist |
+| `artistWikidata_URL` | `String` | No | Wikidata URL for the artist |
+| `city` | `String` | No | City where the artwork was created |
+| `classification` | `String` | No | General term describing the artwork type |
+| `constituents` | `Array` | No | An array containing the constituents associated with an object |
+| `country` | `String` | No | Country where the artwork was created or found |
+| `county` | `String` | No | County where the artwork was created |
+| `creditLine` | `String` | No | Text acknowledging the source or origin of the artwork and the year the object was acquired |
+| `culture` | `String` | No | Information about the culture, or people from which an object was created |
+| `department` | `String` | No | Indicates The Met's curatorial department responsible for the artwork |
+| `dimensions` | `String` | No | Size of the artwork or object |
+| `dimensionsParsed` | `Array` | No | Size of the artwork or object in centimeters, parsed |
+| `dynasty` | `String` | No | Dynasty under which an object was created |
+| `excavation` | `String` | No | The name of an excavation |
+| `geographyType` | `String` | No | Qualifying information that describes the relationship of the place catalogued to the object |
+| `isHighlight` | `Boolean` | No | When true indicates a popular and important artwork in the collection |
+| `isPublicDomain` | `Boolean` | No | When true indicates an artwork in the Public Domain |
+| `isTimelineWork` | `Boolean` | No | Whether the object is on the Timeline of Art History website |
+| `linkResource` | `String` | No | URL to object's page on metmuseum.org |
+| `locale` | `String` | No | Geographic location more specific than subregion |
+| `locus` | `String` | No | Geographic location that is less specific than locale |
+| `measurements` | `Array` | No | Array of elements with measurements. |
+| `medium` | `String` | No | Refers to the materials that were used to create the artwork |
+| `metadataDate` | `String` | No | Date metadata was last updated |
+| `objectBeginDate` | `Integer` | No | Machine readable date indicating the year the artwork was started to be created |
+| `objectDate` | `String` | No | Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created |
+| `objectEndDate` | `Integer` | No | Machine readable date indicating the year the artwork was completed |
+| `objectID` | `Integer` | No | Identifying number for each artwork (unique, can be used as key field) |
+| `objectIDs` | `Array` | No | An array containing the object ID of publicly-available objects |
+| `objectName` | `String` | No | Describes the physical type of the object |
+| `objectURL` | `String` | No | URL to object's page on metmuseum.org |
+| `objectWikidata_URL` | `String` | No | Wikidata URL for the object |
+| `period` | `String` | No | Time or time period when an object was created |
+| `portfolio` | `String` | No | A set of works created as a group or published as a series |
+| `primaryImage` | `String` | No | URL to the primary image of an object in JPEG format |
+| `primaryImageSmall` | `String` | No | URL to the lower-res primary image of an object in JPEG format |
+| `region` | `String` | No | Geographic location more specific than country |
+| `reign` | `String` | No | Reign of a monarch or ruler under which an object was created |
+| `repository` | `String` | No | Repository information |
+| `rightsAndReproduction` | `String` | No | Credit line for artworks still under copyright |
+| `river` | `String` | No | River related to the origins of an artwork |
+| `state` | `String` | No | State or province where the artwork was created |
+| `subregion` | `String` | No | Geographic location more specific than Region |
+| `tags` | `Array` | No | An array of subject keyword tags associated with the object |
+| `title` | `String` | No | Title, identifying phrase, or name given to a work of art |
+| `total` | `Integer` | No | The total number of publicly-available objects |
 
 ### Operations
 
@@ -273,8 +273,8 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `objectIDs` | `Array` | No |  |
-| `total` | `Integer` | No |  |
+| `objectIDs` | `Array` | No | An array containing the object IDs of matching objects |
+| `total` | `Integer` | No | The total number of objects matching the search query |
 
 ### Operations
 

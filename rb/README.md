@@ -240,8 +240,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `departmentId` |  |
-| `displayName` |  |
+| `departmentId` | Unique identifier for the department |
+| `displayName` | Display name of the department |
 
 Operations: List.
 
@@ -251,66 +251,66 @@ API path: `/departments`
 
 | Field | Description |
 | --- | --- |
-| `GalleryNumber` |  |
-| `accessionNumber` |  |
-| `accessionYear` |  |
-| `additionalImages` |  |
-| `artistAlphaSort` |  |
-| `artistBeginDate` |  |
-| `artistDisplayBio` |  |
-| `artistDisplayName` |  |
-| `artistEndDate` |  |
-| `artistGender` |  |
-| `artistNationality` |  |
-| `artistPrefix` |  |
-| `artistRole` |  |
-| `artistSuffix` |  |
-| `artistULAN_URL` |  |
-| `artistWikidata_URL` |  |
-| `city` |  |
-| `classification` |  |
-| `constituents` |  |
-| `country` |  |
-| `county` |  |
-| `creditLine` |  |
-| `culture` |  |
-| `department` |  |
-| `dimensions` |  |
-| `dimensionsParsed` |  |
-| `dynasty` |  |
-| `excavation` |  |
-| `geographyType` |  |
-| `isHighlight` |  |
-| `isPublicDomain` |  |
-| `isTimelineWork` |  |
-| `linkResource` |  |
-| `locale` |  |
-| `locus` |  |
-| `measurements` |  |
-| `medium` |  |
-| `metadataDate` |  |
-| `objectBeginDate` |  |
-| `objectDate` |  |
-| `objectEndDate` |  |
-| `objectID` |  |
-| `objectIDs` |  |
-| `objectName` |  |
-| `objectURL` |  |
-| `objectWikidata_URL` |  |
-| `period` |  |
-| `portfolio` |  |
-| `primaryImage` |  |
-| `primaryImageSmall` |  |
-| `region` |  |
-| `reign` |  |
-| `repository` |  |
-| `rightsAndReproduction` |  |
-| `river` |  |
-| `state` |  |
-| `subregion` |  |
-| `tags` |  |
-| `title` |  |
-| `total` |  |
+| `GalleryNumber` | Gallery number, where available |
+| `accessionNumber` | Identifying number for each artwork (not always unique) |
+| `accessionYear` | Year the artwork was acquired |
+| `additionalImages` | An array containing URLs to the additional images of an object in JPEG format |
+| `artistAlphaSort` | Used to sort artist names alphabetically |
+| `artistBeginDate` | Year the artist was born |
+| `artistDisplayBio` | Nationality and life dates of an artist |
+| `artistDisplayName` | Artist name in the correct order for display |
+| `artistEndDate` | Year the artist died |
+| `artistGender` | Gender of the artist (currently contains female designations only) |
+| `artistNationality` | National, geopolitical, cultural, or ethnic origins or affiliation of the creator |
+| `artistPrefix` | Describes the extent of creation or describes an attribution qualifier |
+| `artistRole` | Role of the artist related to the type of artwork or object that was created |
+| `artistSuffix` | Used to record complex information that qualifies the role of a constituent |
+| `artistULAN_URL` | ULAN URL for the artist |
+| `artistWikidata_URL` | Wikidata URL for the artist |
+| `city` | City where the artwork was created |
+| `classification` | General term describing the artwork type |
+| `constituents` | An array containing the constituents associated with an object |
+| `country` | Country where the artwork was created or found |
+| `county` | County where the artwork was created |
+| `creditLine` | Text acknowledging the source or origin of the artwork and the year the object was acquired |
+| `culture` | Information about the culture, or people from which an object was created |
+| `department` | Indicates The Met's curatorial department responsible for the artwork |
+| `dimensions` | Size of the artwork or object |
+| `dimensionsParsed` | Size of the artwork or object in centimeters, parsed |
+| `dynasty` | Dynasty under which an object was created |
+| `excavation` | The name of an excavation |
+| `geographyType` | Qualifying information that describes the relationship of the place catalogued to the object |
+| `isHighlight` | When true indicates a popular and important artwork in the collection |
+| `isPublicDomain` | When true indicates an artwork in the Public Domain |
+| `isTimelineWork` | Whether the object is on the Timeline of Art History website |
+| `linkResource` | URL to object's page on metmuseum.org |
+| `locale` | Geographic location more specific than subregion |
+| `locus` | Geographic location that is less specific than locale |
+| `measurements` | Array of elements with measurements. |
+| `medium` | Refers to the materials that were used to create the artwork |
+| `metadataDate` | Date metadata was last updated |
+| `objectBeginDate` | Machine readable date indicating the year the artwork was started to be created |
+| `objectDate` | Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created |
+| `objectEndDate` | Machine readable date indicating the year the artwork was completed |
+| `objectID` | Identifying number for each artwork (unique, can be used as key field) |
+| `objectIDs` | An array containing the object ID of publicly-available objects |
+| `objectName` | Describes the physical type of the object |
+| `objectURL` | URL to object's page on metmuseum.org |
+| `objectWikidata_URL` | Wikidata URL for the object |
+| `period` | Time or time period when an object was created |
+| `portfolio` | A set of works created as a group or published as a series |
+| `primaryImage` | URL to the primary image of an object in JPEG format |
+| `primaryImageSmall` | URL to the lower-res primary image of an object in JPEG format |
+| `region` | Geographic location more specific than country |
+| `reign` | Reign of a monarch or ruler under which an object was created |
+| `repository` | Repository information |
+| `rightsAndReproduction` | Credit line for artworks still under copyright |
+| `river` | River related to the origins of an artwork |
+| `state` | State or province where the artwork was created |
+| `subregion` | Geographic location more specific than Region |
+| `tags` | An array of subject keyword tags associated with the object |
+| `title` | Title, identifying phrase, or name given to a work of art |
+| `total` | The total number of publicly-available objects |
 
 Operations: List, Load.
 
@@ -320,8 +320,8 @@ API path: `/objects`
 
 | Field | Description |
 | --- | --- |
-| `objectIDs` |  |
-| `total` |  |
+| `objectIDs` | An array containing the object IDs of matching objects |
+| `total` | The total number of objects matching the search query |
 
 Operations: List.
 
@@ -346,8 +346,8 @@ Create an instance: `department = client.Department`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `departmentId` | `Integer` |  |
-| `displayName` | `String` |  |
+| `departmentId` | `Integer` | Unique identifier for the department |
+| `displayName` | `String` | Display name of the department |
 
 #### Example: List
 
@@ -372,66 +372,66 @@ Create an instance: `object = client.Object`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `GalleryNumber` | `String` |  |
-| `accessionNumber` | `String` |  |
-| `accessionYear` | `String` |  |
-| `additionalImages` | `Array` |  |
-| `artistAlphaSort` | `String` |  |
-| `artistBeginDate` | `String` |  |
-| `artistDisplayBio` | `String` |  |
-| `artistDisplayName` | `String` |  |
-| `artistEndDate` | `String` |  |
-| `artistGender` | `String` |  |
-| `artistNationality` | `String` |  |
-| `artistPrefix` | `String` |  |
-| `artistRole` | `String` |  |
-| `artistSuffix` | `String` |  |
-| `artistULAN_URL` | `String` |  |
-| `artistWikidata_URL` | `String` |  |
-| `city` | `String` |  |
-| `classification` | `String` |  |
-| `constituents` | `Array` |  |
-| `country` | `String` |  |
-| `county` | `String` |  |
-| `creditLine` | `String` |  |
-| `culture` | `String` |  |
-| `department` | `String` |  |
-| `dimensions` | `String` |  |
-| `dimensionsParsed` | `Array` |  |
-| `dynasty` | `String` |  |
-| `excavation` | `String` |  |
-| `geographyType` | `String` |  |
-| `isHighlight` | `Boolean` |  |
-| `isPublicDomain` | `Boolean` |  |
-| `isTimelineWork` | `Boolean` |  |
-| `linkResource` | `String` |  |
-| `locale` | `String` |  |
-| `locus` | `String` |  |
-| `measurements` | `Array` |  |
-| `medium` | `String` |  |
-| `metadataDate` | `String` |  |
-| `objectBeginDate` | `Integer` |  |
-| `objectDate` | `String` |  |
-| `objectEndDate` | `Integer` |  |
-| `objectID` | `Integer` |  |
-| `objectIDs` | `Array` |  |
-| `objectName` | `String` |  |
-| `objectURL` | `String` |  |
-| `objectWikidata_URL` | `String` |  |
-| `period` | `String` |  |
-| `portfolio` | `String` |  |
-| `primaryImage` | `String` |  |
-| `primaryImageSmall` | `String` |  |
-| `region` | `String` |  |
-| `reign` | `String` |  |
-| `repository` | `String` |  |
-| `rightsAndReproduction` | `String` |  |
-| `river` | `String` |  |
-| `state` | `String` |  |
-| `subregion` | `String` |  |
-| `tags` | `Array` |  |
-| `title` | `String` |  |
-| `total` | `Integer` |  |
+| `GalleryNumber` | `String` | Gallery number, where available |
+| `accessionNumber` | `String` | Identifying number for each artwork (not always unique) |
+| `accessionYear` | `String` | Year the artwork was acquired |
+| `additionalImages` | `Array` | An array containing URLs to the additional images of an object in JPEG format |
+| `artistAlphaSort` | `String` | Used to sort artist names alphabetically |
+| `artistBeginDate` | `String` | Year the artist was born |
+| `artistDisplayBio` | `String` | Nationality and life dates of an artist |
+| `artistDisplayName` | `String` | Artist name in the correct order for display |
+| `artistEndDate` | `String` | Year the artist died |
+| `artistGender` | `String` | Gender of the artist (currently contains female designations only) |
+| `artistNationality` | `String` | National, geopolitical, cultural, or ethnic origins or affiliation of the creator |
+| `artistPrefix` | `String` | Describes the extent of creation or describes an attribution qualifier |
+| `artistRole` | `String` | Role of the artist related to the type of artwork or object that was created |
+| `artistSuffix` | `String` | Used to record complex information that qualifies the role of a constituent |
+| `artistULAN_URL` | `String` | ULAN URL for the artist |
+| `artistWikidata_URL` | `String` | Wikidata URL for the artist |
+| `city` | `String` | City where the artwork was created |
+| `classification` | `String` | General term describing the artwork type |
+| `constituents` | `Array` | An array containing the constituents associated with an object |
+| `country` | `String` | Country where the artwork was created or found |
+| `county` | `String` | County where the artwork was created |
+| `creditLine` | `String` | Text acknowledging the source or origin of the artwork and the year the object was acquired |
+| `culture` | `String` | Information about the culture, or people from which an object was created |
+| `department` | `String` | Indicates The Met's curatorial department responsible for the artwork |
+| `dimensions` | `String` | Size of the artwork or object |
+| `dimensionsParsed` | `Array` | Size of the artwork or object in centimeters, parsed |
+| `dynasty` | `String` | Dynasty under which an object was created |
+| `excavation` | `String` | The name of an excavation |
+| `geographyType` | `String` | Qualifying information that describes the relationship of the place catalogued to the object |
+| `isHighlight` | `Boolean` | When true indicates a popular and important artwork in the collection |
+| `isPublicDomain` | `Boolean` | When true indicates an artwork in the Public Domain |
+| `isTimelineWork` | `Boolean` | Whether the object is on the Timeline of Art History website |
+| `linkResource` | `String` | URL to object's page on metmuseum.org |
+| `locale` | `String` | Geographic location more specific than subregion |
+| `locus` | `String` | Geographic location that is less specific than locale |
+| `measurements` | `Array` | Array of elements with measurements. |
+| `medium` | `String` | Refers to the materials that were used to create the artwork |
+| `metadataDate` | `String` | Date metadata was last updated |
+| `objectBeginDate` | `Integer` | Machine readable date indicating the year the artwork was started to be created |
+| `objectDate` | `String` | Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created |
+| `objectEndDate` | `Integer` | Machine readable date indicating the year the artwork was completed |
+| `objectID` | `Integer` | Identifying number for each artwork (unique, can be used as key field) |
+| `objectIDs` | `Array` | An array containing the object ID of publicly-available objects |
+| `objectName` | `String` | Describes the physical type of the object |
+| `objectURL` | `String` | URL to object's page on metmuseum.org |
+| `objectWikidata_URL` | `String` | Wikidata URL for the object |
+| `period` | `String` | Time or time period when an object was created |
+| `portfolio` | `String` | A set of works created as a group or published as a series |
+| `primaryImage` | `String` | URL to the primary image of an object in JPEG format |
+| `primaryImageSmall` | `String` | URL to the lower-res primary image of an object in JPEG format |
+| `region` | `String` | Geographic location more specific than country |
+| `reign` | `String` | Reign of a monarch or ruler under which an object was created |
+| `repository` | `String` | Repository information |
+| `rightsAndReproduction` | `String` | Credit line for artworks still under copyright |
+| `river` | `String` | River related to the origins of an artwork |
+| `state` | `String` | State or province where the artwork was created |
+| `subregion` | `String` | Geographic location more specific than Region |
+| `tags` | `Array` | An array of subject keyword tags associated with the object |
+| `title` | `String` | Title, identifying phrase, or name given to a work of art |
+| `total` | `Integer` | The total number of publicly-available objects |
 
 #### Example: Load
 
@@ -462,8 +462,8 @@ Create an instance: `search = client.Search`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `objectIDs` | `Array` |  |
-| `total` | `Integer` |  |
+| `objectIDs` | `Array` | An array containing the object IDs of matching objects |
+| `total` | `Integer` | The total number of objects matching the search query |
 
 #### Example: List
 

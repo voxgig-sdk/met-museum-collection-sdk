@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "MetMuseumCollection",
+      slug = "met-museum-collection",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -31,10 +34,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "departmentId",
+            ["short"] = "Unique identifier for the department",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "displayName",
+            ["short"] = "Display name of the department",
             ["type"] = "`$STRING`",
           },
         },
@@ -69,242 +74,302 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "GalleryNumber",
+            ["short"] = "Gallery number, where available",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "accessionNumber",
+            ["short"] = "Identifying number for each artwork (not always unique)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "accessionYear",
+            ["short"] = "Year the artwork was acquired",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "additionalImages",
+            ["short"] = "An array containing URLs to the additional images of an object in JPEG format",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "artistAlphaSort",
+            ["short"] = "Used to sort artist names alphabetically",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistBeginDate",
+            ["short"] = "Year the artist was born",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistDisplayBio",
+            ["short"] = "Nationality and life dates of an artist",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistDisplayName",
+            ["short"] = "Artist name in the correct order for display",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistEndDate",
+            ["short"] = "Year the artist died",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistGender",
+            ["short"] = "Gender of the artist (currently contains female designations only)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistNationality",
+            ["short"] = "National, geopolitical, cultural, or ethnic origins or affiliation of the creator",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistPrefix",
+            ["short"] = "Describes the extent of creation or describes an attribution qualifier",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistRole",
+            ["short"] = "Role of the artist related to the type of artwork or object that was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistSuffix",
+            ["short"] = "Used to record complex information that qualifies the role of a constituent",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistULAN_URL",
+            ["short"] = "ULAN URL for the artist",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "artistWikidata_URL",
+            ["short"] = "Wikidata URL for the artist",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "city",
+            ["short"] = "City where the artwork was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "classification",
+            ["short"] = "General term describing the artwork type",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "constituents",
+            ["short"] = "An array containing the constituents associated with an object",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "country",
+            ["short"] = "Country where the artwork was created or found",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "county",
+            ["short"] = "County where the artwork was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "creditLine",
+            ["short"] = "Text acknowledging the source or origin of the artwork and the year the object was acquired",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "culture",
+            ["short"] = "Information about the culture, or people from which an object was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "department",
+            ["short"] = "Indicates The Met's curatorial department responsible for the artwork",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "dimensions",
+            ["short"] = "Size of the artwork or object",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "dimensionsParsed",
+            ["short"] = "Size of the artwork or object in centimeters, parsed",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "dynasty",
+            ["short"] = "Dynasty under which an object was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "excavation",
+            ["short"] = "The name of an excavation",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "geographyType",
+            ["short"] = "Qualifying information that describes the relationship of the place catalogued to the object",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "isHighlight",
+            ["short"] = "When true indicates a popular and important artwork in the collection",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "isPublicDomain",
+            ["short"] = "When true indicates an artwork in the Public Domain",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "isTimelineWork",
+            ["short"] = "Whether the object is on the Timeline of Art History website",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "linkResource",
+            ["short"] = "URL to object's page on metmuseum.org",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "locale",
+            ["short"] = "Geographic location more specific than subregion",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "locus",
+            ["short"] = "Geographic location that is less specific than locale",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "measurements",
+            ["short"] = "Array of elements with measurements.",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "medium",
+            ["short"] = "Refers to the materials that were used to create the artwork",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "metadataDate",
+            ["short"] = "Date metadata was last updated",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "objectBeginDate",
+            ["short"] = "Machine readable date indicating the year the artwork was started to be created",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "objectDate",
+            ["short"] = "Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "objectEndDate",
+            ["short"] = "Machine readable date indicating the year the artwork was completed",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "objectID",
+            ["short"] = "Identifying number for each artwork (unique, can be used as key field)",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "objectIDs",
+            ["short"] = "An array containing the object ID of publicly-available objects",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "objectName",
+            ["short"] = "Describes the physical type of the object",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "objectURL",
+            ["short"] = "URL to object's page on metmuseum.org",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "objectWikidata_URL",
+            ["short"] = "Wikidata URL for the object",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "period",
+            ["short"] = "Time or time period when an object was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "portfolio",
+            ["short"] = "A set of works created as a group or published as a series",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "primaryImage",
+            ["short"] = "URL to the primary image of an object in JPEG format",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "primaryImageSmall",
+            ["short"] = "URL to the lower-res primary image of an object in JPEG format",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "region",
+            ["short"] = "Geographic location more specific than country",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "reign",
+            ["short"] = "Reign of a monarch or ruler under which an object was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "repository",
+            ["short"] = "Repository information",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "rightsAndReproduction",
+            ["short"] = "Credit line for artworks still under copyright",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "river",
+            ["short"] = "River related to the origins of an artwork",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "state",
+            ["short"] = "State or province where the artwork was created",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "subregion",
+            ["short"] = "Geographic location more specific than Region",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "tags",
+            ["short"] = "An array of subject keyword tags associated with the object",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "title",
+            ["short"] = "Title, identifying phrase, or name given to a work of art",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "total",
+            ["short"] = "The total number of publicly-available objects",
             ["type"] = "`$INTEGER`",
           },
         },
@@ -402,10 +467,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "objectIDs",
+            ["short"] = "An array containing the object IDs of matching objects",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "total",
+            ["short"] = "The total number of objects matching the search query",
             ["type"] = "`$INTEGER`",
           },
         },

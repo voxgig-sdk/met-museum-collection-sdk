@@ -8,11 +8,13 @@ main: kit: entity: department: {
     {
       name: "departmentId"
       req: false
+      short: "Unique identifier for the department"
       type: "`$INTEGER`"
     }
     {
       name: "displayName"
       req: false
+      short: "Display name of the department"
       type: "`$STRING`"
     }
   ]

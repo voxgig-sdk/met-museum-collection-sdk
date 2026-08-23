@@ -15,13 +15,13 @@ import type {
 } from '../types'
 
 import type {
-  Object,
+  ObjectType,
   ObjectLoadMatch,
   ObjectListMatch,
 } from '../MetMuseumCollectionTypes'
 
 // TODO: needs Entity superclass
-class ObjectEntity extends MetMuseumCollectionEntityBase<Object> {
+class ObjectEntity extends MetMuseumCollectionEntityBase<ObjectType> {
 
   constructor(client: MetMuseumCollectionSDK, entopts: any) {
     super(client, entopts)

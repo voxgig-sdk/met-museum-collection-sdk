@@ -15,7 +15,7 @@ export interface DepartmentListMatch {
   displayName?: string
 }
 
-export interface Object {
+export interface ObjectType {
   GalleryNumber?: string
   accessionNumber?: string
   accessionYear?: string

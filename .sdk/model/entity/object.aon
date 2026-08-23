@@ -8,301 +8,361 @@ main: kit: entity: object: {
     {
       name: "GalleryNumber"
       req: false
+      short: "Gallery number, where available"
       type: "`$STRING`"
     }
     {
       name: "accessionNumber"
       req: false
+      short: "Identifying number for each artwork (not always unique)"
       type: "`$STRING`"
     }
     {
       name: "accessionYear"
       req: false
+      short: "Year the artwork was acquired"
       type: "`$STRING`"
     }
     {
       name: "additionalImages"
       req: false
+      short: "An array containing URLs to the additional images of an object in JPEG format"
       type: "`$ARRAY`"
     }
     {
       name: "artistAlphaSort"
       req: false
+      short: "Used to sort artist names alphabetically"
       type: "`$STRING`"
     }
     {
       name: "artistBeginDate"
       req: false
+      short: "Year the artist was born"
       type: "`$STRING`"
     }
     {
       name: "artistDisplayBio"
       req: false
+      short: "Nationality and life dates of an artist"
       type: "`$STRING`"
     }
     {
       name: "artistDisplayName"
       req: false
+      short: "Artist name in the correct order for display"
       type: "`$STRING`"
     }
     {
       name: "artistEndDate"
       req: false
+      short: "Year the artist died"
       type: "`$STRING`"
     }
     {
       name: "artistGender"
       req: false
+      short: "Gender of the artist (currently contains female designations only)"
       type: "`$STRING`"
     }
     {
       name: "artistNationality"
       req: false
+      short: "National, geopolitical, cultural, or ethnic origins or affiliation of the creator"
       type: "`$STRING`"
     }
     {
       name: "artistPrefix"
       req: false
+      short: "Describes the extent of creation or describes an attribution qualifier"
       type: "`$STRING`"
     }
     {
       name: "artistRole"
       req: false
+      short: "Role of the artist related to the type of artwork or object that was created"
       type: "`$STRING`"
     }
     {
       name: "artistSuffix"
       req: false
+      short: "Used to record complex information that qualifies the role of a constituent"
       type: "`$STRING`"
     }
     {
       name: "artistULAN_URL"
       req: false
+      short: "ULAN URL for the artist"
       type: "`$STRING`"
     }
     {
       name: "artistWikidata_URL"
       req: false
+      short: "Wikidata URL for the artist"
       type: "`$STRING`"
     }
     {
       name: "city"
       req: false
+      short: "City where the artwork was created"
       type: "`$STRING`"
     }
     {
       name: "classification"
       req: false
+      short: "General term describing the artwork type"
       type: "`$STRING`"
     }
     {
       name: "constituents"
       req: false
+      short: "An array containing the constituents associated with an object"
       type: "`$ARRAY`"
     }
     {
       name: "country"
       req: false
+      short: "Country where the artwork was created or found"
       type: "`$STRING`"
     }
     {
       name: "county"
       req: false
+      short: "County where the artwork was created"
       type: "`$STRING`"
     }
     {
       name: "creditLine"
       req: false
+      short: "Text acknowledging the source or origin of the artwork and the year the object was acquired"
       type: "`$STRING`"
     }
     {
       name: "culture"
       req: false
+      short: "Information about the culture, or people from which an object was created"
       type: "`$STRING`"
     }
     {
       name: "department"
       req: false
+      short: "Indicates The Met's curatorial department responsible for the artwork"
       type: "`$STRING`"
     }
     {
       name: "dimensions"
       req: false
+      short: "Size of the artwork or object"
       type: "`$STRING`"
     }
     {
       name: "dimensionsParsed"
       req: false
+      short: "Size of the artwork or object in centimeters, parsed"
       type: "`$ARRAY`"
     }
     {
       name: "dynasty"
       req: false
+      short: "Dynasty under which an object was created"
       type: "`$STRING`"
     }
     {
       name: "excavation"
       req: false
+      short: "The name of an excavation"
       type: "`$STRING`"
     }
     {
       name: "geographyType"
       req: false
+      short: "Qualifying information that describes the relationship of the place catalogued to the object"
       type: "`$STRING`"
     }
     {
       name: "isHighlight"
       req: false
+      short: "When true indicates a popular and important artwork in the collection"
       type: "`$BOOLEAN`"
     }
     {
       name: "isPublicDomain"
       req: false
+      short: "When true indicates an artwork in the Public Domain"
       type: "`$BOOLEAN`"
     }
     {
       name: "isTimelineWork"
       req: false
+      short: "Whether the object is on the Timeline of Art History website"
       type: "`$BOOLEAN`"
     }
     {
       name: "linkResource"
       req: false
+      short: "URL to object's page on metmuseum.org"
       type: "`$STRING`"
     }
     {
       name: "locale"
       req: false
+      short: "Geographic location more specific than subregion"
       type: "`$STRING`"
     }
     {
       name: "locus"
       req: false
+      short: "Geographic location that is less specific than locale"
       type: "`$STRING`"
     }
     {
       name: "measurements"
       req: false
+      short: "Array of elements with measurements."
       type: "`$ARRAY`"
     }
     {
       name: "medium"
       req: false
+      short: "Refers to the materials that were used to create the artwork"
       type: "`$STRING`"
     }
     {
       name: "metadataDate"
       req: false
+      short: "Date metadata was last updated"
       type: "`$STRING`"
     }
     {
       name: "objectBeginDate"
       req: false
+      short: "Machine readable date indicating the year the artwork was started to be created"
       type: "`$INTEGER`"
     }
     {
       name: "objectDate"
       req: false
+      short: "Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created"
       type: "`$STRING`"
     }
     {
       name: "objectEndDate"
       req: false
+      short: "Machine readable date indicating the year the artwork was completed"
       type: "`$INTEGER`"
     }
     {
       name: "objectID"
       req: false
+      short: "Identifying number for each artwork (unique, can be used as key field)"
       type: "`$INTEGER`"
     }
     {
       name: "objectIDs"
       req: false
+      short: "An array containing the object ID of publicly-available objects"
       type: "`$ARRAY`"
     }
     {
       name: "objectName"
       req: false
+      short: "Describes the physical type of the object"
       type: "`$STRING`"
     }
     {
       name: "objectURL"
       req: false
+      short: "URL to object's page on metmuseum.org"
       type: "`$STRING`"
     }
     {
       name: "objectWikidata_URL"
       req: false
+      short: "Wikidata URL for the object"
       type: "`$STRING`"
     }
     {
       name: "period"
       req: false
+      short: "Time or time period when an object was created"
       type: "`$STRING`"
     }
     {
       name: "portfolio"
       req: false
+      short: "A set of works created as a group or published as a series"
       type: "`$STRING`"
     }
     {
       name: "primaryImage"
       req: false
+      short: "URL to the primary image of an object in JPEG format"
       type: "`$STRING`"
     }
     {
       name: "primaryImageSmall"
       req: false
+      short: "URL to the lower-res primary image of an object in JPEG format"
       type: "`$STRING`"
     }
     {
       name: "region"
       req: false
+      short: "Geographic location more specific than country"
       type: "`$STRING`"
     }
     {
       name: "reign"
       req: false
+      short: "Reign of a monarch or ruler under which an object was created"
       type: "`$STRING`"
     }
     {
       name: "repository"
       req: false
+      short: "Repository information"
       type: "`$STRING`"
     }
     {
       name: "rightsAndReproduction"
       req: false
+      short: "Credit line for artworks still under copyright"
       type: "`$STRING`"
     }
     {
       name: "river"
       req: false
+      short: "River related to the origins of an artwork"
       type: "`$STRING`"
     }
     {
       name: "state"
       req: false
+      short: "State or province where the artwork was created"
       type: "`$STRING`"
     }
     {
       name: "subregion"
       req: false
+      short: "Geographic location more specific than Region"
       type: "`$STRING`"
     }
     {
       name: "tags"
       req: false
+      short: "An array of subject keyword tags associated with the object"
       type: "`$ARRAY`"
     }
     {
       name: "title"
       req: false
+      short: "Title, identifying phrase, or name given to a work of art"
       type: "`$STRING`"
     }
     {
       name: "total"
       req: false
+      short: "The total number of publicly-available objects"
       type: "`$INTEGER`"
     }
   ]
