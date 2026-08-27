@@ -44,6 +44,7 @@
 ---@field dynasty? string
 ---@field excavation? string
 ---@field geographyType? string
+---@field id? string
 ---@field isHighlight? boolean
 ---@field isPublicDomain? boolean
 ---@field isTimelineWork? boolean
@@ -109,6 +110,7 @@
 ---@field dynasty? string
 ---@field excavation? string
 ---@field geographyType? string
+---@field id? string
 ---@field isHighlight? boolean
 ---@field isPublicDomain? boolean
 ---@field isTimelineWork? boolean

@@ -123,6 +123,9 @@ DepartmentListMatch = Struct.new(
 # @!attribute [rw] geographyType
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] isHighlight
 #   @return [Boolean, nil]
 #
@@ -245,6 +248,7 @@ ObjectType = Struct.new(
   :dynasty,
   :excavation,
   :geographyType,
+  :id,
   :isHighlight,
   :isPublicDomain,
   :isTimelineWork,
@@ -377,6 +381,9 @@ ObjectLoadMatch = Struct.new(
 # @!attribute [rw] geographyType
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] isHighlight
 #   @return [Boolean, nil]
 #
@@ -499,6 +506,7 @@ ObjectListMatch = Struct.new(
   :dynasty,
   :excavation,
   :geographyType,
+  :id,
   :isHighlight,
   :isPublicDomain,
   :isTimelineWork,

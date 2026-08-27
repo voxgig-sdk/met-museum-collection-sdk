@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -215,6 +216,10 @@ local function make_config()
           {
             ["name"] = "geographyType",
             ["short"] = "Qualifying information that describes the relationship of the place catalogued to the object",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {

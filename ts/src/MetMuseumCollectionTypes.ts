@@ -45,6 +45,7 @@ export interface ObjectType {
   dynasty?: string
   excavation?: string
   geographyType?: string
+  id?: string
   isHighlight?: boolean
   isPublicDomain?: boolean
   isTimelineWork?: boolean
@@ -112,6 +113,7 @@ export interface ObjectListMatch {
   dynasty?: string
   excavation?: string
   geographyType?: string
+  id?: string
   isHighlight?: boolean
   isPublicDomain?: boolean
   isTimelineWork?: boolean

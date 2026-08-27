@@ -93,9 +93,13 @@ class ObjectEntityTest extends TestCase
         $this->assertIsArray($object_ref01_list_result);
 
         // LOAD
-        $object_ref01_match_dt0 = [];
+        $object_ref01_match_dt0 = [
+            "id" => $object_ref01_data["id"],
+        ];
         $object_ref01_data_dt0_loaded = $object_ref01_ent->load($object_ref01_match_dt0, null);
-        $this->assertNotNull($object_ref01_data_dt0_loaded);
+        $object_ref01_data_dt0_load_result = Helpers::to_map(is_object($object_ref01_data_dt0_loaded) && method_exists($object_ref01_data_dt0_loaded, 'data_get') ? $object_ref01_data_dt0_loaded->data_get() : $object_ref01_data_dt0_loaded);
+        $this->assertNotNull($object_ref01_data_dt0_load_result);
+        $this->assertEquals($object_ref01_data_dt0_load_result["id"], $object_ref01_data["id"]);
 
     }
 }

@@ -55,6 +55,7 @@ type Object struct {
 	Dynasty *string `json:"dynasty,omitempty"`
 	Excavation *string `json:"excavation,omitempty"`
 	GeographyType *string `json:"geographyType,omitempty"`
+	Id *string `json:"id,omitempty"`
 	IsHighlight *bool `json:"isHighlight,omitempty"`
 	IsPublicDomain *bool `json:"isPublicDomain,omitempty"`
 	IsTimelineWork *bool `json:"isTimelineWork,omitempty"`
@@ -124,6 +125,7 @@ type ObjectListMatch struct {
 	Dynasty *string `json:"dynasty,omitempty"`
 	Excavation *string `json:"excavation,omitempty"`
 	GeographyType *string `json:"geographyType,omitempty"`
+	Id *string `json:"id,omitempty"`
 	IsHighlight *bool `json:"isHighlight,omitempty"`
 	IsPublicDomain *bool `json:"isPublicDomain,omitempty"`
 	IsTimelineWork *bool `json:"isTimelineWork,omitempty"`

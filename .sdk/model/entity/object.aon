@@ -180,6 +180,11 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "isHighlight"
       req: false
       short: "When true indicates a popular and important artwork in the collection"
@@ -366,6 +371,11 @@ main: kit: entity: object: {
       type: "`$INTEGER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "object"
   op: {

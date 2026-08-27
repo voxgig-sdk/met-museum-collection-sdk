@@ -182,6 +182,7 @@ $object = $client->Object();
 | `dynasty` | `string` | No | Dynasty under which an object was created |
 | `excavation` | `string` | No | The name of an excavation |
 | `geographyType` | `string` | No | Qualifying information that describes the relationship of the place catalogued to the object |
+| `id` | `string` | No |  |
 | `isHighlight` | `bool` | No | When true indicates a popular and important artwork in the collection |
 | `isPublicDomain` | `bool` | No | When true indicates an artwork in the Public Domain |
 | `isTimelineWork` | `bool` | No | Whether the object is on the Timeline of Art History website |

@@ -56,6 +56,7 @@ class Object(TypedDict, total=False):
     dynasty: str
     excavation: str
     geographyType: str
+    id: str
     isHighlight: bool
     isPublicDomain: bool
     isTimelineWork: bool
@@ -123,6 +124,7 @@ class ObjectListMatch(TypedDict, total=False):
     dynasty: str
     excavation: str
     geographyType: str
+    id: str
     isHighlight: bool
     isPublicDomain: bool
     isTimelineWork: bool

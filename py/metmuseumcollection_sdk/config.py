@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -236,6 +237,10 @@ def make_config():
           {
             "name": "geographyType",
             "short": "Qualifying information that describes the relationship of the place catalogued to the object",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

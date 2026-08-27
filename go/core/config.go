@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -219,6 +220,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "geographyType",
 						"short": "Qualifying information that describes the relationship of the place catalogued to the object",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{

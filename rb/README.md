@@ -280,6 +280,7 @@ API path: `/departments`
 | `dynasty` | Dynasty under which an object was created |
 | `excavation` | The name of an excavation |
 | `geographyType` | Qualifying information that describes the relationship of the place catalogued to the object |
+| `id` |  |
 | `isHighlight` | When true indicates a popular and important artwork in the collection |
 | `isPublicDomain` | When true indicates an artwork in the Public Domain |
 | `isTimelineWork` | Whether the object is on the Timeline of Art History website |
@@ -401,6 +402,7 @@ Create an instance: `object = client.Object`
 | `dynasty` | `String` | Dynasty under which an object was created |
 | `excavation` | `String` | The name of an excavation |
 | `geographyType` | `String` | Qualifying information that describes the relationship of the place catalogued to the object |
+| `id` | `String` |  |
 | `isHighlight` | `Boolean` | When true indicates a popular and important artwork in the collection |
 | `isPublicDomain` | `Boolean` | When true indicates an artwork in the Public Domain |
 | `isTimelineWork` | `Boolean` | Whether the object is on the Timeline of Art History website |

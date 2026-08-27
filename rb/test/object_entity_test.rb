@@ -83,9 +83,13 @@ class ObjectEntityTest < Minitest::Test
     assert object_ref01_list_result.is_a?(Array)
 
     # LOAD
-    object_ref01_match_dt0 = {}
+    object_ref01_match_dt0 = {
+      "id" => object_ref01_data["id"],
+    }
     object_ref01_data_dt0_loaded = object_ref01_ent.load(object_ref01_match_dt0, nil)
-    assert !object_ref01_data_dt0_loaded.nil?
+    object_ref01_data_dt0_load_result = Helpers.to_map(object_ref01_data_dt0_loaded.respond_to?(:data_get) ? object_ref01_data_dt0_loaded.data_get : object_ref01_data_dt0_loaded)
+    assert !object_ref01_data_dt0_load_result.nil?
+    assert_equal object_ref01_data_dt0_load_result["id"], object_ref01_data["id"]
 
   end
 end

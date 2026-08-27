@@ -178,6 +178,7 @@ object = client.Object()
 | `dynasty` | `str` | No | Dynasty under which an object was created |
 | `excavation` | `str` | No | The name of an excavation |
 | `geographyType` | `str` | No | Qualifying information that describes the relationship of the place catalogued to the object |
+| `id` | `str` | No |  |
 | `isHighlight` | `bool` | No | When true indicates a popular and important artwork in the collection |
 | `isPublicDomain` | `bool` | No | When true indicates an artwork in the Public Domain |
 | `isTimelineWork` | `bool` | No | Whether the object is on the Timeline of Art History website |

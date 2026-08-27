@@ -58,6 +58,7 @@ class ObjectType
     public ?string $dynasty = null;
     public ?string $excavation = null;
     public ?string $geographyType = null;
+    public ?string $id = null;
     public ?bool $isHighlight = null;
     public ?bool $isPublicDomain = null;
     public ?bool $isTimelineWork = null;
@@ -129,6 +130,7 @@ class ObjectListMatch
     public ?string $dynasty = null;
     public ?string $excavation = null;
     public ?string $geographyType = null;
+    public ?string $id = null;
     public ?bool $isHighlight = null;
     public ?bool $isPublicDomain = null;
     public ?bool $isTimelineWork = null;

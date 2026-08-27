@@ -28,6 +28,7 @@ module MetMuseumCollectionConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -227,6 +228,10 @@ module MetMuseumCollectionConfig
             {
               "name" => "geographyType",
               "short" => "Qualifying information that describes the relationship of the place catalogued to the object",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

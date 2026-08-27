@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -254,6 +255,10 @@ class Config {
         {
           "name": "geographyType",
           "short": "Qualifying information that describes the relationship of the place catalogued to the object",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {
