@@ -95,67 +95,8 @@ class ObjectLoadMatch(TypedDict):
 
 
 class ObjectListMatch(TypedDict, total=False):
-    GalleryNumber: str
-    accessionNumber: str
-    accessionYear: str
-    additionalImages: list
-    artistAlphaSort: str
-    artistBeginDate: str
-    artistDisplayBio: str
-    artistDisplayName: str
-    artistEndDate: str
-    artistGender: str
-    artistNationality: str
-    artistPrefix: str
-    artistRole: str
-    artistSuffix: str
-    artistULAN_URL: str
-    artistWikidata_URL: str
-    city: str
-    classification: str
-    constituents: list
-    country: str
-    county: str
-    creditLine: str
-    culture: str
-    department: str
-    dimensions: str
-    dimensionsParsed: list
-    dynasty: str
-    excavation: str
-    geographyType: str
-    id: str
-    isHighlight: bool
-    isPublicDomain: bool
-    isTimelineWork: bool
-    linkResource: str
-    locale: str
-    locus: str
-    measurements: list
-    medium: str
-    metadataDate: str
-    objectBeginDate: int
-    objectDate: str
-    objectEndDate: int
-    objectID: int
-    objectIDs: list
-    objectName: str
-    objectURL: str
-    objectWikidata_URL: str
-    period: str
-    portfolio: str
-    primaryImage: str
-    primaryImageSmall: str
-    region: str
-    reign: str
-    repository: str
-    rightsAndReproduction: str
-    river: str
-    state: str
-    subregion: str
-    tags: list
-    title: str
-    total: int
+    department_id: str
+    metadata_date: str
 
 
 class Search(TypedDict, total=False):
@@ -164,5 +105,15 @@ class Search(TypedDict, total=False):
 
 
 class SearchListMatch(TypedDict, total=False):
-    objectIDs: list
-    total: int
+    artist_or_culture: bool
+    date_begin: int
+    date_end: int
+    department_id: int
+    geo_location: str
+    has_image: bool
+    is_highlight: bool
+    is_on_view: bool
+    medium: str
+    q: str
+    tag: bool
+    title: bool

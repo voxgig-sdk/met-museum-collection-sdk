@@ -294,250 +294,14 @@ ObjectLoadMatch = Struct.new(
 
 # Request payload for Object#list.
 #
-# @!attribute [rw] GalleryNumber
+# @!attribute [rw] department_id
 #   @return [String, nil]
 #
-# @!attribute [rw] accessionNumber
+# @!attribute [rw] metadata_date
 #   @return [String, nil]
-#
-# @!attribute [rw] accessionYear
-#   @return [String, nil]
-#
-# @!attribute [rw] additionalImages
-#   @return [Array, nil]
-#
-# @!attribute [rw] artistAlphaSort
-#   @return [String, nil]
-#
-# @!attribute [rw] artistBeginDate
-#   @return [String, nil]
-#
-# @!attribute [rw] artistDisplayBio
-#   @return [String, nil]
-#
-# @!attribute [rw] artistDisplayName
-#   @return [String, nil]
-#
-# @!attribute [rw] artistEndDate
-#   @return [String, nil]
-#
-# @!attribute [rw] artistGender
-#   @return [String, nil]
-#
-# @!attribute [rw] artistNationality
-#   @return [String, nil]
-#
-# @!attribute [rw] artistPrefix
-#   @return [String, nil]
-#
-# @!attribute [rw] artistRole
-#   @return [String, nil]
-#
-# @!attribute [rw] artistSuffix
-#   @return [String, nil]
-#
-# @!attribute [rw] artistULAN_URL
-#   @return [String, nil]
-#
-# @!attribute [rw] artistWikidata_URL
-#   @return [String, nil]
-#
-# @!attribute [rw] city
-#   @return [String, nil]
-#
-# @!attribute [rw] classification
-#   @return [String, nil]
-#
-# @!attribute [rw] constituents
-#   @return [Array, nil]
-#
-# @!attribute [rw] country
-#   @return [String, nil]
-#
-# @!attribute [rw] county
-#   @return [String, nil]
-#
-# @!attribute [rw] creditLine
-#   @return [String, nil]
-#
-# @!attribute [rw] culture
-#   @return [String, nil]
-#
-# @!attribute [rw] department
-#   @return [String, nil]
-#
-# @!attribute [rw] dimensions
-#   @return [String, nil]
-#
-# @!attribute [rw] dimensionsParsed
-#   @return [Array, nil]
-#
-# @!attribute [rw] dynasty
-#   @return [String, nil]
-#
-# @!attribute [rw] excavation
-#   @return [String, nil]
-#
-# @!attribute [rw] geographyType
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] isHighlight
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] isPublicDomain
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] isTimelineWork
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] linkResource
-#   @return [String, nil]
-#
-# @!attribute [rw] locale
-#   @return [String, nil]
-#
-# @!attribute [rw] locus
-#   @return [String, nil]
-#
-# @!attribute [rw] measurements
-#   @return [Array, nil]
-#
-# @!attribute [rw] medium
-#   @return [String, nil]
-#
-# @!attribute [rw] metadataDate
-#   @return [String, nil]
-#
-# @!attribute [rw] objectBeginDate
-#   @return [Integer, nil]
-#
-# @!attribute [rw] objectDate
-#   @return [String, nil]
-#
-# @!attribute [rw] objectEndDate
-#   @return [Integer, nil]
-#
-# @!attribute [rw] objectID
-#   @return [Integer, nil]
-#
-# @!attribute [rw] objectIDs
-#   @return [Array, nil]
-#
-# @!attribute [rw] objectName
-#   @return [String, nil]
-#
-# @!attribute [rw] objectURL
-#   @return [String, nil]
-#
-# @!attribute [rw] objectWikidata_URL
-#   @return [String, nil]
-#
-# @!attribute [rw] period
-#   @return [String, nil]
-#
-# @!attribute [rw] portfolio
-#   @return [String, nil]
-#
-# @!attribute [rw] primaryImage
-#   @return [String, nil]
-#
-# @!attribute [rw] primaryImageSmall
-#   @return [String, nil]
-#
-# @!attribute [rw] region
-#   @return [String, nil]
-#
-# @!attribute [rw] reign
-#   @return [String, nil]
-#
-# @!attribute [rw] repository
-#   @return [String, nil]
-#
-# @!attribute [rw] rightsAndReproduction
-#   @return [String, nil]
-#
-# @!attribute [rw] river
-#   @return [String, nil]
-#
-# @!attribute [rw] state
-#   @return [String, nil]
-#
-# @!attribute [rw] subregion
-#   @return [String, nil]
-#
-# @!attribute [rw] tags
-#   @return [Array, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] total
-#   @return [Integer, nil]
 ObjectListMatch = Struct.new(
-  :GalleryNumber,
-  :accessionNumber,
-  :accessionYear,
-  :additionalImages,
-  :artistAlphaSort,
-  :artistBeginDate,
-  :artistDisplayBio,
-  :artistDisplayName,
-  :artistEndDate,
-  :artistGender,
-  :artistNationality,
-  :artistPrefix,
-  :artistRole,
-  :artistSuffix,
-  :artistULAN_URL,
-  :artistWikidata_URL,
-  :city,
-  :classification,
-  :constituents,
-  :country,
-  :county,
-  :creditLine,
-  :culture,
-  :department,
-  :dimensions,
-  :dimensionsParsed,
-  :dynasty,
-  :excavation,
-  :geographyType,
-  :id,
-  :isHighlight,
-  :isPublicDomain,
-  :isTimelineWork,
-  :linkResource,
-  :locale,
-  :locus,
-  :measurements,
-  :medium,
-  :metadataDate,
-  :objectBeginDate,
-  :objectDate,
-  :objectEndDate,
-  :objectID,
-  :objectIDs,
-  :objectName,
-  :objectURL,
-  :objectWikidata_URL,
-  :period,
-  :portfolio,
-  :primaryImage,
-  :primaryImageSmall,
-  :region,
-  :reign,
-  :repository,
-  :rightsAndReproduction,
-  :river,
-  :state,
-  :subregion,
-  :tags,
-  :title,
-  :total,
+  :department_id,
+  :metadata_date,
   keyword_init: true
 )
 
@@ -556,14 +320,54 @@ Search = Struct.new(
 
 # Request payload for Search#list.
 #
-# @!attribute [rw] objectIDs
-#   @return [Array, nil]
+# @!attribute [rw] artist_or_culture
+#   @return [Boolean, nil]
 #
-# @!attribute [rw] total
+# @!attribute [rw] date_begin
 #   @return [Integer, nil]
+#
+# @!attribute [rw] date_end
+#   @return [Integer, nil]
+#
+# @!attribute [rw] department_id
+#   @return [Integer, nil]
+#
+# @!attribute [rw] geo_location
+#   @return [String, nil]
+#
+# @!attribute [rw] has_image
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] is_highlight
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] is_on_view
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] medium
+#   @return [String, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] tag
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] title
+#   @return [Boolean, nil]
 SearchListMatch = Struct.new(
-  :objectIDs,
-  :total,
+  :artist_or_culture,
+  :date_begin,
+  :date_end,
+  :department_id,
+  :geo_location,
+  :has_image,
+  :is_highlight,
+  :is_on_view,
+  :medium,
+  :q,
+  :tag,
+  :title,
   keyword_init: true
 )
 
