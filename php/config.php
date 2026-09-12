@@ -81,13 +81,18 @@ class MetMuseumCollectionConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/departments',
-                  'parts' => [
-                    'departments',
+                  'segments' => [
+                    [
+                      'lit' => 'departments',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.departments`',
+                  ],
+                  'parts' => [
+                    'departments',
                   ],
                 ],
               ],
@@ -289,6 +294,7 @@ class MetMuseumCollectionConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'metadataDate',
               'short' => 'Date metadata was last updated',
               'type' => '`$STRING`',
@@ -404,6 +410,10 @@ class MetMuseumCollectionConfig
               'type' => '`$INTEGER`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'object',
           'op' => [
             'list' => [
@@ -432,8 +442,10 @@ class MetMuseumCollectionConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/objects',
-                  'parts' => [
-                    'objects',
+                  'segments' => [
+                    [
+                      'lit' => 'objects',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -444,6 +456,9 @@ class MetMuseumCollectionConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.objectIDs`',
+                  ],
+                  'parts' => [
+                    'objects',
                   ],
                 ],
               ],
@@ -468,13 +483,17 @@ class MetMuseumCollectionConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/objects/{objectID}',
-                  'parts' => [
-                    'objects',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'objectID' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'objects',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -485,6 +504,10 @@ class MetMuseumCollectionConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'objects',
+                    '{id}',
                   ],
                 ],
               ],
@@ -605,8 +628,10 @@ class MetMuseumCollectionConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search',
-                  'parts' => [
-                    'search',
+                  'segments' => [
+                    [
+                      'lit' => 'search',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -627,6 +652,9 @@ class MetMuseumCollectionConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.objectIDs`',
+                  ],
+                  'parts' => [
+                    'search',
                   ],
                 ],
               ],

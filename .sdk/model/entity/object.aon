@@ -233,6 +233,7 @@ main: kit: entity: object: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "metadataDate"
       req: false
       short: "Date metadata was last updated"
@@ -405,8 +406,10 @@ main: kit: entity: object: {
           }
           method: "GET"
           orig: "/objects"
-          parts: [
-            "objects"
+          segments: [
+            {
+              lit: "objects"
+            }
           ]
           select: {
             exist: [
@@ -439,15 +442,19 @@ main: kit: entity: object: {
           }
           method: "GET"
           orig: "/objects/{objectID}"
-          parts: [
-            "objects"
-            "{id}"
-          ]
           rename: {
             param: {
               objectID: "id"
             }
           }
+          segments: [
+            {
+              lit: "objects"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

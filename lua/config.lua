@@ -55,13 +55,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/departments",
-                ["parts"] = {
-                  "departments",
+                ["segments"] = {
+                  {
+                    ["lit"] = "departments",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.departments`",
+                },
+                ["parts"] = {
+                  "departments",
                 },
               },
             },
@@ -263,6 +268,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "metadataDate",
             ["short"] = "Date metadata was last updated",
             ["type"] = "`$STRING`",
@@ -378,6 +384,10 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "object",
         ["op"] = {
           ["list"] = {
@@ -406,8 +416,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/objects",
-                ["parts"] = {
-                  "objects",
+                ["segments"] = {
+                  {
+                    ["lit"] = "objects",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -418,6 +430,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.objectIDs`",
+                },
+                ["parts"] = {
+                  "objects",
                 },
               },
             },
@@ -442,13 +457,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/objects/{objectID}",
-                ["parts"] = {
-                  "objects",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["objectID"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "objects",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -459,6 +478,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "objects",
+                  "{id}",
                 },
               },
             },
@@ -579,8 +602,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/search",
-                ["parts"] = {
-                  "search",
+                ["segments"] = {
+                  {
+                    ["lit"] = "search",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -601,6 +626,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.objectIDs`",
+                },
+                ["parts"] = {
+                  "search",
                 },
               },
             },
