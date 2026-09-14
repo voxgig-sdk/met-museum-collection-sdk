@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/met-museum-collection",
+  "name": "@voxgig-sdk/met-museum-collection-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Met Museum Collection public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

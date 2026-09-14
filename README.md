@@ -105,7 +105,7 @@ local results, err = client:Search():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
+| TypeScript | `@voxgig-sdk/met-museum-collection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
 | Python | `voxgig-sdk-met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
 | PHP | `voxgig-sdk/met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/met-museum-collection-sdk/go` | `go get github.com/voxgig-sdk/met-museum-collection-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Search():list()
 ### TypeScript
 
 ```ts
-import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection'
+import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection-sdk'
 
 const client = new MetMuseumCollectionSDK()
 

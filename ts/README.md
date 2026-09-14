@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection'
+import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection-sdk'
 
 const client = new MetMuseumCollectionSDK()
 ```
@@ -604,7 +604,7 @@ met-museum-collection/
 Import the SDK from the package root:
 
 ```ts
-import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection'
+import { MetMuseumCollectionSDK } from '@voxgig-sdk/met-museum-collection-sdk'
 ```
 
 ### Entity state
