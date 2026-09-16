@@ -2,15 +2,15 @@
   "existing": {
     "department": {
       "DEPARTMENT00": {
-        "departmentId": "s14",
+        "departmentId": 20,
         "displayName": "s15"
       },
       "DEPARTMENT01": {
-        "departmentId": "s28",
+        "departmentId": 40,
         "displayName": "s29"
       },
       "DEPARTMENT02": {
-        "departmentId": "s3c",
+        "departmentId": 60,
         "displayName": "s3d"
       }
     }
@@ -18,8 +18,53 @@
   "new": {
     "department": {
       "department_ref01": {
-        "departmentId": "s50",
+        "departmentId": 80,
         "displayName": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /departments": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDepartments",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "departments": {
+                      "description": "An array of departments",
+                      "items": {
+                        "properties": {
+                          "departmentId": {
+                            "description": "Unique identifier for the department",
+                            "type": "integer"
+                          },
+                          "displayName": {
+                            "description": "Display name of the department",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "429": {
+            "description": "Rate limit exceeded (80 requests per second)"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

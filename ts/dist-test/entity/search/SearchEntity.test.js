@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MET_MUSEUM_COLLECTION_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'search.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'search.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set MET_MUSEUM_COLLECTION_TEST_SEARCH_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "objectIDs", "req": false, "short": "An array containing the object IDs of matching objects", "type": "`$ARRAY`", "index$": 0 }, { "active": true, "name": "total", "req": false, "short": "The total number of objects matching the search query", "type": "`$INTEGER`", "index$": 1 }], "name": "search", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "example": true, "kind": "query", "name": "artist_or_culture", "orig": "artist_or_culture", "reqd": false, "type": "`$BOOLEAN`", "index$": 0 }, { "active": true, "example": 1800, "kind": "query", "name": "date_begin", "orig": "date_begin", "reqd": false, "type": "`$INTEGER`", "index$": 1 }, { "active": true, "example": 1900, "kind": "query", "name": "date_end", "orig": "date_end", "reqd": false, "type": "`$INTEGER`", "index$": 2 }, { "active": true, "example": 11, "kind": "query", "name": "department_id", "orig": "department_id", "reqd": false, "type": "`$INTEGER`", "index$": 3 }, { "active": true, "example": "Europe", "kind": "query", "name": "geo_location", "orig": "geo_location", "reqd": false, "type": "`$STRING`", "index$": 4 }, { "active": true, "example": true, "kind": "query", "name": "has_image", "orig": "has_image", "reqd": false, "type": "`$BOOLEAN`", "index$": 5 }, { "active": true, "example": true, "kind": "query", "name": "is_highlight", "orig": "is_highlight", "reqd": false, "type": "`$BOOLEAN`", "index$": 6 }, { "active": true, "example": true, "kind": "query", "name": "is_on_view", "orig": "is_on_view", "reqd": false, "type": "`$BOOLEAN`", "index$": 7 }, { "active": true, "example": "Paintings", "kind": "query", "name": "medium", "orig": "medium", "reqd": false, "type": "`$STRING`", "index$": 8 }, { "active": true, "example": "sunflowers", "kind": "query", "name": "q", "orig": "q", "reqd": false, "type": "`$STRING`", "index$": 9 }, { "active": true, "example": true, "kind": "query", "name": "tag", "orig": "tag", "reqd": false, "type": "`$BOOLEAN`", "index$": 10 }, { "active": true, "example": true, "kind": "query", "name": "title", "orig": "title", "reqd": false, "type": "`$BOOLEAN`", "index$": 11 }] }, "contract": { "id": "GET /search", "json": "{\"operationId\":\"searchObjects\",\"parameters\":[{\"description\":\"Search term to query the objects\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"example\":\"sunflowers\",\"type\":\"string\"}},{\"description\":\"Search against the title field\",\"in\":\"query\",\"name\":\"title\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Search for objects using the subject keyword tags field\",\"in\":\"query\",\"name\":\"tags\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by department ID\",\"in\":\"query\",\"name\":\"departmentId\",\"required\":false,\"schema\":{\"example\":11,\"type\":\"integer\"}},{\"description\":\"Filter to highlight objects only\",\"in\":\"query\",\"name\":\"isHighlight\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter to objects currently on view\",\"in\":\"query\",\"name\":\"isOnView\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by artist name or culture\",\"in\":\"query\",\"name\":\"artistOrCulture\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by medium\",\"in\":\"query\",\"name\":\"medium\",\"required\":false,\"schema\":{\"example\":\"Paintings\",\"type\":\"string\"}},{\"description\":\"Filter to objects that have images\",\"in\":\"query\",\"name\":\"hasImages\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by geographic location\",\"in\":\"query\",\"name\":\"geoLocation\",\"required\":false,\"schema\":{\"example\":\"Europe\",\"type\":\"string\"}},{\"description\":\"Filter by artwork begin date (integer year)\",\"in\":\"query\",\"name\":\"dateBegin\",\"required\":false,\"schema\":{\"example\":1800,\"type\":\"integer\"}},{\"description\":\"Filter by artwork end date (integer year)\",\"in\":\"query\",\"name\":\"dateEnd\",\"required\":false,\"schema\":{\"example\":1900,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"objectIDs\":{\"description\":\"An array containing the object IDs of matching objects\",\"items\":{\"type\":\"integer\"},\"nullable\":true,\"type\":\"array\"},\"total\":{\"description\":\"The total number of objects matching the search query\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/search", "segments": [{ "lit": "search" }], "select": { "exist": ["artist_or_culture", "date_begin", "date_end", "department_id", "geo_location", "has_image", "is_highlight", "is_on_view", "medium", "q", "tag", "title"] }, "transform": { "req": "`reqdata`", "res": "`body.objectIDs`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "search", "name__orig": "search", "Name": "Search", "name_": "search", "name-": "search", "NAME": "SEARCH", "index$": 2 }, { "active": true, "entity": "search", "key$": "BasicSearchFlow", "kind": "basic", "name": "BasicSearchFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "search_ref01" } }], "index$": 0 }] }, 'Search');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['MET_MUSEUM_COLLECTION_TEST_SEARCH_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'MET_MUSEUM_COLLECTION_TEST_SEARCH_ENTID': idmap,
         'MET_MUSEUM_COLLECTION_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['MET_MUSEUM_COLLECTION_TEST_SEARCH_ENTID'];
     const live = 'TRUE' === env.MET_MUSEUM_COLLECTION_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['MET_MUSEUM_COLLECTION_TEST_SEARCH_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.MetMuseumCollectionSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -125,7 +123,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -137,7 +136,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.MET_MUSEUM_COLLECTION_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

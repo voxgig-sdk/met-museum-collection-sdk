@@ -41,10 +41,10 @@
         "measurements": [],
         "medium": "s287",
         "metadataDate": "s288",
-        "objectBeginDate": "s289",
+        "objectBeginDate": 649,
         "objectDate": "s28a",
-        "objectEndDate": "s28b",
-        "objectID": "s28c",
+        "objectEndDate": 651,
+        "objectID": 652,
         "objectIDs": [],
         "objectName": "s28e",
         "objectURL": "s28f",
@@ -62,7 +62,7 @@
         "subregion": "s29b",
         "tags": [],
         "title": "s29d",
-        "total": "s29e"
+        "total": 670
       },
       "OBJECT01": {
         "GalleryNumber": "s4c4",
@@ -104,10 +104,10 @@
         "measurements": [],
         "medium": "s4e9",
         "metadataDate": "s4ea",
-        "objectBeginDate": "s4eb",
+        "objectBeginDate": 1259,
         "objectDate": "s4ec",
-        "objectEndDate": "s4ed",
-        "objectID": "s4ee",
+        "objectEndDate": 1261,
+        "objectID": 1262,
         "objectIDs": [],
         "objectName": "s4f0",
         "objectURL": "s4f1",
@@ -125,7 +125,7 @@
         "subregion": "s4fd",
         "tags": [],
         "title": "s4ff",
-        "total": "s500"
+        "total": 1280
       },
       "OBJECT02": {
         "GalleryNumber": "s726",
@@ -167,10 +167,10 @@
         "measurements": [],
         "medium": "s74b",
         "metadataDate": "s74c",
-        "objectBeginDate": "s74d",
+        "objectBeginDate": 1869,
         "objectDate": "s74e",
-        "objectEndDate": "s74f",
-        "objectID": "s750",
+        "objectEndDate": 1871,
+        "objectID": 1872,
         "objectIDs": [],
         "objectName": "s752",
         "objectURL": "s753",
@@ -188,7 +188,7 @@
         "subregion": "s75f",
         "tags": [],
         "title": "s761",
-        "total": "s762"
+        "total": 1890
       }
     }
   },
@@ -233,10 +233,10 @@
         "measurements": [],
         "medium": "s9ad",
         "metadataDate": "s9ae",
-        "objectBeginDate": "s9af",
+        "objectBeginDate": 2479,
         "objectDate": "s9b0",
-        "objectEndDate": "s9b1",
-        "objectID": "s9b2",
+        "objectEndDate": 2481,
+        "objectID": 2482,
         "objectIDs": [],
         "objectName": "s9b4",
         "objectURL": "s9b5",
@@ -254,7 +254,475 @@
         "subregion": "s9c1",
         "tags": [],
         "title": "s9c3",
-        "total": "s9c4"
+        "total": 2500
+      }
+    }
+  },
+  "requests": {
+    "GET /objects": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getObjects",
+        "parameters": [
+          {
+            "description": "Returns any objects with updated data after this date (format: YYYY-MM-DD)",
+            "in": "query",
+            "name": "metadataDate",
+            "required": false,
+            "schema": {
+              "example": "2018-10-22",
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Returns any objects in specific department(s). Use pipe character (|) to delimit multiple department IDs (e.g., 3|9|12)",
+            "in": "query",
+            "name": "departmentIds",
+            "required": false,
+            "schema": {
+              "example": "1",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "objectIDs": {
+                      "description": "An array containing the object ID of publicly-available objects",
+                      "example": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10
+                      ],
+                      "items": {
+                        "type": "integer"
+                      },
+                      "type": "array"
+                    },
+                    "total": {
+                      "description": "The total number of publicly-available objects",
+                      "example": 471581,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "429": {
+            "description": "Rate limit exceeded (80 requests per second)"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /objects/{objectID}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getObjectById",
+        "parameters": [
+          {
+            "description": "The unique Object ID for an object",
+            "in": "path",
+            "name": "objectID",
+            "required": true,
+            "schema": {
+              "example": 45734,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "GalleryNumber": {
+                      "description": "Gallery number, where available",
+                      "example": "131",
+                      "type": "string"
+                    },
+                    "accessionNumber": {
+                      "description": "Identifying number for each artwork (not always unique)",
+                      "example": "67.241",
+                      "type": "string"
+                    },
+                    "accessionYear": {
+                      "description": "Year the artwork was acquired",
+                      "example": "1921",
+                      "type": "string"
+                    },
+                    "additionalImages": {
+                      "description": "An array containing URLs to the additional images of an object in JPEG format",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "artistAlphaSort": {
+                      "description": "Used to sort artist names alphabetically",
+                      "example": "Gogh, Vincent van",
+                      "type": "string"
+                    },
+                    "artistBeginDate": {
+                      "description": "Year the artist was born",
+                      "example": "1840",
+                      "type": "string"
+                    },
+                    "artistDisplayBio": {
+                      "description": "Nationality and life dates of an artist",
+                      "example": "Dutch, Zundert 1853–1890 Auvers-sur-Oise",
+                      "type": "string"
+                    },
+                    "artistDisplayName": {
+                      "description": "Artist name in the correct order for display",
+                      "example": "Vincent van Gogh",
+                      "type": "string"
+                    },
+                    "artistEndDate": {
+                      "description": "Year the artist died",
+                      "example": "1926",
+                      "type": "string"
+                    },
+                    "artistGender": {
+                      "description": "Gender of the artist (currently contains female designations only)",
+                      "example": "female",
+                      "type": "string"
+                    },
+                    "artistNationality": {
+                      "description": "National, geopolitical, cultural, or ethnic origins or affiliation of the creator",
+                      "example": "Dutch",
+                      "type": "string"
+                    },
+                    "artistPrefix": {
+                      "description": "Describes the extent of creation or describes an attribution qualifier",
+                      "example": "In the Style of",
+                      "type": "string"
+                    },
+                    "artistRole": {
+                      "description": "Role of the artist related to the type of artwork or object that was created",
+                      "example": "Artist for Painting",
+                      "type": "string"
+                    },
+                    "artistSuffix": {
+                      "description": "Used to record complex information that qualifies the role of a constituent",
+                      "example": "verso only",
+                      "type": "string"
+                    },
+                    "artistULAN_URL": {
+                      "description": "ULAN URL for the artist",
+                      "example": "https://vocab.getty.edu/page/ulan/500003169",
+                      "type": "string"
+                    },
+                    "artistWikidata_URL": {
+                      "description": "Wikidata URL for the artist",
+                      "example": "https://www.wikidata.org/wiki/Q694774",
+                      "type": "string"
+                    },
+                    "city": {
+                      "description": "City where the artwork was created",
+                      "example": "New York",
+                      "type": "string"
+                    },
+                    "classification": {
+                      "description": "General term describing the artwork type",
+                      "example": "Paintings",
+                      "type": "string"
+                    },
+                    "constituents": {
+                      "description": "An array containing the constituents associated with an object",
+                      "items": {
+                        "properties": {
+                          "constituentID": {
+                            "type": "integer"
+                          },
+                          "constituentULAN_URL": {
+                            "type": "string"
+                          },
+                          "constituentWikidata_URL": {
+                            "type": "string"
+                          },
+                          "gender": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "country": {
+                      "description": "Country where the artwork was created or found",
+                      "example": "France",
+                      "type": "string"
+                    },
+                    "county": {
+                      "description": "County where the artwork was created",
+                      "example": "Orange County",
+                      "type": "string"
+                    },
+                    "creditLine": {
+                      "description": "Text acknowledging the source or origin of the artwork and the year the object was acquired",
+                      "example": "Robert Lehman Collection, 1975",
+                      "type": "string"
+                    },
+                    "culture": {
+                      "description": "Information about the culture, or people from which an object was created",
+                      "example": "British",
+                      "type": "string"
+                    },
+                    "department": {
+                      "description": "Indicates The Met's curatorial department responsible for the artwork",
+                      "example": "Egyptian Art",
+                      "type": "string"
+                    },
+                    "dimensions": {
+                      "description": "Size of the artwork or object",
+                      "example": "16 x 20 in. (40.6 x 50.8 cm)",
+                      "type": "string"
+                    },
+                    "dimensionsParsed": {
+                      "description": "Size of the artwork or object in centimeters, parsed",
+                      "items": {
+                        "properties": {
+                          "dimension": {
+                            "type": "number"
+                          },
+                          "dimensionType": {
+                            "type": "string"
+                          },
+                          "element": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "dynasty": {
+                      "description": "Dynasty under which an object was created",
+                      "example": "Kingdom of Benin",
+                      "type": "string"
+                    },
+                    "excavation": {
+                      "description": "The name of an excavation",
+                      "example": "MMA excavations, 1923–24",
+                      "type": "string"
+                    },
+                    "geographyType": {
+                      "description": "Qualifying information that describes the relationship of the place catalogued to the object",
+                      "example": "Made in",
+                      "type": "string"
+                    },
+                    "isHighlight": {
+                      "description": "When true indicates a popular and important artwork in the collection",
+                      "type": "boolean"
+                    },
+                    "isPublicDomain": {
+                      "description": "When true indicates an artwork in the Public Domain",
+                      "type": "boolean"
+                    },
+                    "isTimelineWork": {
+                      "description": "Whether the object is on the Timeline of Art History website",
+                      "type": "boolean"
+                    },
+                    "linkResource": {
+                      "description": "URL to object's page on metmuseum.org",
+                      "example": "https://www.metmuseum.org/art/collection/search/547802",
+                      "type": "string"
+                    },
+                    "locale": {
+                      "description": "Geographic location more specific than subregion",
+                      "example": "Tomb of Perneb",
+                      "type": "string"
+                    },
+                    "locus": {
+                      "description": "Geographic location that is less specific than locale",
+                      "example": "1st chamber W. wall",
+                      "type": "string"
+                    },
+                    "measurements": {
+                      "description": "Array of elements with measurements. Spatial measurements are in centimeters; weights are in kg",
+                      "items": {
+                        "properties": {
+                          "elementDescription": {
+                            "type": "string"
+                          },
+                          "elementMeasurements": {
+                            "additionalProperties": {
+                              "type": "number"
+                            },
+                            "type": "object"
+                          },
+                          "elementName": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "medium": {
+                      "description": "Refers to the materials that were used to create the artwork",
+                      "example": "Oil on canvas",
+                      "type": "string"
+                    },
+                    "metadataDate": {
+                      "description": "Date metadata was last updated",
+                      "example": "2018-10-17T10:24:43.197Z",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "objectBeginDate": {
+                      "description": "Machine readable date indicating the year the artwork was started to be created",
+                      "example": 1867,
+                      "type": "integer"
+                    },
+                    "objectDate": {
+                      "description": "Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created",
+                      "example": "1865–67",
+                      "type": "string"
+                    },
+                    "objectEndDate": {
+                      "description": "Machine readable date indicating the year the artwork was completed",
+                      "example": 1888,
+                      "type": "integer"
+                    },
+                    "objectID": {
+                      "description": "Identifying number for each artwork (unique, can be used as key field)",
+                      "example": 437133,
+                      "type": "integer"
+                    },
+                    "objectName": {
+                      "description": "Describes the physical type of the object",
+                      "example": "Painting",
+                      "type": "string"
+                    },
+                    "objectURL": {
+                      "description": "URL to object's page on metmuseum.org",
+                      "example": "https://www.metmuseum.org/art/collection/search/547802",
+                      "type": "string"
+                    },
+                    "objectWikidata_URL": {
+                      "description": "Wikidata URL for the object",
+                      "example": "https://www.wikidata.org/wiki/Q432253",
+                      "type": "string"
+                    },
+                    "period": {
+                      "description": "Time or time period when an object was created",
+                      "example": "Ming dynasty (1368-1644)",
+                      "type": "string"
+                    },
+                    "portfolio": {
+                      "description": "A set of works created as a group or published as a series",
+                      "example": "Birds of America",
+                      "type": "string"
+                    },
+                    "primaryImage": {
+                      "description": "URL to the primary image of an object in JPEG format",
+                      "example": "https://images.metmuseum.org/CRDImages/ep/original/DT1567.jpg",
+                      "type": "string"
+                    },
+                    "primaryImageSmall": {
+                      "description": "URL to the lower-res primary image of an object in JPEG format",
+                      "example": "https://images.metmuseum.org/CRDImages/ep/web-large/DT1567.jpg",
+                      "type": "string"
+                    },
+                    "region": {
+                      "description": "Geographic location more specific than country",
+                      "example": "Bohemia",
+                      "type": "string"
+                    },
+                    "reign": {
+                      "description": "Reign of a monarch or ruler under which an object was created",
+                      "example": "Amenhotep III",
+                      "type": "string"
+                    },
+                    "repository": {
+                      "description": "Repository information",
+                      "example": "Metropolitan Museum of Art, New York, NY",
+                      "type": "string"
+                    },
+                    "rightsAndReproduction": {
+                      "description": "Credit line for artworks still under copyright",
+                      "example": "© 2018 Estate of Pablo Picasso / Artists Rights Society (ARS), New York",
+                      "type": "string"
+                    },
+                    "river": {
+                      "description": "River related to the origins of an artwork",
+                      "example": "Nile River",
+                      "type": "string"
+                    },
+                    "state": {
+                      "description": "State or province where the artwork was created",
+                      "example": "Brooklyn",
+                      "type": "string"
+                    },
+                    "subregion": {
+                      "description": "Geographic location more specific than Region",
+                      "example": "Malqata",
+                      "type": "string"
+                    },
+                    "tags": {
+                      "description": "An array of subject keyword tags associated with the object",
+                      "items": {
+                        "properties": {
+                          "AAT_URL": {
+                            "type": "string"
+                          },
+                          "Wikidata_URL": {
+                            "type": "string"
+                          },
+                          "term": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "title": {
+                      "description": "Title, identifying phrase, or name given to a work of art",
+                      "example": "Wheat Field with Cypresses",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Object not found"
+          },
+          "429": {
+            "description": "Rate limit exceeded (80 requests per second)"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

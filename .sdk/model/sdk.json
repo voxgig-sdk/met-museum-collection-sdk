@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "department": {
           "active": true,
@@ -56,6 +120,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /departments",
+                    "json": "{\"operationId\":\"getDepartments\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departments\":{\"description\":\"An array of departments\",\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Unique identifier for the department\",\"type\":\"integer\"},\"displayName\":{\"description\":\"Display name of the department\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/departments",
@@ -545,6 +615,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /objects",
+                    "json": "{\"operationId\":\"getObjects\",\"parameters\":[{\"description\":\"Returns any objects with updated data after this date (format: YYYY-MM-DD)\",\"in\":\"query\",\"name\":\"metadataDate\",\"required\":false,\"schema\":{\"example\":\"2018-10-22\",\"format\":\"date\",\"type\":\"string\"}},{\"description\":\"Returns any objects in specific department(s). Use pipe character (|) to delimit multiple department IDs (e.g., 3|9|12)\",\"in\":\"query\",\"name\":\"departmentIds\",\"required\":false,\"schema\":{\"example\":\"1\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"objectIDs\":{\"description\":\"An array containing the object ID of publicly-available objects\",\"example\":[1,2,3,4,5,6,7,8,9,10],\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"total\":{\"description\":\"The total number of publicly-available objects\",\"example\":471581,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/objects",
@@ -584,6 +660,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /objects/{objectID}",
+                    "json": "{\"operationId\":\"getObjectById\",\"parameters\":[{\"description\":\"The unique Object ID for an object\",\"in\":\"path\",\"name\":\"objectID\",\"required\":true,\"schema\":{\"example\":45734,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"GalleryNumber\":{\"description\":\"Gallery number, where available\",\"example\":\"131\",\"type\":\"string\"},\"accessionNumber\":{\"description\":\"Identifying number for each artwork (not always unique)\",\"example\":\"67.241\",\"type\":\"string\"},\"accessionYear\":{\"description\":\"Year the artwork was acquired\",\"example\":\"1921\",\"type\":\"string\"},\"additionalImages\":{\"description\":\"An array containing URLs to the additional images of an object in JPEG format\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"artistAlphaSort\":{\"description\":\"Used to sort artist names alphabetically\",\"example\":\"Gogh, Vincent van\",\"type\":\"string\"},\"artistBeginDate\":{\"description\":\"Year the artist was born\",\"example\":\"1840\",\"type\":\"string\"},\"artistDisplayBio\":{\"description\":\"Nationality and life dates of an artist\",\"example\":\"Dutch, Zundert 1853–1890 Auvers-sur-Oise\",\"type\":\"string\"},\"artistDisplayName\":{\"description\":\"Artist name in the correct order for display\",\"example\":\"Vincent van Gogh\",\"type\":\"string\"},\"artistEndDate\":{\"description\":\"Year the artist died\",\"example\":\"1926\",\"type\":\"string\"},\"artistGender\":{\"description\":\"Gender of the artist (currently contains female designations only)\",\"example\":\"female\",\"type\":\"string\"},\"artistNationality\":{\"description\":\"National, geopolitical, cultural, or ethnic origins or affiliation of the creator\",\"example\":\"Dutch\",\"type\":\"string\"},\"artistPrefix\":{\"description\":\"Describes the extent of creation or describes an attribution qualifier\",\"example\":\"In the Style of\",\"type\":\"string\"},\"artistRole\":{\"description\":\"Role of the artist related to the type of artwork or object that was created\",\"example\":\"Artist for Painting\",\"type\":\"string\"},\"artistSuffix\":{\"description\":\"Used to record complex information that qualifies the role of a constituent\",\"example\":\"verso only\",\"type\":\"string\"},\"artistULAN_URL\":{\"description\":\"ULAN URL for the artist\",\"example\":\"https://vocab.getty.edu/page/ulan/500003169\",\"type\":\"string\"},\"artistWikidata_URL\":{\"description\":\"Wikidata URL for the artist\",\"example\":\"https://www.wikidata.org/wiki/Q694774\",\"type\":\"string\"},\"city\":{\"description\":\"City where the artwork was created\",\"example\":\"New York\",\"type\":\"string\"},\"classification\":{\"description\":\"General term describing the artwork type\",\"example\":\"Paintings\",\"type\":\"string\"},\"constituents\":{\"description\":\"An array containing the constituents associated with an object\",\"items\":{\"properties\":{\"constituentID\":{\"type\":\"integer\"},\"constituentULAN_URL\":{\"type\":\"string\"},\"constituentWikidata_URL\":{\"type\":\"string\"},\"gender\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"role\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"country\":{\"description\":\"Country where the artwork was created or found\",\"example\":\"France\",\"type\":\"string\"},\"county\":{\"description\":\"County where the artwork was created\",\"example\":\"Orange County\",\"type\":\"string\"},\"creditLine\":{\"description\":\"Text acknowledging the source or origin of the artwork and the year the object was acquired\",\"example\":\"Robert Lehman Collection, 1975\",\"type\":\"string\"},\"culture\":{\"description\":\"Information about the culture, or people from which an object was created\",\"example\":\"British\",\"type\":\"string\"},\"department\":{\"description\":\"Indicates The Met's curatorial department responsible for the artwork\",\"example\":\"Egyptian Art\",\"type\":\"string\"},\"dimensions\":{\"description\":\"Size of the artwork or object\",\"example\":\"16 x 20 in. (40.6 x 50.8 cm)\",\"type\":\"string\"},\"dimensionsParsed\":{\"description\":\"Size of the artwork or object in centimeters, parsed\",\"items\":{\"properties\":{\"dimension\":{\"type\":\"number\"},\"dimensionType\":{\"type\":\"string\"},\"element\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"dynasty\":{\"description\":\"Dynasty under which an object was created\",\"example\":\"Kingdom of Benin\",\"type\":\"string\"},\"excavation\":{\"description\":\"The name of an excavation\",\"example\":\"MMA excavations, 1923–24\",\"type\":\"string\"},\"geographyType\":{\"description\":\"Qualifying information that describes the relationship of the place catalogued to the object\",\"example\":\"Made in\",\"type\":\"string\"},\"isHighlight\":{\"description\":\"When true indicates a popular and important artwork in the collection\",\"type\":\"boolean\"},\"isPublicDomain\":{\"description\":\"When true indicates an artwork in the Public Domain\",\"type\":\"boolean\"},\"isTimelineWork\":{\"description\":\"Whether the object is on the Timeline of Art History website\",\"type\":\"boolean\"},\"linkResource\":{\"description\":\"URL to object's page on metmuseum.org\",\"example\":\"https://www.metmuseum.org/art/collection/search/547802\",\"type\":\"string\"},\"locale\":{\"description\":\"Geographic location more specific than subregion\",\"example\":\"Tomb of Perneb\",\"type\":\"string\"},\"locus\":{\"description\":\"Geographic location that is less specific than locale\",\"example\":\"1st chamber W. wall\",\"type\":\"string\"},\"measurements\":{\"description\":\"Array of elements with measurements. Spatial measurements are in centimeters; weights are in kg\",\"items\":{\"properties\":{\"elementDescription\":{\"type\":\"string\"},\"elementMeasurements\":{\"additionalProperties\":{\"type\":\"number\"},\"type\":\"object\"},\"elementName\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"medium\":{\"description\":\"Refers to the materials that were used to create the artwork\",\"example\":\"Oil on canvas\",\"type\":\"string\"},\"metadataDate\":{\"description\":\"Date metadata was last updated\",\"example\":\"2018-10-17T10:24:43.197Z\",\"format\":\"date-time\",\"type\":\"string\"},\"objectBeginDate\":{\"description\":\"Machine readable date indicating the year the artwork was started to be created\",\"example\":1867,\"type\":\"integer\"},\"objectDate\":{\"description\":\"Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created\",\"example\":\"1865–67\",\"type\":\"string\"},\"objectEndDate\":{\"description\":\"Machine readable date indicating the year the artwork was completed\",\"example\":1888,\"type\":\"integer\"},\"objectID\":{\"description\":\"Identifying number for each artwork (unique, can be used as key field)\",\"example\":437133,\"type\":\"integer\"},\"objectName\":{\"description\":\"Describes the physical type of the object\",\"example\":\"Painting\",\"type\":\"string\"},\"objectURL\":{\"description\":\"URL to object's page on metmuseum.org\",\"example\":\"https://www.metmuseum.org/art/collection/search/547802\",\"type\":\"string\"},\"objectWikidata_URL\":{\"description\":\"Wikidata URL for the object\",\"example\":\"https://www.wikidata.org/wiki/Q432253\",\"type\":\"string\"},\"period\":{\"description\":\"Time or time period when an object was created\",\"example\":\"Ming dynasty (1368-1644)\",\"type\":\"string\"},\"portfolio\":{\"description\":\"A set of works created as a group or published as a series\",\"example\":\"Birds of America\",\"type\":\"string\"},\"primaryImage\":{\"description\":\"URL to the primary image of an object in JPEG format\",\"example\":\"https://images.metmuseum.org/CRDImages/ep/original/DT1567.jpg\",\"type\":\"string\"},\"primaryImageSmall\":{\"description\":\"URL to the lower-res primary image of an object in JPEG format\",\"example\":\"https://images.metmuseum.org/CRDImages/ep/web-large/DT1567.jpg\",\"type\":\"string\"},\"region\":{\"description\":\"Geographic location more specific than country\",\"example\":\"Bohemia\",\"type\":\"string\"},\"reign\":{\"description\":\"Reign of a monarch or ruler under which an object was created\",\"example\":\"Amenhotep III\",\"type\":\"string\"},\"repository\":{\"description\":\"Repository information\",\"example\":\"Metropolitan Museum of Art, New York, NY\",\"type\":\"string\"},\"rightsAndReproduction\":{\"description\":\"Credit line for artworks still under copyright\",\"example\":\"© 2018 Estate of Pablo Picasso / Artists Rights Society (ARS), New York\",\"type\":\"string\"},\"river\":{\"description\":\"River related to the origins of an artwork\",\"example\":\"Nile River\",\"type\":\"string\"},\"state\":{\"description\":\"State or province where the artwork was created\",\"example\":\"Brooklyn\",\"type\":\"string\"},\"subregion\":{\"description\":\"Geographic location more specific than Region\",\"example\":\"Malqata\",\"type\":\"string\"},\"tags\":{\"description\":\"An array of subject keyword tags associated with the object\",\"items\":{\"properties\":{\"AAT_URL\":{\"type\":\"string\"},\"Wikidata_URL\":{\"type\":\"string\"},\"term\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"description\":\"Title, identifying phrase, or name given to a work of art\",\"example\":\"Wheat Field with Cypresses\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Object not found\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -759,6 +841,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /search",
+                    "json": "{\"operationId\":\"searchObjects\",\"parameters\":[{\"description\":\"Search term to query the objects\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"example\":\"sunflowers\",\"type\":\"string\"}},{\"description\":\"Search against the title field\",\"in\":\"query\",\"name\":\"title\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Search for objects using the subject keyword tags field\",\"in\":\"query\",\"name\":\"tags\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by department ID\",\"in\":\"query\",\"name\":\"departmentId\",\"required\":false,\"schema\":{\"example\":11,\"type\":\"integer\"}},{\"description\":\"Filter to highlight objects only\",\"in\":\"query\",\"name\":\"isHighlight\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter to objects currently on view\",\"in\":\"query\",\"name\":\"isOnView\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by artist name or culture\",\"in\":\"query\",\"name\":\"artistOrCulture\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by medium\",\"in\":\"query\",\"name\":\"medium\",\"required\":false,\"schema\":{\"example\":\"Paintings\",\"type\":\"string\"}},{\"description\":\"Filter to objects that have images\",\"in\":\"query\",\"name\":\"hasImages\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by geographic location\",\"in\":\"query\",\"name\":\"geoLocation\",\"required\":false,\"schema\":{\"example\":\"Europe\",\"type\":\"string\"}},{\"description\":\"Filter by artwork begin date (integer year)\",\"in\":\"query\",\"name\":\"dateBegin\",\"required\":false,\"schema\":{\"example\":1800,\"type\":\"integer\"}},{\"description\":\"Filter by artwork end date (integer year)\",\"in\":\"query\",\"name\":\"dateEnd\",\"required\":false,\"schema\":{\"example\":1900,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"objectIDs\":{\"description\":\"An array containing the object IDs of matching objects\",\"items\":{\"type\":\"integer\"},\"nullable\":true,\"type\":\"array\"},\"total\":{\"description\":\"The total number of objects matching the search query\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/search",
@@ -797,13 +885,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -893,6 +1191,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -1022,6 +1416,48 @@
         "website": "https://metmuseum.github.io/"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -1576,6 +2012,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1617,7 +2054,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

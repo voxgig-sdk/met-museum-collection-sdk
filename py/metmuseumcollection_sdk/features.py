@@ -1,12 +1,18 @@
 # MetMuseumCollection SDK feature factory
 
 from metmuseumcollection_sdk.feature.base_feature import MetMuseumCollectionBaseFeature
+from metmuseumcollection_sdk.feature.ratelimit_feature import MetMuseumCollectionRatelimitFeature
+from metmuseumcollection_sdk.feature.retry_feature import MetMuseumCollectionRetryFeature
 from metmuseumcollection_sdk.feature.test_feature import MetMuseumCollectionTestFeature
+from metmuseumcollection_sdk.feature.timeout_feature import MetMuseumCollectionTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: MetMuseumCollectionBaseFeature(),
+    "ratelimit": lambda: MetMuseumCollectionRatelimitFeature(),
+    "retry": lambda: MetMuseumCollectionRetryFeature(),
     "test": lambda: MetMuseumCollectionTestFeature(),
+    "timeout": lambda: MetMuseumCollectionTimeoutFeature(),
 }
 
 
