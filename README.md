@@ -105,12 +105,12 @@ local results, err = client:Search():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/met-museum-collection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
-| Python | `voxgig-sdk-met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
-| PHP | `voxgig-sdk/met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
+| TypeScript | `@voxgig-sdk/met-museum-collection-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/tags) |
+| Python | `voxgig-sdk-met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/tags) |
+| PHP | `voxgig-sdk/met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/met-museum-collection-sdk/go` | `go get github.com/voxgig-sdk/met-museum-collection-sdk/go@latest` |
-| Ruby | `voxgig-sdk-met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
-| Lua | `voxgig-sdk-met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases) |
+| Ruby | `voxgig-sdk-met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/tags) |
+| Lua | `voxgig-sdk-met-museum-collection` | publish pending — [install from git tag](https://github.com/voxgig-sdk/met-museum-collection-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/met-museum-collection-sdk/go-cli` | `go install github.com/voxgig-sdk/met-museum-collection-sdk/go-cli/cmd/met-museum-collection@latest` |
 | Go MCP server | `github.com/voxgig-sdk/met-museum-collection-sdk/go-mcp` | `go get github.com/voxgig-sdk/met-museum-collection-sdk/go-mcp@latest` |
 

@@ -1,5 +1,5 @@
 # Entity Models
 
-@"department.aon"
-@"object.aon"
-@"search.aon"
+@"./department.aon"
+@"./object.aon"
+@"./search.aon"

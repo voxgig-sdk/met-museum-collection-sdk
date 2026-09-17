@@ -127,15 +127,15 @@ class Config {
 
     entity: {
       
-      department: {
-      },
-
-      object: {
-      },
-
-      search: {
-      },
-
+        department: {
+        },
+  
+        object: {
+        },
+  
+        search: {
+        },
+  
     }
   }
 
