@@ -43,7 +43,7 @@ local departments, err = client:Department():list()
 if err then error(err) end
 
 for _, item in ipairs(departments) do
-  print(item["displayName"])
+  print(item)
 end
 ```
 

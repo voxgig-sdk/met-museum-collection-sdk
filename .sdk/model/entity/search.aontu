@@ -1,0 +1,169 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: {
+    objectIDs: {
+      h: "Object I Ds"
+      n: "objectIDs"
+      r: false
+      sh: "An array containing the object IDs of matching objects"
+      t: "`$ARRAY`"
+    }
+    total: {
+      h: "Total"
+      n: "total"
+      r: false
+      sh: "The total number of objects matching the search query"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "search"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "artist_or_culture"
+                or: "artist_or_culture"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: 1800
+                k: "query"
+                n: "date_begin"
+                or: "date_begin"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1900
+                k: "query"
+                n: "date_end"
+                or: "date_end"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 11
+                k: "query"
+                n: "department_id"
+                or: "department_id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "Europe"
+                k: "query"
+                n: "geo_location"
+                or: "geo_location"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "has_image"
+                or: "has_image"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "is_highlight"
+                or: "is_highlight"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "is_on_view"
+                or: "is_on_view"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "Paintings"
+                k: "query"
+                n: "medium"
+                or: "medium"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "sunflowers"
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "tag"
+                or: "tag"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "title"
+                or: "title"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/search"
+          q: {
+            exist: [
+              "artist_or_culture"
+              "date_begin"
+              "date_end"
+              "department_id"
+              "geo_location"
+              "has_image"
+              "is_highlight"
+              "is_on_view"
+              "medium"
+              "q"
+              "tag"
+              "title"
+            ]
+          }
+          s: [
+            {
+              lit: "search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.objectIDs`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

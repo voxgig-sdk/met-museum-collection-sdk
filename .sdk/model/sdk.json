@@ -24,28 +24,96 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "department": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "departmentId",
-              "req": false,
-              "short": "Unique identifier for the department",
-              "type": "`$INTEGER`"
+          "fields": {
+            "departmentId": {
+              "a": true,
+              "h": "Department Id",
+              "n": "departmentId",
+              "r": false,
+              "sh": "Unique identifier for the department",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "displayName",
-              "req": false,
-              "short": "Display name of the department",
-              "type": "`$STRING`"
+            "displayName": {
+              "a": true,
+              "h": "Display Name",
+              "n": "displayName",
+              "r": false,
+              "sh": "Display name of the department",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "department",
           "op": {
             "list": {
@@ -53,24 +121,24 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /departments",
-                    "json": "{\"operationId\":\"getDepartments\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"departments\":{\"description\":\"An array of departments\",\"items\":{\"properties\":{\"departmentId\":{\"description\":\"Unique identifier for the department\",\"type\":\"integer\"},\"displayName\":{\"description\":\"Display name of the department\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/departments",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/departments",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "departments"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.departments`"
                   }
@@ -87,435 +155,496 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "GalleryNumber",
-              "req": false,
-              "short": "Gallery number, where available",
-              "type": "`$STRING`"
+          "fields": {
+            "GalleryNumber": {
+              "a": true,
+              "h": "Gallery Number",
+              "n": "GalleryNumber",
+              "r": false,
+              "sh": "Gallery number, where available",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "accessionNumber",
-              "req": false,
-              "short": "Identifying number for each artwork (not always unique)",
-              "type": "`$STRING`"
+            "accessionNumber": {
+              "a": true,
+              "h": "Accession Number",
+              "n": "accessionNumber",
+              "r": false,
+              "sh": "Identifying number for each artwork (not always unique)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "accessionYear",
-              "req": false,
-              "short": "Year the artwork was acquired",
-              "type": "`$STRING`"
+            "accessionYear": {
+              "a": true,
+              "h": "Accession Year",
+              "n": "accessionYear",
+              "r": false,
+              "sh": "Year the artwork was acquired",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "additionalImages",
-              "req": false,
-              "short": "An array containing URLs to the additional images of an object in JPEG format",
-              "type": "`$ARRAY`"
+            "additionalImages": {
+              "a": true,
+              "h": "Additional Images",
+              "n": "additionalImages",
+              "r": false,
+              "sh": "An array containing URLs to the additional images of an object in JPEG format",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "artistAlphaSort",
-              "req": false,
-              "short": "Used to sort artist names alphabetically",
-              "type": "`$STRING`"
+            "artistAlphaSort": {
+              "a": true,
+              "h": "Artist Alpha Sort",
+              "n": "artistAlphaSort",
+              "r": false,
+              "sh": "Used to sort artist names alphabetically",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistBeginDate",
-              "req": false,
-              "short": "Year the artist was born",
-              "type": "`$STRING`"
+            "artistBeginDate": {
+              "a": true,
+              "h": "Artist Begin Date",
+              "n": "artistBeginDate",
+              "r": false,
+              "sh": "Year the artist was born",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistDisplayBio",
-              "req": false,
-              "short": "Nationality and life dates of an artist",
-              "type": "`$STRING`"
+            "artistDisplayBio": {
+              "a": true,
+              "h": "Artist Display Bio",
+              "n": "artistDisplayBio",
+              "r": false,
+              "sh": "Nationality and life dates of an artist",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistDisplayName",
-              "req": false,
-              "short": "Artist name in the correct order for display",
-              "type": "`$STRING`"
+            "artistDisplayName": {
+              "a": true,
+              "h": "Artist Display Name",
+              "n": "artistDisplayName",
+              "r": false,
+              "sh": "Artist name in the correct order for display",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistEndDate",
-              "req": false,
-              "short": "Year the artist died",
-              "type": "`$STRING`"
+            "artistEndDate": {
+              "a": true,
+              "h": "Artist End Date",
+              "n": "artistEndDate",
+              "r": false,
+              "sh": "Year the artist died",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistGender",
-              "req": false,
-              "short": "Gender of the artist (currently contains female designations only)",
-              "type": "`$STRING`"
+            "artistGender": {
+              "a": true,
+              "h": "Artist Gender",
+              "n": "artistGender",
+              "r": false,
+              "sh": "Gender of the artist (currently contains female designations only)",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistNationality",
-              "req": false,
-              "short": "National, geopolitical, cultural, or ethnic origins or affiliation of the creator",
-              "type": "`$STRING`"
+            "artistNationality": {
+              "a": true,
+              "h": "Artist Nationality",
+              "n": "artistNationality",
+              "r": false,
+              "sh": "National, geopolitical, cultural, or ethnic origins or affiliation of the creator",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistPrefix",
-              "req": false,
-              "short": "Describes the extent of creation or describes an attribution qualifier",
-              "type": "`$STRING`"
+            "artistPrefix": {
+              "a": true,
+              "h": "Artist Prefix",
+              "n": "artistPrefix",
+              "r": false,
+              "sh": "Describes the extent of creation or describes an attribution qualifier",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistRole",
-              "req": false,
-              "short": "Role of the artist related to the type of artwork or object that was created",
-              "type": "`$STRING`"
+            "artistRole": {
+              "a": true,
+              "h": "Artist Role",
+              "n": "artistRole",
+              "r": false,
+              "sh": "Role of the artist related to the type of artwork or object that was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistSuffix",
-              "req": false,
-              "short": "Used to record complex information that qualifies the role of a constituent",
-              "type": "`$STRING`"
+            "artistSuffix": {
+              "a": true,
+              "h": "Artist Suffix",
+              "n": "artistSuffix",
+              "r": false,
+              "sh": "Used to record complex information that qualifies the role of a constituent",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistULAN_URL",
-              "req": false,
-              "short": "ULAN URL for the artist",
-              "type": "`$STRING`"
+            "artistULAN_URL": {
+              "a": true,
+              "h": "Artist Ulan Url",
+              "n": "artistULAN_URL",
+              "r": false,
+              "sh": "ULAN URL for the artist",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "artistWikidata_URL",
-              "req": false,
-              "short": "Wikidata URL for the artist",
-              "type": "`$STRING`"
+            "artistWikidata_URL": {
+              "a": true,
+              "h": "Artist Wikidata Url",
+              "n": "artistWikidata_URL",
+              "r": false,
+              "sh": "Wikidata URL for the artist",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "city",
-              "req": false,
-              "short": "City where the artwork was created",
-              "type": "`$STRING`"
+            "city": {
+              "a": true,
+              "h": "City",
+              "n": "city",
+              "r": false,
+              "sh": "City where the artwork was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "classification",
-              "req": false,
-              "short": "General term describing the artwork type",
-              "type": "`$STRING`"
+            "classification": {
+              "a": true,
+              "h": "Classification",
+              "n": "classification",
+              "r": false,
+              "sh": "General term describing the artwork type",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "constituents",
-              "req": false,
-              "short": "An array containing the constituents associated with an object",
-              "type": "`$ARRAY`"
+            "constituents": {
+              "a": true,
+              "h": "Constituents",
+              "n": "constituents",
+              "r": false,
+              "sh": "An array containing the constituents associated with an object",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "country",
-              "req": false,
-              "short": "Country where the artwork was created or found",
-              "type": "`$STRING`"
+            "country": {
+              "a": true,
+              "h": "Country",
+              "n": "country",
+              "r": false,
+              "sh": "Country where the artwork was created or found",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "county",
-              "req": false,
-              "short": "County where the artwork was created",
-              "type": "`$STRING`"
+            "county": {
+              "a": true,
+              "h": "County",
+              "n": "county",
+              "r": false,
+              "sh": "County where the artwork was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "creditLine",
-              "req": false,
-              "short": "Text acknowledging the source or origin of the artwork and the year the object was acquired",
-              "type": "`$STRING`"
+            "creditLine": {
+              "a": true,
+              "h": "Credit Line",
+              "n": "creditLine",
+              "r": false,
+              "sh": "Text acknowledging the source or origin of the artwork and the year the object was acquired",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "culture",
-              "req": false,
-              "short": "Information about the culture, or people from which an object was created",
-              "type": "`$STRING`"
+            "culture": {
+              "a": true,
+              "h": "Culture",
+              "n": "culture",
+              "r": false,
+              "sh": "Information about the culture, or people from which an object was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "department",
-              "req": false,
-              "short": "Indicates The Met's curatorial department responsible for the artwork",
-              "type": "`$STRING`"
+            "department": {
+              "a": true,
+              "h": "Department",
+              "n": "department",
+              "r": false,
+              "sh": "Indicates The Met's curatorial department responsible for the artwork",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "dimensions",
-              "req": false,
-              "short": "Size of the artwork or object",
-              "type": "`$STRING`"
+            "dimensions": {
+              "a": true,
+              "h": "Dimensions",
+              "n": "dimensions",
+              "r": false,
+              "sh": "Size of the artwork or object",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "dimensionsParsed",
-              "req": false,
-              "short": "Size of the artwork or object in centimeters, parsed",
-              "type": "`$ARRAY`"
+            "dimensionsParsed": {
+              "a": true,
+              "h": "Dimensions Parsed",
+              "n": "dimensionsParsed",
+              "r": false,
+              "sh": "Size of the artwork or object in centimeters, parsed",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "dynasty",
-              "req": false,
-              "short": "Dynasty under which an object was created",
-              "type": "`$STRING`"
+            "dynasty": {
+              "a": true,
+              "h": "Dynasty",
+              "n": "dynasty",
+              "r": false,
+              "sh": "Dynasty under which an object was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "excavation",
-              "req": false,
-              "short": "The name of an excavation",
-              "type": "`$STRING`"
+            "excavation": {
+              "a": true,
+              "h": "Excavation",
+              "n": "excavation",
+              "r": false,
+              "sh": "The name of an excavation",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "geographyType",
-              "req": false,
-              "short": "Qualifying information that describes the relationship of the place catalogued to the object",
-              "type": "`$STRING`"
+            "geographyType": {
+              "a": true,
+              "h": "Geography Type",
+              "n": "geographyType",
+              "r": false,
+              "sh": "Qualifying information that describes the relationship of the place catalogued to the object",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "isHighlight",
-              "req": false,
-              "short": "When true indicates a popular and important artwork in the collection",
-              "type": "`$BOOLEAN`"
+            "isHighlight": {
+              "a": true,
+              "h": "Is Highlight",
+              "n": "isHighlight",
+              "r": false,
+              "sh": "When true indicates a popular and important artwork in the collection",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "isPublicDomain",
-              "req": false,
-              "short": "When true indicates an artwork in the Public Domain",
-              "type": "`$BOOLEAN`"
+            "isPublicDomain": {
+              "a": true,
+              "h": "Is Public Domain",
+              "n": "isPublicDomain",
+              "r": false,
+              "sh": "When true indicates an artwork in the Public Domain",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "isTimelineWork",
-              "req": false,
-              "short": "Whether the object is on the Timeline of Art History website",
-              "type": "`$BOOLEAN`"
+            "isTimelineWork": {
+              "a": true,
+              "h": "Is Timeline Work",
+              "n": "isTimelineWork",
+              "r": false,
+              "sh": "Whether the object is on the Timeline of Art History website",
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "linkResource",
-              "req": false,
-              "short": "URL to object's page on metmuseum.org",
-              "type": "`$STRING`"
+            "linkResource": {
+              "a": true,
+              "h": "Link Resource",
+              "n": "linkResource",
+              "r": false,
+              "sh": "URL to object's page on metmuseum.org",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "locale",
-              "req": false,
-              "short": "Geographic location more specific than subregion",
-              "type": "`$STRING`"
+            "locale": {
+              "a": true,
+              "h": "Locale",
+              "n": "locale",
+              "r": false,
+              "sh": "Geographic location more specific than subregion",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "locus",
-              "req": false,
-              "short": "Geographic location that is less specific than locale",
-              "type": "`$STRING`"
+            "locus": {
+              "a": true,
+              "h": "Locus",
+              "n": "locus",
+              "r": false,
+              "sh": "Geographic location that is less specific than locale",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "measurements",
-              "req": false,
-              "short": "Array of elements with measurements.",
-              "type": "`$ARRAY`"
+            "measurements": {
+              "a": true,
+              "h": "Measurements",
+              "n": "measurements",
+              "r": false,
+              "sh": "Array of elements with measurements.",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "medium",
-              "req": false,
-              "short": "Refers to the materials that were used to create the artwork",
-              "type": "`$STRING`"
+            "medium": {
+              "a": true,
+              "h": "Medium",
+              "n": "medium",
+              "r": false,
+              "sh": "Refers to the materials that were used to create the artwork",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "metadataDate",
-              "req": false,
-              "short": "Date metadata was last updated",
-              "type": "`$STRING`"
+            "metadataDate": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Metadata Date",
+              "n": "metadataDate",
+              "r": false,
+              "sh": "Date metadata was last updated",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "objectBeginDate",
-              "req": false,
-              "short": "Machine readable date indicating the year the artwork was started to be created",
-              "type": "`$INTEGER`"
+            "objectBeginDate": {
+              "a": true,
+              "h": "Object Begin Date",
+              "n": "objectBeginDate",
+              "r": false,
+              "sh": "Machine readable date indicating the year the artwork was started to be created",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "objectDate",
-              "req": false,
-              "short": "Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created",
-              "type": "`$STRING`"
+            "objectDate": {
+              "a": true,
+              "h": "Object Date",
+              "n": "objectDate",
+              "r": false,
+              "sh": "Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "objectEndDate",
-              "req": false,
-              "short": "Machine readable date indicating the year the artwork was completed",
-              "type": "`$INTEGER`"
+            "objectEndDate": {
+              "a": true,
+              "h": "Object End Date",
+              "n": "objectEndDate",
+              "r": false,
+              "sh": "Machine readable date indicating the year the artwork was completed",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "objectID",
-              "req": false,
-              "short": "Identifying number for each artwork (unique, can be used as key field)",
-              "type": "`$INTEGER`"
+            "objectID": {
+              "a": true,
+              "h": "Object Id",
+              "n": "objectID",
+              "r": false,
+              "sh": "Identifying number for each artwork (unique, can be used as key field)",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "objectIDs",
-              "req": false,
-              "short": "An array containing the object ID of publicly-available objects",
-              "type": "`$ARRAY`"
+            "objectIDs": {
+              "a": true,
+              "h": "Object I Ds",
+              "n": "objectIDs",
+              "r": false,
+              "sh": "An array containing the object ID of publicly-available objects",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "objectName",
-              "req": false,
-              "short": "Describes the physical type of the object",
-              "type": "`$STRING`"
+            "objectName": {
+              "a": true,
+              "h": "Object Name",
+              "n": "objectName",
+              "r": false,
+              "sh": "Describes the physical type of the object",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "objectURL",
-              "req": false,
-              "short": "URL to object's page on metmuseum.org",
-              "type": "`$STRING`"
+            "objectURL": {
+              "a": true,
+              "h": "Object Url",
+              "n": "objectURL",
+              "r": false,
+              "sh": "URL to object's page on metmuseum.org",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "objectWikidata_URL",
-              "req": false,
-              "short": "Wikidata URL for the object",
-              "type": "`$STRING`"
+            "objectWikidata_URL": {
+              "a": true,
+              "h": "Object Wikidata Url",
+              "n": "objectWikidata_URL",
+              "r": false,
+              "sh": "Wikidata URL for the object",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "period",
-              "req": false,
-              "short": "Time or time period when an object was created",
-              "type": "`$STRING`"
+            "period": {
+              "a": true,
+              "h": "Period",
+              "n": "period",
+              "r": false,
+              "sh": "Time or time period when an object was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "portfolio",
-              "req": false,
-              "short": "A set of works created as a group or published as a series",
-              "type": "`$STRING`"
+            "portfolio": {
+              "a": true,
+              "h": "Portfolio",
+              "n": "portfolio",
+              "r": false,
+              "sh": "A set of works created as a group or published as a series",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "primaryImage",
-              "req": false,
-              "short": "URL to the primary image of an object in JPEG format",
-              "type": "`$STRING`"
+            "primaryImage": {
+              "a": true,
+              "h": "Primary Image",
+              "n": "primaryImage",
+              "r": false,
+              "sh": "URL to the primary image of an object in JPEG format",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "primaryImageSmall",
-              "req": false,
-              "short": "URL to the lower-res primary image of an object in JPEG format",
-              "type": "`$STRING`"
+            "primaryImageSmall": {
+              "a": true,
+              "h": "Primary Image Small",
+              "n": "primaryImageSmall",
+              "r": false,
+              "sh": "URL to the lower-res primary image of an object in JPEG format",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "region",
-              "req": false,
-              "short": "Geographic location more specific than country",
-              "type": "`$STRING`"
+            "region": {
+              "a": true,
+              "h": "Region",
+              "n": "region",
+              "r": false,
+              "sh": "Geographic location more specific than country",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "reign",
-              "req": false,
-              "short": "Reign of a monarch or ruler under which an object was created",
-              "type": "`$STRING`"
+            "reign": {
+              "a": true,
+              "h": "Reign",
+              "n": "reign",
+              "r": false,
+              "sh": "Reign of a monarch or ruler under which an object was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "repository",
-              "req": false,
-              "short": "Repository information",
-              "type": "`$STRING`"
+            "repository": {
+              "a": true,
+              "h": "Repository",
+              "n": "repository",
+              "r": false,
+              "sh": "Repository information",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rightsAndReproduction",
-              "req": false,
-              "short": "Credit line for artworks still under copyright",
-              "type": "`$STRING`"
+            "rightsAndReproduction": {
+              "a": true,
+              "h": "Rights And Reproduction",
+              "n": "rightsAndReproduction",
+              "r": false,
+              "sh": "Credit line for artworks still under copyright",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "river",
-              "req": false,
-              "short": "River related to the origins of an artwork",
-              "type": "`$STRING`"
+            "river": {
+              "a": true,
+              "h": "River",
+              "n": "river",
+              "r": false,
+              "sh": "River related to the origins of an artwork",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state",
-              "req": false,
-              "short": "State or province where the artwork was created",
-              "type": "`$STRING`"
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": false,
+              "sh": "State or province where the artwork was created",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "subregion",
-              "req": false,
-              "short": "Geographic location more specific than Region",
-              "type": "`$STRING`"
+            "subregion": {
+              "a": true,
+              "h": "Subregion",
+              "n": "subregion",
+              "r": false,
+              "sh": "Geographic location more specific than Region",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "tags",
-              "req": false,
-              "short": "An array of subject keyword tags associated with the object",
-              "type": "`$ARRAY`"
+            "tags": {
+              "a": true,
+              "h": "Tags",
+              "n": "tags",
+              "r": false,
+              "sh": "An array of subject keyword tags associated with the object",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "short": "Title, identifying phrase, or name given to a work of art",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "sh": "Title, identifying phrase, or name given to a work of art",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "total",
-              "req": false,
-              "short": "The total number of publicly-available objects",
-              "type": "`$INTEGER`"
+            "total": {
+              "a": true,
+              "h": "Total",
+              "n": "total",
+              "r": false,
+              "sh": "The total number of publicly-available objects",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -527,50 +656,50 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /objects",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "1",
-                        "kind": "query",
-                        "name": "department_id",
-                        "orig": "department_id",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "1",
+                        "k": "query",
+                        "n": "department_id",
+                        "or": "department_id",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "2018-10-22",
-                        "kind": "query",
-                        "name": "metadata_date",
-                        "orig": "metadata_date",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "2018-10-22",
+                        "k": "query",
+                        "n": "metadata_date",
+                        "or": "metadata_date",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /objects",
-                    "json": "{\"operationId\":\"getObjects\",\"parameters\":[{\"description\":\"Returns any objects with updated data after this date (format: YYYY-MM-DD)\",\"in\":\"query\",\"name\":\"metadataDate\",\"required\":false,\"schema\":{\"example\":\"2018-10-22\",\"format\":\"date\",\"type\":\"string\"}},{\"description\":\"Returns any objects in specific department(s). Use pipe character (|) to delimit multiple department IDs (e.g., 3|9|12)\",\"in\":\"query\",\"name\":\"departmentIds\",\"required\":false,\"schema\":{\"example\":\"1\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"objectIDs\":{\"description\":\"An array containing the object ID of publicly-available objects\",\"example\":[1,2,3,4,5,6,7,8,9,10],\"items\":{\"type\":\"integer\"},\"type\":\"array\"},\"total\":{\"description\":\"The total number of publicly-available objects\",\"example\":471581,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/objects",
-                  "segments": [
-                    {
-                      "lit": "objects"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/objects",
+                  "q": {
                     "exist": [
                       "department_id",
                       "metadata_date"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "objects"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.objectIDs`"
                   }
@@ -582,35 +711,39 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /objects/{objectID}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": 45734,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "object_id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 45734,
+                        "k": "param",
+                        "n": "id",
+                        "or": "object_id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /objects/{objectID}",
-                    "json": "{\"operationId\":\"getObjectById\",\"parameters\":[{\"description\":\"The unique Object ID for an object\",\"in\":\"path\",\"name\":\"objectID\",\"required\":true,\"schema\":{\"example\":45734,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"GalleryNumber\":{\"description\":\"Gallery number, where available\",\"example\":\"131\",\"type\":\"string\"},\"accessionNumber\":{\"description\":\"Identifying number for each artwork (not always unique)\",\"example\":\"67.241\",\"type\":\"string\"},\"accessionYear\":{\"description\":\"Year the artwork was acquired\",\"example\":\"1921\",\"type\":\"string\"},\"additionalImages\":{\"description\":\"An array containing URLs to the additional images of an object in JPEG format\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"artistAlphaSort\":{\"description\":\"Used to sort artist names alphabetically\",\"example\":\"Gogh, Vincent van\",\"type\":\"string\"},\"artistBeginDate\":{\"description\":\"Year the artist was born\",\"example\":\"1840\",\"type\":\"string\"},\"artistDisplayBio\":{\"description\":\"Nationality and life dates of an artist\",\"example\":\"Dutch, Zundert 1853–1890 Auvers-sur-Oise\",\"type\":\"string\"},\"artistDisplayName\":{\"description\":\"Artist name in the correct order for display\",\"example\":\"Vincent van Gogh\",\"type\":\"string\"},\"artistEndDate\":{\"description\":\"Year the artist died\",\"example\":\"1926\",\"type\":\"string\"},\"artistGender\":{\"description\":\"Gender of the artist (currently contains female designations only)\",\"example\":\"female\",\"type\":\"string\"},\"artistNationality\":{\"description\":\"National, geopolitical, cultural, or ethnic origins or affiliation of the creator\",\"example\":\"Dutch\",\"type\":\"string\"},\"artistPrefix\":{\"description\":\"Describes the extent of creation or describes an attribution qualifier\",\"example\":\"In the Style of\",\"type\":\"string\"},\"artistRole\":{\"description\":\"Role of the artist related to the type of artwork or object that was created\",\"example\":\"Artist for Painting\",\"type\":\"string\"},\"artistSuffix\":{\"description\":\"Used to record complex information that qualifies the role of a constituent\",\"example\":\"verso only\",\"type\":\"string\"},\"artistULAN_URL\":{\"description\":\"ULAN URL for the artist\",\"example\":\"https://vocab.getty.edu/page/ulan/500003169\",\"type\":\"string\"},\"artistWikidata_URL\":{\"description\":\"Wikidata URL for the artist\",\"example\":\"https://www.wikidata.org/wiki/Q694774\",\"type\":\"string\"},\"city\":{\"description\":\"City where the artwork was created\",\"example\":\"New York\",\"type\":\"string\"},\"classification\":{\"description\":\"General term describing the artwork type\",\"example\":\"Paintings\",\"type\":\"string\"},\"constituents\":{\"description\":\"An array containing the constituents associated with an object\",\"items\":{\"properties\":{\"constituentID\":{\"type\":\"integer\"},\"constituentULAN_URL\":{\"type\":\"string\"},\"constituentWikidata_URL\":{\"type\":\"string\"},\"gender\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"role\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"country\":{\"description\":\"Country where the artwork was created or found\",\"example\":\"France\",\"type\":\"string\"},\"county\":{\"description\":\"County where the artwork was created\",\"example\":\"Orange County\",\"type\":\"string\"},\"creditLine\":{\"description\":\"Text acknowledging the source or origin of the artwork and the year the object was acquired\",\"example\":\"Robert Lehman Collection, 1975\",\"type\":\"string\"},\"culture\":{\"description\":\"Information about the culture, or people from which an object was created\",\"example\":\"British\",\"type\":\"string\"},\"department\":{\"description\":\"Indicates The Met's curatorial department responsible for the artwork\",\"example\":\"Egyptian Art\",\"type\":\"string\"},\"dimensions\":{\"description\":\"Size of the artwork or object\",\"example\":\"16 x 20 in. (40.6 x 50.8 cm)\",\"type\":\"string\"},\"dimensionsParsed\":{\"description\":\"Size of the artwork or object in centimeters, parsed\",\"items\":{\"properties\":{\"dimension\":{\"type\":\"number\"},\"dimensionType\":{\"type\":\"string\"},\"element\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"dynasty\":{\"description\":\"Dynasty under which an object was created\",\"example\":\"Kingdom of Benin\",\"type\":\"string\"},\"excavation\":{\"description\":\"The name of an excavation\",\"example\":\"MMA excavations, 1923–24\",\"type\":\"string\"},\"geographyType\":{\"description\":\"Qualifying information that describes the relationship of the place catalogued to the object\",\"example\":\"Made in\",\"type\":\"string\"},\"isHighlight\":{\"description\":\"When true indicates a popular and important artwork in the collection\",\"type\":\"boolean\"},\"isPublicDomain\":{\"description\":\"When true indicates an artwork in the Public Domain\",\"type\":\"boolean\"},\"isTimelineWork\":{\"description\":\"Whether the object is on the Timeline of Art History website\",\"type\":\"boolean\"},\"linkResource\":{\"description\":\"URL to object's page on metmuseum.org\",\"example\":\"https://www.metmuseum.org/art/collection/search/547802\",\"type\":\"string\"},\"locale\":{\"description\":\"Geographic location more specific than subregion\",\"example\":\"Tomb of Perneb\",\"type\":\"string\"},\"locus\":{\"description\":\"Geographic location that is less specific than locale\",\"example\":\"1st chamber W. wall\",\"type\":\"string\"},\"measurements\":{\"description\":\"Array of elements with measurements. Spatial measurements are in centimeters; weights are in kg\",\"items\":{\"properties\":{\"elementDescription\":{\"type\":\"string\"},\"elementMeasurements\":{\"additionalProperties\":{\"type\":\"number\"},\"type\":\"object\"},\"elementName\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"medium\":{\"description\":\"Refers to the materials that were used to create the artwork\",\"example\":\"Oil on canvas\",\"type\":\"string\"},\"metadataDate\":{\"description\":\"Date metadata was last updated\",\"example\":\"2018-10-17T10:24:43.197Z\",\"format\":\"date-time\",\"type\":\"string\"},\"objectBeginDate\":{\"description\":\"Machine readable date indicating the year the artwork was started to be created\",\"example\":1867,\"type\":\"integer\"},\"objectDate\":{\"description\":\"Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created\",\"example\":\"1865–67\",\"type\":\"string\"},\"objectEndDate\":{\"description\":\"Machine readable date indicating the year the artwork was completed\",\"example\":1888,\"type\":\"integer\"},\"objectID\":{\"description\":\"Identifying number for each artwork (unique, can be used as key field)\",\"example\":437133,\"type\":\"integer\"},\"objectName\":{\"description\":\"Describes the physical type of the object\",\"example\":\"Painting\",\"type\":\"string\"},\"objectURL\":{\"description\":\"URL to object's page on metmuseum.org\",\"example\":\"https://www.metmuseum.org/art/collection/search/547802\",\"type\":\"string\"},\"objectWikidata_URL\":{\"description\":\"Wikidata URL for the object\",\"example\":\"https://www.wikidata.org/wiki/Q432253\",\"type\":\"string\"},\"period\":{\"description\":\"Time or time period when an object was created\",\"example\":\"Ming dynasty (1368-1644)\",\"type\":\"string\"},\"portfolio\":{\"description\":\"A set of works created as a group or published as a series\",\"example\":\"Birds of America\",\"type\":\"string\"},\"primaryImage\":{\"description\":\"URL to the primary image of an object in JPEG format\",\"example\":\"https://images.metmuseum.org/CRDImages/ep/original/DT1567.jpg\",\"type\":\"string\"},\"primaryImageSmall\":{\"description\":\"URL to the lower-res primary image of an object in JPEG format\",\"example\":\"https://images.metmuseum.org/CRDImages/ep/web-large/DT1567.jpg\",\"type\":\"string\"},\"region\":{\"description\":\"Geographic location more specific than country\",\"example\":\"Bohemia\",\"type\":\"string\"},\"reign\":{\"description\":\"Reign of a monarch or ruler under which an object was created\",\"example\":\"Amenhotep III\",\"type\":\"string\"},\"repository\":{\"description\":\"Repository information\",\"example\":\"Metropolitan Museum of Art, New York, NY\",\"type\":\"string\"},\"rightsAndReproduction\":{\"description\":\"Credit line for artworks still under copyright\",\"example\":\"© 2018 Estate of Pablo Picasso / Artists Rights Society (ARS), New York\",\"type\":\"string\"},\"river\":{\"description\":\"River related to the origins of an artwork\",\"example\":\"Nile River\",\"type\":\"string\"},\"state\":{\"description\":\"State or province where the artwork was created\",\"example\":\"Brooklyn\",\"type\":\"string\"},\"subregion\":{\"description\":\"Geographic location more specific than Region\",\"example\":\"Malqata\",\"type\":\"string\"},\"tags\":{\"description\":\"An array of subject keyword tags associated with the object\",\"items\":{\"properties\":{\"AAT_URL\":{\"type\":\"string\"},\"Wikidata_URL\":{\"type\":\"string\"},\"term\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"description\":\"Title, identifying phrase, or name given to a work of art\",\"example\":\"Wheat Field with Cypresses\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Object not found\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/objects/{objectID}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/objects/{objectID}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "objectID": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "objects"
                     },
@@ -618,12 +751,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -640,22 +768,24 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "objectIDs",
-              "req": false,
-              "short": "An array containing the object IDs of matching objects",
-              "type": "`$ARRAY`"
+          "fields": {
+            "objectIDs": {
+              "a": true,
+              "h": "Object I Ds",
+              "n": "objectIDs",
+              "r": false,
+              "sh": "An array containing the object IDs of matching objects",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "total",
-              "req": false,
-              "short": "The total number of objects matching the search query",
-              "type": "`$INTEGER`"
+            "total": {
+              "a": true,
+              "h": "Total",
+              "n": "total",
+              "r": false,
+              "sh": "The total number of objects matching the search query",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "search",
           "op": {
             "list": {
@@ -663,134 +793,128 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /search",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": true,
-                        "kind": "query",
-                        "name": "artist_or_culture",
-                        "orig": "artist_or_culture",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "artist_or_culture",
+                        "or": "artist_or_culture",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "example": 1800,
-                        "kind": "query",
-                        "name": "date_begin",
-                        "orig": "date_begin",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1800,
+                        "k": "query",
+                        "n": "date_begin",
+                        "or": "date_begin",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 1900,
-                        "kind": "query",
-                        "name": "date_end",
-                        "orig": "date_end",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 1900,
+                        "k": "query",
+                        "n": "date_end",
+                        "or": "date_end",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 11,
-                        "kind": "query",
-                        "name": "department_id",
-                        "orig": "department_id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 11,
+                        "k": "query",
+                        "n": "department_id",
+                        "or": "department_id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": "Europe",
-                        "kind": "query",
-                        "name": "geo_location",
-                        "orig": "geo_location",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Europe",
+                        "k": "query",
+                        "n": "geo_location",
+                        "or": "geo_location",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": true,
-                        "kind": "query",
-                        "name": "has_image",
-                        "orig": "has_image",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "has_image",
+                        "or": "has_image",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "example": true,
-                        "kind": "query",
-                        "name": "is_highlight",
-                        "orig": "is_highlight",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "is_highlight",
+                        "or": "is_highlight",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "example": true,
-                        "kind": "query",
-                        "name": "is_on_view",
-                        "orig": "is_on_view",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "is_on_view",
+                        "or": "is_on_view",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "example": "Paintings",
-                        "kind": "query",
-                        "name": "medium",
-                        "orig": "medium",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Paintings",
+                        "k": "query",
+                        "n": "medium",
+                        "or": "medium",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "sunflowers",
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "sunflowers",
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": true,
-                        "kind": "query",
-                        "name": "tag",
-                        "orig": "tag",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "tag",
+                        "or": "tag",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "example": true,
-                        "kind": "query",
-                        "name": "title",
-                        "orig": "title",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "title",
+                        "or": "title",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /search",
-                    "json": "{\"operationId\":\"searchObjects\",\"parameters\":[{\"description\":\"Search term to query the objects\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"example\":\"sunflowers\",\"type\":\"string\"}},{\"description\":\"Search against the title field\",\"in\":\"query\",\"name\":\"title\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Search for objects using the subject keyword tags field\",\"in\":\"query\",\"name\":\"tags\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by department ID\",\"in\":\"query\",\"name\":\"departmentId\",\"required\":false,\"schema\":{\"example\":11,\"type\":\"integer\"}},{\"description\":\"Filter to highlight objects only\",\"in\":\"query\",\"name\":\"isHighlight\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter to objects currently on view\",\"in\":\"query\",\"name\":\"isOnView\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by artist name or culture\",\"in\":\"query\",\"name\":\"artistOrCulture\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by medium\",\"in\":\"query\",\"name\":\"medium\",\"required\":false,\"schema\":{\"example\":\"Paintings\",\"type\":\"string\"}},{\"description\":\"Filter to objects that have images\",\"in\":\"query\",\"name\":\"hasImages\",\"required\":false,\"schema\":{\"example\":true,\"type\":\"boolean\"}},{\"description\":\"Filter by geographic location\",\"in\":\"query\",\"name\":\"geoLocation\",\"required\":false,\"schema\":{\"example\":\"Europe\",\"type\":\"string\"}},{\"description\":\"Filter by artwork begin date (integer year)\",\"in\":\"query\",\"name\":\"dateBegin\",\"required\":false,\"schema\":{\"example\":1800,\"type\":\"integer\"}},{\"description\":\"Filter by artwork end date (integer year)\",\"in\":\"query\",\"name\":\"dateEnd\",\"required\":false,\"schema\":{\"example\":1900,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"objectIDs\":{\"description\":\"An array containing the object IDs of matching objects\",\"items\":{\"type\":\"integer\"},\"nullable\":true,\"type\":\"array\"},\"total\":{\"description\":\"The total number of objects matching the search query\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"429\":{\"description\":\"Rate limit exceeded (80 requests per second)\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/search",
-                  "segments": [
-                    {
-                      "lit": "search"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/search",
+                  "q": {
                     "exist": [
                       "artist_or_culture",
                       "date_begin",
@@ -806,7 +930,13 @@
                       "title"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "search"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.objectIDs`"
                   }
@@ -1235,13 +1365,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1261,13 +1391,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1277,19 +1407,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "object_ref01",
                 "srcdatavar": "object_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "object01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1309,13 +1439,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

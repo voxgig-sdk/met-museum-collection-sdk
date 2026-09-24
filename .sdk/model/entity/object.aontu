@@ -1,0 +1,545 @@
+# Entity: object
+
+main: kit: entity: object: {
+
+  alias: field: {}
+
+  fields: {
+    GalleryNumber: {
+      h: "Gallery Number"
+      n: "GalleryNumber"
+      r: false
+      sh: "Gallery number, where available"
+      t: "`$STRING`"
+    }
+    accessionNumber: {
+      h: "Accession Number"
+      n: "accessionNumber"
+      r: false
+      sh: "Identifying number for each artwork (not always unique)"
+      t: "`$STRING`"
+    }
+    accessionYear: {
+      h: "Accession Year"
+      n: "accessionYear"
+      r: false
+      sh: "Year the artwork was acquired"
+      t: "`$STRING`"
+    }
+    additionalImages: {
+      h: "Additional Images"
+      n: "additionalImages"
+      r: false
+      sh: "An array containing URLs to the additional images of an object in JPEG format"
+      t: "`$ARRAY`"
+    }
+    artistAlphaSort: {
+      h: "Artist Alpha Sort"
+      n: "artistAlphaSort"
+      r: false
+      sh: "Used to sort artist names alphabetically"
+      t: "`$STRING`"
+    }
+    artistBeginDate: {
+      h: "Artist Begin Date"
+      n: "artistBeginDate"
+      r: false
+      sh: "Year the artist was born"
+      t: "`$STRING`"
+    }
+    artistDisplayBio: {
+      h: "Artist Display Bio"
+      n: "artistDisplayBio"
+      r: false
+      sh: "Nationality and life dates of an artist"
+      t: "`$STRING`"
+    }
+    artistDisplayName: {
+      h: "Artist Display Name"
+      n: "artistDisplayName"
+      r: false
+      sh: "Artist name in the correct order for display"
+      t: "`$STRING`"
+    }
+    artistEndDate: {
+      h: "Artist End Date"
+      n: "artistEndDate"
+      r: false
+      sh: "Year the artist died"
+      t: "`$STRING`"
+    }
+    artistGender: {
+      h: "Artist Gender"
+      n: "artistGender"
+      r: false
+      sh: "Gender of the artist (currently contains female designations only)"
+      t: "`$STRING`"
+    }
+    artistNationality: {
+      h: "Artist Nationality"
+      n: "artistNationality"
+      r: false
+      sh: "National, geopolitical, cultural, or ethnic origins or affiliation of the creator"
+      t: "`$STRING`"
+    }
+    artistPrefix: {
+      h: "Artist Prefix"
+      n: "artistPrefix"
+      r: false
+      sh: "Describes the extent of creation or describes an attribution qualifier"
+      t: "`$STRING`"
+    }
+    artistRole: {
+      h: "Artist Role"
+      n: "artistRole"
+      r: false
+      sh: "Role of the artist related to the type of artwork or object that was created"
+      t: "`$STRING`"
+    }
+    artistSuffix: {
+      h: "Artist Suffix"
+      n: "artistSuffix"
+      r: false
+      sh: "Used to record complex information that qualifies the role of a constituent"
+      t: "`$STRING`"
+    }
+    artistULAN_URL: {
+      h: "Artist Ulan Url"
+      n: "artistULAN_URL"
+      r: false
+      sh: "ULAN URL for the artist"
+      t: "`$STRING`"
+    }
+    artistWikidata_URL: {
+      h: "Artist Wikidata Url"
+      n: "artistWikidata_URL"
+      r: false
+      sh: "Wikidata URL for the artist"
+      t: "`$STRING`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: false
+      sh: "City where the artwork was created"
+      t: "`$STRING`"
+    }
+    classification: {
+      h: "Classification"
+      n: "classification"
+      r: false
+      sh: "General term describing the artwork type"
+      t: "`$STRING`"
+    }
+    constituents: {
+      h: "Constituents"
+      n: "constituents"
+      r: false
+      sh: "An array containing the constituents associated with an object"
+      t: "`$ARRAY`"
+    }
+    country: {
+      h: "Country"
+      n: "country"
+      r: false
+      sh: "Country where the artwork was created or found"
+      t: "`$STRING`"
+    }
+    county: {
+      h: "County"
+      n: "county"
+      r: false
+      sh: "County where the artwork was created"
+      t: "`$STRING`"
+    }
+    creditLine: {
+      h: "Credit Line"
+      n: "creditLine"
+      r: false
+      sh: "Text acknowledging the source or origin of the artwork and the year the object was acquired"
+      t: "`$STRING`"
+    }
+    culture: {
+      h: "Culture"
+      n: "culture"
+      r: false
+      sh: "Information about the culture, or people from which an object was created"
+      t: "`$STRING`"
+    }
+    department: {
+      h: "Department"
+      n: "department"
+      r: false
+      sh: "Indicates The Met's curatorial department responsible for the artwork"
+      t: "`$STRING`"
+    }
+    dimensions: {
+      h: "Dimensions"
+      n: "dimensions"
+      r: false
+      sh: "Size of the artwork or object"
+      t: "`$STRING`"
+    }
+    dimensionsParsed: {
+      h: "Dimensions Parsed"
+      n: "dimensionsParsed"
+      r: false
+      sh: "Size of the artwork or object in centimeters, parsed"
+      t: "`$ARRAY`"
+    }
+    dynasty: {
+      h: "Dynasty"
+      n: "dynasty"
+      r: false
+      sh: "Dynasty under which an object was created"
+      t: "`$STRING`"
+    }
+    excavation: {
+      h: "Excavation"
+      n: "excavation"
+      r: false
+      sh: "The name of an excavation"
+      t: "`$STRING`"
+    }
+    geographyType: {
+      h: "Geography Type"
+      n: "geographyType"
+      r: false
+      sh: "Qualifying information that describes the relationship of the place catalogued to the object"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    isHighlight: {
+      h: "Is Highlight"
+      n: "isHighlight"
+      r: false
+      sh: "When true indicates a popular and important artwork in the collection"
+      t: "`$BOOLEAN`"
+    }
+    isPublicDomain: {
+      h: "Is Public Domain"
+      n: "isPublicDomain"
+      r: false
+      sh: "When true indicates an artwork in the Public Domain"
+      t: "`$BOOLEAN`"
+    }
+    isTimelineWork: {
+      h: "Is Timeline Work"
+      n: "isTimelineWork"
+      r: false
+      sh: "Whether the object is on the Timeline of Art History website"
+      t: "`$BOOLEAN`"
+    }
+    linkResource: {
+      h: "Link Resource"
+      n: "linkResource"
+      r: false
+      sh: "URL to object's page on metmuseum.org"
+      t: "`$STRING`"
+    }
+    locale: {
+      h: "Locale"
+      n: "locale"
+      r: false
+      sh: "Geographic location more specific than subregion"
+      t: "`$STRING`"
+    }
+    locus: {
+      h: "Locus"
+      n: "locus"
+      r: false
+      sh: "Geographic location that is less specific than locale"
+      t: "`$STRING`"
+    }
+    measurements: {
+      h: "Measurements"
+      n: "measurements"
+      r: false
+      sh: "Array of elements with measurements."
+      t: "`$ARRAY`"
+    }
+    medium: {
+      h: "Medium"
+      n: "medium"
+      r: false
+      sh: "Refers to the materials that were used to create the artwork"
+      t: "`$STRING`"
+    }
+    metadataDate: {
+      fo: "date-time"
+      h: "Metadata Date"
+      n: "metadataDate"
+      r: false
+      sh: "Date metadata was last updated"
+      t: "`$STRING`"
+    }
+    objectBeginDate: {
+      h: "Object Begin Date"
+      n: "objectBeginDate"
+      r: false
+      sh: "Machine readable date indicating the year the artwork was started to be created"
+      t: "`$INTEGER`"
+    }
+    objectDate: {
+      h: "Object Date"
+      n: "objectDate"
+      r: false
+      sh: "Year, a span of years, or a phrase that describes the specific or approximate date when an artwork was designed or created"
+      t: "`$STRING`"
+    }
+    objectEndDate: {
+      h: "Object End Date"
+      n: "objectEndDate"
+      r: false
+      sh: "Machine readable date indicating the year the artwork was completed"
+      t: "`$INTEGER`"
+    }
+    objectID: {
+      h: "Object Id"
+      n: "objectID"
+      r: false
+      sh: "Identifying number for each artwork (unique, can be used as key field)"
+      t: "`$INTEGER`"
+    }
+    objectIDs: {
+      h: "Object I Ds"
+      n: "objectIDs"
+      r: false
+      sh: "An array containing the object ID of publicly-available objects"
+      t: "`$ARRAY`"
+    }
+    objectName: {
+      h: "Object Name"
+      n: "objectName"
+      r: false
+      sh: "Describes the physical type of the object"
+      t: "`$STRING`"
+    }
+    objectURL: {
+      h: "Object Url"
+      n: "objectURL"
+      r: false
+      sh: "URL to object's page on metmuseum.org"
+      t: "`$STRING`"
+    }
+    objectWikidata_URL: {
+      h: "Object Wikidata Url"
+      n: "objectWikidata_URL"
+      r: false
+      sh: "Wikidata URL for the object"
+      t: "`$STRING`"
+    }
+    period: {
+      h: "Period"
+      n: "period"
+      r: false
+      sh: "Time or time period when an object was created"
+      t: "`$STRING`"
+    }
+    portfolio: {
+      h: "Portfolio"
+      n: "portfolio"
+      r: false
+      sh: "A set of works created as a group or published as a series"
+      t: "`$STRING`"
+    }
+    primaryImage: {
+      h: "Primary Image"
+      n: "primaryImage"
+      r: false
+      sh: "URL to the primary image of an object in JPEG format"
+      t: "`$STRING`"
+    }
+    primaryImageSmall: {
+      h: "Primary Image Small"
+      n: "primaryImageSmall"
+      r: false
+      sh: "URL to the lower-res primary image of an object in JPEG format"
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      sh: "Geographic location more specific than country"
+      t: "`$STRING`"
+    }
+    reign: {
+      h: "Reign"
+      n: "reign"
+      r: false
+      sh: "Reign of a monarch or ruler under which an object was created"
+      t: "`$STRING`"
+    }
+    repository: {
+      h: "Repository"
+      n: "repository"
+      r: false
+      sh: "Repository information"
+      t: "`$STRING`"
+    }
+    rightsAndReproduction: {
+      h: "Rights And Reproduction"
+      n: "rightsAndReproduction"
+      r: false
+      sh: "Credit line for artworks still under copyright"
+      t: "`$STRING`"
+    }
+    river: {
+      h: "River"
+      n: "river"
+      r: false
+      sh: "River related to the origins of an artwork"
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "State or province where the artwork was created"
+      t: "`$STRING`"
+    }
+    subregion: {
+      h: "Subregion"
+      n: "subregion"
+      r: false
+      sh: "Geographic location more specific than Region"
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "An array of subject keyword tags associated with the object"
+      t: "`$ARRAY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Title, identifying phrase, or name given to a work of art"
+      t: "`$STRING`"
+    }
+    total: {
+      h: "Total"
+      n: "total"
+      r: false
+      sh: "The total number of publicly-available objects"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "object"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /objects"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1"
+                k: "query"
+                n: "department_id"
+                or: "department_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2018-10-22"
+                k: "query"
+                n: "metadata_date"
+                or: "metadata_date"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/objects"
+          q: {
+            exist: [
+              "department_id"
+              "metadata_date"
+            ]
+          }
+          s: [
+            {
+              lit: "objects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.objectIDs`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /objects/{objectID}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 45734
+                k: "param"
+                n: "id"
+                or: "object_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/objects/{objectID}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              objectID: "id"
+            }
+          }
+          s: [
+            {
+              lit: "objects"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

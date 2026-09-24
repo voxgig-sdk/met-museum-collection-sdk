@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DepartmentEntity = void 0;
 const MetMuseumCollectionEntityBase_1 = require("../MetMuseumCollectionEntityBase");
-// TODO: needs Entity superclass
 class DepartmentEntity extends MetMuseumCollectionEntityBase_1.MetMuseumCollectionEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

@@ -1,0 +1,53 @@
+# Entity: department
+
+main: kit: entity: department: {
+
+  alias: field: {}
+
+  fields: {
+    departmentId: {
+      h: "Department Id"
+      n: "departmentId"
+      r: false
+      sh: "Unique identifier for the department"
+      t: "`$INTEGER`"
+    }
+    displayName: {
+      h: "Display Name"
+      n: "displayName"
+      r: false
+      sh: "Display name of the department"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "department"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /departments"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/departments"
+          s: [
+            {
+              lit: "departments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.departments`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

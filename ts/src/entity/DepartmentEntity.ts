@@ -19,7 +19,6 @@ import type {
   DepartmentListMatch,
 } from '../MetMuseumCollectionTypes'
 
-// TODO: needs Entity superclass
 class DepartmentEntity extends MetMuseumCollectionEntityBase<Department> {
 
   constructor(client: MetMuseumCollectionSDK, entopts: any) {

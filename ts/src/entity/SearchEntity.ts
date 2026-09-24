@@ -19,7 +19,6 @@ import type {
   SearchListMatch,
 } from '../MetMuseumCollectionTypes'
 
-// TODO: needs Entity superclass
 class SearchEntity extends MetMuseumCollectionEntityBase<Search> {
 
   constructor(client: MetMuseumCollectionSDK, entopts: any) {

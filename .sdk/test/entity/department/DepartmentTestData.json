@@ -26,46 +26,8 @@
   "requests": {
     "GET /departments": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getDepartments",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "departments": {
-                      "description": "An array of departments",
-                      "items": {
-                        "properties": {
-                          "departmentId": {
-                            "description": "Unique identifier for the department",
-                            "type": "integer"
-                          },
-                          "displayName": {
-                            "description": "Display name of the department",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful response"
-          },
-          "429": {
-            "description": "Rate limit exceeded (80 requests per second)"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }
