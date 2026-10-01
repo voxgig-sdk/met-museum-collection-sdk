@@ -38,7 +38,7 @@ main: kit: entity: search: {
                 ex: true
                 k: "query"
                 n: "artist_or_culture"
-                or: "artist_or_culture"
+                or: "artistOrCulture"
                 r: false
                 t: "`$BOOLEAN`"
               }
@@ -46,7 +46,7 @@ main: kit: entity: search: {
                 ex: 1800
                 k: "query"
                 n: "date_begin"
-                or: "date_begin"
+                or: "dateBegin"
                 r: false
                 t: "`$INTEGER`"
               }
@@ -54,7 +54,7 @@ main: kit: entity: search: {
                 ex: 1900
                 k: "query"
                 n: "date_end"
-                or: "date_end"
+                or: "dateEnd"
                 r: false
                 t: "`$INTEGER`"
               }
@@ -62,7 +62,7 @@ main: kit: entity: search: {
                 ex: 11
                 k: "query"
                 n: "department_id"
-                or: "department_id"
+                or: "departmentId"
                 r: false
                 t: "`$INTEGER`"
               }
@@ -70,7 +70,7 @@ main: kit: entity: search: {
                 ex: "Europe"
                 k: "query"
                 n: "geo_location"
-                or: "geo_location"
+                or: "geoLocation"
                 r: false
                 t: "`$STRING`"
               }
@@ -78,7 +78,7 @@ main: kit: entity: search: {
                 ex: true
                 k: "query"
                 n: "has_image"
-                or: "has_image"
+                or: "hasImages"
                 r: false
                 t: "`$BOOLEAN`"
               }
@@ -86,7 +86,7 @@ main: kit: entity: search: {
                 ex: true
                 k: "query"
                 n: "is_highlight"
-                or: "is_highlight"
+                or: "isHighlight"
                 r: false
                 t: "`$BOOLEAN`"
               }
@@ -94,7 +94,7 @@ main: kit: entity: search: {
                 ex: true
                 k: "query"
                 n: "is_on_view"
-                or: "is_on_view"
+                or: "isOnView"
                 r: false
                 t: "`$BOOLEAN`"
               }
@@ -118,7 +118,7 @@ main: kit: entity: search: {
                 ex: true
                 k: "query"
                 n: "tag"
-                or: "tag"
+                or: "tags"
                 r: false
                 t: "`$BOOLEAN`"
               }

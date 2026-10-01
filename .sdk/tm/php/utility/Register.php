@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 MetMuseumCollectionUtility::setRegistrar(function (MetMuseumCollectionUtility $u): void {
     $u->clean = [MetMuseumCollectionClean::class, 'call'];
+    $u->clean_add = [MetMuseumCollectionClean::class, 'add'];
+    $u->clean_explain = [MetMuseumCollectionDone::class, 'clean_explain'];
     $u->done = [MetMuseumCollectionDone::class, 'call'];
     $u->make_error = [MetMuseumCollectionMakeError::class, 'call'];
     $u->feature_add = [MetMuseumCollectionFeatureAdd::class, 'call'];

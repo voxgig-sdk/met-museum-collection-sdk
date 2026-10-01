@@ -553,14 +553,14 @@ class Config {
                                 "query": [
                                     {
                                         "name": "department_id",
-                                        "orig": "department_id",
+                                        "orig": "departmentIds",
                                         "type": "`$STRING`",
                                         "kind": "query",
                                         "example": "1"
                                     },
                                     {
                                         "name": "metadata_date",
-                                        "orig": "metadata_date",
+                                        "orig": "metadataDate",
                                         "type": "`$STRING`",
                                         "kind": "query",
                                         "example": "2018-10-22"
@@ -609,7 +609,7 @@ class Config {
                                 "params": [
                                     {
                                         "name": "id",
-                                        "orig": "object_id",
+                                        "orig": "objectID",
                                         "type": "`$INTEGER`",
                                         "kind": "param",
                                         "reqd": true,
@@ -672,56 +672,56 @@ class Config {
                                 "query": [
                                     {
                                         "name": "artist_or_culture",
-                                        "orig": "artist_or_culture",
+                                        "orig": "artistOrCulture",
                                         "type": "`$BOOLEAN`",
                                         "kind": "query",
                                         "example": true
                                     },
                                     {
                                         "name": "date_begin",
-                                        "orig": "date_begin",
+                                        "orig": "dateBegin",
                                         "type": "`$INTEGER`",
                                         "kind": "query",
                                         "example": 1800
                                     },
                                     {
                                         "name": "date_end",
-                                        "orig": "date_end",
+                                        "orig": "dateEnd",
                                         "type": "`$INTEGER`",
                                         "kind": "query",
                                         "example": 1900
                                     },
                                     {
                                         "name": "department_id",
-                                        "orig": "department_id",
+                                        "orig": "departmentId",
                                         "type": "`$INTEGER`",
                                         "kind": "query",
                                         "example": 11
                                     },
                                     {
                                         "name": "geo_location",
-                                        "orig": "geo_location",
+                                        "orig": "geoLocation",
                                         "type": "`$STRING`",
                                         "kind": "query",
                                         "example": "Europe"
                                     },
                                     {
                                         "name": "has_image",
-                                        "orig": "has_image",
+                                        "orig": "hasImages",
                                         "type": "`$BOOLEAN`",
                                         "kind": "query",
                                         "example": true
                                     },
                                     {
                                         "name": "is_highlight",
-                                        "orig": "is_highlight",
+                                        "orig": "isHighlight",
                                         "type": "`$BOOLEAN`",
                                         "kind": "query",
                                         "example": true
                                     },
                                     {
                                         "name": "is_on_view",
-                                        "orig": "is_on_view",
+                                        "orig": "isOnView",
                                         "type": "`$BOOLEAN`",
                                         "kind": "query",
                                         "example": true
@@ -742,7 +742,7 @@ class Config {
                                     },
                                     {
                                         "name": "tag",
-                                        "orig": "tag",
+                                        "orig": "tags",
                                         "type": "`$BOOLEAN`",
                                         "kind": "query",
                                         "example": true

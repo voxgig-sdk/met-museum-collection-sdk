@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 MetMuseumCollectionUtility.registrar = ->(u) {
   u.clean = MetMuseumCollectionUtilities::Clean
+  u.clean_add = MetMuseumCollectionUtilities::CleanAdd
+  u.clean_explain = MetMuseumCollectionUtilities::CleanExplain
   u.done = MetMuseumCollectionUtilities::Done
   u.make_error = MetMuseumCollectionUtilities::MakeError
   u.feature_add = MetMuseumCollectionUtilities::FeatureAdd

@@ -1,7 +1,13 @@
 -- MetMuseumCollection SDK error
 
+local json = require("dkjson")
+
 local MetMuseumCollectionError = {}
 MetMuseumCollectionError.__index = MetMuseumCollectionError
+
+-- Reachable for a debugger, absent from the table itself: the context holds
+-- the live spec and options, and an error is what gets dumped or encoded.
+local CONTEXT = setmetatable({}, { __mode = "k" })
 
 
 function MetMuseumCollectionError.new(code, msg, ctx)
@@ -10,10 +16,15 @@ function MetMuseumCollectionError.new(code, msg, ctx)
   self.sdk = "MetMuseumCollection"
   self.code = code or ""
   self.msg = msg or ""
-  self.ctx = ctx
   self.result = nil
   self.spec = nil
+  CONTEXT[self] = ctx
   return self
+end
+
+
+function MetMuseumCollectionError:context()
+  return CONTEXT[self]
 end
 
 
@@ -22,8 +33,32 @@ function MetMuseumCollectionError:error()
 end
 
 
+-- What make_error attached is already cleaned; the context is not part of
+-- the record.
+function MetMuseumCollectionError:to_table()
+  return {
+    sdk = self.sdk,
+    code = self.code,
+    msg = self.msg,
+    status = self.status,
+    result = self.result,
+    spec = self.spec,
+  }
+end
+
+
+function MetMuseumCollectionError:to_json()
+  return json.encode(self:to_table())
+end
+
+
 function MetMuseumCollectionError:__tostring()
   return self.msg
+end
+
+
+function MetMuseumCollectionError.__tojson(self)
+  return self:to_json()
 end
 
 

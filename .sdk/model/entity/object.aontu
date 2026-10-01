@@ -456,7 +456,7 @@ main: kit: entity: object: {
                 ex: "1"
                 k: "query"
                 n: "department_id"
-                or: "department_id"
+                or: "departmentIds"
                 r: false
                 t: "`$STRING`"
               }
@@ -464,7 +464,7 @@ main: kit: entity: object: {
                 ex: "2018-10-22"
                 k: "query"
                 n: "metadata_date"
-                or: "metadata_date"
+                or: "metadataDate"
                 r: false
                 t: "`$STRING`"
               }
@@ -505,7 +505,7 @@ main: kit: entity: object: {
                 ex: 45734
                 k: "param"
                 n: "id"
-                or: "object_id"
+                or: "objectID"
                 r: true
                 t: "`$INTEGER`"
               }

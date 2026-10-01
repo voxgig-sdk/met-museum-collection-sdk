@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/met-museum-collection-sdk/releases](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/met-museum-collection-sdk
+composer config repositories.met-museum-collection-sdk path ./met-museum-collection-sdk/php
+composer require voxgig-sdk/met-museum-collection-sdk:@dev
+```
 
 
 ## Tutorial: your first API call

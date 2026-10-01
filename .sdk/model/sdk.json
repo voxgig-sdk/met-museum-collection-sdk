@@ -669,7 +669,7 @@
                         "ex": "1",
                         "k": "query",
                         "n": "department_id",
-                        "or": "department_id",
+                        "or": "departmentIds",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -678,7 +678,7 @@
                         "ex": "2018-10-22",
                         "k": "query",
                         "n": "metadata_date",
-                        "or": "metadata_date",
+                        "or": "metadataDate",
                         "r": false,
                         "t": "`$STRING`"
                       }
@@ -724,7 +724,7 @@
                         "ex": 45734,
                         "k": "param",
                         "n": "id",
-                        "or": "object_id",
+                        "or": "objectID",
                         "r": true,
                         "t": "`$INTEGER`"
                       }
@@ -806,7 +806,7 @@
                         "ex": true,
                         "k": "query",
                         "n": "artist_or_culture",
-                        "or": "artist_or_culture",
+                        "or": "artistOrCulture",
                         "r": false,
                         "t": "`$BOOLEAN`"
                       },
@@ -815,7 +815,7 @@
                         "ex": 1800,
                         "k": "query",
                         "n": "date_begin",
-                        "or": "date_begin",
+                        "or": "dateBegin",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -824,7 +824,7 @@
                         "ex": 1900,
                         "k": "query",
                         "n": "date_end",
-                        "or": "date_end",
+                        "or": "dateEnd",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -833,7 +833,7 @@
                         "ex": 11,
                         "k": "query",
                         "n": "department_id",
-                        "or": "department_id",
+                        "or": "departmentId",
                         "r": false,
                         "t": "`$INTEGER`"
                       },
@@ -842,7 +842,7 @@
                         "ex": "Europe",
                         "k": "query",
                         "n": "geo_location",
-                        "or": "geo_location",
+                        "or": "geoLocation",
                         "r": false,
                         "t": "`$STRING`"
                       },
@@ -851,7 +851,7 @@
                         "ex": true,
                         "k": "query",
                         "n": "has_image",
-                        "or": "has_image",
+                        "or": "hasImages",
                         "r": false,
                         "t": "`$BOOLEAN`"
                       },
@@ -860,7 +860,7 @@
                         "ex": true,
                         "k": "query",
                         "n": "is_highlight",
-                        "or": "is_highlight",
+                        "or": "isHighlight",
                         "r": false,
                         "t": "`$BOOLEAN`"
                       },
@@ -869,7 +869,7 @@
                         "ex": true,
                         "k": "query",
                         "n": "is_on_view",
-                        "or": "is_on_view",
+                        "or": "isOnView",
                         "r": false,
                         "t": "`$BOOLEAN`"
                       },
@@ -896,7 +896,7 @@
                         "ex": true,
                         "k": "query",
                         "n": "tag",
-                        "or": "tag",
+                        "or": "tags",
                         "r": false,
                         "t": "`$BOOLEAN`"
                       },
@@ -1499,7 +1499,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {
