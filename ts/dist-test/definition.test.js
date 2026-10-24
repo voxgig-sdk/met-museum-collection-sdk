@@ -17,7 +17,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -38,13 +43,27 @@ const PLAN = [
         "path": "/objects",
         "args": [],
         "select": {
-            "department_id": "v1",
-            "metadata_date": "v1"
+            "department_id": "1",
+            "metadata_date": "2018-10-22"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "metadataDate",
             "departmentIds"
+        ],
+        "queryArgs": [
+            {
+                "name": "department_id",
+                "wire": "departmentIds"
+            },
+            {
+                "name": "metadata_date",
+                "wire": "metadataDate"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -73,7 +92,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -176,10 +200,10 @@ const PLAN = [
         "args": [],
         "select": {
             "artist_or_culture": "v1",
-            "date_begin": "v1",
-            "date_end": "v1",
-            "department_id": "v1",
-            "geo_location": "v1",
+            "date_begin": 1800,
+            "date_end": 1900,
+            "department_id": 11,
+            "geo_location": "Europe",
             "has_image": "v1",
             "is_highlight": "v1",
             "is_on_view": "v1",
@@ -189,6 +213,10 @@ const PLAN = [
             "title": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "q",
             "title",
@@ -202,6 +230,56 @@ const PLAN = [
             "geoLocation",
             "dateBegin",
             "dateEnd"
+        ],
+        "queryArgs": [
+            {
+                "name": "artist_or_culture",
+                "wire": "artistOrCulture"
+            },
+            {
+                "name": "date_begin",
+                "wire": "dateBegin"
+            },
+            {
+                "name": "date_end",
+                "wire": "dateEnd"
+            },
+            {
+                "name": "department_id",
+                "wire": "departmentId"
+            },
+            {
+                "name": "geo_location",
+                "wire": "geoLocation"
+            },
+            {
+                "name": "has_image",
+                "wire": "hasImages"
+            },
+            {
+                "name": "is_highlight",
+                "wire": "isHighlight"
+            },
+            {
+                "name": "is_on_view",
+                "wire": "isOnView"
+            },
+            {
+                "name": "medium",
+                "wire": "medium"
+            },
+            {
+                "name": "q",
+                "wire": "q"
+            },
+            {
+                "name": "tag",
+                "wire": "tags"
+            },
+            {
+                "name": "title",
+                "wire": "title"
+            }
         ],
         "auth": null,
         "status": 200,

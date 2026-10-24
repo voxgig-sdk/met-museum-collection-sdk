@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { MetMuseumCollectionSDK, BaseFeature, stdutil } from '../../..'
+import { MetMuseumCollectionSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('DepartmentEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('department hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of MetMuseumCollectionSDK.test(offline).Department().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of MetMuseumCollectionSDK.test(offline).Department()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = MetMuseumCollectionSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Department().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of MetMuseumCollectionSDK.test().Department().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new MetMuseumCollectionSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Department().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Department().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = MetMuseumCollectionSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Department().list({"departmentId":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.MET_MUSEUM_COLLECTION_TEST_LIVE
@@ -51,7 +109,7 @@ describe('DepartmentEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"departmentId":{"a":true,"h":"Department Id","n":"departmentId","r":false,"sh":"Unique identifier for the department","t":"`$INTEGER`","key$":"departmentId","index$":0},"displayName":{"a":true,"h":"Display Name","n":"displayName","r":false,"sh":"Display name of the department","t":"`$STRING`","key$":"displayName","index$":1}},"name":"department","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /departments","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/departments","q":{},"r":{},"s":[{"lit":"departments"}],"t":{"req":"`reqdata`","res":"`body.departments`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"department","name__orig":"department","Name":"Department","name_":"department","name-":"department","NAME":"DEPARTMENT","index$":0}, {"active":true,"entity":"department","key$":"BasicDepartmentFlow","kind":"basic","name":"BasicDepartmentFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"department_ref01"}}],"index$":0}]}, 'Department', {"GET /departments":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"departmentId":{"a":true,"h":"Department Id","n":"departmentId","r":false,"sh":"Unique identifier for the department","t":"`$INTEGER`","key$":"departmentId","index$":0},"displayName":{"a":true,"h":"Display Name","n":"displayName","r":false,"sh":"Display name of the department","t":"`$STRING`","key$":"displayName","index$":1}},"name":"department","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /departments","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/departments","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"departments"}],"t":{"req":"`reqdata`","res":"`body.departments`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"department","name__orig":"department","Name":"Department","name_":"department","name-":"department","NAME":"DEPARTMENT","index$":0}, {"active":true,"entity":"department","key$":"BasicDepartmentFlow","kind":"basic","name":"BasicDepartmentFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"department_ref01"}}],"index$":0}]}, 'Department', {"GET /departments":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('DepartmentEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

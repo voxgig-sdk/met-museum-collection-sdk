@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Search();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('search hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.MetMuseumCollectionSDK.test(offline).Search().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.MetMuseumCollectionSDK.test(offline).Search()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.MetMuseumCollectionSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Search().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.MetMuseumCollectionSDK.test().Search().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.MetMuseumCollectionSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Search().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Search().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.MetMuseumCollectionSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Search().list({ "artist_or_culture": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.MET_MUSEUM_COLLECTION_TEST_LIVE;
         for (const op of ['list']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "objectIDs": { "a": true, "h": "Object I Ds", "n": "objectIDs", "r": false, "sh": "An array containing the object IDs of matching objects", "t": "`$ARRAY`", "key$": "objectIDs", "index$": 0 }, "total": { "a": true, "h": "Total", "n": "total", "r": false, "sh": "The total number of objects matching the search query", "t": "`$INTEGER`", "key$": "total", "index$": 1 } }, "name": "search", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /search", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": true, "k": "query", "n": "artist_or_culture", "or": "artistOrCulture", "r": false, "t": "`$BOOLEAN`", "index$": 0 }, { "a": true, "ex": 1800, "k": "query", "n": "date_begin", "or": "dateBegin", "r": false, "t": "`$INTEGER`", "index$": 1 }, { "a": true, "ex": 1900, "k": "query", "n": "date_end", "or": "dateEnd", "r": false, "t": "`$INTEGER`", "index$": 2 }, { "a": true, "ex": 11, "k": "query", "n": "department_id", "or": "departmentId", "r": false, "t": "`$INTEGER`", "index$": 3 }, { "a": true, "ex": "Europe", "k": "query", "n": "geo_location", "or": "geoLocation", "r": false, "t": "`$STRING`", "index$": 4 }, { "a": true, "ex": true, "k": "query", "n": "has_image", "or": "hasImages", "r": false, "t": "`$BOOLEAN`", "index$": 5 }, { "a": true, "ex": true, "k": "query", "n": "is_highlight", "or": "isHighlight", "r": false, "t": "`$BOOLEAN`", "index$": 6 }, { "a": true, "ex": true, "k": "query", "n": "is_on_view", "or": "isOnView", "r": false, "t": "`$BOOLEAN`", "index$": 7 }, { "a": true, "ex": "Paintings", "k": "query", "n": "medium", "or": "medium", "r": false, "t": "`$STRING`", "index$": 8 }, { "a": true, "ex": "sunflowers", "k": "query", "n": "q", "or": "q", "r": false, "t": "`$STRING`", "index$": 9 }, { "a": true, "ex": true, "k": "query", "n": "tag", "or": "tags", "r": false, "t": "`$BOOLEAN`", "index$": 10 }, { "a": true, "ex": true, "k": "query", "n": "title", "or": "title", "r": false, "t": "`$BOOLEAN`", "index$": 11 }] }, "k": "http", "m": "GET", "o": "/search", "q": { "exist": ["artist_or_culture", "date_begin", "date_end", "department_id", "geo_location", "has_image", "is_highlight", "is_on_view", "medium", "q", "tag", "title"] }, "r": {}, "s": [{ "lit": "search" }], "t": { "req": "`reqdata`", "res": "`body.objectIDs`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "search", "name__orig": "search", "Name": "Search", "name_": "search", "name-": "search", "NAME": "SEARCH", "index$": 2 }, { "active": true, "entity": "search", "key$": "BasicSearchFlow", "kind": "basic", "name": "BasicSearchFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "search_ref01" } }], "index$": 0 }] }, 'Search', { "GET /search": { "protocol": "http", "parameters": [{ "name": "q", "in": "query", "description": "Search term to query the objects", "required": false, "schema": { "type": "string", "example": "sunflowers" }, "index$": 0 }, { "name": "title", "in": "query", "description": "Search against the title field", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 1 }, { "name": "tags", "in": "query", "description": "Search for objects using the subject keyword tags field", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 2 }, { "name": "departmentId", "in": "query", "description": "Filter by department ID", "required": false, "schema": { "type": "integer", "example": 11 }, "index$": 3 }, { "name": "isHighlight", "in": "query", "description": "Filter to highlight objects only", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 4 }, { "name": "isOnView", "in": "query", "description": "Filter to objects currently on view", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 5 }, { "name": "artistOrCulture", "in": "query", "description": "Filter by artist name or culture", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 6 }, { "name": "medium", "in": "query", "description": "Filter by medium", "required": false, "schema": { "type": "string", "example": "Paintings" }, "index$": 7 }, { "name": "hasImages", "in": "query", "description": "Filter to objects that have images", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 8 }, { "name": "geoLocation", "in": "query", "description": "Filter by geographic location", "required": false, "schema": { "type": "string", "example": "Europe" }, "index$": 9 }, { "name": "dateBegin", "in": "query", "description": "Filter by artwork begin date (integer year)", "required": false, "schema": { "type": "integer", "example": 1800 }, "index$": 10 }, { "name": "dateEnd", "in": "query", "description": "Filter by artwork end date (integer year)", "required": false, "schema": { "type": "integer", "example": 1900 }, "index$": 11 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "objectIDs": { "a": true, "h": "Object I Ds", "n": "objectIDs", "r": false, "sh": "An array containing the object IDs of matching objects", "t": "`$ARRAY`", "key$": "objectIDs", "index$": 0 }, "total": { "a": true, "h": "Total", "n": "total", "r": false, "sh": "The total number of objects matching the search query", "t": "`$INTEGER`", "key$": "total", "index$": 1 } }, "name": "search", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /search", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": true, "k": "query", "n": "artist_or_culture", "or": "artistOrCulture", "r": false, "t": "`$BOOLEAN`", "index$": 0 }, { "a": true, "ex": 1800, "k": "query", "n": "date_begin", "or": "dateBegin", "r": false, "t": "`$INTEGER`", "index$": 1 }, { "a": true, "ex": 1900, "k": "query", "n": "date_end", "or": "dateEnd", "r": false, "t": "`$INTEGER`", "index$": 2 }, { "a": true, "ex": 11, "k": "query", "n": "department_id", "or": "departmentId", "r": false, "t": "`$INTEGER`", "index$": 3 }, { "a": true, "ex": "Europe", "k": "query", "n": "geo_location", "or": "geoLocation", "r": false, "t": "`$STRING`", "index$": 4 }, { "a": true, "ex": true, "k": "query", "n": "has_image", "or": "hasImages", "r": false, "t": "`$BOOLEAN`", "index$": 5 }, { "a": true, "ex": true, "k": "query", "n": "is_highlight", "or": "isHighlight", "r": false, "t": "`$BOOLEAN`", "index$": 6 }, { "a": true, "ex": true, "k": "query", "n": "is_on_view", "or": "isOnView", "r": false, "t": "`$BOOLEAN`", "index$": 7 }, { "a": true, "ex": "Paintings", "k": "query", "n": "medium", "or": "medium", "r": false, "t": "`$STRING`", "index$": 8 }, { "a": true, "ex": "sunflowers", "k": "query", "n": "q", "or": "q", "r": false, "t": "`$STRING`", "index$": 9 }, { "a": true, "ex": true, "k": "query", "n": "tag", "or": "tags", "r": false, "t": "`$BOOLEAN`", "index$": 10 }, { "a": true, "ex": true, "k": "query", "n": "title", "or": "title", "r": false, "t": "`$BOOLEAN`", "index$": 11 }] }, "k": "http", "m": "GET", "o": "/search", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "search" }], "t": { "req": "`reqdata`", "res": "`body.objectIDs`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "search", "name__orig": "search", "Name": "Search", "name_": "search", "name-": "search", "NAME": "SEARCH", "index$": 2 }, { "active": true, "entity": "search", "key$": "BasicSearchFlow", "kind": "basic", "name": "BasicSearchFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "search_ref01" } }], "index$": 0 }] }, 'Search', { "GET /search": { "protocol": "http", "parameters": [{ "name": "q", "in": "query", "description": "Search term to query the objects", "required": false, "schema": { "type": "string", "example": "sunflowers" }, "index$": 0 }, { "name": "title", "in": "query", "description": "Search against the title field", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 1 }, { "name": "tags", "in": "query", "description": "Search for objects using the subject keyword tags field", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 2 }, { "name": "departmentId", "in": "query", "description": "Filter by department ID", "required": false, "schema": { "type": "integer", "example": 11 }, "index$": 3 }, { "name": "isHighlight", "in": "query", "description": "Filter to highlight objects only", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 4 }, { "name": "isOnView", "in": "query", "description": "Filter to objects currently on view", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 5 }, { "name": "artistOrCulture", "in": "query", "description": "Filter by artist name or culture", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 6 }, { "name": "medium", "in": "query", "description": "Filter by medium", "required": false, "schema": { "type": "string", "example": "Paintings" }, "index$": 7 }, { "name": "hasImages", "in": "query", "description": "Filter to objects that have images", "required": false, "schema": { "type": "boolean", "example": true }, "index$": 8 }, { "name": "geoLocation", "in": "query", "description": "Filter by geographic location", "required": false, "schema": { "type": "string", "example": "Europe" }, "index$": 9 }, { "name": "dateBegin", "in": "query", "description": "Filter by artwork begin date (integer year)", "required": false, "schema": { "type": "integer", "example": 1800 }, "index$": 10 }, { "name": "dateEnd", "in": "query", "description": "Filter by artwork end date (integer year)", "required": false, "schema": { "type": "integer", "example": 1900 }, "index$": 11 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -75,6 +122,11 @@ const utility_1 = require("../../utility");
         const search_ref01_list = (await search_ref01_ent.list(search_ref01_match)).map((e) => e.data());
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

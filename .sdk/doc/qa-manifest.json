@@ -3,5 +3,21 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Access over 470,000 artworks with metadata and high-resolution images from The Metropolitan Museum of Art Collection. Search by title, tags, department, and more. No API key required.",
+      "An array containing URLs to the additional images of an object in JPEG format",
+      "An array containing the object IDs of matching objects",
+      "Display name of the department",
+      "Gallery number, where available",
+      "Identifying number for each artwork (not always unique)",
+      "Production server",
+      "Successful response",
+      "The total number of objects matching the search query",
+      "Unique identifier for the department",
+      "Used to sort artist names alphabetically",
+      "Year the artwork was acquired"
+    ]
+  }
 }

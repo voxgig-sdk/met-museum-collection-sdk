@@ -472,11 +472,9 @@ main: kit: entity: object: {
           }
           m: "GET"
           o: "/objects"
-          q: {
-            exist: [
-              "department_id"
-              "metadata_date"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -522,6 +520,10 @@ main: kit: entity: object: {
             param: {
               objectID: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

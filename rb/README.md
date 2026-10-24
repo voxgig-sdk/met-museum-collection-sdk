@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/met-museum-collection-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/met-museum-collection-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = MetMuseumCollectionSDK.new
 
 ```ruby
 begin
-  # list returns an Array of Department records — iterate directly.
+  # list returns an Array of Department entities, one per record; data_get reads the record.
   departments = client.Department.list
   departments.each do |item|
-    puts "#{item["departmentId"]}"
+    record = item.data_get
+    puts "#{record["departmentId"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -128,10 +129,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = MetMuseumCollectionSDK.test
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-search = client.Search.list()
-puts search
+# list returns an Array of Search entities, one per mock record (raises on
+# error); data_get reads each record.
+searchs = client.Search.list()
+searchs.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -217,8 +218,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -228,9 +229,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `MetMuseumCollectionError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`MetMuseumCollectionError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -362,8 +364,9 @@ Create an instance: `department = client.Department`
 #### Example: List
 
 ```ruby
-# list returns an Array of Department records (raises on error).
+# list returns an Array of Department entities, one per record (raises on error).
 departments = client.Department.list
+departments.each { |item| puts item.data_get }
 ```
 
 
@@ -454,8 +457,9 @@ object = client.Object.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Object records (raises on error).
+# list returns an Array of Object entities, one per record (raises on error).
 objects = client.Object.list
+objects.each { |item| puts item.data_get }
 ```
 
 
@@ -479,8 +483,9 @@ Create an instance: `search = client.Search`
 #### Example: List
 
 ```ruby
-# list returns an Array of Search records (raises on error).
+# list returns an Array of Search entities, one per record (raises on error).
 searchs = client.Search.list
+searchs.each { |item| puts item.data_get }
 ```
 
 ## Features
